@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY GCLInit SYSTEM "xml/gclmain.xml">
+<!ENTITY GCLDate SYSTEM "xml/gcldate.xml">
+<!ENTITY version SYSTEM "version.xml">
+]>
+
+<book id="index">
+  <bookinfo>
+    <title>libGCL Reference Manual</title>
+    <releaseinfo>for libGCL &version;</releaseinfo>
+  </bookinfo>
+
+  &GCLInit;
+  &GCLDate;
+</book>

@@ -1,0 +1,799 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lunar-applet\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-09-04 16:47+0800\n"
+"PO-Revision-Date: 2007-09-03 19:05+0700\n"
+"Last-Translator: yetist <yetist@gmail.com>\n"
+"Language-Team: yetist@gmail.com <yetist@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+
+#: ../gcl/gcl-date.c:277
+msgid "Jia3"
+msgstr "甲"
+
+#: ../gcl/gcl-date.c:277
+msgid "Yi3"
+msgstr "乙"
+
+#: ../gcl/gcl-date.c:277
+msgid "Bing3"
+msgstr "丙"
+
+#: ../gcl/gcl-date.c:277
+msgid "Ding1"
+msgstr "丁"
+
+#: ../gcl/gcl-date.c:277
+msgid "Wu4"
+msgstr "戊"
+
+#: ../gcl/gcl-date.c:278
+msgid "Ji3"
+msgstr "己"
+
+#: ../gcl/gcl-date.c:278
+msgid "Geng1"
+msgstr "庚"
+
+#: ../gcl/gcl-date.c:278
+msgid "Xin1"
+msgstr "辛"
+
+#: ../gcl/gcl-date.c:278
+msgid "Ren2"
+msgstr "壬"
+
+#: ../gcl/gcl-date.c:278
+msgid "Gui3"
+msgstr "癸"
+
+#: ../gcl/gcl-date.c:282
+msgid "Zi3"
+msgstr "子"
+
+#: ../gcl/gcl-date.c:282
+msgid "Chou3"
+msgstr "丑"
+
+#: ../gcl/gcl-date.c:282
+msgid "Yin2"
+msgstr "寅"
+
+#: ../gcl/gcl-date.c:282
+msgid "Mao3"
+msgstr "卯"
+
+#: ../gcl/gcl-date.c:282
+msgid "Chen2"
+msgstr "辰"
+
+#: ../gcl/gcl-date.c:282
+msgid "Si4"
+msgstr "巳"
+
+#: ../gcl/gcl-date.c:283
+msgid "Wu3"
+msgstr "午"
+
+#: ../gcl/gcl-date.c:283
+msgid "Wei4"
+msgstr "未"
+
+#: ../gcl/gcl-date.c:283
+msgid "Shen1"
+msgstr "申"
+
+#: ../gcl/gcl-date.c:283
+msgid "You3"
+msgstr "酉"
+
+#: ../gcl/gcl-date.c:283
+msgid "Xu1"
+msgstr "戌"
+
+#: ../gcl/gcl-date.c:283
+msgid "Hai4"
+msgstr "亥"
+
+#: ../gcl/gcl-date.c:287
+msgid "Mouse"
+msgstr "鼠"
+
+#: ../gcl/gcl-date.c:287
+msgid "Ox"
+msgstr "牛"
+
+#: ../gcl/gcl-date.c:287
+msgid "Tiger"
+msgstr "虎"
+
+#: ../gcl/gcl-date.c:287
+msgid "Rabbit"
+msgstr "兔"
+
+#: ../gcl/gcl-date.c:287
+msgid "Dragon"
+msgstr "龙"
+
+#: ../gcl/gcl-date.c:287
+msgid "Snake"
+msgstr "蛇"
+
+#: ../gcl/gcl-date.c:288
+msgid "Horse"
+msgstr "马"
+
+#: ../gcl/gcl-date.c:288
+msgid "Goat"
+msgstr "羊"
+
+#: ../gcl/gcl-date.c:288
+msgid "Monkey"
+msgstr "猴"
+
+#: ../gcl/gcl-date.c:288
+msgid "Rooster"
+msgstr "鸡"
+
+#: ../gcl/gcl-date.c:288
+msgid "Dog"
+msgstr "狗"
+
+#: ../gcl/gcl-date.c:288
+msgid "Pig"
+msgstr "猪"
+
+#: ../gcl/gcl-date.c:291
+msgid "Zheng1Yue4"
+msgstr "正月"
+
+#: ../gcl/gcl-date.c:291
+msgid "Er4Yue4"
+msgstr "二月"
+
+#: ../gcl/gcl-date.c:291
+msgid "San1Yue4"
+msgstr "三月"
+
+#: ../gcl/gcl-date.c:291
+msgid "Si4Yue4"
+msgstr "四月"
+
+#: ../gcl/gcl-date.c:291
+msgid "Wu3Yue4"
+msgstr "五月"
+
+#: ../gcl/gcl-date.c:291
+msgid "liu6Yue4"
+msgstr "六月"
+
+#: ../gcl/gcl-date.c:292
+msgid "Qi1Yue4"
+msgstr "七月"
+
+#: ../gcl/gcl-date.c:292
+msgid "Ba1Yue4"
+msgstr "八月"
+
+#: ../gcl/gcl-date.c:292
+msgid "Jiu3Yue4"
+msgstr "九月"
+
+#: ../gcl/gcl-date.c:292
+msgid "Shi2Yue4"
+msgstr "十月"
+
+#: ../gcl/gcl-date.c:292
+msgid "Shi2Yi1Yue4"
+msgstr "十一月"
+
+#: ../gcl/gcl-date.c:292
+msgid "Shi2Er4Yue4"
+msgstr "十二月"
+
+#: ../gcl/gcl-date.c:295
+msgid "Chu1Yi1"
+msgstr "初一"
+
+#: ../gcl/gcl-date.c:295
+msgid "Chu1Er4"
+msgstr "初二"
+
+#: ../gcl/gcl-date.c:295
+msgid "Chu1San1"
+msgstr "初三"
+
+#: ../gcl/gcl-date.c:295
+msgid "Chu1Si4"
+msgstr "初四"
+
+#: ../gcl/gcl-date.c:295
+msgid "Chu1Wu3"
+msgstr "初五"
+
+#: ../gcl/gcl-date.c:296
+msgid "Chu1liu6"
+msgstr "初六"
+
+#: ../gcl/gcl-date.c:296
+msgid "Chu1Qi1"
+msgstr "初七"
+
+#: ../gcl/gcl-date.c:296
+msgid "Chu1Ba1"
+msgstr "初八"
+
+#: ../gcl/gcl-date.c:296
+msgid "Chu1Jiu3"
+msgstr "初九"
+
+#: ../gcl/gcl-date.c:296
+msgid "Chu1Shi2"
+msgstr "初十"
+
+#: ../gcl/gcl-date.c:297
+msgid "Shi2Yi1"
+msgstr "十一"
+
+#: ../gcl/gcl-date.c:297
+msgid "Shi2Er4"
+msgstr "十二"
+
+#: ../gcl/gcl-date.c:297
+msgid "Shi1San1"
+msgstr "十三"
+
+#: ../gcl/gcl-date.c:297
+msgid "Shi1Si4"
+msgstr "十四"
+
+#: ../gcl/gcl-date.c:297
+msgid "Shi1Wu3"
+msgstr "十五"
+
+#: ../gcl/gcl-date.c:298
+msgid "Shi1liu6"
+msgstr "十六"
+
+#: ../gcl/gcl-date.c:298
+msgid "Shi1Qi1"
+msgstr "十七"
+
+#: ../gcl/gcl-date.c:298
+msgid "Shi1Ba1"
+msgstr "十八"
+
+#: ../gcl/gcl-date.c:298
+msgid "Shi1Jiu3"
+msgstr "十九"
+
+#: ../gcl/gcl-date.c:298
+msgid "Er4Shi2"
+msgstr "二十"
+
+#: ../gcl/gcl-date.c:299
+msgid "Er4Yi1"
+msgstr "廿一"
+
+#: ../gcl/gcl-date.c:299
+msgid "Er4Er4"
+msgstr "廿二"
+
+#: ../gcl/gcl-date.c:299
+msgid "Er4San1"
+msgstr "廿三"
+
+#: ../gcl/gcl-date.c:299
+msgid "Er4Si4"
+msgstr "廿四"
+
+#: ../gcl/gcl-date.c:299
+msgid "Er4Wu3"
+msgstr "廿五"
+
+#: ../gcl/gcl-date.c:300
+msgid "Er4liu6"
+msgstr "廿六"
+
+#: ../gcl/gcl-date.c:300
+msgid "Er4Qi1"
+msgstr "廿七"
+
+#: ../gcl/gcl-date.c:300
+msgid "Er4Ba1"
+msgstr "廿八"
+
+#: ../gcl/gcl-date.c:300
+msgid "Er4Jiu3"
+msgstr "廿九"
+
+#: ../gcl/gcl-date.c:300
+msgid "San1Shi2"
+msgstr "三十"
+
+#: ../gcl/gcl-date.c:423 ../gcl/gcl-date.c:469
+msgid "Year out of range."
+msgstr "年超出范围."
+
+#: ../gcl/gcl-date.c:503 ../gcl/gcl-date.c:526 ../gcl/gcl-date.c:572
+#: ../gcl/gcl-date.c:600
+msgid "nian2"
+msgstr "年"
+
+#: ../gcl/gcl-date.c:504 ../gcl/gcl-date.c:601
+msgid "yue4"
+msgstr "月"
+
+#: ../gcl/gcl-date.c:505 ../gcl/gcl-date.c:602
+msgid "ri4"
+msgstr "日"
+
+#: ../gcl/gcl-date.c:506 ../gcl/gcl-date.c:532 ../gcl/gcl-date.c:575
+#: ../gcl/gcl-date.c:603
+msgid "shi2"
+msgstr "时"
+
+#: ../gcl/gcl-date.c:528
+msgid "run4"
+msgstr "闰"
+
+#: ../gcl/gcl-date.c:728
+msgid "Internal error: pick a larger constant for BYEAR."
+msgstr "内部错误：参考年的数值过小。"
+
+#: ../gcl/gcl-date.c:744 ../gcl/gcl-date.c:753 ../gcl/gcl-date.c:791
+#, c-format
+msgid "Day out of range: \"%d\""
+msgstr "日超出范围：\"%d\""
+
+#: ../gcl/gcl-date.c:774
+#, c-format
+msgid "%d is not a leap month in year %d.\n"
+msgstr "%d 年的 %d 月不是闰月。\n"
+
+#: ../gcl/gcl-date.c:810 ../gcl/gcl-date.c:873
+#, c-format
+msgid "Year out of range. \"%d\""
+msgstr "年超出范围. \"%d\""
+
+#~ msgid "Er1"
+#~ msgstr "二"
+
+#~ msgid "Shi2Er2"
+#~ msgstr "十二"
+
+#~ msgid "La4"
+#~ msgstr "十二"
+
+#~ msgid "%l:%M:%S %p"
+#~ msgstr "%p%l:%M:%S"
+
+#~ msgid "%l:%M %p"
+#~ msgstr "%p%l:%M"
+
+#~ msgid "%H:%M:%S"
+#~ msgstr "%H:%M:%S"
+
+#~ msgid "%H:%M"
+#~ msgstr "%H:%M"
+
+#~ msgid "%a %b %e"
+#~ msgstr "%-m月%-d日%A"
+
+#~ msgid ""
+#~ "%1$s\n"
+#~ "%2$s"
+#~ msgstr ""
+#~ "%1$s\n"
+#~ "%2$s"
+
+#~ msgid "%1$s, %2$s"
+#~ msgstr "%1$s %2$s"
+
+#~ msgid "%A %B %d"
+#~ msgstr "%-m月%-d日%A"
+
+#~ msgid "Click to view your appointments and tasks"
+#~ msgstr "单击可查看您的约会和任务"
+
+#~ msgid "Click to view month calendar"
+#~ msgstr "单击可查看月历"
+
+#~ msgid "%b %d"
+#~ msgstr "%-m月%-d日"
+
+#~ msgid "Tasks"
+#~ msgstr "任务"
+
+#~ msgid "All Day"
+#~ msgstr "全天"
+
+#~ msgid "Appointments"
+#~ msgstr "约会"
+
+#~ msgid "Calendar"
+#~ msgstr "日历"
+
+#~ msgid "Computer Clock"
+#~ msgstr "计算机时钟"
+
+#~ msgid "%I:%M:%S %p"
+#~ msgstr "%p%I:%M:%S"
+
+#~ msgid "%I:%M %p"
+#~ msgstr "%p%I:%M"
+
+#~ msgid "%A, %B %d %Y"
+#~ msgstr "%Y年%-m月%-d日%A"
+
+#~ msgid "Failed to launch time configuration tool: %s"
+#~ msgstr "启动时间配置工具失败：%s"
+
+#~ msgid ""
+#~ "Failed to locate a program for configuring the date and time. Perhaps "
+#~ "none is installed?"
+#~ msgstr "找不到用于配置日期和时间的程序。可能没有安装？"
+
+#~ msgid "Custom format"
+#~ msgstr "自定义格式"
+
+#~ msgid "There was an error displaying help: %s"
+#~ msgstr "显示帮助时发生错误：%s"
+
+#~ msgid "Lunar Preferences"
+#~ msgstr "首选项"
+
+#~ msgid "Clock _type:"
+#~ msgstr "时钟类型(_T)："
+
+#~ msgid "12 hour"
+#~ msgstr "12 小时"
+
+#~ msgid "24 hour"
+#~ msgstr "24 小时"
+
+#~ msgid "UNIX time"
+#~ msgstr "UNIX 时间"
+
+#~ msgid "Internet time"
+#~ msgstr "Internet 时间"
+
+#~ msgid "Custom _format:"
+#~ msgstr "自定义格式(_F)："
+
+#~ msgid "Show _seconds"
+#~ msgstr "显示秒(_S)"
+
+#~ msgid "Show _date"
+#~ msgstr "显示日期(_D)"
+
+#~ msgid "Show _lunar date"
+#~ msgstr "显示农历日期(_L)"
+
+#~ msgid "Use _UTC"
+#~ msgstr "使用 _UTC"
+
+#~ msgid "Lunar"
+#~ msgstr "农历日期"
+
+#~ msgid "The Lunar displays the current time and lunar date"
+#~ msgstr "时钟显示当前时间和日期"
+
+#~ msgid "translator-credits"
+#~ msgstr ""
+#~ "Wang Jian <lark@linux.net.cn>\n"
+#~ "Jiang Xiong <jxiong@gwu.edu>\n"
+#~ "Zipeco <zipeco@btamail.net.cn>\n"
+#~ "Wang Li <charles@linux.net.cn>\n"
+#~ "Funda Wang <fundawang@linux.net.cn>\n"
+#~ "yetist <yetist@gmail.com>"
+
+#~ msgid "24-hour"
+#~ msgstr "24-hour"
+
+#~ msgid "Custom format of the clock"
+#~ msgstr "时钟的自定义格式"
+
+#~ msgid "Hour format"
+#~ msgstr "小时格式"
+
+#~ msgid "If true, display date in the clock, in addition to time."
+#~ msgstr "如果为 true，则在时钟上除了显示时间外，还要显示日期。"
+
+#~ msgid "If true, display seconds in time."
+#~ msgstr "如果为 true，则显示时间时显示秒数。"
+
+#~ msgid "If true, display time in Universal Coordinated Time zone."
+#~ msgstr "如果为 true，则显示 UTC 时区的时间。"
+
+#~ msgid "If true, show date in a tooltip when the pointer is over the clock."
+#~ msgstr "如果为 true，则当鼠标在时钟上停留时在工具提示中显示日期。"
+
+#~ msgid "If true, show week numbers in the calendar."
+#~ msgstr "如果为 true，则在日历中显示周序号。"
+
+#~ msgid "Show date in clock"
+#~ msgstr "在时钟上显示日期"
+
+#~ msgid "Show date in tooltip"
+#~ msgstr "在提示中显示日期"
+
+#~ msgid "Show time with seconds"
+#~ msgstr "显示带秒的时间"
+
+#~ msgid "Show week numbers in calendar"
+#~ msgstr "在日历中显示周序号"
+
+#~ msgid ""
+#~ "The use of this key was deprecated in GNOME 2.6 in favour of the 'format' "
+#~ "key. The schema is retained for compatibility with older versions."
+#~ msgstr ""
+#~ "在 GNOME 2.6 中不推荐使用此键，而应该使用“format”键。此大纲仅为与旧版本兼"
+#~ "容而保留。"
+
+#~ msgid ""
+#~ "This key specifies the format used by the clock applet when the format "
+#~ "key is set to \"custom\". You can use conversion specifiers understood by "
+#~ "strftime() to obtain a specific format."
+#~ msgstr ""
+#~ "当 format 键设为“custom”时，此键指定了时钟小程序要使用的格式。您可以选择 "
+#~ "strftime() 明白的格式符来获取特定格式。"
+
+#~ msgid ""
+#~ "This key specifies the hour format used by the clock applet. Possible "
+#~ "values are \"12-hour\", \"24-hour\", \"internet\", \"unix\" and \"custom"
+#~ "\". If set to \"internet\", the clock will display Internet time. The "
+#~ "Internet time system divides the day into 1000 \".beats\". There are no "
+#~ "time zones in this system, so time is the same all over the world. If set "
+#~ "to \"unix\", the clock will display time in seconds since Epoch, i.e. "
+#~ "1970-01-01. If set to \"custom\", the clock will display time according "
+#~ "to the format specified in the custom_format key."
+#~ msgstr ""
+#~ "此键指定了时钟小程序所使用的小时格式。可供选择的值为“12-hour”、“24-"
+#~ "hour”、“internet”、“unix”和“custom”。如果设定为“internet”，时钟将显示 "
+#~ "Internet 时间。Internet 时间将一天分为 1000“拍”。此系统中没有时区之分，所"
+#~ "以全世界的时间都是相同的。如果设定为“unix”，时钟将会以自新纪元(即 1970-01-"
+#~ "01)开始已过的秒数。如果设定为“custom”，时钟将会根据 custom_format 键中指定"
+#~ "的格式来显示时间。"
+
+#~ msgid ""
+#~ "This key specifies the program to run in order to configure the time."
+#~ msgstr "此处指定了配置时间所要运行的程序。"
+
+#~ msgid "Time configuration tool"
+#~ msgstr "时间配置工具"
+
+#~ msgid "Use Internet time"
+#~ msgstr "使用 Internet 时间"
+
+#~ msgid "Use UNIX time"
+#~ msgstr "使用 UNIX 时间"
+
+#~ msgid "Use UTC"
+#~ msgstr "使用 UTC"
+
+#~ msgid "Factory for creating lunar applets."
+#~ msgstr "创建农历小程序的车间。"
+
+#~ msgid "Get the current time and lunar date"
+#~ msgstr "获取当前时间和农历日期"
+
+#~ msgid "Lunar Applet Factory"
+#~ msgstr "农历小程序车间"
+
+#~ msgid "Lunar Date"
+#~ msgstr "农历日期"
+
+#~ msgid "Ad_just Date & Time"
+#~ msgstr "调整日期和时间(_J)"
+
+#~ msgid "Copy _Date"
+#~ msgstr "复制日期(_D)"
+
+#~ msgid "Copy _Time"
+#~ msgstr "复制时间(_T)"
+
+#~ msgid "_About"
+#~ msgstr "关于(_A)"
+
+#~ msgid "_Help"
+#~ msgstr "帮助(_H)"
+
+#~ msgid "_Preferences"
+#~ msgstr "首选项(_P)"
+
+#~ msgid "年 %s %s%s年%s%s月%s%s日"
+#~ msgstr "年 %s年  %s%s年%s%s月%s%s日"
+
+#~ msgid "十二月"
+#~ msgstr "十二月"
+
+#~ msgid "calendar:MY"
+#~ msgstr "calendar:YM"
+
+#~ msgid "calendar:week_start:0"
+#~ msgstr "calendar:week_start:1"
+
+#, fuzzy
+#~ msgid "2000"
+#~ msgstr "二十"
+
+#~ msgid "%d"
+#~ msgstr "%d"
+
+#~ msgid "%Y"
+#~ msgstr "%Y"
+
+#~ msgid "year measurement template|2000"
+#~ msgstr "abc|然后几番卡带拉萨几番拉萨"
+
+#~ msgid "*%s"
+#~ msgstr "润%s"
+
+#~ msgid "%s"
+#~ msgstr "%s月"
+
+#~ msgid "Sun"
+#~ msgstr "日"
+
+#~ msgid "Mon"
+#~ msgstr "一"
+
+#~ msgid "Tue"
+#~ msgstr "二"
+
+#~ msgid "Wed"
+#~ msgstr "三"
+
+#~ msgid "Thu"
+#~ msgstr "四"
+
+#~ msgid "Fri"
+#~ msgstr "五"
+
+#~ msgid "Sat"
+#~ msgstr "六"
+
+#~ msgid "1"
+#~ msgstr "初一"
+
+#~ msgid "2"
+#~ msgstr "初二"
+
+#~ msgid "3"
+#~ msgstr "初三"
+
+#~ msgid "4"
+#~ msgstr "初四"
+
+#~ msgid "5"
+#~ msgstr "初五"
+
+#~ msgid "6"
+#~ msgstr "初六"
+
+#~ msgid "7"
+#~ msgstr "初七"
+
+#~ msgid "8"
+#~ msgstr "初八"
+
+#~ msgid "9"
+#~ msgstr "初九"
+
+#~ msgid "10"
+#~ msgstr "初十"
+
+#~ msgid "11"
+#~ msgstr "十一"
+
+#~ msgid "12"
+#~ msgstr "十二"
+
+#~ msgid "13"
+#~ msgstr "十三"
+
+#~ msgid "14"
+#~ msgstr "十四"
+
+#~ msgid "15"
+#~ msgstr "十五"
+
+#~ msgid "16"
+#~ msgstr "十六"
+
+#~ msgid "17"
+#~ msgstr "十七"
+
+#~ msgid "18"
+#~ msgstr "十八"
+
+#~ msgid "19"
+#~ msgstr "十九"
+
+#~ msgid "21"
+#~ msgstr "廿一"
+
+#~ msgid "22"
+#~ msgstr "廿二"
+
+#~ msgid "23"
+#~ msgstr "廿三"
+
+#~ msgid "24"
+#~ msgstr "廿四"
+
+#~ msgid "25"
+#~ msgstr "廿五"
+
+#~ msgid "26"
+#~ msgstr "廿六"
+
+#~ msgid "27"
+#~ msgstr "廿七"
+
+#~ msgid "28"
+#~ msgstr "廿八"
+
+#~ msgid "29"
+#~ msgstr "廿九"
+
+#~ msgid "30"
+#~ msgstr "三十"
+
+#~ msgid "Jan"
+#~ msgstr "一月"
+
+#~ msgid "Feb"
+#~ msgstr "二月"
+
+#~ msgid "Mar"
+#~ msgstr "三月"
+
+#~ msgid "Apr"
+#~ msgstr "四月"
+
+#~ msgid "May"
+#~ msgstr "五月"
+
+#~ msgid "Jun"
+#~ msgstr "六月"
+
+#~ msgid "Jul"
+#~ msgstr "七月"
+
+#~ msgid "Aug"
+#~ msgstr "八月"
+
+#~ msgid "Sep"
+#~ msgstr "九月"
+
+#~ msgid "Oct"
+#~ msgstr "十月"
+
+#~ msgid "Nov"
+#~ msgstr "十一月"
+
+#~ msgid "Dec"
+#~ msgstr "十二月"
+
+#, fuzzy
+#~ msgid "abc|2000"
+#~ msgstr "PLATFORM 2000"
+
+#~ msgid "Clock Preferences"
+#~ msgstr "时钟首选项"
+
+#, fuzzy
+#~ msgid "Clock"
+#~ msgstr "时钟"

@@ -1,0 +1,17 @@
+2007-09-03  yetist  <yetist@gmail.com>
+
+    * configure.ac:
+    * docs/reference/yeti-docs.sgml:
+    * docs/reference/tmpl/gcldate.sgml:
+    * docs/reference/yeti-sections.txt:
+    * Makefile.am:
+    * yeti/gcl-date.c:
+    * yeti/Makefile.am:
+    * yeti-1.0.pc.in:
+    * po/zh_CN.po:
+    some change.
+
+2007-09-03  yetist  <yetist@gmail.com>
+
+    * all:
+    init svn version.
