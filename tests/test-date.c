@@ -45,11 +45,12 @@ void display (GCLDate *date, gboolean islunar)
     g_printf("<%u-%u-%u %u> <%s-%s-%s %s>\n", d->year, d->month, d->day, d->hour, a[0], a[1], a[2], a[3]);
     g_printf("Shengxiao: %s\n", gcl_date_get_shengxiao(date));
     g_printf("Ganzhi: <%s> <%s-%s-%s-%s>\n", gcl_date_get_ganzhi(date, a[4], a[5],a[6],a[7]), a[4], a[5],a[6],a[7]);
-    g_printf("Bazi: <%s> <%s-%s-%s-%s>\n\n", gcl_date_get_bazi(date, a[8], a[9],a[10],a[11]), a[8], a[9],a[10],a[11]);
+    g_printf("Bazi: <%s> <%s-%s-%s-%s>\n", gcl_date_get_bazi(date, a[8], a[9],a[10],a[11]), a[8], a[9],a[10],a[11]);
+    g_printf("Jieqi:<%s>\n\n", gcl_date_get_jieqi(date));
 
 }
 
-void test(void)
+void random_test(void)
 {
     GError *error = NULL;
     GCLDate *date;
@@ -81,15 +82,56 @@ void test(void)
     gcl_date_free(date);
 }
 
+void test(gchar* argv[])
+{
+    GError *error = NULL;
+    GCLDate *date;
+
+    date = gcl_date_new();
+
+    GDateYear year = atoi(argv[1]);
+    GDateMonth month =  atoi(argv[2]);
+    GDateDay day = atoi(argv[3]);
+
+    gboolean isleap = random() % 1;
+    GDateHour hour = random() % 24 + 1;
+
+    g_printf("Test Date: <%u-%u-%u %u>\n", year, month, day, hour);
+    gcl_date_set_lunar_date(date, year, month, day , hour, isleap, &error);
+    if (error)
+    {
+        g_printf("Error: %s \n", error->message);
+        return;
+    }
+    display(date, TRUE);
+
+    gcl_date_set_solar_date(date, year, month, day , hour, &error);
+    if (error)
+    {
+        g_printf("Error: %s \n", error->message);
+        return;
+    }
+    display(date, FALSE);
+
+    gcl_date_free(date);
+}
+
 int main (int argc, char* argv[])
 {
-    int i = 10;
     gcl_init(&argc, &argv);
-    while (i-- >=0)
+    if (argc == 4)
     {
-        g_printf("--------------------------------------\n");
-        test();
-        sleep(2);
+        test(argv);
+    }
+    else
+    {
+        int i = 10;
+        while (i-- >=0)
+        {
+            g_printf("--------------------------------------\n");
+            random_test();
+            sleep(2);
+        }
     }
     return 0;
 }

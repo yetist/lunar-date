@@ -1,3 +1,13 @@
+2007-12-18  yetist  <yetist@gmail.com>
+
+	* tests/test-date.c: 
+	* configure.ac: 
+	* gcl/gcl-date.c: 
+	* gcl/gcl-date.h: 
+	* data: 
+	* data/jieri.table: 
+	add holiday
+
 2007-09-03  yetist  <yetist@gmail.com>
 
     * configure.ac:

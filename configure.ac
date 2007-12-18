@@ -15,6 +15,8 @@ AM_INIT_AUTOMAKE(1.8 dist-bzip2 no-define)
 AC_CONFIG_SRCDIR(gcl/gcl-date.h)
 AM_CONFIG_HEADER(config.h)
 
+AM_MAINTAINER_MODE
+
 LIBGCL_VERSION=libgcl_real_version
 AC_SUBST(LIBGCL_VERSION)
 

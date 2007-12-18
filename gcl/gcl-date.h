@@ -90,6 +90,8 @@ gchar*      gcl_date_get_bazi           (GCLDate *date,
                                             gchar* month, 
                                             gchar* day, 
                                             gchar* hour);
+
+gchar*      gcl_date_get_jieqi          (GCLDate *date);
 void        gcl_date_free               (GCLDate *date);
 
 G_END_DECLS

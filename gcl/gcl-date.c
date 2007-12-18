@@ -301,7 +301,7 @@ static	char   *lunar_day_list[] = {
 };
 
 static gchar *solar_jieri[] ={
-"0101 元旦节",
+"0101 元旦",
 "0214 情人节",
 "0308 妇女节",
 "0312 植树节",
@@ -317,21 +317,22 @@ static gchar *solar_jieri[] ={
 "1001 国庆节",
 "1006 老人节",
 "1224 平安夜",
+"1123 生日", //The day is my beathday.
 "1225 圣诞节"
 };
 
 static gchar *lunar_jieri[] ={
-"0101*春节",
-"0115 元宵节",
-"0505 端午节",
+"0101 春节",
+"0115 元宵",
+"0505 端午",
 "0624 火把节",
 "0625 火把节",
 "0626 火把节",
-"0707 七夕节",
+"0707 七夕",
 "0715 中元节",
-"0815 中秋节",
-"0909 重阳节",
-"1208 腊八节",
+"0815 中秋",
+"0909 重阳",
+"1208 腊八",
 "1223 小年",
 "0100 除夕"
 };
@@ -353,6 +354,8 @@ static void _cl_date_calc_bazi(GCLDate *date);
 static gint _cl_date_get_bazi_lunar (GCLDate *date);
 static glong _date_calc_days_since_reference_year (CLDate *d, GError **error);
 static void _date_calc_days_since_lunar_year (GCLDate *date, GError **error);
+static gint get_day_of_week (gint year, gint month, gint day);
+static gint get_weekth_of_month (gint day);
 
 GQuark gcl_date_error_quark (void)
 {
@@ -994,8 +997,104 @@ static gint _cl_date_get_bazi_lunar (GCLDate *date)
     return(flag==0);
 }
 
-/*
+gchar*      gcl_date_get_jieqi          (GCLDate *date)
+{
+    GString* jieri;
+    jieri=g_string_new("");
 
+    gchar* cfgfile;
+#if 1
+    cfgfile = g_build_filename(g_get_current_dir(), "data", "jieri.table", NULL);
+#else
+    cfgfile = g_build_filename(g_get_current_dir(), "data", "jieri.table", NULL);
+#endif
+    GKeyFile* keyfile;
+    keyfile = g_key_file_new();
+    if ( ! g_key_file_load_from_file(keyfile, cfgfile, G_KEY_FILE_KEEP_COMMENTS, NULL))
+    {
+
+    }
+
+    if (g_key_file_has_group(keyfile, "LUNAR"))
+    {
+        gchar* str_day = g_strdup_printf("%02d%02d", date->lunar->month, date->lunar->day);
+        if (g_key_file_has_key (keyfile, "LUNAR", str_day, NULL))
+        {
+            jieri=g_string_append(jieri, " ");
+            jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "LUNAR", str_day, NULL));
+        }
+    }
+
+    if (g_key_file_has_group(keyfile, "SOLAR"))
+    {
+        gchar* str_day = g_strdup_printf("%02d%02d", date->solar->month, date->solar->day);
+        if (g_key_file_has_key (keyfile, "SOLAR", str_day, NULL))
+        {
+            jieri=g_string_append(jieri, " ");
+            jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "SOLAR", str_day, NULL));
+        }
+    }
+
+    gint weekday, weekth;
+    weekday = get_day_of_week ( date->solar->year, date->solar->month, date->solar->day);
+    weekth = get_weekth_of_month ( date->solar->day);
+    if (g_key_file_has_group(keyfile, "WEEK"))
+    {
+        gchar* str_day = g_strdup_printf("%02d%01d%01d", date->solar->month, weekth, weekday);
+        if (g_key_file_has_key (keyfile, "WEEK", str_day, NULL))
+        {
+            jieri=g_string_append(jieri, " ");
+            jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "WEEK", str_day, NULL));
+        }
+    }
+    gchar* oo = g_strdup(g_strstrip(jieri->str));
+    g_string_free(jieri, TRUE);
+    return oo;
+}
+
+/**
+ * get_day_of_week:
+ * @year: year
+ * @month: month of year
+ * @day: day of month
+ *
+ * calc weekday by year, month, day.
+ *
+ * Return value: week day.
+ **/
+gint get_day_of_week (gint year, gint month, gint day)
+{
+    int val;
+    if ((month == 1) || (month == 2))
+    {
+        month += 12;
+        year--;
+    }
+
+    val = (day + 2*month + 3*(month+1)/5 + year + year/4 - year/100 + year/400 +1 ) % 7;
+    return val;
+}
+
+/**
+ * get_weekth_of_month:
+ * @day: 日。
+ *
+ * 计算是本月第几个(星期几)
+ * 
+ * Return value: which.
+ **/
+gint get_weekth_of_month (gint day)
+{
+    gint a=1;
+    while(day -7 >0)
+    {
+        day = day -7;
+        a++;
+    }
+    return a;
+}
+
+/*
 gchar* get_jieri(JieRi type, int month, int day, gchar** jieri)
 {
     int i;
