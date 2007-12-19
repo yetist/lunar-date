@@ -1,9 +1,10 @@
 NULL=
 
-AM_CPPFLAGS = 			\
-	-I.			\
-	-I$(top_srcdir)		\
-	$(LIBGCL_CFLAGS)		\
+INCLUDES =                                              \
+	-I$(top_srcdir)					\
+        -I$(srcdir) 					\
+	$(LIBGCL_CFLAGS)				\
+        -DGCL_HOLIDAYDIR=\""$(datadir)/liblunar/"\"     \
 	$(NULL)
 
 lib_LTLIBRARIES = libgcl-1.la

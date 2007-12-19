@@ -997,27 +997,36 @@ static gint _cl_date_get_bazi_lunar (GCLDate *date)
     return(flag==0);
 }
 
-gchar*      gcl_date_get_jieqi          (GCLDate *date)
+/**
+ * gcl_date_get_jieri:
+ * @date: a #GCLDate
+ *
+ * Returns the holiday of the date. The date must be valid.
+ *
+ * Return value:  a newly-allocated holiday string of the date.
+ * This can be changed in $(datadir)/liblunar/holiday.dat file.
+ **/
+gchar*      gcl_date_get_jieri          (GCLDate *date)
 {
     GString* jieri;
     jieri=g_string_new("");
 
     gchar* cfgfile;
-#if 1
-    cfgfile = g_build_filename(g_get_current_dir(), "data", "jieri.table", NULL);
-#else
-    cfgfile = g_build_filename(g_get_current_dir(), "data", "jieri.table", NULL);
-#endif
     GKeyFile* keyfile;
-    keyfile = g_key_file_new();
-    if ( ! g_key_file_load_from_file(keyfile, cfgfile, G_KEY_FILE_KEEP_COMMENTS, NULL))
-    {
+    gint weekday, weekth;
+    gchar* str_day;
 
+    keyfile = g_key_file_new();
+    cfgfile = g_build_filename(GCL_HOLIDAYDIR, "holiday.dat", NULL);
+
+    if (!g_key_file_load_from_file(keyfile, cfgfile, G_KEY_FILE_KEEP_COMMENTS, NULL))
+    {
+        ;
     }
 
     if (g_key_file_has_group(keyfile, "LUNAR"))
     {
-        gchar* str_day = g_strdup_printf("%02d%02d", date->lunar->month, date->lunar->day);
+        str_day = g_strdup_printf("%02d%02d", date->lunar->month, date->lunar->day);
         if (g_key_file_has_key (keyfile, "LUNAR", str_day, NULL))
         {
             jieri=g_string_append(jieri, " ");
@@ -1027,7 +1036,7 @@ gchar*      gcl_date_get_jieqi          (GCLDate *date)
 
     if (g_key_file_has_group(keyfile, "SOLAR"))
     {
-        gchar* str_day = g_strdup_printf("%02d%02d", date->solar->month, date->solar->day);
+        str_day = g_strdup_printf("%02d%02d", date->solar->month, date->solar->day);
         if (g_key_file_has_key (keyfile, "SOLAR", str_day, NULL))
         {
             jieri=g_string_append(jieri, " ");
@@ -1035,12 +1044,11 @@ gchar*      gcl_date_get_jieqi          (GCLDate *date)
         }
     }
 
-    gint weekday, weekth;
     weekday = get_day_of_week ( date->solar->year, date->solar->month, date->solar->day);
     weekth = get_weekth_of_month ( date->solar->day);
     if (g_key_file_has_group(keyfile, "WEEK"))
     {
-        gchar* str_day = g_strdup_printf("%02d%01d%01d", date->solar->month, weekth, weekday);
+        str_day = g_strdup_printf("%02d%01d%01d", date->solar->month, weekth, weekday);
         if (g_key_file_has_key (keyfile, "WEEK", str_day, NULL))
         {
             jieri=g_string_append(jieri, " ");
@@ -1049,6 +1057,7 @@ gchar*      gcl_date_get_jieqi          (GCLDate *date)
     }
     gchar* oo = g_strdup(g_strstrip(jieri->str));
     g_string_free(jieri, TRUE);
+    g_free(str_day);
     return oo;
 }
 
@@ -1062,7 +1071,7 @@ gchar*      gcl_date_get_jieqi          (GCLDate *date)
  *
  * Return value: week day.
  **/
-gint get_day_of_week (gint year, gint month, gint day)
+static gint get_day_of_week (gint year, gint month, gint day)
 {
     int val;
     if ((month == 1) || (month == 2))
@@ -1083,7 +1092,7 @@ gint get_day_of_week (gint year, gint month, gint day)
  * 
  * Return value: which.
  **/
-gint get_weekth_of_month (gint day)
+static gint get_weekth_of_month (gint day)
 {
     gint a=1;
     while(day -7 >0)
@@ -1093,64 +1102,3 @@ gint get_weekth_of_month (gint day)
     }
     return a;
 }
-
-/*
-gchar* get_jieri(JieRi type, int month, int day, gchar** jieri)
-{
-    int i;
-    if (type == JIERI_SOLAR)
-    {
-        for (i=0; i < G_N_ELEMENTS(solar_jieri); i++)
-        {
-            gchar** b;
-            b = g_strsplit(solar_jieri[i], " ", 2);
-            gchar* str_day = g_strdup_printf("%02d%02d", month, day);
-            if (g_ascii_strcasecmp(b[0], str_day) == 0)
-            {
-                *jieri = g_strdup(b[1]);
-                g_strfreev(b);
-                return (*jieri);
-            }
-            g_strfreev(b);
-        }
-    }
-    else if (type == JIERI_LUNAR)
-    {
-        for (i=0; i < G_N_ELEMENTS(lunar_jieri); i++)
-        {
-            gchar** b;
-            b = g_strsplit(lunar_jieri[i], " ", 2);
-            gchar* str_day = g_strdup_printf("%02d%02d", month, day);
-            if (g_ascii_strcasecmp(b[0], str_day) == 0)
-            {
-                *jieri = g_strdup(b[1]);
-                g_strfreev(b);
-                return (*jieri);
-            }
-            g_strfreev(b);
-        }
-    }
-    return NULL;
-
-}
-
-gchar* get_week_jieri(int month, int weekth, int weekday, gchar** jieri)
-{
-    int i;
-    for (i=0; i < G_N_ELEMENTS(week_jieri); i++)
-    {
-        gchar** b;
-        b = g_strsplit(week_jieri[i], " ", 2);
-        gchar* str_day = g_strdup_printf("%02d%01d%01d", month, weekth, weekday);
-        if (g_ascii_strcasecmp(b[0], str_day) == 0)
-        {
-            *jieri = g_strdup(b[1]);
-            g_strfreev(b);
-            return (*jieri);
-        }
-        g_strfreev(b);
-    }
-    return NULL;
-
-}
-*/

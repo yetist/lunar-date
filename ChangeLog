@@ -1,3 +1,20 @@
+2007-12-19  yetist  <yetist@gmail.com>
+
+	* docs/reference/gcl-sections.txt: 
+	* docs/reference/gcl.types: 
+	* docs/reference/tmpl/gcldate.sgml: 
+	* docs/reference/tmpl/gclmain.sgml: 
+	* tests/test-date.c: 
+	* configure.ac: 
+	* gcl/gcl-date.c: 
+	* gcl/gcl-date.h: 
+	* gcl/Makefile.am: 
+	* data/holiday.dat: 
+	* data/jieri.table: 
+	* data/Makefile.am: 
+	* Makefile.am: 
+	add holiday.
+
 2007-12-18  yetist  <yetist@gmail.com>
 
 	* tests/test-date.c: 

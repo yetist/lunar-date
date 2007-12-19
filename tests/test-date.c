@@ -46,7 +46,7 @@ void display (GCLDate *date, gboolean islunar)
     g_printf("Shengxiao: %s\n", gcl_date_get_shengxiao(date));
     g_printf("Ganzhi: <%s> <%s-%s-%s-%s>\n", gcl_date_get_ganzhi(date, a[4], a[5],a[6],a[7]), a[4], a[5],a[6],a[7]);
     g_printf("Bazi: <%s> <%s-%s-%s-%s>\n", gcl_date_get_bazi(date, a[8], a[9],a[10],a[11]), a[8], a[9],a[10],a[11]);
-    g_printf("Jieqi:<%s>\n\n", gcl_date_get_jieqi(date));
+    g_printf("Jieqi:<%s>\n\n", gcl_date_get_jieri(date));
 
 }
 

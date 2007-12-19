@@ -52,6 +52,7 @@ Makefile
 gcl/Makefile
 po/Makefile.in
 tests/Makefile
+data/Makefile
 docs/Makefile
 docs/reference/Makefile
 docs/reference/version.xml

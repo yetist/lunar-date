@@ -17,6 +17,7 @@ gcl_date_get_lunar_date
 gcl_date_get_shengxiao
 gcl_date_get_ganzhi
 gcl_date_get_bazi
+gcl_date_get_jieri
 gcl_date_free
 </SECTION>
 

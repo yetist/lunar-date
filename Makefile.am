@@ -1,4 +1,4 @@
-SUBDIRS = po gcl docs tests
+SUBDIRS = po gcl docs tests data
 
 EXTRA_DIST =                    \
 	autogen.sh		\
