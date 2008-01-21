@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lunar-applet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-20 22:19+0800\n"
+"POT-Creation-Date: 2008-01-21 14:29+0800\n"
 "PO-Revision-Date: 2007-09-03 19:05+0700\n"
 "Last-Translator: yetist <yetist@gmail.com>\n"
 "Language-Team: yetist@gmail.com <yetist@gmail.com>\n"
@@ -366,40 +366,33 @@ msgid "shi2"
 msgstr "十"
 
 #: ../gcl/gcl-date.c:397 ../gcl/gcl-date.c:443
+#, c-format
 msgid "Year out of range."
 msgstr "年超出范围."
 
-#: ../gcl/gcl-date.c:622
+#: ../gcl/gcl-date.c:639
 msgid "run4"
 msgstr "闰"
 
-#: ../gcl/gcl-date.c:851
+#: ../gcl/gcl-date.c:868
+#, c-format
 msgid "Internal error: pick a larger constant for BYEAR."
 msgstr "内部错误：参考年的数值过小。"
 
-#: ../gcl/gcl-date.c:867 ../gcl/gcl-date.c:876 ../gcl/gcl-date.c:914
+#: ../gcl/gcl-date.c:884 ../gcl/gcl-date.c:893 ../gcl/gcl-date.c:931
 #, c-format
 msgid "Day out of range: \"%d\""
 msgstr "日超出范围：\"%d\""
 
-#: ../gcl/gcl-date.c:897
+#: ../gcl/gcl-date.c:914
 #, c-format
 msgid "%d is not a leap month in year %d.\n"
 msgstr "%d 年的 %d 月不是闰月。\n"
 
-#: ../gcl/gcl-date.c:933 ../gcl/gcl-date.c:996
+#: ../gcl/gcl-date.c:950 ../gcl/gcl-date.c:1013
 #, c-format
 msgid "Year out of range. \"%d\""
 msgstr "年超出范围. \"%d\""
-
-#: ../gcl/gcl-calendar.c:49
-#, c-format
-msgid "年 %s %s%s年%s%s月%s%s日"
-msgstr "年 %s年  %s%s年%s%s月%s%s日"
-
-#: ../gcl/gcl-calendar.c:52
-msgid "十二月"
-msgstr "十二月"
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.
@@ -410,7 +403,7 @@ msgstr "十二月"
 #. * so if you have a default text direction of RTL and YM, then
 #. * the year will appear on the right.
 #.
-#: ../gcl/gcl-calendar.c:660
+#: ../gcl/gcl-calendar.c:655
 msgid "calendar:MY"
 msgstr "calendar:YM"
 
@@ -418,22 +411,27 @@ msgstr "calendar:YM"
 #. * first day of the week to calendar:week_start:1 if you want Monday
 #. * to be the first day of the week, and so on.
 #.
-#: ../gcl/gcl-calendar.c:684
+#: ../gcl/gcl-calendar.c:679
 msgid "calendar:week_start:0"
 msgstr "calendar:week_start:1"
 
-#: ../gcl/gcl-calendar.c:1627
+#: ../gcl/gcl-calendar.c:1621
 msgid "2000"
 msgstr "2000"
 
-#: ../gcl/gcl-calendar.c:1660
+#: ../gcl/gcl-calendar.c:1654
 msgid "Shi2Er2Yue4"
 msgstr "十二月"
 
-#: ../gcl/gcl-calendar.c:1662 ../gcl/gcl-calendar.c:2137
+#: ../gcl/gcl-calendar.c:1656
 #, c-format
 msgid "%d"
 msgstr "%d"
+
+#: ../gcl/gcl-calendar.c:1692 ../gcl/gcl-calendar.c:2129
+#, c-format
+msgid "%dZhou1"
+msgstr "%d周"
 
 #. Translators: This dictates how the year is displayed in
 #. * gtkcalendar widget.  See strftime() manual for the format.
@@ -446,9 +444,19 @@ msgstr "%d"
 #. * Don't include the prefix "calendar year format|" in the
 #. * translation. "%Y" is appropriate for most locales.
 #.
-#: ../gcl/gcl-calendar.c:1922
+#: ../gcl/gcl-calendar.c:1916
 msgid "%Y"
 msgstr "%Y"
+
+#: ../gcl/gcl-calendar.c:3643
+msgid "Nian %(shengxiao) %(Y60)%(M60)%(D60)"
+msgstr "年 %(shengxiao) %(Y60)%(M60)%(D60)"
+
+#~ msgid "年 %s %s%s年%s%s月%s%s日"
+#~ msgstr "年 %s年  %s%s年%s%s月%s%s日"
+
+#~ msgid "十二月"
+#~ msgstr "十二月"
 
 #~ msgid "Chu1Liu4"
 #~ msgstr "初六"

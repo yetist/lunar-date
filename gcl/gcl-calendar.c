@@ -1613,8 +1613,8 @@ gcl_calendar_size_request (GtkWidget	  *widget,
       if (calendar->display_flags & GCL_CALENDAR_SHOW_LUNAR)
       {
           GString*    tmp_year_format = g_string_new("2000");
-          g_string_append (tmp_year_format, gcl_calendar_lunar_year_str (calendar, calendar->year, calendar->month, calendar->selected_day));
-          pango_layout_set_text (layout, Q_(tmp_year_format->str), -1);	  
+          g_string_append (tmp_year_format, gcl_calendar_lunar_year_str (calendar, 1957, 11, 20));
+          pango_layout_set_text (layout, Q_(tmp_year_format->str), -1);
           g_string_free (tmp_year_format, TRUE);
       }
       else
