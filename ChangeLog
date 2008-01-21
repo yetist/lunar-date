@@ -1,5 +1,13 @@
 2008-01-21  yetist  <yetist@gmail.com>
 
+	* configure.ac: 
+	* po/ChangeLog: 
+	* po/zh_CN.po: 
+
+	update chinese translate.
+
+2008-01-21  yetist  <yetist@gmail.com>
+
 	* docs/reference/tmpl/gclcalendar.sgml: 
 	* gcl/gcl-calendar.c: fixed max header width problems.
 	* po/zh_CN.po: update chinese translate.

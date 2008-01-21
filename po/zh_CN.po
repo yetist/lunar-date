@@ -195,11 +195,11 @@ msgstr "十月"
 
 #: ../gcl/gcl-date.c:295
 msgid "Nov"
-msgstr "十一月"
+msgstr "冬月"
 
 #: ../gcl/gcl-date.c:295
 msgid "Dec"
-msgstr "十二月"
+msgstr "腊月"
 
 #: ../gcl/gcl-date.c:298
 msgid "Chu1Yi1"
