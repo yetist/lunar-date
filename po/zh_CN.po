@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lunar-applet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-04 16:47+0800\n"
+"POT-Creation-Date: 2008-01-20 22:19+0800\n"
 "PO-Revision-Date: 2007-09-03 19:05+0700\n"
 "Last-Translator: yetist <yetist@gmail.com>\n"
 "Language-Team: yetist@gmail.com <yetist@gmail.com>\n"
@@ -17,354 +17,492 @@ msgstr ""
 "X-Poedit-Language: Chinese\n"
 "X-Poedit-Country: CHINA\n"
 
-#: ../gcl/gcl-date.c:277
+#: ../gcl/gcl-date.c:280
 msgid "Jia3"
 msgstr "甲"
 
-#: ../gcl/gcl-date.c:277
+#: ../gcl/gcl-date.c:280
 msgid "Yi3"
 msgstr "乙"
 
-#: ../gcl/gcl-date.c:277
+#: ../gcl/gcl-date.c:280
 msgid "Bing3"
 msgstr "丙"
 
-#: ../gcl/gcl-date.c:277
+#: ../gcl/gcl-date.c:280
 msgid "Ding1"
 msgstr "丁"
 
-#: ../gcl/gcl-date.c:277
+#: ../gcl/gcl-date.c:280
 msgid "Wu4"
 msgstr "戊"
 
-#: ../gcl/gcl-date.c:278
+#: ../gcl/gcl-date.c:281
 msgid "Ji3"
 msgstr "己"
 
-#: ../gcl/gcl-date.c:278
+#: ../gcl/gcl-date.c:281
 msgid "Geng1"
 msgstr "庚"
 
-#: ../gcl/gcl-date.c:278
+#: ../gcl/gcl-date.c:281
 msgid "Xin1"
 msgstr "辛"
 
-#: ../gcl/gcl-date.c:278
+#: ../gcl/gcl-date.c:281
 msgid "Ren2"
 msgstr "壬"
 
-#: ../gcl/gcl-date.c:278
+#: ../gcl/gcl-date.c:281
 msgid "Gui3"
 msgstr "癸"
 
-#: ../gcl/gcl-date.c:282
+#: ../gcl/gcl-date.c:285
 msgid "Zi3"
 msgstr "子"
 
-#: ../gcl/gcl-date.c:282
+#: ../gcl/gcl-date.c:285
 msgid "Chou3"
 msgstr "丑"
 
-#: ../gcl/gcl-date.c:282
+#: ../gcl/gcl-date.c:285
 msgid "Yin2"
 msgstr "寅"
 
-#: ../gcl/gcl-date.c:282
+#: ../gcl/gcl-date.c:285
 msgid "Mao3"
 msgstr "卯"
 
-#: ../gcl/gcl-date.c:282
+#: ../gcl/gcl-date.c:285
 msgid "Chen2"
 msgstr "辰"
 
-#: ../gcl/gcl-date.c:282
+#: ../gcl/gcl-date.c:285
 msgid "Si4"
 msgstr "巳"
 
-#: ../gcl/gcl-date.c:283
+#: ../gcl/gcl-date.c:286
 msgid "Wu3"
 msgstr "午"
 
-#: ../gcl/gcl-date.c:283
+#: ../gcl/gcl-date.c:286
 msgid "Wei4"
 msgstr "未"
 
-#: ../gcl/gcl-date.c:283
+#: ../gcl/gcl-date.c:286
 msgid "Shen1"
 msgstr "申"
 
-#: ../gcl/gcl-date.c:283
+#: ../gcl/gcl-date.c:286
 msgid "You3"
 msgstr "酉"
 
-#: ../gcl/gcl-date.c:283
+#: ../gcl/gcl-date.c:286
 msgid "Xu1"
 msgstr "戌"
 
-#: ../gcl/gcl-date.c:283
+#: ../gcl/gcl-date.c:286
 msgid "Hai4"
 msgstr "亥"
 
-#: ../gcl/gcl-date.c:287
+#: ../gcl/gcl-date.c:290
 msgid "Mouse"
 msgstr "鼠"
 
-#: ../gcl/gcl-date.c:287
+#: ../gcl/gcl-date.c:290
 msgid "Ox"
 msgstr "牛"
 
-#: ../gcl/gcl-date.c:287
+#: ../gcl/gcl-date.c:290
 msgid "Tiger"
 msgstr "虎"
 
-#: ../gcl/gcl-date.c:287
+#: ../gcl/gcl-date.c:290
 msgid "Rabbit"
 msgstr "兔"
 
-#: ../gcl/gcl-date.c:287
+#: ../gcl/gcl-date.c:290
 msgid "Dragon"
 msgstr "龙"
 
-#: ../gcl/gcl-date.c:287
+#: ../gcl/gcl-date.c:290
 msgid "Snake"
 msgstr "蛇"
 
-#: ../gcl/gcl-date.c:288
+#: ../gcl/gcl-date.c:291
 msgid "Horse"
 msgstr "马"
 
-#: ../gcl/gcl-date.c:288
+#: ../gcl/gcl-date.c:291
 msgid "Goat"
 msgstr "羊"
 
-#: ../gcl/gcl-date.c:288
+#: ../gcl/gcl-date.c:291
 msgid "Monkey"
 msgstr "猴"
 
-#: ../gcl/gcl-date.c:288
+#: ../gcl/gcl-date.c:291
 msgid "Rooster"
 msgstr "鸡"
 
-#: ../gcl/gcl-date.c:288
+#: ../gcl/gcl-date.c:291
 msgid "Dog"
 msgstr "狗"
 
-#: ../gcl/gcl-date.c:288
+#: ../gcl/gcl-date.c:291
 msgid "Pig"
 msgstr "猪"
 
-#: ../gcl/gcl-date.c:291
-msgid "Zheng1Yue4"
-msgstr "正月"
+#: ../gcl/gcl-date.c:294
+msgid "Jan"
+msgstr "一月"
 
-#: ../gcl/gcl-date.c:291
-msgid "Er4Yue4"
+#: ../gcl/gcl-date.c:294
+msgid "Feb"
 msgstr "二月"
 
-#: ../gcl/gcl-date.c:291
-msgid "San1Yue4"
+#: ../gcl/gcl-date.c:294
+msgid "Mar"
 msgstr "三月"
 
-#: ../gcl/gcl-date.c:291
-msgid "Si4Yue4"
+#: ../gcl/gcl-date.c:294
+msgid "Apr"
 msgstr "四月"
 
-#: ../gcl/gcl-date.c:291
-msgid "Wu3Yue4"
+#: ../gcl/gcl-date.c:294
+msgid "May"
 msgstr "五月"
 
-#: ../gcl/gcl-date.c:291
-msgid "liu6Yue4"
+#: ../gcl/gcl-date.c:294
+msgid "Jun"
 msgstr "六月"
 
-#: ../gcl/gcl-date.c:292
-msgid "Qi1Yue4"
+#: ../gcl/gcl-date.c:295
+msgid "Jul"
 msgstr "七月"
 
-#: ../gcl/gcl-date.c:292
-msgid "Ba1Yue4"
+#: ../gcl/gcl-date.c:295
+msgid "Aug"
 msgstr "八月"
 
-#: ../gcl/gcl-date.c:292
-msgid "Jiu3Yue4"
+#: ../gcl/gcl-date.c:295
+msgid "Sep"
 msgstr "九月"
 
-#: ../gcl/gcl-date.c:292
-msgid "Shi2Yue4"
+#: ../gcl/gcl-date.c:295
+msgid "Oct"
 msgstr "十月"
 
-#: ../gcl/gcl-date.c:292
-msgid "Shi2Yi1Yue4"
+#: ../gcl/gcl-date.c:295
+msgid "Nov"
 msgstr "十一月"
 
-#: ../gcl/gcl-date.c:292
-msgid "Shi2Er4Yue4"
+#: ../gcl/gcl-date.c:295
+msgid "Dec"
 msgstr "十二月"
 
-#: ../gcl/gcl-date.c:295
+#: ../gcl/gcl-date.c:298
 msgid "Chu1Yi1"
 msgstr "初一"
 
-#: ../gcl/gcl-date.c:295
+#: ../gcl/gcl-date.c:298
 msgid "Chu1Er4"
 msgstr "初二"
 
-#: ../gcl/gcl-date.c:295
+#: ../gcl/gcl-date.c:298
 msgid "Chu1San1"
 msgstr "初三"
 
-#: ../gcl/gcl-date.c:295
+#: ../gcl/gcl-date.c:298
 msgid "Chu1Si4"
 msgstr "初四"
 
-#: ../gcl/gcl-date.c:295
+#: ../gcl/gcl-date.c:298
 msgid "Chu1Wu3"
 msgstr "初五"
 
-#: ../gcl/gcl-date.c:296
-msgid "Chu1liu6"
+#: ../gcl/gcl-date.c:299
+msgid "Chu1Liu6"
 msgstr "初六"
 
-#: ../gcl/gcl-date.c:296
+#: ../gcl/gcl-date.c:299
 msgid "Chu1Qi1"
 msgstr "初七"
 
-#: ../gcl/gcl-date.c:296
+#: ../gcl/gcl-date.c:299
 msgid "Chu1Ba1"
 msgstr "初八"
 
-#: ../gcl/gcl-date.c:296
+#: ../gcl/gcl-date.c:299
 msgid "Chu1Jiu3"
 msgstr "初九"
 
-#: ../gcl/gcl-date.c:296
+#: ../gcl/gcl-date.c:299
 msgid "Chu1Shi2"
 msgstr "初十"
 
-#: ../gcl/gcl-date.c:297
+#: ../gcl/gcl-date.c:300
 msgid "Shi2Yi1"
 msgstr "十一"
 
-#: ../gcl/gcl-date.c:297
+#: ../gcl/gcl-date.c:300
 msgid "Shi2Er4"
 msgstr "十二"
 
-#: ../gcl/gcl-date.c:297
+#: ../gcl/gcl-date.c:300
 msgid "Shi1San1"
 msgstr "十三"
 
-#: ../gcl/gcl-date.c:297
+#: ../gcl/gcl-date.c:300
 msgid "Shi1Si4"
 msgstr "十四"
 
-#: ../gcl/gcl-date.c:297
+#: ../gcl/gcl-date.c:300
 msgid "Shi1Wu3"
 msgstr "十五"
 
-#: ../gcl/gcl-date.c:298
-msgid "Shi1liu6"
+#: ../gcl/gcl-date.c:301
+msgid "Shi1Liu6"
 msgstr "十六"
 
-#: ../gcl/gcl-date.c:298
+#: ../gcl/gcl-date.c:301
 msgid "Shi1Qi1"
 msgstr "十七"
 
-#: ../gcl/gcl-date.c:298
+#: ../gcl/gcl-date.c:301
 msgid "Shi1Ba1"
 msgstr "十八"
 
-#: ../gcl/gcl-date.c:298
+#: ../gcl/gcl-date.c:301
 msgid "Shi1Jiu3"
 msgstr "十九"
 
-#: ../gcl/gcl-date.c:298
+#: ../gcl/gcl-date.c:301
 msgid "Er4Shi2"
 msgstr "二十"
 
-#: ../gcl/gcl-date.c:299
+#: ../gcl/gcl-date.c:302
 msgid "Er4Yi1"
 msgstr "廿一"
 
-#: ../gcl/gcl-date.c:299
+#: ../gcl/gcl-date.c:302
 msgid "Er4Er4"
 msgstr "廿二"
 
-#: ../gcl/gcl-date.c:299
+#: ../gcl/gcl-date.c:302
 msgid "Er4San1"
 msgstr "廿三"
 
-#: ../gcl/gcl-date.c:299
+#: ../gcl/gcl-date.c:302
 msgid "Er4Si4"
 msgstr "廿四"
 
-#: ../gcl/gcl-date.c:299
+#: ../gcl/gcl-date.c:302
 msgid "Er4Wu3"
 msgstr "廿五"
 
-#: ../gcl/gcl-date.c:300
-msgid "Er4liu6"
+#: ../gcl/gcl-date.c:303
+msgid "Er4Liu6"
 msgstr "廿六"
 
-#: ../gcl/gcl-date.c:300
+#: ../gcl/gcl-date.c:303
 msgid "Er4Qi1"
 msgstr "廿七"
 
-#: ../gcl/gcl-date.c:300
+#: ../gcl/gcl-date.c:303
 msgid "Er4Ba1"
 msgstr "廿八"
 
-#: ../gcl/gcl-date.c:300
+#: ../gcl/gcl-date.c:303
 msgid "Er4Jiu3"
 msgstr "廿九"
 
-#: ../gcl/gcl-date.c:300
+#: ../gcl/gcl-date.c:303
 msgid "San1Shi2"
 msgstr "三十"
 
-#: ../gcl/gcl-date.c:423 ../gcl/gcl-date.c:469
+#: ../gcl/gcl-date.c:307
+msgid "ling2"
+msgstr "O"
+
+#: ../gcl/gcl-date.c:307
+msgid "yi1"
+msgstr "一"
+
+#: ../gcl/gcl-date.c:307
+msgid "er4"
+msgstr "二"
+
+#: ../gcl/gcl-date.c:307
+msgid "san1"
+msgstr "三"
+
+#: ../gcl/gcl-date.c:307
+msgid "si4"
+msgstr "四"
+
+#: ../gcl/gcl-date.c:308
+msgid "wu3"
+msgstr "五"
+
+#: ../gcl/gcl-date.c:308
+msgid "liu6"
+msgstr "六"
+
+#: ../gcl/gcl-date.c:308
+msgid "qi1"
+msgstr "七"
+
+#: ../gcl/gcl-date.c:308
+msgid "ba1"
+msgstr "八"
+
+#: ../gcl/gcl-date.c:308
+msgid "jiu3"
+msgstr "九"
+
+#: ../gcl/gcl-date.c:309
+msgid "shi2"
+msgstr "十"
+
+#: ../gcl/gcl-date.c:397 ../gcl/gcl-date.c:443
 msgid "Year out of range."
 msgstr "年超出范围."
 
-#: ../gcl/gcl-date.c:503 ../gcl/gcl-date.c:526 ../gcl/gcl-date.c:572
-#: ../gcl/gcl-date.c:600
-msgid "nian2"
-msgstr "年"
-
-#: ../gcl/gcl-date.c:504 ../gcl/gcl-date.c:601
-msgid "yue4"
-msgstr "月"
-
-#: ../gcl/gcl-date.c:505 ../gcl/gcl-date.c:602
-msgid "ri4"
-msgstr "日"
-
-#: ../gcl/gcl-date.c:506 ../gcl/gcl-date.c:532 ../gcl/gcl-date.c:575
-#: ../gcl/gcl-date.c:603
-msgid "shi2"
-msgstr "时"
-
-#: ../gcl/gcl-date.c:528
+#: ../gcl/gcl-date.c:622
 msgid "run4"
 msgstr "闰"
 
-#: ../gcl/gcl-date.c:728
+#: ../gcl/gcl-date.c:851
 msgid "Internal error: pick a larger constant for BYEAR."
 msgstr "内部错误：参考年的数值过小。"
 
-#: ../gcl/gcl-date.c:744 ../gcl/gcl-date.c:753 ../gcl/gcl-date.c:791
+#: ../gcl/gcl-date.c:867 ../gcl/gcl-date.c:876 ../gcl/gcl-date.c:914
 #, c-format
 msgid "Day out of range: \"%d\""
 msgstr "日超出范围：\"%d\""
 
-#: ../gcl/gcl-date.c:774
+#: ../gcl/gcl-date.c:897
 #, c-format
 msgid "%d is not a leap month in year %d.\n"
 msgstr "%d 年的 %d 月不是闰月。\n"
 
-#: ../gcl/gcl-date.c:810 ../gcl/gcl-date.c:873
+#: ../gcl/gcl-date.c:933 ../gcl/gcl-date.c:996
 #, c-format
 msgid "Year out of range. \"%d\""
 msgstr "年超出范围. \"%d\""
+
+#: ../gcl/gcl-calendar.c:49
+#, c-format
+msgid "年 %s %s%s年%s%s月%s%s日"
+msgstr "年 %s年  %s%s年%s%s月%s%s日"
+
+#: ../gcl/gcl-calendar.c:52
+msgid "十二月"
+msgstr "十二月"
+
+#. Translate to calendar:YM if you want years to be displayed
+#. * before months; otherwise translate to calendar:MY.
+#. * Do *not* translate it to anything else, if it
+#. * it isn't calendar:YM or calendar:MY it will not work.
+#. *
+#. * Note that this flipping is in top of the text direction flipping,
+#. * so if you have a default text direction of RTL and YM, then
+#. * the year will appear on the right.
+#.
+#: ../gcl/gcl-calendar.c:660
+msgid "calendar:MY"
+msgstr "calendar:YM"
+
+#. Translate to calendar:week_start:0 if you want Sunday to be the
+#. * first day of the week to calendar:week_start:1 if you want Monday
+#. * to be the first day of the week, and so on.
+#.
+#: ../gcl/gcl-calendar.c:684
+msgid "calendar:week_start:0"
+msgstr "calendar:week_start:1"
+
+#: ../gcl/gcl-calendar.c:1627
+msgid "2000"
+msgstr "2000"
+
+#: ../gcl/gcl-calendar.c:1660
+msgid "Shi2Er2Yue4"
+msgstr "十二月"
+
+#: ../gcl/gcl-calendar.c:1662 ../gcl/gcl-calendar.c:2137
+#, c-format
+msgid "%d"
+msgstr "%d"
+
+#. Translators: This dictates how the year is displayed in
+#. * gtkcalendar widget.  See strftime() manual for the format.
+#. * Use only ASCII in the translation.
+#. *
+#. * Also look for the msgid "year measurement template|2000".
+#. * Translate that entry to a year with the widest output of this
+#. * msgid.
+#. *
+#. * Don't include the prefix "calendar year format|" in the
+#. * translation. "%Y" is appropriate for most locales.
+#.
+#: ../gcl/gcl-calendar.c:1922
+msgid "%Y"
+msgstr "%Y"
+
+#~ msgid "Chu1Liu4"
+#~ msgstr "初六"
+
+#~ msgid "nian2"
+#~ msgstr "年"
+
+#~ msgid "yue4"
+#~ msgstr "月"
+
+#~ msgid "ri4"
+#~ msgstr "日"
+
+#, fuzzy
+#~ msgid "Qi1"
+#~ msgstr "廿七"
+
+#, fuzzy
+#~ msgid "Shi2"
+#~ msgstr "时"
+
+#, fuzzy
+#~ msgid "Zheng1"
+#~ msgstr "正月"
+
+#~ msgid "Er4Yue4"
+#~ msgstr "二月"
+
+#~ msgid "San1Yue4"
+#~ msgstr "三月"
+
+#~ msgid "Si4Yue4"
+#~ msgstr "四月"
+
+#~ msgid "Wu3Yue4"
+#~ msgstr "五月"
+
+#~ msgid "liu6Yue4"
+#~ msgstr "六月"
+
+#~ msgid "Qi1Yue4"
+#~ msgstr "七月"
+
+#~ msgid "Ba1Yue4"
+#~ msgstr "八月"
+
+#~ msgid "Jiu3Yue4"
+#~ msgstr "九月"
+
+#~ msgid "Shi2Yue4"
+#~ msgstr "十月"
+
+#~ msgid "Shi2Yi1Yue4"
+#~ msgstr "十一月"
 
 #~ msgid "Er1"
 #~ msgstr "二"
@@ -612,28 +750,6 @@ msgstr "年超出范围. \"%d\""
 #~ msgid "_Preferences"
 #~ msgstr "首选项(_P)"
 
-#~ msgid "年 %s %s%s年%s%s月%s%s日"
-#~ msgstr "年 %s年  %s%s年%s%s月%s%s日"
-
-#~ msgid "十二月"
-#~ msgstr "十二月"
-
-#~ msgid "calendar:MY"
-#~ msgstr "calendar:YM"
-
-#~ msgid "calendar:week_start:0"
-#~ msgstr "calendar:week_start:1"
-
-#, fuzzy
-#~ msgid "2000"
-#~ msgstr "二十"
-
-#~ msgid "%d"
-#~ msgstr "%d"
-
-#~ msgid "%Y"
-#~ msgstr "%Y"
-
 #~ msgid "year measurement template|2000"
 #~ msgstr "abc|然后几番卡带拉萨几番拉萨"
 
@@ -750,42 +866,6 @@ msgstr "年超出范围. \"%d\""
 
 #~ msgid "30"
 #~ msgstr "三十"
-
-#~ msgid "Jan"
-#~ msgstr "一月"
-
-#~ msgid "Feb"
-#~ msgstr "二月"
-
-#~ msgid "Mar"
-#~ msgstr "三月"
-
-#~ msgid "Apr"
-#~ msgstr "四月"
-
-#~ msgid "May"
-#~ msgstr "五月"
-
-#~ msgid "Jun"
-#~ msgstr "六月"
-
-#~ msgid "Jul"
-#~ msgstr "七月"
-
-#~ msgid "Aug"
-#~ msgstr "八月"
-
-#~ msgid "Sep"
-#~ msgstr "九月"
-
-#~ msgid "Oct"
-#~ msgstr "十月"
-
-#~ msgid "Nov"
-#~ msgstr "十一月"
-
-#~ msgid "Dec"
-#~ msgstr "十二月"
 
 #, fuzzy
 #~ msgid "abc|2000"

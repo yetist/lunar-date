@@ -148,15 +148,6 @@ The GCLDate struct contains only private fields and should not be used directly.
 @Returns: 
 
 
-<!-- ##### FUNCTION gcl_date_get_jieri ##### -->
-<para>
-
-</para>
-
-@date: 
-@Returns: 
-
-
 <!-- ##### FUNCTION gcl_date_get_bazi ##### -->
 <para>
 
@@ -167,6 +158,15 @@ The GCLDate struct contains only private fields and should not be used directly.
 @month: 
 @day: 
 @hour: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gcl_date_get_jieri ##### -->
+<para>
+
+</para>
+
+@date: 
 @Returns: 
 
 

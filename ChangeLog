@@ -1,3 +1,22 @@
+2008-01-21  yetist  <yetist@gmail.com>
+
+	* configure.ac: add enable arg: run-in-source-tree.
+	* gcl/gcl-date.h: 
+	* gcl/gcl-date.c: 
+	- remove gcl_date_get_solar_date() gcl_date_get_lunar_date() gcl_date_get_shengxiao() gcl_date_get_ganzhi() gcl_date_get_bazi() gcl_date_get_jieri()
+	-add gcl_date_strftime().
+	* gcl/gcl.h: 
+	* gcl/gcl-calendar.h: 
+	* gcl/gcl-calendar.c: 
+	add gcl_calendar widget.
+	* gcl/Makefile.am: add gcl_calendar.{h,c}
+	* tests/test-date.c: modify for new functions. 
+	* tests/test-calendar.c: added for test gcl_calendar.
+	* tests/Makefile.am: add gcl_calendar.{h,c}.
+	* docs/reference/tmpl/gcldate.sgml: 
+	* po/POTFILES.in: add gcl_calendar.{h,c}
+	* po/zh_CN.po: 
+
 2007-12-19  yetist  <yetist@gmail.com>
 
 	* docs/reference/gcl-sections.txt: 

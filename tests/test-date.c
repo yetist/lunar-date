@@ -24,31 +24,35 @@
 
 #include <gcl/gcl.h>
 
+
 void display (GCLDate *date, gboolean islunar)
 {
     char a[13][255];
     CLDate *d;
     g_printf("\n");
-    if (islunar)
-    {
-        d = gcl_date_get_solar_date( date, a[0], a[1], a[2], a[3]);
-        g_printf("Solar:");
-    }
-    else
-    {
-        d = gcl_date_get_lunar_date( date, a[0], a[1], a[2], a[3]);
-        if (d->isleap)
-            g_printf("Lunar(isleap):");
-        else
-            g_printf("Lunar:");
-    }
-    g_printf("<%u-%u-%u %u> <%s-%s-%s %s>\n", d->year, d->month, d->day, d->hour, a[0], a[1], a[2], a[3]);
-    g_printf("Shengxiao: %s\n", gcl_date_get_shengxiao(date));
-    g_printf("Ganzhi: <%s> <%s-%s-%s-%s>\n", gcl_date_get_ganzhi(date, a[4], a[5],a[6],a[7]), a[4], a[5],a[6],a[7]);
-    g_printf("Bazi: <%s> <%s-%s-%s-%s>\n", gcl_date_get_bazi(date, a[8], a[9],a[10],a[11]), a[8], a[9],a[10],a[11]);
-    g_printf("Jieqi:<%s>\n\n", gcl_date_get_jieri(date));
-
+    g_printf("format:%%(YEAR)年%%(MONTH)月%%(DAY)日%%(HOUR)时->%s\n", gcl_date_strftime(date, "%(YEAR)年%(MONTH)月%(DAY)日%(HOUR)时"));
+    g_printf("format:%%(year)年%%(month)月%%(day)日%%(hour)时->%s\n", gcl_date_strftime(date, "%(year)年%(month)月%(day)日%(hour)时"));
+    g_printf("format:%%(NIAN)年%%(YUE)月%%(RI)日%%(SHI)时->%s\n", gcl_date_strftime(date, "%(NIAN)年%(YUE)月%(RI)日%(SHI)时"));
+    g_printf("format:%%(nian)年%%(yue)月%%(ri)日%%(shi)时->%s\n", gcl_date_strftime(date, "%(nian)年%(yue)月%(ri)日%(shi)时"));
+    g_printf("format:%%(Y60)年%%(M60)月%%(D60)日->%s\n", gcl_date_strftime(date, "%(Y60)年%(M60)月%(D60)日"));
+    g_printf("format:%%(Y8)年%%(M8)月%%(D8)日->%s\n", gcl_date_strftime(date, "%(Y8)年%(M8)月%(D8)日"));
+    g_printf("format:%%(shengxiao)->%s\n", gcl_date_strftime(date, "%(shengxiao)"));
+    g_printf("format:%%(jieri)->%s\n", gcl_date_strftime(date, "%(jieri)"));
 }
+
+/*
+gchar* gcl_date_strftime (GCLDate *date, const char *format);
+ * %(YEAR)年%(MONTH)月%(DAY)日      公历：大写
+ * %(year)年%(month)月%(day)日      公历：小写
+ * %(NIAN)年%(YUE)月%(RI)日%(SHI)时 阴历：大写
+ * %(nian)年%(yue)月%(ri)日%(shi)时 阴历：小写
+ *
+ * %(Y60)年%(M60)月%(D60)日%(H60)时 干支:大写
+ * %(y60)年%(m60)月%(d60)日%(h60)时 干支:小写 not use
+ * %(Y8)年%(M8)月%(D8)日%(H8)时     八字:大写
+ * %(y8)年%(m8)月%(d8)日%(h8)时     八字:小写 not use
+ * %(shengxiao)%(jieri)             生肖和节日
+ */
 
 void random_test(void)
 {

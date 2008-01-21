@@ -26,6 +26,7 @@
 #define __GCL_H__  1
 
 #include <gcl/gcl-date.h>
+#include <gcl/gcl-calendar.h>
 #include <gcl/gcl-main.h>
 
 #endif /*__GCL_H__ */

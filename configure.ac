@@ -32,12 +32,27 @@ IT_PROG_INTLTOOL([0.35.0])
 GTK_DOC_CHECK(1.0)
 
 GLIB2_REQUIRED=2.4.0
+GTK_REQUIRED=2.4.0
 
 AC_SUBST(GLIB2_REQUIRED)
 
-PKG_CHECK_MODULES(LIBGCL, glib-2.0 >= $GLIB2_REQUIRED)
+PKG_CHECK_MODULES(LIBGCL, glib-2.0 >= $GLIB2_REQUIRED gtk+-2.0 >= $GTK_REQUIRED)
 AC_SUBST(LIBGCL_CFLAGS)
 AC_SUBST(LIBGCL_LIBS)
+
+
+dnl run in source tree
+AC_ARG_ENABLE(run-in-source-tree,
+	      AC_HELP_STRING([--disable-run-in-source-tree],[disable search for holiday.dat file in local directory ]),
+	[case "${enableval}" in
+	yes) ENABLE_RUN_IN_SOURCE_TREE=yes ;;
+	no)  ENABLE_RUN_IN_SOURCE_TREE=no ;;
+	*) AC_MSG_ERROR(bad value ${enableval} for --disable-run-in-source-tree) ;;
+	esac],
+[ENABLE_RUN_IN_SOURCE_TREE=yes]) dnl Default value
+if test x$ENABLE_RUN_IN_SOURCE_TREE = xyes; then
+	AC_DEFINE(RUN_IN_SOURCE_TREE, 1, [enable search for holiday.dat file in local directory])
+fi
 
 dnl  Language Support 
 GETTEXT_PACKAGE=libgcl

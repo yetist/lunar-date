@@ -22,8 +22,11 @@
  * Boston, MA 02111-1307, USA.
  * */
 
-#include <config.h>
+#if HAVE_CONFIG_H
+    #include <config.h>
+#endif
 #include <glib/gi18n-lib.h>
+#include <string.h>
 #include "gcl-main.h"
 #include "gcl-date.h"
 
@@ -288,59 +291,22 @@ static	char   *shengxiao_list[] = {
     N_("Horse"), N_("Goat"), N_("Monkey"), N_("Rooster"), N_("Dog"), N_("Pig")
 };
 static	char   *lunar_month_list[] = {
-    N_("Zheng1Yue4"), N_("Er4Yue4"), N_("San1Yue4"), N_("Si4Yue4"), N_("Wu3Yue4"), N_("liu6Yue4"),
-    N_("Qi1Yue4"), N_("Ba1Yue4"), N_("Jiu3Yue4"), N_("Shi2Yue4"), N_("Shi2Yi1Yue4"), N_("Shi2Er4Yue4")
+    N_("Jan"), N_("Feb"), N_("Mar"), N_("Apr"), N_("May"), N_("Jun"),
+    N_("Jul"), N_("Aug"), N_("Sep"), N_("Oct"), N_("Nov"), N_("Dec")
 };
 static	char   *lunar_day_list[] = {
     N_("Chu1Yi1"), N_("Chu1Er4"), N_("Chu1San1"), N_("Chu1Si4"), N_("Chu1Wu3"), 
-    N_("Chu1liu6"), N_("Chu1Qi1"), N_("Chu1Ba1"), N_("Chu1Jiu3"), N_("Chu1Shi2"), 
+    N_("Chu1Liu6"), N_("Chu1Qi1"), N_("Chu1Ba1"), N_("Chu1Jiu3"), N_("Chu1Shi2"), 
     N_("Shi2Yi1"), N_("Shi2Er4"), N_("Shi1San1"), N_("Shi1Si4"), N_("Shi1Wu3"),
-    N_("Shi1liu6"), N_("Shi1Qi1"), N_("Shi1Ba1"), N_("Shi1Jiu3"), N_("Er4Shi2"), 
+    N_("Shi1Liu6"), N_("Shi1Qi1"), N_("Shi1Ba1"), N_("Shi1Jiu3"), N_("Er4Shi2"), 
     N_("Er4Yi1"), N_("Er4Er4"), N_("Er4San1"), N_("Er4Si4"), N_("Er4Wu3"), 
-    N_("Er4liu6"), N_("Er4Qi1"), N_("Er4Ba1"), N_("Er4Jiu3"), N_("San1Shi2")
+    N_("Er4Liu6"), N_("Er4Qi1"), N_("Er4Ba1"), N_("Er4Jiu3"), N_("San1Shi2")
 };
 
-static gchar *solar_jieri[] ={
-"0101 元旦",
-"0214 情人节",
-"0308 妇女节",
-"0312 植树节",
-"0315 消费者",
-"0401 愚人节",
-"0422 地球日",
-"0501 劳动节",
-"0504 青年节",
-"0601 儿童节",
-"0801 建军节",
-"0910 教师节",
-"0918 九一八",
-"1001 国庆节",
-"1006 老人节",
-"1224 平安夜",
-"1123 生日", //The day is my beathday.
-"1225 圣诞节"
-};
-
-static gchar *lunar_jieri[] ={
-"0101 春节",
-"0115 元宵",
-"0505 端午",
-"0624 火把节",
-"0625 火把节",
-"0626 火把节",
-"0707 七夕",
-"0715 中元节",
-"0815 中秋",
-"0909 重阳",
-"1208 腊八",
-"1223 小年",
-"0100 除夕"
-};
-
-static gchar *week_jieri[] ={
-"0520 母亲节",
-"0630 父亲节",
-"1144 感恩节"
+static char *hanzi_num[] = {
+    N_("ling2"), N_("yi1"), N_("er4"), N_("san1"), N_("si4"),
+    N_("wu3"), N_("liu6"), N_("qi1"), N_("ba1"), N_("jiu3"),
+    N_("shi2")
 };
 
 static void _cl_date_calc_lunar(GCLDate *date, GError **error);
@@ -356,6 +322,11 @@ static glong _date_calc_days_since_reference_year (CLDate *d, GError **error);
 static void _date_calc_days_since_lunar_year (GCLDate *date, GError **error);
 static gint get_day_of_week (gint year, gint month, gint day);
 static gint get_weekth_of_month (gint day);
+static int mymemfind(const char *mem, int len, const char *pat, int pat_len);
+static int mymemcnt(const char *mem, int len, const char *pat, int pat_len);
+static GString* g_string_replace (GString *string, const gchar* old, const gchar* new, int count);
+char* num_2_hanzi(int n);
+char* mday_2_hanzi(int n);
 
 GQuark gcl_date_error_quark (void)
 {
@@ -490,123 +461,272 @@ void            gcl_date_set_lunar_date     (GCLDate *date,
 }
 
 /**
- * gcl_date_get_solar_date:
- * @date: a #GCLDate.
- * @year: the solar year strings stored(e.g.,1995nian2).
- * @month: the solar month strings stored(e.g.,8yue4).
- * @day: the solar day strings stored(e.g., 23ri4).
- * @hour: the solar hour strings stored(e.g., 2shi2).
- *
- * Returns the solar date according the date. The date must be valid.
- *
- * Return value: a #CLDate stored the solar date.
- **/
-CLDate*     gcl_date_get_solar_date     (GCLDate *date, gchar* year, gchar* month, gchar* day, gchar* hour)
-{
-    g_sprintf(year, "%u%s", date->solar->year, _("nian2"));
-    g_sprintf(month, "%u%s", date->solar->month, _("yue4"));
-    g_sprintf(day, "%u%s", date->solar->day, _("ri4"));
-    g_sprintf(hour, "%u%s", date->solar->hour, _("shi2"));
-
-    return date->solar;
-}
-
-/**
- * gcl_date_get_lunar_date:
- * @date: a #GCLDate.
- * @year: the lunar year strings stored(e.g.,1995nian2).
- * @month: the lunar month strings stored(e.g., Ba1yue4).
- * @day: the lunar day strings stored(e.g., Shi2Si4).
- * @hour: the lunar hour strings stored(e.g., Liu4shi2).
- *
- * Returns the lunar date according the date. The date must be valid.
- *
- * Return value: a #CLDate stored the lunar date.
- **/
-CLDate*     gcl_date_get_lunar_date     (GCLDate *date, gchar* year, gchar* month, gchar* day, gchar* hour)
-{
-
-    g_sprintf(year, "%u%s", date->lunar->year, _("nian2"));
-    if (date->lunar->isleap)
-        g_sprintf(month, "%s%s", _("run4"), _(lunar_month_list[date->lunar->month-1]));
-    else
-        g_sprintf(month, "%s", _(lunar_month_list[date->lunar->month-1]));
-    g_sprintf(day, "%s", _(lunar_day_list[date->lunar->day-1]));
-    g_sprintf(hour, "%u%s", date->lunar->hour, _("shi2"));
-    return date->lunar;
-}
-
-/**
- * gcl_date_get_shengxiao:
- * @date: a #GCLDate.
- *
- * Returns the Shengxiao of the date. The date must be valid.
- *
- * Return value: the new-allocated string stored Shengxiao.
- **/
-gchar*          gcl_date_get_shengxiao          (GCLDate *date)
-{
-    gchar* shengxiao;
-    shengxiao = g_strdup(_(shengxiao_list[date->zhi->year]));
-    return shengxiao;
-}
-
-
-/**
- * gcl_date_get_ganzhi:
+ * gcl_date_get_jieri:
  * @date: a #GCLDate
- * @year: the Ganzhi year strings stored(e.g., Gui3Si4).
- * @month: the Ganzhi month strings stored(e.g., Jia3Zi3).
- * @day: the Ganzhi day strings stored(e.g., Ding1Mao3).
- * @hour: the Ganzhi hour strings stored(e.g.,Gui3Mao3).
  *
- * Returns the Ganzhi of the date. The date must be valid.
+ * Returns the holiday of the date. The date must be valid.
  *
- * Return value:  a newly-allocated Ganzhi string of the date(e.g., Gui3Si4nian2Jia3Zi3Ding1Mao3Gui3Mao3shi2).
+ * Return value:  a newly-allocated holiday string of the date.
+ * This can be changed in $(datadir)/liblunar/holiday.dat file.
  **/
-gchar*          gcl_date_get_ganzhi (GCLDate *date, gchar* year, gchar* month, gchar* day, gchar* hour)
+gchar*      gcl_date_get_jieri          (GCLDate *date)
 {
-    g_sprintf(year, "%s%s", _(gan_list[date->gan->year]), _(zhi_list[date->zhi->year]));
-    g_sprintf(month, "%s%s", _(gan_list[date->gan->month]), _(zhi_list[date->zhi->month]));
-    g_sprintf(day, "%s%s", _(gan_list[date->gan->day]), _(zhi_list[date->zhi->day]));
-    g_sprintf(hour, "%s%s", _(gan_list[date->gan->hour]), _(zhi_list[date->zhi->hour]));
+    GString* jieri;
+    jieri=g_string_new("");
 
-    gchar* ganzhi = g_strdup_printf("%s%s%s%s%s%s%s%s%s%s", 
-	   _(gan_list[date->gan->year]), _(zhi_list[date->zhi->year]), _("nian2"),
-	   _(gan_list[date->gan->month]),_(zhi_list[date->zhi->month]),
-	   _(gan_list[date->gan->day]),  _(zhi_list[date->zhi->day]),
-	   _(gan_list[date->gan->hour]), _(zhi_list[date->zhi->hour]), _("shi2"));
+    gchar* cfgfile;
+    GKeyFile* keyfile;
+    gint weekday, weekth;
+    gchar* str_day;
 
-    return ganzhi;
+    keyfile = g_key_file_new();
+
+    cfgfile = g_build_filename(GCL_HOLIDAYDIR, "holiday.dat", NULL);
+#ifdef RUN_IN_SOURCE_TREE
+    if (!g_file_test(cfgfile, G_FILE_TEST_IS_REGULAR))
+    {
+        cfgfile = g_build_filename("data", "holiday.dat", NULL);
+        if (!g_file_test(cfgfile, G_FILE_TEST_IS_REGULAR))
+        {
+            cfgfile = g_build_filename(".", "holiday.dat", NULL);
+            if (!g_file_test(cfgfile, G_FILE_TEST_IS_REGULAR))
+            {
+                cfgfile = g_build_filename("..", "holiday.dat", NULL);
+            }
+        }
+    }
+#endif
+
+    if (!g_key_file_load_from_file(keyfile, cfgfile, G_KEY_FILE_KEEP_COMMENTS, NULL))
+    {
+        ;
+    }
+
+    if (g_key_file_has_group(keyfile, "LUNAR"))
+    {
+        str_day = g_strdup_printf("%02d%02d", date->lunar->month, date->lunar->day);
+        if (g_key_file_has_key (keyfile, "LUNAR", str_day, NULL))
+        {
+            jieri=g_string_append(jieri, " ");
+            jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "LUNAR", str_day, NULL));
+        }
+    }
+
+    if (g_key_file_has_group(keyfile, "SOLAR"))
+    {
+        str_day = g_strdup_printf("%02d%02d", date->solar->month, date->solar->day);
+        if (g_key_file_has_key (keyfile, "SOLAR", str_day, NULL))
+        {
+            jieri=g_string_append(jieri, " ");
+            jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "SOLAR", str_day, NULL));
+        }
+    }
+
+    weekday = get_day_of_week ( date->solar->year, date->solar->month, date->solar->day);
+    weekth = get_weekth_of_month ( date->solar->day);
+    if (g_key_file_has_group(keyfile, "WEEK"))
+                                                                  {
+        str_day = g_strdup_printf("%02d%01d%01d", date->solar->month, weekth, weekday);
+        if (g_key_file_has_key (keyfile, "WEEK", str_day, NULL))
+        {
+            jieri=g_string_append(jieri, " ");
+            jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "WEEK", str_day, NULL));
+        }
+    }
+    gchar* oo = g_strdup(g_strstrip(jieri->str));
+    g_string_free(jieri, TRUE);
+    g_free(str_day);
+    return oo;
 }
 
-/**
- * gcl_date_get_bazi:
- * @date: a #GCLDate.
- * @year: the Bazi year strings stored(e.g., Gui3Si4).
- * @month: the Bazi month strings stored(e.g., Jia3Zi3).
- * @day: the Bazi day strings stored(e.g., Ding1Mao3).
- * @hour: the Bazi hour strings stored(e.g.,Gui3Mao3).
+/*
+gchar* gcl_date_strftime (GCLDate *date, const char *format);
+ * %(YEAR)年%(MONTH)月%(DAY)日      公历：大写
+ * %(year)年%(month)月%(day)日      公历：小写
+ * %(NIAN)年%(YUE)月%(RI)日%(SHI)时 阴历：大写
+ * %(nian)年%(yue)月%(ri)日%(shi)时 阴历：小写
  *
- * Returns the Bazi of the date. The date must be valid.
- *
- * Return value:  a newly-allocated Bazi string of the date(e.g., Gui3Si4nian2Jia3Zi3Ding1Mao3Gui3Mao3shi2).
- **/
-gchar*          gcl_date_get_bazi (GCLDate *date, gchar* year, gchar* month, gchar* day, gchar* hour)
+ * %(Y60)年%(M60)月%(D60)日%(H60)时 干支:大写
+ * %(y60)年%(m60)月%(d60)日%(h60)时 干支:小写 not use
+ * %(Y8)年%(M8)月%(D8)日%(H8)时     八字:大写
+ * %(y8)年%(m8)月%(d8)日%(h8)时     八字:小写 not use
+ * %(shengxiao)%(jieri)             生肖和节日
+ */
+gchar* gcl_date_strftime (GCLDate *date, const char *format)
 {
-    g_sprintf(year, "%s%s", _(gan_list[date->gan2->year]),  _(zhi_list[date->zhi2->year]));
-    g_sprintf(month, "%s%s",_(gan_list[date->gan2->month]), _(zhi_list[date->zhi2->month]));
-    g_sprintf(day, "%s%s",  _(gan_list[date->gan2->day]),   _(zhi_list[date->zhi2->day]));
-    g_sprintf(hour, "%s%s", _(gan_list[date->gan2->hour]),  _(zhi_list[date->zhi2->hour]));
+    gchar *s, *tmp;
+    GString *str = g_string_new(format);
 
-    gchar* bazi = g_strdup_printf("%s%s%s%s%s%s%s%s%s%s%s%s\n", 
-	   _(gan_list[date->gan2->year]), _(zhi_list[date->zhi2->year]), _("nian2"),
-	   _(gan_list[date->gan2->month]),_(zhi_list[date->zhi2->month]), _("yue4"),
-	   _(gan_list[date->gan2->day]),  _(zhi_list[date->zhi2->day]), _("ri4"),
-	   _(gan_list[date->gan2->hour]), _(zhi_list[date->zhi2->hour]), _("shi2"));
+    //solar-upper case
+    if (strstr(format, "%(YEAR)") != NULL)
+    {
+        tmp = num_2_hanzi(date->solar->year);
+        str = g_string_replace(str, "%(YEAR)", tmp, -1);
+        g_free(tmp);
+    }
+    if (strstr(format, "%(MONTH)") != NULL)
+    {
+        tmp = mday_2_hanzi(date->solar->month);
+        str = g_string_replace(str, "%(MONTH)", tmp, -1);
+        g_free(tmp);
+    }
+    if (strstr(format, "%(DAY)") != NULL)
+    {
+        tmp = mday_2_hanzi(date->solar->day);
+        str = g_string_replace(str, "%(DAY)", tmp, -1);
+        g_free(tmp);
+    }
+    if (strstr(format, "%(HOUR)") != NULL)
+    {
+        tmp = mday_2_hanzi(date->solar->hour);
+        str = g_string_replace(str, "%(HOUR)", tmp, -1);
+        g_free(tmp);
+    }
 
-    return bazi;
+    //solar-lower case
+    if (strstr(format, "%(year)") != NULL)
+    {
+        tmp = g_strdup_printf("%d", date->solar->year);
+        str = g_string_replace(str, "%(year)", tmp, -1);
+        g_free(tmp);
+    }
+    if (strstr(format, "%(month)") != NULL)
+    {
+        tmp = g_strdup_printf("%d", date->solar->month);
+        str = g_string_replace(str, "%(month)", tmp, -1);
+        g_free(tmp);
+    }
+    if (strstr(format, "%(day)") != NULL)
+    {
+        tmp = g_strdup_printf("%d", date->solar->day);
+        str = g_string_replace(str, "%(day)", tmp, -1);
+        g_free(tmp);
+    }
+    if (strstr(format, "%(hour)") != NULL)
+    {
+        tmp = g_strdup_printf("%d", date->solar->hour);
+        str = g_string_replace(str, "%(hour)", tmp, -1);
+        g_free(tmp);
+    }
 
+    //lunar-upper case
+    if (strstr(format, "%(NIAN)") != NULL)
+    {
+        tmp = g_strdup_printf("%s%s", _(gan_list[date->gan->year]), _(zhi_list[date->zhi->year]));
+        str = g_string_replace(str, "%(NIAN)", tmp, -1);
+        g_free(tmp);
+    }
+    if (strstr(format, "%(YUE)") != NULL)
+    {
+        if (date->lunar->isleap)
+            tmp = g_strdup_printf("%s%s", _("run4"), _(lunar_month_list[date->lunar->month-1]));
+        else
+            tmp = g_strdup_printf("%s", _(lunar_month_list[date->lunar->month-1]));
+        str = g_string_replace(str, "%(YUE)", tmp, -1);
+        g_free(tmp);
+    }
+    if (strstr(format, "%(RI)") != NULL)
+    {
+        str = g_string_replace(str, "%(RI)", _(lunar_day_list[date->lunar->day-1]), -1);
+    }
+    if (strstr(format, "%(SHI)") != NULL)
+    {
+        str = g_string_replace(str, "%(SHI)", _(zhi_list[date->lunar->hour/2]), -1);
+    }
+
+    //lunar-lower case
+    if (strstr(format, "%(nian)") != NULL)
+    {
+        tmp = g_strdup_printf("%d", date->lunar->year);
+        str = g_string_replace(str, "%(nian)", tmp, -1);
+        g_free(tmp);
+    }
+    if (strstr(format, "%(yue)") != NULL)
+    {
+        if (date->lunar->isleap)
+            tmp = g_strdup_printf("*%d", date->lunar->month);
+        else
+            tmp = g_strdup_printf("%d", date->lunar->month);
+        str = g_string_replace(str, "%(yue)", tmp, -1);
+        g_free(tmp);
+    }
+    if (strstr(format, "%(ri)") != NULL)
+    {
+        tmp = g_strdup_printf("%d", date->lunar->day);
+        str = g_string_replace(str, "%(ri)", tmp, -1);
+        g_free(tmp);
+    }
+    if (strstr(format, "%(shi)") != NULL)
+    {
+        tmp = g_strdup_printf("%d", date->lunar->hour);
+        str = g_string_replace(str, "%(shi)", tmp, -1);
+        g_free(tmp);
+    }
+
+    //ganzhi
+    if (strstr(format, "%(Y60)") != NULL)
+    {
+        tmp = g_strdup_printf("%s%s", _(gan_list[date->gan->year]), _(zhi_list[date->zhi->year]));
+        str = g_string_replace(str, "%(Y60)", tmp, -1);
+        g_free(tmp);
+    }
+    if (strstr(format, "%(M60)") != NULL)
+    {
+        tmp = g_strdup_printf("%s%s", _(gan_list[date->gan->month]), _(zhi_list[date->zhi->month]));
+        str = g_string_replace(str, "%(M60)", tmp, -1);
+        g_free(tmp);
+    }
+    if (strstr(format, "%(D60)") != NULL)
+    {
+        tmp = g_strdup_printf("%s%s", _(gan_list[date->gan->day]), _(zhi_list[date->zhi->day]));
+        str = g_string_replace(str, "%(D60)", tmp, -1);
+        g_free(tmp);
+    }
+
+    //bazi
+    if (strstr(format, "%(Y8)") != NULL)
+    {
+        tmp = g_strdup_printf("%s%s", _(gan_list[date->gan2->year]), _(zhi_list[date->zhi2->year]));
+        str = g_string_replace(str, "%(Y8)", tmp, -1);
+        g_free(tmp);
+    }
+    if (strstr(format, "%(M8)") != NULL)
+    {
+        tmp = g_strdup_printf("%s%s", _(gan_list[date->gan2->month]), _(zhi_list[date->zhi2->month]));
+        str = g_string_replace(str, "%(M8)", tmp, -1);
+        g_free(tmp);
+    }
+    if (strstr(format, "%(D8)") != NULL)
+    {
+        tmp = g_strdup_printf("%s%s", _(gan_list[date->gan2->day]), _(zhi_list[date->zhi2->day]));
+        str = g_string_replace(str, "%(D8)", tmp, -1);
+        g_free(tmp);
+    }
+
+    //shengxiao
+    if (strstr(format, "%(shengxiao)") != NULL)
+    {
+        str = g_string_replace(str, "%(shengxiao)", _(shengxiao_list[date->zhi->year]), -1);
+    }
+
+    //jieri
+    if (strstr(format, "%(jieri)") != NULL)
+    {
+        if (strstr(gcl_date_get_jieri(date), " " ) != NULL)
+        {
+            char** buf = g_strsplit(gcl_date_get_jieri(date), " ", -1);
+            tmp = strdup(*buf);
+            g_strfreev(buf);
+        }
+        else
+            tmp = strdup(gcl_date_get_jieri(date));
+        str = g_string_replace(str, "%(jieri)", tmp, -1);
+        g_free(tmp);
+    }
+
+    s = strdup(str->str);
+    g_string_free(str, TRUE);
+    return s;
 }
 
 /**
@@ -998,70 +1118,6 @@ static gint _cl_date_get_bazi_lunar (GCLDate *date)
 }
 
 /**
- * gcl_date_get_jieri:
- * @date: a #GCLDate
- *
- * Returns the holiday of the date. The date must be valid.
- *
- * Return value:  a newly-allocated holiday string of the date.
- * This can be changed in $(datadir)/liblunar/holiday.dat file.
- **/
-gchar*      gcl_date_get_jieri          (GCLDate *date)
-{
-    GString* jieri;
-    jieri=g_string_new("");
-
-    gchar* cfgfile;
-    GKeyFile* keyfile;
-    gint weekday, weekth;
-    gchar* str_day;
-
-    keyfile = g_key_file_new();
-    cfgfile = g_build_filename(GCL_HOLIDAYDIR, "holiday.dat", NULL);
-
-    if (!g_key_file_load_from_file(keyfile, cfgfile, G_KEY_FILE_KEEP_COMMENTS, NULL))
-    {
-        ;
-    }
-
-    if (g_key_file_has_group(keyfile, "LUNAR"))
-    {
-        str_day = g_strdup_printf("%02d%02d", date->lunar->month, date->lunar->day);
-        if (g_key_file_has_key (keyfile, "LUNAR", str_day, NULL))
-        {
-            jieri=g_string_append(jieri, " ");
-            jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "LUNAR", str_day, NULL));
-        }
-    }
-
-    if (g_key_file_has_group(keyfile, "SOLAR"))
-    {
-        str_day = g_strdup_printf("%02d%02d", date->solar->month, date->solar->day);
-        if (g_key_file_has_key (keyfile, "SOLAR", str_day, NULL))
-        {
-            jieri=g_string_append(jieri, " ");
-            jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "SOLAR", str_day, NULL));
-        }
-    }
-
-    weekday = get_day_of_week ( date->solar->year, date->solar->month, date->solar->day);
-    weekth = get_weekth_of_month ( date->solar->day);
-    if (g_key_file_has_group(keyfile, "WEEK"))
-    {
-        str_day = g_strdup_printf("%02d%01d%01d", date->solar->month, weekth, weekday);
-        if (g_key_file_has_key (keyfile, "WEEK", str_day, NULL))
-        {
-            jieri=g_string_append(jieri, " ");
-            jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "WEEK", str_day, NULL));
-        }
-    }
-    gchar* oo = g_strdup(g_strstrip(jieri->str));
-    g_string_free(jieri, TRUE);
-    g_free(str_day);
-    return oo;
-}
-
-/**
  * get_day_of_week:
  * @year: year
  * @month: month of year
@@ -1101,4 +1157,139 @@ static gint get_weekth_of_month (gint day)
         a++;
     }
     return a;
+}
+
+static int
+mymemfind(const char *mem, int len, const char *pat, int pat_len)
+{
+	register int ii;
+
+	len -= pat_len;
+
+	for (ii = 0; ii <= len; ii++) {
+		if (mem[ii] == pat[0] && memcmp(&mem[ii], pat, pat_len) == 0) {
+			return ii;
+		}
+	}
+	return -1;
+}
+
+
+static int
+mymemcnt(const char *mem, int len, const char *pat, int pat_len)
+{
+	register int offset = 0;
+	int nfound = 0;
+
+	while (len >= 0) {
+		offset = mymemfind(mem, len, pat, pat_len);
+		if (offset == -1)
+			break;
+		mem += offset + pat_len;
+		len -= offset + pat_len;
+		nfound++;
+	}
+	return nfound;
+}
+
+static GString* g_string_replace (GString *string, const gchar* old, const gchar* new, int count)
+{
+    int nfound, offset;
+
+    int old_len = strlen(old);
+    int new_len = strlen(new);
+
+    if (string->len == 0 || (old_len == 0 && new_len == 0) || old_len > string->len)
+        goto return_same;
+
+    nfound = (old_len > 0) ? mymemcnt(string->str, string->len, old, old_len) : string->len + 1;
+    if (count < 0)
+        count = INT_MAX;
+    else if (nfound > count)
+        nfound = count;
+    if (nfound == 0)
+        goto return_same;
+
+    GString *new_str = g_string_new("");
+
+    if (old_len > 0) {
+        for (; nfound > 0; --nfound) {
+            offset = mymemfind(string->str, string->len, old, old_len);
+            if (offset == -1)
+                break;
+
+            new_str = g_string_append_len(new_str, string->str, offset);
+            string->str += offset + old_len;
+            string->len -= offset + old_len;
+
+            new_str = g_string_append(new_str, new);
+        }
+        if (string->len > 0)
+            new_str = g_string_append_len(new_str, string->str, string->len);
+    }
+    else {
+        for (;;++string->str, --string->len) {
+            g_string_append(new_str, new);
+            if (--nfound <= 0) {
+                g_string_append_len(new_str, string->str, string->len);
+                break;
+            }
+            g_string_append_c(new_str, *string->str);
+        }
+    }
+    g_string_free(string, FALSE);
+    return new_str;
+
+return_same:
+    return string;
+}
+
+char* num_2_hanzi(int n)
+{
+    GString *str = g_string_new("");
+    int d;
+    while (n > 10)
+    {
+        d = n % 10;
+        n = n/10;
+        str = g_string_prepend(str, _(hanzi_num[d]));
+    }
+    str = g_string_prepend(str, _(hanzi_num[n]));
+
+    gchar* ret = g_strdup(g_strstrip(str->str));
+    g_string_free(str, TRUE);
+    return ret;
+}
+
+char* mday_2_hanzi(int n)
+{
+    GString *str = g_string_new("");
+    int d;
+
+    if ((n % 10) == 0)
+    {
+        n /= 10;
+        str = g_string_append(str, _(hanzi_num[n]));
+        str = g_string_append(str, _(hanzi_num[10]));
+    }
+    else if ((n / 10) == 1)
+    {
+        n = n % 10;
+        str = g_string_append(str, _(hanzi_num[10]));
+        str = g_string_append(str, _(hanzi_num[n]));
+    }
+    else if (n > 10)
+    {
+        d = n % 10;
+        n = n/10;
+        str = g_string_append(str, _(hanzi_num[n]));
+        str = g_string_append(str, _(hanzi_num[10]));
+        str = g_string_append(str, _(hanzi_num[d]));
+    }
+    else
+        str = g_string_append(str, _(hanzi_num[n]));
+
+    gchar* ret = g_strdup(g_strstrip(str->str));
+    g_string_free(str, TRUE);
+    return ret;
 }

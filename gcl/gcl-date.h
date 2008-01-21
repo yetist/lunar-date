@@ -68,30 +68,8 @@ void        gcl_date_set_lunar_date     (GCLDate *date,
                                             GDateHour hour,
                                             gboolean isleap,
                                             GError **error);
-CLDate*     gcl_date_get_solar_date     (GCLDate *date, 
-                                            gchar* year, 
-                                            gchar* month, 
-                                            gchar* day, 
-                                            gchar* hour);
-CLDate*     gcl_date_get_lunar_date     (GCLDate *date, 
-                                            gchar* year, 
-                                            gchar* month, 
-                                            gchar* day, 
-                                            gchar* hour);
-
-gchar*      gcl_date_get_shengxiao      (GCLDate *date);
-gchar*      gcl_date_get_ganzhi         (GCLDate *date, 
-                                            gchar* year, 
-                                            gchar* month,
-                                            gchar* day,
-                                            gchar* hour);
-gchar*      gcl_date_get_bazi           (GCLDate *date, 
-                                            gchar* year, 
-                                            gchar* month, 
-                                            gchar* day, 
-                                            gchar* hour);
-
 gchar*      gcl_date_get_jieri          (GCLDate *date);
+gchar*      gcl_date_strftime           (GCLDate *date, const char *format);
 void        gcl_date_free               (GCLDate *date);
 
 G_END_DECLS
