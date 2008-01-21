@@ -1,5 +1,10 @@
 2008-01-21  yetist  <yetist@gmail.com>
 
+	* NEWS: 
+	add news.
+	
+2008-01-21  yetist  <yetist@gmail.com>
+
 	* configure.ac: 
 	* po/ChangeLog: 
 	* po/zh_CN.po: 
