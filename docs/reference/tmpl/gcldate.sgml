@@ -1,5 +1,5 @@
 <!-- ##### SECTION Title ##### -->
-GCLDate
+GclDate
 
 <!-- ##### SECTION Short_Description ##### -->
 Translate the date between solar and chinese lunar.
@@ -22,17 +22,6 @@ Translate the date between solar and chinese lunar.
 
 </para>
 
-
-<!-- ##### STRUCT CLDate ##### -->
-<para>
-
-</para>
-
-@year: 
-@month: 
-@day: 
-@hour: 
-@isleap: 
 
 <!-- ##### STRUCT GCLDate ##### -->
 <para>
@@ -100,73 +89,22 @@ The GCLDate struct contains only private fields and should not be used directly.
 @error: 
 
 
-<!-- ##### FUNCTION gcl_date_get_solar_date ##### -->
-<para>
-
-</para>
-
-@date: 
-@year: 
-@month: 
-@day: 
-@hour: 
-@Returns: 
-
-
-<!-- ##### FUNCTION gcl_date_get_lunar_date ##### -->
-<para>
-
-</para>
-
-@date: 
-@year: 
-@month: 
-@day: 
-@hour: 
-@Returns: 
-
-
-<!-- ##### FUNCTION gcl_date_get_shengxiao ##### -->
-<para>
-
-</para>
-
-@date: 
-@Returns: 
-
-
-<!-- ##### FUNCTION gcl_date_get_ganzhi ##### -->
-<para>
-
-</para>
-
-@date: 
-@year: 
-@month: 
-@day: 
-@hour: 
-@Returns: 
-
-
-<!-- ##### FUNCTION gcl_date_get_bazi ##### -->
-<para>
-
-</para>
-
-@date: 
-@year: 
-@month: 
-@day: 
-@hour: 
-@Returns: 
-
-
 <!-- ##### FUNCTION gcl_date_get_jieri ##### -->
 <para>
 
 </para>
 
 @date: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gcl_date_strftime ##### -->
+<para>
+
+</para>
+
+@date: 
+@format: 
 @Returns: 
 
 

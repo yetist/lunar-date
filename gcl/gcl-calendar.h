@@ -41,11 +41,11 @@ typedef struct _GclCalendarPrivate      GclCalendarPrivate;
 
 typedef enum
 {
-  GCL_CALENDAR_SHOW_HEADING		    = 1 << 0,
-  GCL_CALENDAR_SHOW_DAY_NAMES		= 1 << 1,
-  GCL_CALENDAR_NO_MONTH_CHANGE		= 1 << 2,
-  GCL_CALENDAR_SHOW_WEEK_NUMBERS	= 1 << 3,
-  GCL_CALENDAR_WEEK_START_MONDAY	= 1 << 4,
+  GCL_CALENDAR_SHOW_HEADING         = 1 << 0,
+  GCL_CALENDAR_SHOW_DAY_NAMES       = 1 << 1,
+  GCL_CALENDAR_NO_MONTH_CHANGE      = 1 << 2,
+  GCL_CALENDAR_SHOW_WEEK_NUMBERS    = 1 << 3,
+  GCL_CALENDAR_WEEK_START_MONDAY    = 1 << 4,
   GCL_CALENDAR_SHOW_LUNAR           = 1 << 5
 } GclCalendarDisplayOptions;
 

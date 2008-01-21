@@ -1,0 +1,173 @@
+<!-- ##### SECTION Title ##### -->
+GclCalendar
+
+<!-- ##### SECTION Short_Description ##### -->
+a gtk widget that can displays a chinese lunar calendar
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT GclCalendar ##### -->
+<para>
+
+</para>
+
+@widget: 
+@header_style: 
+@label_style: 
+@month: 
+@year: 
+@selected_day: 
+@day_month: 
+@day: 
+@num_marked_dates: 
+@marked_date: 
+@display_flags: 
+@marked_date_color: 
+@gc: 
+@xor_gc: 
+@focus_row: 
+@focus_col: 
+@highlight_row: 
+@highlight_col: 
+@priv: 
+@grow_space: 
+@_gtk_reserved1: 
+@_gtk_reserved2: 
+@_gtk_reserved3: 
+@_gtk_reserved4: 
+
+<!-- ##### ENUM GclCalendarDisplayOptions ##### -->
+<para>
+
+</para>
+
+@GCL_CALENDAR_SHOW_HEADING: 
+@GCL_CALENDAR_SHOW_DAY_NAMES: 
+@GCL_CALENDAR_NO_MONTH_CHANGE: 
+@GCL_CALENDAR_SHOW_WEEK_NUMBERS: 
+@GCL_CALENDAR_WEEK_START_MONDAY: 
+@GCL_CALENDAR_SHOW_LUNAR: 
+
+<!-- ##### FUNCTION gcl_calendar_new ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### FUNCTION gcl_calendar_select_month ##### -->
+<para>
+
+</para>
+
+@calendar: 
+@month: 
+@year: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gcl_calendar_select_day ##### -->
+<para>
+
+</para>
+
+@calendar: 
+@day: 
+
+
+<!-- ##### FUNCTION gcl_calendar_mark_day ##### -->
+<para>
+
+</para>
+
+@calendar: 
+@day: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gcl_calendar_unmark_day ##### -->
+<para>
+
+</para>
+
+@calendar: 
+@day: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gcl_calendar_clear_marks ##### -->
+<para>
+
+</para>
+
+@calendar: 
+
+
+<!-- ##### FUNCTION gcl_calendar_get_display_options ##### -->
+<para>
+
+</para>
+
+@calendar: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gcl_calendar_set_display_options ##### -->
+<para>
+
+</para>
+
+@calendar: 
+@flags: 
+
+
+<!-- ##### FUNCTION gcl_calendar_display_options ##### -->
+<para>
+
+</para>
+
+@calendar: 
+@flags: 
+
+
+<!-- ##### FUNCTION gcl_calendar_get_date ##### -->
+<para>
+
+</para>
+
+@calendar: 
+@year: 
+@month: 
+@day: 
+
+
+<!-- ##### FUNCTION gcl_calendar_freeze ##### -->
+<para>
+
+</para>
+
+@calendar: 
+
+
+<!-- ##### FUNCTION gcl_calendar_thaw ##### -->
+<para>
+
+</para>
+
+@calendar: 
+
+

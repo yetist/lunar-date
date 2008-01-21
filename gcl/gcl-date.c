@@ -539,19 +539,36 @@ gchar*      gcl_date_get_jieri          (GCLDate *date)
     return oo;
 }
 
-/*
-gchar* gcl_date_strftime (GCLDate *date, const char *format);
- * %(YEAR)年%(MONTH)月%(DAY)日      公历：大写
- * %(year)年%(month)月%(day)日      公历：小写
- * %(NIAN)年%(YUE)月%(RI)日%(SHI)时 阴历：大写
- * %(nian)年%(yue)月%(ri)日%(shi)时 阴历：小写
+/**
+ * gcl_date_strftime:
+ * @date: a #GCLDate
+ * @format: specify the output format. this
  *
- * %(Y60)年%(M60)月%(D60)日%(H60)时 干支:大写
- * %(y60)年%(m60)月%(d60)日%(h60)时 干支:小写 not use
- * %(Y8)年%(M8)月%(D8)日%(H8)时     八字:大写
- * %(y8)年%(m8)月%(d8)日%(h8)时     八字:小写 not use
- * %(shengxiao)%(jieri)             生肖和节日
- */
+ * 使用给定的格式来输出字符串。类似于strftime的用法。可使用的格式及输出如下：
+ *
+ * %(YEAR)年%(MONTH)月%(DAY)日      公历：大写->二OO八年一月二十一日
+ *
+ * %(year)年%(month)月%(day)日      公历：小写->2008年1月21日
+ *
+ * %(NIAN)年%(YUE)月%(RI)日%(SHI)时 阴历：大写->丁亥年腊月十四日
+ *
+ * %(nian)年%(yue)月%(ri)日%(shi)时 阴历：小写->2007年12月14日
+ *
+ * %(Y60)年%(M60)月%(D60)日%(H60)时 干支：大写->丁亥年癸丑月庚申日
+ *
+ * %(y60)年%(m60)月%(d60)日%(h60)时 干支：小写 not use
+ *
+ * %(Y8)年%(M8)月%(D8)日%(H8)时     八字：大写->丁亥年癸丑月庚申日
+ *
+ * %(y8)年%(m8)月%(d8)日%(h8)时     八字：小写 not use
+ *
+ * %(shengxiao)%(jieri)             生肖和节日->猪
+ *
+ * 使用%(jieri)时，如果此日没有节日，那么将为空。
+ * 节日可以自定义，只要按照格式修改$(prefix)/share/liblunar/hodiday.dat即可。
+ *
+ * Return value: a newly-allocated output string, nul-terminated
+ **/
 gchar* gcl_date_strftime (GCLDate *date, const char *format)
 {
     gchar *s, *tmp;

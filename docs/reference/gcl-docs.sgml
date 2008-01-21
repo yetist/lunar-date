@@ -3,6 +3,7 @@
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 <!ENTITY GCLInit SYSTEM "xml/gclmain.xml">
 <!ENTITY GCLDate SYSTEM "xml/gcldate.xml">
+<!ENTITY GCLCalendar SYSTEM "xml/gclcalendar.xml">
 <!ENTITY version SYSTEM "version.xml">
 ]>
 
@@ -14,4 +15,5 @@
 
   &GCLInit;
   &GCLDate;
+  &GCLCalendar;
 </book>

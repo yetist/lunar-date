@@ -33,6 +33,7 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n-lib.h>
 #include <gdk/gdkkeysyms.h>
+#include <string.h>
 #include "gcl-calendar.h"
 #include "gcl-date.h"
 

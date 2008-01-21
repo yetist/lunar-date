@@ -1,3 +1,14 @@
+<!-- ##### STRUCT CLDate ##### -->
+<para>
+
+</para>
+
+@year: 
+@month: 
+@day: 
+@hour: 
+@isleap: 
+
 <!-- ##### ENUM JieRi ##### -->
 <para>
 
@@ -7,4 +18,60 @@
 @JIERI_SOLAR: 
 @JIERI_WEEK: 
 @JIERI_LUNAR: 
+
+<!-- ##### FUNCTION gcl_date_get_bazi ##### -->
+<para>
+
+</para>
+
+@date: 
+@year: 
+@month: 
+@day: 
+@hour: 
+@Returns: 
+
+<!-- ##### FUNCTION gcl_date_get_ganzhi ##### -->
+<para>
+
+</para>
+
+@date: 
+@year: 
+@month: 
+@day: 
+@hour: 
+@Returns: 
+
+<!-- ##### FUNCTION gcl_date_get_lunar_date ##### -->
+<para>
+
+</para>
+
+@date: 
+@year: 
+@month: 
+@day: 
+@hour: 
+@Returns: 
+
+<!-- ##### FUNCTION gcl_date_get_shengxiao ##### -->
+<para>
+
+</para>
+
+@date: 
+@Returns: 
+
+<!-- ##### FUNCTION gcl_date_get_solar_date ##### -->
+<para>
+
+</para>
+
+@date: 
+@year: 
+@month: 
+@day: 
+@hour: 
+@Returns: 
 

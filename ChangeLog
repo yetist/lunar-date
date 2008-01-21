@@ -1,5 +1,17 @@
 2008-01-21  yetist  <yetist@gmail.com>
 
+	* docs/reference/gcl-sections.txt: 
+	* docs/reference/gcl-docs.sgml: 
+	* docs/reference/tmpl/gclcalendar.sgml: 
+	* docs/reference/tmpl/gcldate.sgml: 
+	* docs/reference/tmpl/gcl-unused.sgml: 
+	* gcl/gcl-date.c: 
+	* gcl/gcl-calendar.h: 
+	* gcl/gcl-calendar.c: 
+	modified to generate the development document.
+
+2008-01-21  yetist  <yetist@gmail.com>
+
 	* configure.ac: add enable arg: run-in-source-tree.
 	* gcl/gcl-date.h: 
 	* gcl/gcl-date.c: 
