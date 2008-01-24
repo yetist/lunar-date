@@ -29,4 +29,3 @@ dist-hook:
 	    fi  ; \
 	    cp $$file $$ddir; \
 	done
-

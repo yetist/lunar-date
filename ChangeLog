@@ -1,5 +1,14 @@
 2008-01-24  yetist  <yetist@gmail.com>
 
+	* debian/control: 
+	* debian/libgcl0.install: 
+	* debian/libgcl-bin.install: 
+	* debian/rules: 
+	* Makefile.am: 
+	some change.
+
+2008-01-24  yetist  <yetist@gmail.com>
+
 	* debian: 
 	* debian/control: 
 	* debian/dirs: 

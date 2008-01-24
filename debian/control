@@ -8,20 +8,20 @@ Section: libs
 Package: libgcl-dev
 Section: libdevel
 Architecture: any
-Depends: libgcl-bin (= ${Source-Version})
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: libgcl0 (= ${Source-Version})
+Description: Development files for the China Lunar library
+ China Lunar library is a chinese lunar translate library.
 
-Package: libgcl-bin
+Package: libgcl0
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: the China Lunar library
+ China Lunar library is a chinese lunar translate library.
 
 Package: libgcl-doc
 Section: doc
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: Documentation for the China Lunar library
+ China Lunar library is a chinese lunar translate library.
