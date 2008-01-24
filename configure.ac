@@ -3,9 +3,9 @@ AC_PREREQ(2.59)
 
 m4_define([libgcl_major_version], [0])
 m4_define([libgcl_minor_version], [2])
-m4_define([libgcl_micro_version], [1])
+m4_define([libgcl_micro_version], [2])
 m4_define([libgcl_real_version], [libgcl_major_version.libgcl_minor_version.libgcl_micro_version])
-m4_define([libgcl_version], [0.2.1-rc1])
+m4_define([libgcl_version], [0.2.2])
 
 
 AC_INIT(libgcl, libgcl_version, yetist@gmail.com)
@@ -37,8 +37,6 @@ AC_SUBST(CUR_DATE)
 
 GLIB2_REQUIRED=2.4.0
 GTK_REQUIRED=2.4.0
-
-AC_SUBST(GLIB2_REQUIRED)
 
 PKG_CHECK_MODULES(LIBGCL, glib-2.0 >= $GLIB2_REQUIRED gtk+-2.0 >= $GTK_REQUIRED)
 AC_SUBST(LIBGCL_CFLAGS)

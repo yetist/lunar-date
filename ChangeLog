@@ -1,3 +1,12 @@
+
+=== libgcl-0.2.2 released ===
+
+2008-01-24  yetist  <yetist@gmail.com>
+
+	* configure.ac: 
+
+	libgcl-0.2.2 released.
+
 2008-01-24  yetist  <yetist@gmail.com>
 
 	* debian/control: 
