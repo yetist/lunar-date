@@ -467,7 +467,7 @@ void            gcl_date_set_lunar_date     (GCLDate *date,
  * Returns the holiday of the date. The date must be valid.
  *
  * Return value:  a newly-allocated holiday string of the date.
- * This can be changed in $(datadir)/liblunar/holiday.dat file.
+ * This can be changed in $(datadir)/libgcl/holiday.dat file.
  **/
 gchar*      gcl_date_get_jieri          (GCLDate *date)
 {

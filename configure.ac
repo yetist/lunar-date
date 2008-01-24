@@ -31,6 +31,10 @@ IT_PROG_INTLTOOL([0.35.0])
 
 GTK_DOC_CHECK(1.0)
 
+cur_date=`date -R`
+CUR_DATE=${cur_date}
+AC_SUBST(CUR_DATE)
+
 GLIB2_REQUIRED=2.4.0
 GTK_REQUIRED=2.4.0
 
@@ -68,6 +72,7 @@ gcl/Makefile
 po/Makefile.in
 tests/Makefile
 data/Makefile
+debian/changelog
 docs/Makefile
 docs/reference/Makefile
 docs/reference/version.xml

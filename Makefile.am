@@ -18,3 +18,15 @@ pkgconfig_DATA = libgcl-1.pc
 
 DISTCHECK_CONFIGURE_FLAGS =     \
 	--enable-gtk-doc
+
+dist-hook:
+	for file in `find debian/ -type f -not -wholename 'debian/.svn*'`; \
+	do \
+	    path=$${file%/*};\
+	    ddir=$(distdir)/$$path;\
+	    if [ ! -d $$ddir ]; then \
+	    	mkdir -p $$ddir;\
+	    fi  ; \
+	    cp $$file $$ddir; \
+	done
+

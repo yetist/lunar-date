@@ -4,7 +4,7 @@ INCLUDES =                                              \
 	-I$(top_srcdir)					\
         -I$(srcdir) 					\
 	$(LIBGCL_CFLAGS)				\
-        -DGCL_HOLIDAYDIR=\""$(datadir)/liblunar/"\"     \
+        -DGCL_HOLIDAYDIR=\""$(datadir)/libgcl/"\"     \
 	$(NULL)
 
 lib_LTLIBRARIES = libgcl-1.la
