@@ -1,5 +1,9 @@
 2008-02-01  yetist  <yetist@gmail.com>
 
+	* libgcl-1.pc.in: requires gtk+-2.0. 
+
+2008-02-01  yetist  <yetist@gmail.com>
+
 	* debian/control: update debian package description.
 
 2008-02-01  yetist  <yetist@gmail.com>
