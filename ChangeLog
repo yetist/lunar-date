@@ -1,3 +1,15 @@
+=== libgcl-0.2.2 released ===
+
+2008-02-01  yetist  <yetist@gmail.com>
+
+	* README: 
+	* configure.ac: 
+	* NEWS: 
+	* po/ChangeLog: 
+	* po/zh_CN.po: 
+
+	libgcl-0.2.3 released.
+
 2008-02-01  yetist  <yetist@gmail.com>
 
 	* libgcl-1.pc.in: requires gtk+-2.0. 

@@ -1,5 +1,5 @@
 =============
-liblunar-0.2.1-rc1
+liblunar-0.2.3
 =============
 新的特性：
    - 增加节日/纪念日自定义功能:修改$(prefix)/liblunar/holiday.dat文件。
@@ -22,6 +22,4 @@ liblunar-0.2.1-rc1
    (这个bug我已经在努力修复，可我不能找到一个显示出来的宽度是最长的日期，所以这bug可能还会出现)
    - 这个项目已经重名(libgcl), 暂时准备使用liblunar这个名字(这个问题可以讨论).
 
-这个版本不是正式版本, 发布它，还是希望能有人给点建议什么的。:)
-
-下载地址：http://liblunar.googlecode.com/files/libgcl-0.2.1-rc1.tar.bz2
+下载地址：http://liblunar.googlecode.com/files/libgcl-XXX.tar.bz2
