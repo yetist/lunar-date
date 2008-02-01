@@ -1,3 +1,10 @@
+2008-02-01  yetist  <yetist@gmail.com>
+
+	* gcl/gcl-calendar.h: 
+	* gcl/update-calendar.sh: 
+	* gcl/calendar.patch: 
+	* gcl/gcl-calendar.c: 
+	add update-calendar.sh to generate gcl-calendar.[hc] from gtk+.
 
 === libgcl-0.2.2 released ===
 
