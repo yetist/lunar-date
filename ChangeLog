@@ -1,5 +1,9 @@
 2008-02-01  yetist  <yetist@gmail.com>
 
+	* debian/control: update debian package description.
+
+2008-02-01  yetist  <yetist@gmail.com>
+
 	* gcl/gcl-calendar.h: 
 	* gcl/update-calendar.sh: 
 	* gcl/calendar.patch: 
