@@ -1,5 +1,11 @@
 2008-02-03  yetist  <yetist@gmail.com>
 
+	* gcl/gcl-enum-types.c.template: 
+	* gcl/gcl-enum-types.h.template: 
+	add template of gcl-enum-types.[hc]
+
+2008-02-03  yetist  <yetist@gmail.com>
+
 	* m4: 
 	* m4/python.m4: 
 	add python.m4
