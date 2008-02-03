@@ -1,4 +1,5 @@
-SUBDIRS = po gcl docs tests data
+ACLOCAL_AMFLAGS = -I m4
+SUBDIRS = po gcl docs tests data bindings
 
 EXTRA_DIST =                    \
 	autogen.sh		\

@@ -1,3 +1,21 @@
+2008-02-03  yetist  <yetist@gmail.com>
+
+	* bindings: 
+	* bindings/python: 
+	* bindings/python/calendar.override: 
+	* bindings/python/calendar.defs: 
+	* bindings/python/Makefile.am: 
+	* bindings/python/date.override: 
+	* bindings/python/gclmodule.c: 
+	* bindings/python/date.defs: 
+	* bindings/Makefile.am: 
+	* configure.ac: 
+	* gcl/Makefile.am: 
+	* INSTALL: 
+	* Makefile.am: 
+	* autogen.sh: 
+	add python bindings for libgcl.
+
 === libgcl-0.2.2 released ===
 
 2008-02-01  yetist  <yetist@gmail.com>

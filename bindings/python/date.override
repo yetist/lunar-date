@@ -1,0 +1,19 @@
+%%
+headers
+#include <Python.h>
+#define NO_IMPORT_GOBJECT
+#include <pygtk/pygtk.h>
+#include <pygobject.h>
+#include <gtk/gtk.h>
+#include <gcl/gcl.h>
+#include <gcl/gcl-enum-types.h>
+%%
+modulename gcl.date
+%%
+import gobject.GObject as PyGObject_Type       
+import gtk.Widget as PyGtkWidget_Type
+%%
+ignore-glob
+  *_get_type                            
+  gcl_date_error_quark
+%%

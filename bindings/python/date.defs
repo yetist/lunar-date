@@ -1,0 +1,92 @@
+;; -*- scheme -*-
+; object definitions ...
+;; Enumerations and flags ...
+
+(define-enum Error
+  (in-module "GCLDate")
+  (c-name "GCLDateError")
+  (gtype-id "G_TYPE_CL_DATE_ERROR")
+  (values
+    '("internal" "GCL_DATE_ERROR_INTERNAL")
+    '("day" "GCL_DATE_ERROR_DAY")
+    '("year" "GCL_DATE_ERROR_YEAR")
+    '("leap" "GCL_DATE_ERROR_LEAP")
+  )
+)
+
+
+;; From gcl-date.h
+
+(define-function gcl_date_error_quark
+  (c-name "gcl_date_error_quark")
+  (return-type "GQuark")
+)
+
+(define-function gcl_date_new
+  (c-name "gcl_date_new")
+  (is-constructor-of "GclDate")
+  (return-type "GCLDate*")
+)
+
+(define-method set_solar_date
+  (of-object "GCLDate")
+  (c-name "gcl_date_set_solar_date")
+  (return-type "none")
+  (parameters
+    '("GDateYear" "year")
+    '("GDateMonth" "month")
+    '("GDateDay" "day")
+    '("GDateHour" "hour")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_lunar_date
+  (of-object "GCLDate")
+  (c-name "gcl_date_set_lunar_date")
+  (return-type "none")
+  (parameters
+    '("GDateYear" "year")
+    '("GDateMonth" "month")
+    '("GDateDay" "day")
+    '("GDateHour" "hour")
+    '("gboolean" "isleap")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_jieri
+  (of-object "GCLDate")
+  (c-name "gcl_date_get_jieri")
+  (return-type "gchar*")
+)
+
+(define-method strftime
+  (of-object "GCLDate")
+  (c-name "gcl_date_strftime")
+  (return-type "gchar*")
+  (parameters
+    '("const-char*" "format")
+  )
+)
+
+(define-method free
+  (of-object "GCLDate")
+  (c-name "gcl_date_free")
+  (return-type "none")
+)
+
+
+
+;; From gcl-main.h
+
+(define-function gcl_init
+  (c-name "gcl_init")
+  (return-type "none")
+  (parameters
+    '("int*" "argc")
+    '("char***" "argv")
+  )
+)
+
+
