@@ -1,5 +1,11 @@
 2008-02-03  yetist  <yetist@gmail.com>
 
+	* m4: 
+	* m4/python.m4: 
+	add python.m4
+
+2008-02-03  yetist  <yetist@gmail.com>
+
 	* bindings: 
 	* bindings/python: 
 	* bindings/python/calendar.override: 
