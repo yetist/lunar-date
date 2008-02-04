@@ -1,3 +1,11 @@
+2008-02-04  yetist  <yetist@gmail.com>
+
+	* bindings/python/calendar.override: 
+	* bindings/python/Makefile.am: 
+	* bindings/python/gclmodule.c: 
+	* bindings/python/gcl-demo.py: 
+	python bindings of gclcalendar
+
 2008-02-03  yetist  <yetist@gmail.com>
 
 	* gcl/gcl-enum-types.c.template: 

@@ -5,11 +5,10 @@ headers
 #include <pygtk/pygtk.h>
 #include <pygobject.h>
 #include <gtk/gtk.h>
-#include <gcl/gcl.h>
-#include <gcl/gcl-calendar.h>
-#include <gcl/gcl-enum-types.h>
+#include "../../gcl/gcl.h"
+#include "../../gcl/gcl-enum-types.h"
 %%
-modulename gcl.calendar
+modulename gclcalendar
 %%
 import gobject.GObject as PyGObject_Type       
 import gtk.Widget as PyGtkWidget_Type

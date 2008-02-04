@@ -21,7 +21,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include "config.h"
+#include "../../config.h"
 #endif
 
 /* include this first, before NO_IMPORT_PYGOBJECT is defined */
@@ -29,55 +29,29 @@
 #include <pygobject.h>
 #include <pygtk/pygtk.h>
 #include <pyerrors.h>
-//#include "../../gcl/gcl.h"
+#include "../../gcl/gcl.h"
 
 extern void pycalendar_register_classes(PyObject *d);
-extern void pydate_register_classes(PyObject *d);
-
 extern PyMethodDef pycalendar_functions[];
-extern PyMethodDef pydate_functions[];
-
-extern DL_EXPORT(void) init_gcl(void);
+extern DL_EXPORT(void) initgclcalendar(void);
 extern PyTypeObject PyGclCalendar_Type;
-extern PyTypeObject PyGclDate_Type;
 
 DL_EXPORT(void)
-init_gcl(void)
+initgclcalendar(void)
 {
-    PyObject *m, *d, *tuple, *o;
+    PyObject *m, *d;
 
     /* initialise pygobject */
     init_pygobject();
     init_pygtk();
     
-    m = Py_InitModule("gcl._gcl", pycalendar_functions);
+    m = Py_InitModule("gclcalendar", pycalendar_functions);
     d = PyModule_GetDict(m);
 
-    /* gcl version */
-    //tuple = Py_BuildValue("(iii)", gtk_major_version, gtk_minor_version,
-    //			  gtk_micro_version);
-    //PyDict_SetItemString(d, "gtk_version", tuple);    
-    //Py_DECREF(tuple);
-	
-    /* pygtk version */
-    //tuple = Py_BuildValue("(iii)", PYGTK_MAJOR_VERSION, PYGTK_MINOR_VERSION,
-//			  PYGTK_MICRO_VERSION);
-    //PyDict_SetItemString(d, "pygtk_version", tuple);
-    //Py_DECREF(tuple);
-	
     pycalendar_register_classes(d);
-    pycalendar_add_constants(m, "GCL_");
+
     if (PyErr_Occurred()) {
-        Py_FatalError("can't initialise module gcl.calendar");
+        Py_FatalError("can't initialise module gclcalendar");
     }
 
-        /* namespace all the gdk stuff in gtk.gdk ... */
-    m = Py_InitModule("gcl.date", pydate_functions);
-    d = PyModule_GetDict(m);
-
-    pydate_register_classes(d);
-    pydate_add_constants(m, "GCL_");
-    if (PyErr_Occurred()) {
-        Py_FatalError("can't initialise module gcl.date");
-    }
 }
