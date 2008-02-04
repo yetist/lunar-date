@@ -1,5 +1,12 @@
 2008-02-04  yetist  <yetist@gmail.com>
 
+	* bindings/python/Makefile.am: 
+	* bindings/python/date.override: 
+	* bindings/python/date.defs: 
+	remove date for python bindings.
+
+2008-02-04  yetist  <yetist@gmail.com>
+
 	* bindings/python/calendar.override: 
 	* bindings/python/Makefile.am: 
 	* bindings/python/gclmodule.c: 
