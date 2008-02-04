@@ -12,7 +12,7 @@ if __name__ == '__main__':
 	window.connect("delete-event", main_quit)
 
         cal = gclcalendar.Calendar()
-        cal.set_display_options("show-lunar")
+        cal.set_display_options(gclcalendar.CALENDAR_SHOW_LUNAR|gclcalendar.CALENDAR_SHOW_HEADING)
         window.add(cal)
 	window.show_all()
 	gtk.main()

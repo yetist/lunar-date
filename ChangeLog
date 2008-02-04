@@ -1,5 +1,11 @@
 2008-02-04  yetist  <yetist@gmail.com>
 
+	* bindings/python/gclmodule.c: 
+	* bindings/python/gcl-demo.py: 
+	add flags to modules.
+	
+2008-02-04  yetist  <yetist@gmail.com>
+
 	* bindings/python/Makefile.am: 
 	* bindings/python/date.override: 
 	* bindings/python/date.defs: 

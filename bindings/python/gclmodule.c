@@ -32,6 +32,7 @@
 #include "../../gcl/gcl.h"
 
 extern void pycalendar_register_classes(PyObject *d);
+extern void pycalendar_add_constants(PyObject *module, const gchar *strip_prefix);
 extern PyMethodDef pycalendar_functions[];
 extern DL_EXPORT(void) initgclcalendar(void);
 extern PyTypeObject PyGclCalendar_Type;
@@ -49,6 +50,7 @@ initgclcalendar(void)
     d = PyModule_GetDict(m);
 
     pycalendar_register_classes(d);
+    pycalendar_add_constants(m, "GCL_");
 
     if (PyErr_Occurred()) {
         Py_FatalError("can't initialise module gclcalendar");
