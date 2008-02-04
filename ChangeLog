@@ -1,5 +1,9 @@
 2008-02-04  yetist  <yetist@gmail.com>
 
+	* bindings/python/gcl-demo.py: update
+
+2008-02-04  yetist  <yetist@gmail.com>
+
 	* bindings/python/gclmodule.c: 
 	* bindings/python/gcl-demo.py: 
 	add flags to modules.

@@ -1,6 +1,4 @@
 #!/usr/bin/python
-import sys
-import string
 import gtk
 import gclcalendar
 
@@ -12,7 +10,11 @@ if __name__ == '__main__':
 	window.connect("delete-event", main_quit)
 
         cal = gclcalendar.Calendar()
-        cal.set_display_options(gclcalendar.CALENDAR_SHOW_LUNAR|gclcalendar.CALENDAR_SHOW_HEADING)
+        cal.set_display_options(gclcalendar.CALENDAR_SHOW_LUNAR
+                |gclcalendar.CALENDAR_SHOW_HEADING
+                |gclcalendar.CALENDAR_SHOW_DAY_NAMES
+                |gclcalendar.CALENDAR_SHOW_WEEK_NUMBERS
+                )
         window.add(cal)
 	window.show_all()
 	gtk.main()
