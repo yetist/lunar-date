@@ -3,9 +3,9 @@ AC_PREREQ(2.59)
 
 m4_define([libgcl_major_version], [0])
 m4_define([libgcl_minor_version], [2])
-m4_define([libgcl_micro_version], [3])
+m4_define([libgcl_micro_version], [4])
 m4_define([libgcl_real_version], [libgcl_major_version.libgcl_minor_version.libgcl_micro_version])
-m4_define([libgcl_version], [0.2.3])
+m4_define([libgcl_version], [0.2.4])
 
 
 AC_INIT(libgcl, libgcl_version, yetist@gmail.com)

@@ -1,4 +1,18 @@
 =============
+liblunar-0.2.4
+=============
+NEWS:
+    - add python bindings for calendar.
+    Compile with --disable-python to disable python bindings, default is auto detect python support.
+    Useage:
+    $ python
+    Python 2.4.4 (#1, Feb  1 2008, 12:23:41) 
+    [GCC 4.1.2 (Gentoo 4.1.2 p1.0.2)] on linux2
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import gclcalendar
+    >>> help gclcalendar
+
+=============
 liblunar-0.2.3
 =============
 新的特性：

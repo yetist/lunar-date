@@ -1,3 +1,12 @@
+=== libgcl-0.2.4 released ===
+
+2008-02-05  yetist  <yetist@gmail.com>
+
+	* configure.ac: 
+	* NEWS: 
+
+	libgcl-0.2.4 released
+
 2008-02-04  yetist  <yetist@gmail.com>
 
 	* bindings/python/gcl-demo.py: update
