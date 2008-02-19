@@ -34,11 +34,11 @@
 extern void pycalendar_register_classes(PyObject *d);
 extern void pycalendar_add_constants(PyObject *module, const gchar *strip_prefix);
 extern PyMethodDef pycalendar_functions[];
-extern DL_EXPORT(void) initlunarcalendar(void);
+extern DL_EXPORT(void) initlunar(void);
 extern PyTypeObject PyLunarCalendar_Type;
 
 DL_EXPORT(void)
-initlunarcalendar(void)
+initlunar(void)
 {
     PyObject *m, *d;
 
@@ -46,7 +46,7 @@ initlunarcalendar(void)
     init_pygobject();
     init_pygtk();
     
-    m = Py_InitModule("lunarcalendar", pycalendar_functions);
+    m = Py_InitModule("lunar", pycalendar_functions);
     d = PyModule_GetDict(m);
 
     pycalendar_register_classes(d);

@@ -2,7 +2,7 @@
 /*
  * lunar-main.h
  *
- * This file is part of ________.
+ * This file is part of liblunar.
  *
  * Copyright (C) 2007 - yetist <yetist@gmail.com>.
  *

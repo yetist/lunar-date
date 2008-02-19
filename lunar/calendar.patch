@@ -580,3 +580,35 @@ diff -ur lunar/lunar-calendar.h lunar.new/lunar-calendar.h
  } LunarCalendarDisplayOptions;
  
  struct _LunarCalendar
+diff -ur lunar/lunar-calendar.c lunar.new/lunar-calendar.c
+--- lunar/lunar-calendar.c	2008-02-19 10:23:18.489008036 +0800
++++ lunar.new/lunar-calendar.c	2008-02-19 10:21:42.297557012 +0800
+@@ -2317,6 +2317,17 @@
+ }
+ 
+ static void
++calendar_invalidate_header (LunarCalendar *calendar)
++{
++  LunarCalendarPrivate *priv = LUNAR_CALENDAR_GET_PRIVATE (calendar);
++  GdkWindow *window;
++  
++  window = priv->header_win;
++  if (window)
++    gdk_window_invalidate_rect (window, NULL, FALSE);
++}
++
++static void
+ calendar_invalidate_arrow (LunarCalendar *calendar,
+ 			   guint        arrow)
+ {
+@@ -3461,7 +3472,9 @@
+   {
+       priv->lunar_year=lunar_calendar_lunar_year_str(calendar, year, month, day);
+   }
+-  
++ 
++  calendar_invalidate_header(calendar);
++
+   /* Select the new day */
+   if (day != 0)
+     {

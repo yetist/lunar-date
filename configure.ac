@@ -216,7 +216,6 @@ bindings/python/Makefile
 po/Makefile.in
 tests/Makefile
 data/Makefile
-debian/changelog
 docs/Makefile
 docs/reference/Makefile
 docs/reference/version.xml

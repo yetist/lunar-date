@@ -1,4 +1,5 @@
 #!/bin/sh
+GTK_VERSION=2.12.1
 
 sed_it () {
 	sed \
@@ -11,6 +12,6 @@ sed_it () {
 	$1
 }
 
-sed_it ../../gtk+/gtk/gtkcalendar.h > lunar-calendar.h
-sed_it ../../gtk+/gtk/gtkcalendar.c > lunar-calendar.c
+sed_it ../../gtk+-${GTK_VERSION}/gtk/gtkcalendar.h > lunar-calendar.h
+sed_it ../../gtk+-${GTK_VERSION}/gtk/gtkcalendar.c > lunar-calendar.c
 cat calendar.patch |patch -p1

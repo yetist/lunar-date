@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-PYTHON_MODULES = lunarcalendar.la
+PYTHON_MODULES = lunar.la
 
 BUILT_SOURCES = calendar.c
 
@@ -9,11 +9,11 @@ pythonsiteexec_LTLIBRARIES = $(PYTHON_MODULES)
 
 AM_LDFLAGS = $(PYTHON_LDFLAGS)
 
-lunarcalendar_la_CFLAGS = $(LIBLUNAR_CFLAGS) $(PYTHON_INCLUDES) $(PYGTK_CFLAGS)
-lunarcalendar_la_SOURCES = lunarmodule.c
-lunarcalendar_la_LIBADD = $(top_builddir)/lunar/liblunar-1.la $(PYTHON_LIBS) $(LIBS) $(PYGTK_LIBS) $(LIBLUNAR_LIBS)
-lunarcalendar_la_LDFLAGS = -module -avoid-version -export-symbols-regex initlunarcalendar
-nodist_lunarcalendar_la_SOURCES = $(BUILT_SOURCES)
+lunar_la_CFLAGS = $(LIBLUNAR_CFLAGS) $(PYTHON_INCLUDES) $(PYGTK_CFLAGS)
+lunar_la_SOURCES = lunarmodule.c
+lunar_la_LIBADD = $(top_builddir)/lunar/liblunar-1.la $(PYTHON_LIBS) $(LIBS) $(PYGTK_LIBS) $(LIBLUNAR_LIBS)
+lunar_la_LDFLAGS = -module -avoid-version -export-symbols-regex initlunar
+nodist_lunar_la_SOURCES = $(BUILT_SOURCES)
 
 $(top_builddir)/lunar/lunar-enum-types.h:
 	cd $(top_builddir)/lunar && $(MAKE) lunar-enum-types.h

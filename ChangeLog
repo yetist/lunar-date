@@ -1,5 +1,24 @@
 2008-02-19  yetist  <yetist@gmail.com>
 
+	* lunar/lunar-date.h: 
+	* lunar/update-calendar.sh: 
+	* lunar/lunar.h: 
+	* lunar/calendar.patch: 
+	* lunar/lunar-main.h: 
+	* lunar/lunar-calendar.c: 
+	* lunar/Makefile.am: 
+	fixed that if select day changed, the header doesn't change.
+	* bindings/python/calendar.override: 
+	* bindings/python/lunarmodule.c: 
+	* bindings/python/Makefile.am: 
+	* bindings/python/lunar-demo.py: 
+	* configure.ac: 
+	* Makefile.am: 
+	* liblunar-1.pc.in: 
+	change the python module to "lunar".
+
+2008-02-19  yetist  <yetist@gmail.com>
+
 	* AUTHORS: 
 	* Makefile.am: 
 	* README: 

@@ -8,7 +8,7 @@ headers
 #include "../../lunar/lunar.h"
 #include "../../lunar/lunar-enum-types.h"
 %%
-modulename lunarcalendar
+modulename lunar
 %%
 import gobject.GObject as PyGObject_Type       
 import gtk.Widget as PyGtkWidget_Type

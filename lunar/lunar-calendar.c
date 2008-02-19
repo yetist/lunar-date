@@ -2317,6 +2317,17 @@ calendar_paint_main (LunarCalendar *calendar)
 }
 
 static void
+calendar_invalidate_header (LunarCalendar *calendar)
+{
+  LunarCalendarPrivate *priv = LUNAR_CALENDAR_GET_PRIVATE (calendar);
+  GdkWindow *window;
+  
+  window = priv->header_win;
+  if (window)
+    gdk_window_invalidate_rect (window, NULL, FALSE);
+}
+
+static void
 calendar_invalidate_arrow (LunarCalendar *calendar,
 			   guint        arrow)
 {
@@ -3461,7 +3472,9 @@ lunar_calendar_select_day (LunarCalendar *calendar,
   {
       priv->lunar_year=lunar_calendar_lunar_year_str(calendar, year, month, day);
   }
-  
+ 
+  calendar_invalidate_header(calendar);
+
   /* Select the new day */
   if (day != 0)
     {
