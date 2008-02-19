@@ -1,5 +1,14 @@
 2008-02-19  yetist  <yetist@gmail.com>
 
+	* lunar/lunar-main.c: 
+	* lunar/lunar-date.c: 
+	* tests/test-date.c: 
+	* Makefile.am: 
+	* po/zh_CN.po: 
+	filled in "This file is part of ________."
+
+2008-02-19  yetist  <yetist@gmail.com>
+
 	* lunar/lunar-date.h: 
 	* lunar/update-calendar.sh: 
 	* lunar/lunar.h: 

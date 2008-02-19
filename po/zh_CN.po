@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lunar-applet\n"
+"Project-Id-Version: liblunar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-01 15:44+0800\n"
+"POT-Creation-Date: 2008-02-19 12:48+0800\n"
 "PO-Revision-Date: 2007-09-03 19:05+0700\n"
 "Last-Translator: yetist <yetist@gmail.com>\n"
 "Language-Team: yetist@gmail.com <yetist@gmail.com>\n"
@@ -377,7 +377,8 @@ msgstr "闰"
 msgid "Internal error: pick a larger constant for BYEAR."
 msgstr "内部错误：参考年的数值过小。"
 
-#: ../lunar/lunar-date.c:884 ../lunar/lunar-date.c:893 ../lunar/lunar-date.c:931
+#: ../lunar/lunar-date.c:884 ../lunar/lunar-date.c:893
+#: ../lunar/lunar-date.c:931
 #, c-format
 msgid "Day out of range: \"%d\""
 msgstr "日超出范围：\"%d\""
@@ -451,7 +452,7 @@ msgstr "%d"
 msgid "calendar year format|%Y"
 msgstr "%Y"
 
-#: ../lunar/lunar-calendar.c:3635
+#: ../lunar/lunar-calendar.c:3648
 msgid "Nian %(shengxiao) %(Y60)%(M60)%(D60)"
 msgstr "年 %(shengxiao) %(Y60)%(M60)%(D60)"
 
