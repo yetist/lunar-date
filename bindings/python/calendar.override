@@ -5,10 +5,10 @@ headers
 #include <pygtk/pygtk.h>
 #include <pygobject.h>
 #include <gtk/gtk.h>
-#include "../../gcl/gcl.h"
-#include "../../gcl/gcl-enum-types.h"
+#include "../../lunar/lunar.h"
+#include "../../lunar/lunar-enum-types.h"
 %%
-modulename gclcalendar
+modulename lunarcalendar
 %%
 import gobject.GObject as PyGObject_Type       
 import gtk.Widget as PyGtkWidget_Type

@@ -1,9 +1,9 @@
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = po gcl docs tests data bindings
+SUBDIRS = po lunar docs tests data bindings
 
 EXTRA_DIST =                    \
 	autogen.sh		\
-	libgcl-1.pc.in		\
+	liblunar-1.pc.in		\
         ChangeLog               \
         intltool-extract.in     \
         intltool-merge.in       \
@@ -15,7 +15,7 @@ DISTCLEANFILES =                \
         intltool-update
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = libgcl-1.pc
+pkgconfig_DATA = liblunar-1.pc
 
 DISTCHECK_CONFIGURE_FLAGS =     \
 	--enable-gtk-doc

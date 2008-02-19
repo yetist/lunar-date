@@ -1,25 +1,25 @@
-Source: libgcl
+Source: liblunar
 Priority: extra
 Maintainer: yetist <yetist@gmail.com>
 Build-Depends: debhelper (>= 5), autotools-dev
 Standards-Version: 3.7.2
 Section: libs
 
-Package: libgcl-dev
+Package: liblunar-dev
 Section: libdevel
 Architecture: any
-Depends: libgcl0 (= ${Source-Version})
+Depends: liblunar0 (= ${Source-Version})
 Description: Development files for the Chinese Lunar library
  Chinese Lunar library is a chinese lunar translate library.
 
-Package: libgcl0
+Package: liblunar0
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Chinese Lunar library
  Chinese Lunar library is a chinese lunar translate library.
 
-Package: libgcl-doc
+Package: liblunar-doc
 Section: doc
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}

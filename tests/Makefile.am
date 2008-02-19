@@ -3,8 +3,8 @@ NULL=
 INCLUDES =                                              \
 	-I$(top_srcdir)					\
         -I$(srcdir) 					\
-	$(LIBGCL_CFLAGS)				\
-        -DGCL_HOLIDAYDIR=\""$(datadir)/liblunar/"\"     \
+	$(LIBLUNAR_CFLAGS)				\
+        -DLUNAR_HOLIDAYDIR=\""$(datadir)/liblunar/"\"     \
 	$(NULL)
 
 noinst_PROGRAMS =			\
@@ -20,9 +20,9 @@ test_calendar_SOURCES =          		\
 AM_CPPFLAGS =                		\
         -I.                  		\
         -I$(top_srcdir)      		\
-        $(LIBGCL_CFLAGS) 
+        $(LIBLUNAR_CFLAGS) 
 
 LIBS =                       		\
-        $(LIBGCL_LIBS)       		\
-        $(top_builddir)/gcl/libgcl-1.la
+        $(LIBLUNAR_LIBS)       		\
+        $(top_builddir)/lunar/liblunar-1.la
 

@@ -1,6 +1,6 @@
 /* vi: set sw=4 ts=4: */
 /*
- * gcl.h
+ * lunar.h
  *
  * This file is part of ________.
  *
@@ -22,11 +22,11 @@
  * Boston, MA 02111-1307, USA.
  * */
 
-#ifndef __GCL_H__
-#define __GCL_H__  1
+#ifndef __LUNAR_H__
+#define __LUNAR_H__  1
 
-#include <gcl/gcl-date.h>
-#include <gcl/gcl-calendar.h>
-#include <gcl/gcl-main.h>
+#include <lunar/lunar-date.h>
+#include <lunar/lunar-calendar.h>
+#include <lunar/lunar-main.h>
 
-#endif /*__GCL_H__ */
+#endif /*__LUNAR_H__ */

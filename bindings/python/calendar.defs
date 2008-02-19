@@ -1,45 +1,45 @@
 ;; -*- scheme -*-
 ; object definitions ...
 (define-object Calendar
-  (in-module "Gcl")
+  (in-module "Lunar")
   (parent "GtkWidget")
-  (c-name "GclCalendar")
-  (gtype-id "GCL_TYPE_CALENDAR")
+  (c-name "LunarCalendar")
+  (gtype-id "LUNAR_TYPE_CALENDAR")
 )
 
 ;; Enumerations and flags ...
 
 (define-flags CalendarDisplayOptions
-  (in-module "Gcl")
-  (c-name "GclCalendarDisplayOptions")
-  (gtype-id "GCL_TYPE_CALENDAR_DISPLAY_OPTIONS")
+  (in-module "Lunar")
+  (c-name "LunarCalendarDisplayOptions")
+  (gtype-id "LUNAR_TYPE_CALENDAR_DISPLAY_OPTIONS")
   (values
-    '("show-heading" "GCL_CALENDAR_SHOW_HEADING")
-    '("show-day-names" "GCL_CALENDAR_SHOW_DAY_NAMES")
-    '("no-month-change" "GCL_CALENDAR_NO_MONTH_CHANGE")
-    '("show-week-numbers" "GCL_CALENDAR_SHOW_WEEK_NUMBERS")
-    '("week-start-monday" "GCL_CALENDAR_WEEK_START_MONDAY")
-    '("show-lunar" "GCL_CALENDAR_SHOW_LUNAR")
+    '("show-heading" "LUNAR_CALENDAR_SHOW_HEADING")
+    '("show-day-names" "LUNAR_CALENDAR_SHOW_DAY_NAMES")
+    '("no-month-change" "LUNAR_CALENDAR_NO_MONTH_CHANGE")
+    '("show-week-numbers" "LUNAR_CALENDAR_SHOW_WEEK_NUMBERS")
+    '("week-start-monday" "LUNAR_CALENDAR_WEEK_START_MONDAY")
+    '("show-lunar" "LUNAR_CALENDAR_SHOW_LUNAR")
   )
 )
 
 
-;; From gcl-calendar.h
+;; From lunar-calendar.h
 
-(define-function gcl_calendar_get_type
-  (c-name "gcl_calendar_get_type")
+(define-function lunar_calendar_get_type
+  (c-name "lunar_calendar_get_type")
   (return-type "GType")
 )
 
-(define-function gcl_calendar_new
-  (c-name "gcl_calendar_new")
-  (is-constructor-of "GclCalendar")
+(define-function lunar_calendar_new
+  (c-name "lunar_calendar_new")
+  (is-constructor-of "LunarCalendar")
   (return-type "GtkWidget*")
 )
 
 (define-method select_month
-  (of-object "GclCalendar")
-  (c-name "gcl_calendar_select_month")
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_select_month")
   (return-type "gboolean")
   (parameters
     '("guint" "month")
@@ -48,8 +48,8 @@
 )
 
 (define-method select_day
-  (of-object "GclCalendar")
-  (c-name "gcl_calendar_select_day")
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_select_day")
   (return-type "none")
   (parameters
     '("guint" "day")
@@ -57,8 +57,8 @@
 )
 
 (define-method mark_day
-  (of-object "GclCalendar")
-  (c-name "gcl_calendar_mark_day")
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_mark_day")
   (return-type "gboolean")
   (parameters
     '("guint" "day")
@@ -66,8 +66,8 @@
 )
 
 (define-method unmark_day
-  (of-object "GclCalendar")
-  (c-name "gcl_calendar_unmark_day")
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_unmark_day")
   (return-type "gboolean")
   (parameters
     '("guint" "day")
@@ -75,38 +75,38 @@
 )
 
 (define-method clear_marks
-  (of-object "GclCalendar")
-  (c-name "gcl_calendar_clear_marks")
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_clear_marks")
   (return-type "none")
 )
 
 (define-method set_display_options
-  (of-object "GclCalendar")
-  (c-name "gcl_calendar_set_display_options")
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_set_display_options")
   (return-type "none")
   (parameters
-    '("GclCalendarDisplayOptions" "flags")
+    '("LunarCalendarDisplayOptions" "flags")
   )
 )
 
 (define-method get_display_options
-  (of-object "GclCalendar")
-  (c-name "gcl_calendar_get_display_options")
-  (return-type "GclCalendarDisplayOptions")
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_get_display_options")
+  (return-type "LunarCalendarDisplayOptions")
 )
 
 (define-method display_options
-  (of-object "GclCalendar")
-  (c-name "gcl_calendar_display_options")
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_display_options")
   (return-type "none")
   (parameters
-    '("GclCalendarDisplayOptions" "flags")
+    '("LunarCalendarDisplayOptions" "flags")
   )
 )
 
 (define-method get_date
-  (of-object "GclCalendar")
-  (c-name "gcl_calendar_get_date")
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_get_date")
   (return-type "none")
   (parameters
     '("guint*" "year")
@@ -116,23 +116,23 @@
 )
 
 (define-method freeze
-  (of-object "GclCalendar")
-  (c-name "gcl_calendar_freeze")
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_freeze")
   (return-type "none")
 )
 
 (define-method thaw
-  (of-object "GclCalendar")
-  (c-name "gcl_calendar_thaw")
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_thaw")
   (return-type "none")
 )
 
 
 
-;; From gcl-main.h
+;; From lunar-main.h
 
-(define-function gcl_init
-  (c-name "gcl_init")
+(define-function lunar_init
+  (c-name "lunar_init")
   (return-type "none")
   (parameters
     '("int*" "argc")

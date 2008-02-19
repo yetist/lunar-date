@@ -1,6 +1,6 @@
 /* vi: set sw=4 ts=4: */
 /*
- * gcl-date.h
+ * lunar-date.h
  *
  * This file is part of ________.
  *
@@ -22,8 +22,8 @@
  * Boston, MA 02111-1307, USA.
  * */
 
-#ifndef __GCL_DATE_H__
-#define __GCL_DATE_H__  1
+#ifndef __LUNAR_DATE_H__
+#define __LUNAR_DATE_H__  1
 
 #include    <glib.h>
 
@@ -31,19 +31,19 @@ G_BEGIN_DECLS
 
 typedef guint8  GDateHour;
 typedef struct  _CLDate              CLDate;
-typedef struct  _GCLDate             GCLDate;
+typedef struct  _LUNARDate             LUNARDate;
 
-#define GCL_DATE_ERROR	(gcl_date_error_quark ())
+#define LUNAR_DATE_ERROR	(lunar_date_error_quark ())
 
 typedef enum
 {
-    GCL_DATE_ERROR_INTERNAL,
-    GCL_DATE_ERROR_DAY,
-    GCL_DATE_ERROR_YEAR,
-    GCL_DATE_ERROR_LEAP
-} GCLDateError;
+    LUNAR_DATE_ERROR_INTERNAL,
+    LUNAR_DATE_ERROR_DAY,
+    LUNAR_DATE_ERROR_YEAR,
+    LUNAR_DATE_ERROR_LEAP
+} LUNARDateError;
 
-GQuark gcl_date_error_quark (void);
+GQuark lunar_date_error_quark (void);
 
 struct _CLDate
 {
@@ -54,24 +54,24 @@ struct _CLDate
     gboolean    isleap; /* the lunar month is a leap month */
 };
 
-GCLDate*    gcl_date_new                (void);
-void        gcl_date_set_solar_date     (GCLDate *date,
+LUNARDate*    lunar_date_new                (void);
+void        lunar_date_set_solar_date     (LUNARDate *date,
                                             GDateYear year,
                                             GDateMonth month,
                                             GDateDay day,
                                             GDateHour hour,
                                             GError  **error);
-void        gcl_date_set_lunar_date     (GCLDate *date,
+void        lunar_date_set_lunar_date     (LUNARDate *date,
                                             GDateYear year,
                                             GDateMonth month, 
                                             GDateDay day,
                                             GDateHour hour,
                                             gboolean isleap,
                                             GError **error);
-gchar*      gcl_date_get_jieri          (GCLDate *date);
-gchar*      gcl_date_strftime           (GCLDate *date, const char *format);
-void        gcl_date_free               (GCLDate *date);
+gchar*      lunar_date_get_jieri          (LUNARDate *date);
+gchar*      lunar_date_strftime           (LUNARDate *date, const char *format);
+void        lunar_date_free               (LUNARDate *date);
 
 G_END_DECLS
 
-#endif /*__GCL_DATE_H__ */
+#endif /*__LUNAR_DATE_H__ */

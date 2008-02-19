@@ -1,4 +1,4 @@
-libgcl (@VERSION@-1) unstable; urgency=low
+liblunar (@VERSION@-1) unstable; urgency=low
 
   * Initial release.
 

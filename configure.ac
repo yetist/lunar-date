@@ -1,25 +1,25 @@
 AC_PREREQ(2.59)
 
 
-m4_define([libgcl_major_version], [0])
-m4_define([libgcl_minor_version], [2])
-m4_define([libgcl_micro_version], [4])
-m4_define([libgcl_real_version], [libgcl_major_version.libgcl_minor_version.libgcl_micro_version])
-m4_define([libgcl_version], [0.2.4])
+m4_define([liblunar_major_version], [0])
+m4_define([liblunar_minor_version], [2])
+m4_define([liblunar_micro_version], [4])
+m4_define([liblunar_real_version], [liblunar_major_version.liblunar_minor_version.liblunar_micro_version])
+m4_define([liblunar_version], [0.2.4])
 
 
-AC_INIT(libgcl, libgcl_version, yetist@gmail.com)
+AC_INIT(liblunar, liblunar_version, yetist@gmail.com)
 AC_COPYRIGHT([Copyright (C) 2007 yetist@gmail.com])
 
 AM_INIT_AUTOMAKE(1.8 dist-bzip2 no-define)
-AC_CONFIG_SRCDIR(gcl/gcl-date.h)
+AC_CONFIG_SRCDIR(lunar/lunar-date.h)
 AM_CONFIG_HEADER(config.h)
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_MAINTAINER_MODE
 
-LIBGCL_VERSION=libgcl_real_version
-AC_SUBST(LIBGCL_VERSION)
+LIBLUNAR_VERSION=liblunar_real_version
+AC_SUBST(LIBLUNAR_VERSION)
 
 AC_PROG_CC
 AC_ISC_POSIX
@@ -42,9 +42,9 @@ AC_SUBST(CUR_DATE)
 GLIB2_REQUIRED=2.4.0
 GTK_REQUIRED=2.4.0
 
-PKG_CHECK_MODULES(LIBGCL, glib-2.0 >= $GLIB2_REQUIRED gtk+-2.0 >= $GTK_REQUIRED)
-AC_SUBST(LIBGCL_CFLAGS)
-AC_SUBST(LIBGCL_LIBS)
+PKG_CHECK_MODULES(LIBLUNAR, glib-2.0 >= $GLIB2_REQUIRED gtk+-2.0 >= $GTK_REQUIRED)
+AC_SUBST(LIBLUNAR_CFLAGS)
+AC_SUBST(LIBLUNAR_LIBS)
 
 
 dnl run in source tree
@@ -201,16 +201,16 @@ AC_SUBST(enable_python)
 
 
 dnl  Language Support 
-GETTEXT_PACKAGE=libgcl
+GETTEXT_PACKAGE=liblunar
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Define the gettext package to be used])
 AC_SUBST(GETTEXT_PACKAGE)
 AM_GLIB_GNU_GETTEXT
 
-AM_GLIB_DEFINE_LOCALEDIR(LIBGCL_LOCALEDIR)
+AM_GLIB_DEFINE_LOCALEDIR(LIBLUNAR_LOCALEDIR)
 
 AC_CONFIG_FILES([
 Makefile
-gcl/Makefile
+lunar/Makefile
 bindings/Makefile
 bindings/python/Makefile
 po/Makefile.in
@@ -220,7 +220,7 @@ debian/changelog
 docs/Makefile
 docs/reference/Makefile
 docs/reference/version.xml
-libgcl-1.pc
+liblunar-1.pc
 ])
 
 AC_OUTPUT

@@ -6,7 +6,7 @@
 AUTOMAKE_OPTIONS = 1.6
 
 # The name of the module, e.g. 'glib'.
-DOC_MODULE=gcl
+DOC_MODULE=lunar
 
 # The top-level SGML file. You can change this if you want to.
 DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
@@ -14,7 +14,7 @@ DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
 # The directory containing the source code. Relative to $(srcdir).
 # gtk-doc will search all .c & .h files beneath here for inline comments
 # documenting the functions and macros.
-DOC_SOURCE_DIR=../../gcl
+DOC_SOURCE_DIR=../../lunar
 
 # Extra options to pass to gtkdoc-scangobj. Not normally needed.
 SCANGOBJ_OPTIONS=
@@ -35,8 +35,8 @@ MKTMPL_OPTIONS=
 FIXXREF_OPTIONS=
 
 # Used for dependencies. The docs will be rebuilt if any of these change.
-HFILE_GLOB=$(top_srcdir)/gcl/*.h
-CFILE_GLOB=$(top_srcdir)/gcl/*.c
+HFILE_GLOB=$(top_srcdir)/lunar/*.h
+CFILE_GLOB=$(top_srcdir)/lunar/*.c
 
 # Header files to ignore when scanning (These are internal to gedit).
 IGNORE_HFILES= 
@@ -64,11 +64,11 @@ expand_content_files=
 INCLUDES=                                               \
         $(YETI_CFLAGS)                                  \
         -I$(top_srcdir)                                 \
-        -I$(top_builddir)/gcl
+        -I$(top_builddir)/lunar
 
 GTKDOC_LIBS=                                            \
         $(YETI_LIBS)                               \
-        $(top_builddir)/gcl/gcl-1.la
+        $(top_builddir)/lunar/lunar-1.la
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.
 include $(top_srcdir)/gtk-doc.make

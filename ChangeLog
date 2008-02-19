@@ -1,5 +1,22 @@
 2008-02-19  yetist  <yetist@gmail.com>
 
+	* AUTHORS: 
+	* Makefile.am: 
+	* README: 
+	* autogen.sh: 
+	* configure.ac: 
+	* liblunar-1.pc.in: 
+	* bindings/: 
+	* data/: 
+	* debian/: 
+	* docs/: 
+	* lunar/: 
+	* po/: 
+	* tests/: 
+	rename api from "gcl" to "lunar"
+
+2008-02-19  yetist  <yetist@gmail.com>
+
 	* lunar/*lunar*:
 	* gcl/*gcl*: 
 	* debian/*lunar*: 

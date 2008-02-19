@@ -22,26 +22,26 @@
  * Boston, MA 02111-1307, USA.
  * */
 
-#include <gcl/gcl.h>
+#include <lunar/lunar.h>
 
 
-void display (GCLDate *date, gboolean islunar)
+void display (LUNARDate *date, gboolean islunar)
 {
     char a[13][255];
     CLDate *d;
     g_printf("\n");
-    g_printf("format:%%(YEAR)年%%(MONTH)月%%(DAY)日%%(HOUR)时->%s\n", gcl_date_strftime(date, "%(YEAR)年%(MONTH)月%(DAY)日%(HOUR)时"));
-    g_printf("format:%%(year)年%%(month)月%%(day)日%%(hour)时->%s\n", gcl_date_strftime(date, "%(year)年%(month)月%(day)日%(hour)时"));
-    g_printf("format:%%(NIAN)年%%(YUE)月%%(RI)日%%(SHI)时->%s\n", gcl_date_strftime(date, "%(NIAN)年%(YUE)月%(RI)日%(SHI)时"));
-    g_printf("format:%%(nian)年%%(yue)月%%(ri)日%%(shi)时->%s\n", gcl_date_strftime(date, "%(nian)年%(yue)月%(ri)日%(shi)时"));
-    g_printf("format:%%(Y60)年%%(M60)月%%(D60)日->%s\n", gcl_date_strftime(date, "%(Y60)年%(M60)月%(D60)日"));
-    g_printf("format:%%(Y8)年%%(M8)月%%(D8)日->%s\n", gcl_date_strftime(date, "%(Y8)年%(M8)月%(D8)日"));
-    g_printf("format:%%(shengxiao)->%s\n", gcl_date_strftime(date, "%(shengxiao)"));
-    g_printf("format:%%(jieri)->%s\n", gcl_date_strftime(date, "%(jieri)"));
+    g_printf("format:%%(YEAR)年%%(MONTH)月%%(DAY)日%%(HOUR)时->%s\n", lunar_date_strftime(date, "%(YEAR)年%(MONTH)月%(DAY)日%(HOUR)时"));
+    g_printf("format:%%(year)年%%(month)月%%(day)日%%(hour)时->%s\n", lunar_date_strftime(date, "%(year)年%(month)月%(day)日%(hour)时"));
+    g_printf("format:%%(NIAN)年%%(YUE)月%%(RI)日%%(SHI)时->%s\n", lunar_date_strftime(date, "%(NIAN)年%(YUE)月%(RI)日%(SHI)时"));
+    g_printf("format:%%(nian)年%%(yue)月%%(ri)日%%(shi)时->%s\n", lunar_date_strftime(date, "%(nian)年%(yue)月%(ri)日%(shi)时"));
+    g_printf("format:%%(Y60)年%%(M60)月%%(D60)日->%s\n", lunar_date_strftime(date, "%(Y60)年%(M60)月%(D60)日"));
+    g_printf("format:%%(Y8)年%%(M8)月%%(D8)日->%s\n", lunar_date_strftime(date, "%(Y8)年%(M8)月%(D8)日"));
+    g_printf("format:%%(shengxiao)->%s\n", lunar_date_strftime(date, "%(shengxiao)"));
+    g_printf("format:%%(jieri)->%s\n", lunar_date_strftime(date, "%(jieri)"));
 }
 
 /*
-gchar* gcl_date_strftime (GCLDate *date, const char *format);
+gchar* lunar_date_strftime (LUNARDate *date, const char *format);
  * %(YEAR)年%(MONTH)月%(DAY)日      公历：大写
  * %(year)年%(month)月%(day)日      公历：小写
  * %(NIAN)年%(YUE)月%(RI)日%(SHI)时 阴历：大写
@@ -57,9 +57,9 @@ gchar* gcl_date_strftime (GCLDate *date, const char *format);
 void random_test(void)
 {
     GError *error = NULL;
-    GCLDate *date;
+    LUNARDate *date;
 
-    date = gcl_date_new();
+    date = lunar_date_new();
     GDateYear year = random() % 150 + 1900;
     GDateMonth month = random() % 12 + 1;
     GDateDay day = random() % 31 + 1;
@@ -67,7 +67,7 @@ void random_test(void)
     GDateHour hour = random() % 24 + 1;
 
     g_printf("Test Date: <%u-%u-%u %u>\n", year, month, day, hour);
-    gcl_date_set_lunar_date(date, year, month, day , hour, isleap, &error);
+    lunar_date_set_lunar_date(date, year, month, day , hour, isleap, &error);
     if (error)
     {
         g_printf("Error: %s \n", error->message);
@@ -75,7 +75,7 @@ void random_test(void)
     }
     display(date, TRUE);
 
-    gcl_date_set_solar_date(date, year, month, day , hour, &error);
+    lunar_date_set_solar_date(date, year, month, day , hour, &error);
     if (error)
     {
         g_printf("Error: %s \n", error->message);
@@ -83,15 +83,15 @@ void random_test(void)
     }
     display(date, FALSE);
 
-    gcl_date_free(date);
+    lunar_date_free(date);
 }
 
 void test(gchar* argv[])
 {
     GError *error = NULL;
-    GCLDate *date;
+    LUNARDate *date;
 
-    date = gcl_date_new();
+    date = lunar_date_new();
 
     GDateYear year = atoi(argv[1]);
     GDateMonth month =  atoi(argv[2]);
@@ -101,7 +101,7 @@ void test(gchar* argv[])
     GDateHour hour = random() % 24 + 1;
 
     g_printf("Test Date: <%u-%u-%u %u>\n", year, month, day, hour);
-    gcl_date_set_lunar_date(date, year, month, day , hour, isleap, &error);
+    lunar_date_set_lunar_date(date, year, month, day , hour, isleap, &error);
     if (error)
     {
         g_printf("Error: %s \n", error->message);
@@ -109,7 +109,7 @@ void test(gchar* argv[])
     }
     display(date, TRUE);
 
-    gcl_date_set_solar_date(date, year, month, day , hour, &error);
+    lunar_date_set_solar_date(date, year, month, day , hour, &error);
     if (error)
     {
         g_printf("Error: %s \n", error->message);
@@ -117,12 +117,12 @@ void test(gchar* argv[])
     }
     display(date, FALSE);
 
-    gcl_date_free(date);
+    lunar_date_free(date);
 }
 
 int main (int argc, char* argv[])
 {
-    gcl_init(&argc, &argv);
+    lunar_init(&argc, &argv);
     if (argc == 4)
     {
         test(argv);

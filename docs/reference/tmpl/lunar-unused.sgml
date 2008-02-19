@@ -19,7 +19,7 @@
 @JIERI_WEEK: 
 @JIERI_LUNAR: 
 
-<!-- ##### FUNCTION gcl_date_get_bazi ##### -->
+<!-- ##### FUNCTION lunar_date_get_bazi ##### -->
 <para>
 
 </para>
@@ -31,7 +31,7 @@
 @hour: 
 @Returns: 
 
-<!-- ##### FUNCTION gcl_date_get_ganzhi ##### -->
+<!-- ##### FUNCTION lunar_date_get_ganzhi ##### -->
 <para>
 
 </para>
@@ -43,7 +43,7 @@
 @hour: 
 @Returns: 
 
-<!-- ##### FUNCTION gcl_date_get_lunar_date ##### -->
+<!-- ##### FUNCTION lunar_date_get_lunar_date ##### -->
 <para>
 
 </para>
@@ -55,7 +55,7 @@
 @hour: 
 @Returns: 
 
-<!-- ##### FUNCTION gcl_date_get_shengxiao ##### -->
+<!-- ##### FUNCTION lunar_date_get_shengxiao ##### -->
 <para>
 
 </para>
@@ -63,7 +63,7 @@
 @date: 
 @Returns: 
 
-<!-- ##### FUNCTION gcl_date_get_solar_date ##### -->
+<!-- ##### FUNCTION lunar_date_get_solar_date ##### -->
 <para>
 
 </para>

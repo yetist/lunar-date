@@ -17,377 +17,377 @@ msgstr ""
 "X-Poedit-Language: Chinese\n"
 "X-Poedit-Country: CHINA\n"
 
-#: ../gcl/gcl-date.c:280
+#: ../lunar/lunar-date.c:280
 msgid "Jia3"
 msgstr "甲"
 
-#: ../gcl/gcl-date.c:280
+#: ../lunar/lunar-date.c:280
 msgid "Yi3"
 msgstr "乙"
 
-#: ../gcl/gcl-date.c:280
+#: ../lunar/lunar-date.c:280
 msgid "Bing3"
 msgstr "丙"
 
-#: ../gcl/gcl-date.c:280
+#: ../lunar/lunar-date.c:280
 msgid "Ding1"
 msgstr "丁"
 
-#: ../gcl/gcl-date.c:280
+#: ../lunar/lunar-date.c:280
 msgid "Wu4"
 msgstr "戊"
 
-#: ../gcl/gcl-date.c:281
+#: ../lunar/lunar-date.c:281
 msgid "Ji3"
 msgstr "己"
 
-#: ../gcl/gcl-date.c:281
+#: ../lunar/lunar-date.c:281
 msgid "Geng1"
 msgstr "庚"
 
-#: ../gcl/gcl-date.c:281
+#: ../lunar/lunar-date.c:281
 msgid "Xin1"
 msgstr "辛"
 
-#: ../gcl/gcl-date.c:281
+#: ../lunar/lunar-date.c:281
 msgid "Ren2"
 msgstr "壬"
 
-#: ../gcl/gcl-date.c:281
+#: ../lunar/lunar-date.c:281
 msgid "Gui3"
 msgstr "癸"
 
-#: ../gcl/gcl-date.c:285
+#: ../lunar/lunar-date.c:285
 msgid "Zi3"
 msgstr "子"
 
-#: ../gcl/gcl-date.c:285
+#: ../lunar/lunar-date.c:285
 msgid "Chou3"
 msgstr "丑"
 
-#: ../gcl/gcl-date.c:285
+#: ../lunar/lunar-date.c:285
 msgid "Yin2"
 msgstr "寅"
 
-#: ../gcl/gcl-date.c:285
+#: ../lunar/lunar-date.c:285
 msgid "Mao3"
 msgstr "卯"
 
-#: ../gcl/gcl-date.c:285
+#: ../lunar/lunar-date.c:285
 msgid "Chen2"
 msgstr "辰"
 
-#: ../gcl/gcl-date.c:285
+#: ../lunar/lunar-date.c:285
 msgid "Si4"
 msgstr "巳"
 
-#: ../gcl/gcl-date.c:286
+#: ../lunar/lunar-date.c:286
 msgid "Wu3"
 msgstr "午"
 
-#: ../gcl/gcl-date.c:286
+#: ../lunar/lunar-date.c:286
 msgid "Wei4"
 msgstr "未"
 
-#: ../gcl/gcl-date.c:286
+#: ../lunar/lunar-date.c:286
 msgid "Shen1"
 msgstr "申"
 
-#: ../gcl/gcl-date.c:286
+#: ../lunar/lunar-date.c:286
 msgid "You3"
 msgstr "酉"
 
-#: ../gcl/gcl-date.c:286
+#: ../lunar/lunar-date.c:286
 msgid "Xu1"
 msgstr "戌"
 
-#: ../gcl/gcl-date.c:286
+#: ../lunar/lunar-date.c:286
 msgid "Hai4"
 msgstr "亥"
 
-#: ../gcl/gcl-date.c:290
+#: ../lunar/lunar-date.c:290
 msgid "Mouse"
 msgstr "鼠"
 
-#: ../gcl/gcl-date.c:290
+#: ../lunar/lunar-date.c:290
 msgid "Ox"
 msgstr "牛"
 
-#: ../gcl/gcl-date.c:290
+#: ../lunar/lunar-date.c:290
 msgid "Tiger"
 msgstr "虎"
 
-#: ../gcl/gcl-date.c:290
+#: ../lunar/lunar-date.c:290
 msgid "Rabbit"
 msgstr "兔"
 
-#: ../gcl/gcl-date.c:290
+#: ../lunar/lunar-date.c:290
 msgid "Dragon"
 msgstr "龙"
 
-#: ../gcl/gcl-date.c:290
+#: ../lunar/lunar-date.c:290
 msgid "Snake"
 msgstr "蛇"
 
-#: ../gcl/gcl-date.c:291
+#: ../lunar/lunar-date.c:291
 msgid "Horse"
 msgstr "马"
 
-#: ../gcl/gcl-date.c:291
+#: ../lunar/lunar-date.c:291
 msgid "Goat"
 msgstr "羊"
 
-#: ../gcl/gcl-date.c:291
+#: ../lunar/lunar-date.c:291
 msgid "Monkey"
 msgstr "猴"
 
-#: ../gcl/gcl-date.c:291
+#: ../lunar/lunar-date.c:291
 msgid "Rooster"
 msgstr "鸡"
 
-#: ../gcl/gcl-date.c:291
+#: ../lunar/lunar-date.c:291
 msgid "Dog"
 msgstr "狗"
 
-#: ../gcl/gcl-date.c:291
+#: ../lunar/lunar-date.c:291
 msgid "Pig"
 msgstr "猪"
 
-#: ../gcl/gcl-date.c:294
+#: ../lunar/lunar-date.c:294
 msgid "Jan"
 msgstr "一月"
 
-#: ../gcl/gcl-date.c:294
+#: ../lunar/lunar-date.c:294
 msgid "Feb"
 msgstr "二月"
 
-#: ../gcl/gcl-date.c:294
+#: ../lunar/lunar-date.c:294
 msgid "Mar"
 msgstr "三月"
 
-#: ../gcl/gcl-date.c:294
+#: ../lunar/lunar-date.c:294
 msgid "Apr"
 msgstr "四月"
 
-#: ../gcl/gcl-date.c:294
+#: ../lunar/lunar-date.c:294
 msgid "May"
 msgstr "五月"
 
-#: ../gcl/gcl-date.c:294
+#: ../lunar/lunar-date.c:294
 msgid "Jun"
 msgstr "六月"
 
-#: ../gcl/gcl-date.c:295
+#: ../lunar/lunar-date.c:295
 msgid "Jul"
 msgstr "七月"
 
-#: ../gcl/gcl-date.c:295
+#: ../lunar/lunar-date.c:295
 msgid "Aug"
 msgstr "八月"
 
-#: ../gcl/gcl-date.c:295
+#: ../lunar/lunar-date.c:295
 msgid "Sep"
 msgstr "九月"
 
-#: ../gcl/gcl-date.c:295
+#: ../lunar/lunar-date.c:295
 msgid "Oct"
 msgstr "十月"
 
-#: ../gcl/gcl-date.c:295
+#: ../lunar/lunar-date.c:295
 msgid "Nov"
 msgstr "冬月"
 
-#: ../gcl/gcl-date.c:295
+#: ../lunar/lunar-date.c:295
 msgid "Dec"
 msgstr "腊月"
 
-#: ../gcl/gcl-date.c:298
+#: ../lunar/lunar-date.c:298
 msgid "Chu1Yi1"
 msgstr "初一"
 
-#: ../gcl/gcl-date.c:298
+#: ../lunar/lunar-date.c:298
 msgid "Chu1Er4"
 msgstr "初二"
 
-#: ../gcl/gcl-date.c:298
+#: ../lunar/lunar-date.c:298
 msgid "Chu1San1"
 msgstr "初三"
 
-#: ../gcl/gcl-date.c:298
+#: ../lunar/lunar-date.c:298
 msgid "Chu1Si4"
 msgstr "初四"
 
-#: ../gcl/gcl-date.c:298
+#: ../lunar/lunar-date.c:298
 msgid "Chu1Wu3"
 msgstr "初五"
 
-#: ../gcl/gcl-date.c:299
+#: ../lunar/lunar-date.c:299
 msgid "Chu1Liu6"
 msgstr "初六"
 
-#: ../gcl/gcl-date.c:299
+#: ../lunar/lunar-date.c:299
 msgid "Chu1Qi1"
 msgstr "初七"
 
-#: ../gcl/gcl-date.c:299
+#: ../lunar/lunar-date.c:299
 msgid "Chu1Ba1"
 msgstr "初八"
 
-#: ../gcl/gcl-date.c:299
+#: ../lunar/lunar-date.c:299
 msgid "Chu1Jiu3"
 msgstr "初九"
 
-#: ../gcl/gcl-date.c:299
+#: ../lunar/lunar-date.c:299
 msgid "Chu1Shi2"
 msgstr "初十"
 
-#: ../gcl/gcl-date.c:300
+#: ../lunar/lunar-date.c:300
 msgid "Shi2Yi1"
 msgstr "十一"
 
-#: ../gcl/gcl-date.c:300
+#: ../lunar/lunar-date.c:300
 msgid "Shi2Er4"
 msgstr "十二"
 
-#: ../gcl/gcl-date.c:300
+#: ../lunar/lunar-date.c:300
 msgid "Shi1San1"
 msgstr "十三"
 
-#: ../gcl/gcl-date.c:300
+#: ../lunar/lunar-date.c:300
 msgid "Shi1Si4"
 msgstr "十四"
 
-#: ../gcl/gcl-date.c:300
+#: ../lunar/lunar-date.c:300
 msgid "Shi1Wu3"
 msgstr "十五"
 
-#: ../gcl/gcl-date.c:301
+#: ../lunar/lunar-date.c:301
 msgid "Shi1Liu6"
 msgstr "十六"
 
-#: ../gcl/gcl-date.c:301
+#: ../lunar/lunar-date.c:301
 msgid "Shi1Qi1"
 msgstr "十七"
 
-#: ../gcl/gcl-date.c:301
+#: ../lunar/lunar-date.c:301
 msgid "Shi1Ba1"
 msgstr "十八"
 
-#: ../gcl/gcl-date.c:301
+#: ../lunar/lunar-date.c:301
 msgid "Shi1Jiu3"
 msgstr "十九"
 
-#: ../gcl/gcl-date.c:301
+#: ../lunar/lunar-date.c:301
 msgid "Er4Shi2"
 msgstr "二十"
 
-#: ../gcl/gcl-date.c:302
+#: ../lunar/lunar-date.c:302
 msgid "Er4Yi1"
 msgstr "廿一"
 
-#: ../gcl/gcl-date.c:302
+#: ../lunar/lunar-date.c:302
 msgid "Er4Er4"
 msgstr "廿二"
 
-#: ../gcl/gcl-date.c:302
+#: ../lunar/lunar-date.c:302
 msgid "Er4San1"
 msgstr "廿三"
 
-#: ../gcl/gcl-date.c:302
+#: ../lunar/lunar-date.c:302
 msgid "Er4Si4"
 msgstr "廿四"
 
-#: ../gcl/gcl-date.c:302
+#: ../lunar/lunar-date.c:302
 msgid "Er4Wu3"
 msgstr "廿五"
 
-#: ../gcl/gcl-date.c:303
+#: ../lunar/lunar-date.c:303
 msgid "Er4Liu6"
 msgstr "廿六"
 
-#: ../gcl/gcl-date.c:303
+#: ../lunar/lunar-date.c:303
 msgid "Er4Qi1"
 msgstr "廿七"
 
-#: ../gcl/gcl-date.c:303
+#: ../lunar/lunar-date.c:303
 msgid "Er4Ba1"
 msgstr "廿八"
 
-#: ../gcl/gcl-date.c:303
+#: ../lunar/lunar-date.c:303
 msgid "Er4Jiu3"
 msgstr "廿九"
 
-#: ../gcl/gcl-date.c:303
+#: ../lunar/lunar-date.c:303
 msgid "San1Shi2"
 msgstr "三十"
 
-#: ../gcl/gcl-date.c:307
+#: ../lunar/lunar-date.c:307
 msgid "ling2"
 msgstr "○"
 
-#: ../gcl/gcl-date.c:307
+#: ../lunar/lunar-date.c:307
 msgid "yi1"
 msgstr "一"
 
-#: ../gcl/gcl-date.c:307
+#: ../lunar/lunar-date.c:307
 msgid "er4"
 msgstr "二"
 
-#: ../gcl/gcl-date.c:307
+#: ../lunar/lunar-date.c:307
 msgid "san1"
 msgstr "三"
 
-#: ../gcl/gcl-date.c:307
+#: ../lunar/lunar-date.c:307
 msgid "si4"
 msgstr "四"
 
-#: ../gcl/gcl-date.c:308
+#: ../lunar/lunar-date.c:308
 msgid "wu3"
 msgstr "五"
 
-#: ../gcl/gcl-date.c:308
+#: ../lunar/lunar-date.c:308
 msgid "liu6"
 msgstr "六"
 
-#: ../gcl/gcl-date.c:308
+#: ../lunar/lunar-date.c:308
 msgid "qi1"
 msgstr "七"
 
-#: ../gcl/gcl-date.c:308
+#: ../lunar/lunar-date.c:308
 msgid "ba1"
 msgstr "八"
 
-#: ../gcl/gcl-date.c:308
+#: ../lunar/lunar-date.c:308
 msgid "jiu3"
 msgstr "九"
 
-#: ../gcl/gcl-date.c:309
+#: ../lunar/lunar-date.c:309
 msgid "shi2"
 msgstr "十"
 
-#: ../gcl/gcl-date.c:397 ../gcl/gcl-date.c:443
+#: ../lunar/lunar-date.c:397 ../lunar/lunar-date.c:443
 msgid "Year out of range."
 msgstr "年超出范围."
 
-#: ../gcl/gcl-date.c:639
+#: ../lunar/lunar-date.c:639
 msgid "run4"
 msgstr "闰"
 
-#: ../gcl/gcl-date.c:868
+#: ../lunar/lunar-date.c:868
 msgid "Internal error: pick a larger constant for BYEAR."
 msgstr "内部错误：参考年的数值过小。"
 
-#: ../gcl/gcl-date.c:884 ../gcl/gcl-date.c:893 ../gcl/gcl-date.c:931
+#: ../lunar/lunar-date.c:884 ../lunar/lunar-date.c:893 ../lunar/lunar-date.c:931
 #, c-format
 msgid "Day out of range: \"%d\""
 msgstr "日超出范围：\"%d\""
 
-#: ../gcl/gcl-date.c:914
+#: ../lunar/lunar-date.c:914
 #, c-format
 msgid "%d is not a leap month in year %d.\n"
 msgstr "%d 年的 %d 月不是闰月。\n"
 
-#: ../gcl/gcl-date.c:950 ../gcl/gcl-date.c:1013
+#: ../lunar/lunar-date.c:950 ../lunar/lunar-date.c:1013
 #, c-format
 msgid "Year out of range. \"%d\""
 msgstr "年超出范围. \"%d\""
@@ -401,7 +401,7 @@ msgstr "年超出范围. \"%d\""
 #. * so if you have a default text direction of RTL and YM, then
 #. * the year will appear on the right.
 #.
-#: ../gcl/gcl-calendar.c:663
+#: ../lunar/lunar-calendar.c:663
 msgid "calendar:MY"
 msgstr "calendar:YM"
 
@@ -409,35 +409,35 @@ msgstr "calendar:YM"
 #. * first day of the week to calendar:week_start:1 if you want Monday
 #. * to be the first day of the week, and so on.
 #.
-#: ../gcl/gcl-calendar.c:687
+#: ../lunar/lunar-calendar.c:687
 msgid "calendar:week_start:0"
 msgstr "calendar:week_start:1"
 
-#: ../gcl/gcl-calendar.c:1617
+#: ../lunar/lunar-calendar.c:1617
 msgid "year measurement template|2000"
 msgstr "abc|然后几番卡带拉萨几番拉萨"
 
-#: ../gcl/gcl-calendar.c:1650
+#: ../lunar/lunar-calendar.c:1650
 msgid "Shi2Er2Yue4"
 msgstr "十二月"
 
-#: ../gcl/gcl-calendar.c:1652 ../gcl/gcl-calendar.c:2264
+#: ../lunar/lunar-calendar.c:1652 ../lunar/lunar-calendar.c:2264
 #, c-format
 msgid "calendar:day:digits|%d"
 msgstr "%d"
 
-#: ../gcl/gcl-calendar.c:1688 ../gcl/gcl-calendar.c:2122
+#: ../lunar/lunar-calendar.c:1688 ../lunar/lunar-calendar.c:2122
 #, c-format
 msgid "%dZhou1"
 msgstr "%d周"
 
-#: ../gcl/gcl-calendar.c:1690 ../gcl/gcl-calendar.c:2124
+#: ../lunar/lunar-calendar.c:1690 ../lunar/lunar-calendar.c:2124
 #, c-format
 msgid "calendar:week:digits|%d"
 msgstr "%d"
 
 #. Translators: This dictates how the year is displayed in
-#. * gclcalendar widget.  See strftime() manual for the format.
+#. * lunarcalendar widget.  See strftime() manual for the format.
 #. * Use only ASCII in the translation.
 #. *
 #. * Also look for the msgid "year measurement template|2000".
@@ -447,11 +447,11 @@ msgstr "%d"
 #. * Don't include the prefix "calendar year format|" in the
 #. * translation. "%Y" is appropriate for most locales.
 #.
-#: ../gcl/gcl-calendar.c:1909
+#: ../lunar/lunar-calendar.c:1909
 msgid "calendar year format|%Y"
 msgstr "%Y"
 
-#: ../gcl/gcl-calendar.c:3635
+#: ../lunar/lunar-calendar.c:3635
 msgid "Nian %(shengxiao) %(Y60)%(M60)%(D60)"
 msgstr "年 %(shengxiao) %(Y60)%(M60)%(D60)"
 

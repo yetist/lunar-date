@@ -1,6 +1,6 @@
 /* vi: set sw=4 ts=4: */
 /*
- * gcl-main.h
+ * lunar-main.h
  *
  * This file is part of ________.
  *
@@ -22,13 +22,13 @@
  * Boston, MA 02111-1307, USA.
  * */
 
-#ifndef __GCL_MAIN_H__
-#define __GCL_MAIN_H__  1
+#ifndef __LUNAR_MAIN_H__
+#define __LUNAR_MAIN_H__  1
 
 G_BEGIN_DECLS
 
-void    gcl_init               (int    *argc, char ***argv);
+void    lunar_init               (int    *argc, char ***argv);
 
 G_END_DECLS
 
-#endif /*__GCL_MAIN_H__ */
+#endif /*__LUNAR_MAIN_H__ */

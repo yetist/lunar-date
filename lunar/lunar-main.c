@@ -1,6 +1,6 @@
 /* vi: set sw=4 ts=4: */
 /*
- * gcl-main.c
+ * lunar-main.c
  *
  * This file is part of ________.
  *
@@ -24,19 +24,19 @@
 
 #include <config.h>
 #include <glib/gi18n-lib.h>
-#include "gcl-main.h"
+#include "lunar-main.h"
 
 /**
- * gcl_init:
+ * lunar_init:
  * @argc: Address of the <parameter>argc</parameter> parameter of your main() function. Changed if any arguments were handled.
- * @argv: Address of the <parameter>argv</parameter> parameter of main(). Any parameters understood by gcl_init() are stripped before return.
+ * @argv: Address of the <parameter>argv</parameter> parameter of main(). Any parameters understood by lunar_init() are stripped before return.
  *
- * Call this function before using any other libgcl functions in your applications. It will initialize libgcl.
+ * Call this function before using any other liblunar functions in your applications. It will initialize liblunar.
  *
  */
 
-void    gcl_init               (int    *argc, char ***argv)
+void    lunar_init               (int    *argc, char ***argv)
 {
-    bindtextdomain (GETTEXT_PACKAGE, LIBGCL_LOCALEDIR);
+    bindtextdomain (GETTEXT_PACKAGE, LIBLUNAR_LOCALEDIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 }

@@ -29,16 +29,16 @@
 #include <pygobject.h>
 #include <pygtk/pygtk.h>
 #include <pyerrors.h>
-#include "../../gcl/gcl.h"
+#include "../../lunar/lunar.h"
 
 extern void pycalendar_register_classes(PyObject *d);
 extern void pycalendar_add_constants(PyObject *module, const gchar *strip_prefix);
 extern PyMethodDef pycalendar_functions[];
-extern DL_EXPORT(void) initgclcalendar(void);
-extern PyTypeObject PyGclCalendar_Type;
+extern DL_EXPORT(void) initlunarcalendar(void);
+extern PyTypeObject PyLunarCalendar_Type;
 
 DL_EXPORT(void)
-initgclcalendar(void)
+initlunarcalendar(void)
 {
     PyObject *m, *d;
 
@@ -46,14 +46,14 @@ initgclcalendar(void)
     init_pygobject();
     init_pygtk();
     
-    m = Py_InitModule("gclcalendar", pycalendar_functions);
+    m = Py_InitModule("lunarcalendar", pycalendar_functions);
     d = PyModule_GetDict(m);
 
     pycalendar_register_classes(d);
-    pycalendar_add_constants(m, "GCL_");
+    pycalendar_add_constants(m, "LUNAR_");
 
     if (PyErr_Occurred()) {
-        Py_FatalError("can't initialise module gclcalendar");
+        Py_FatalError("can't initialise module lunarcalendar");
     }
 
 }

@@ -1,4 +1,4 @@
 # List of source files which contain translatable strings.
 [encoding: UTF-8]
-gcl/gcl-date.c
-gcl/gcl-calendar.c
+lunar/lunar-date.c
+lunar/lunar-calendar.c

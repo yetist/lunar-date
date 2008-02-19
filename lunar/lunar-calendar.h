@@ -26,37 +26,37 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
  */
 
-#ifndef __GCL_CALENDAR_H__
-#define __GCL_CALENDAR_H__
+#ifndef __LUNAR_CALENDAR_H__
+#define __LUNAR_CALENDAR_H__
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GCL_TYPE_CALENDAR                  (gcl_calendar_get_type ())
-#define GCL_CALENDAR(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GCL_TYPE_CALENDAR, GclCalendar))
-#define GCL_CALENDAR_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GCL_TYPE_CALENDAR, GclCalendarClass))
-#define GCL_IS_CALENDAR(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GCL_TYPE_CALENDAR))
-#define GCL_IS_CALENDAR_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GCL_TYPE_CALENDAR))
-#define GCL_CALENDAR_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GCL_TYPE_CALENDAR, GclCalendarClass))
+#define LUNAR_TYPE_CALENDAR                  (lunar_calendar_get_type ())
+#define LUNAR_CALENDAR(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), LUNAR_TYPE_CALENDAR, LunarCalendar))
+#define LUNAR_CALENDAR_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), LUNAR_TYPE_CALENDAR, LunarCalendarClass))
+#define LUNAR_IS_CALENDAR(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), LUNAR_TYPE_CALENDAR))
+#define LUNAR_IS_CALENDAR_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), LUNAR_TYPE_CALENDAR))
+#define LUNAR_CALENDAR_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), LUNAR_TYPE_CALENDAR, LunarCalendarClass))
 
 
-typedef struct _GclCalendar	       GclCalendar;
-typedef struct _GclCalendarClass       GclCalendarClass;
+typedef struct _LunarCalendar	       LunarCalendar;
+typedef struct _LunarCalendarClass       LunarCalendarClass;
 
-typedef struct _GclCalendarPrivate     GclCalendarPrivate;
+typedef struct _LunarCalendarPrivate     LunarCalendarPrivate;
 
 typedef enum
 {
-  GCL_CALENDAR_SHOW_HEADING		= 1 << 0,
-  GCL_CALENDAR_SHOW_DAY_NAMES		= 1 << 1,
-  GCL_CALENDAR_NO_MONTH_CHANGE		= 1 << 2,
-  GCL_CALENDAR_SHOW_WEEK_NUMBERS	= 1 << 3,
-  GCL_CALENDAR_WEEK_START_MONDAY	= 1 << 4,
-  GCL_CALENDAR_SHOW_LUNAR		= 1 << 5
-} GclCalendarDisplayOptions;
+  LUNAR_CALENDAR_SHOW_HEADING		= 1 << 0,
+  LUNAR_CALENDAR_SHOW_DAY_NAMES		= 1 << 1,
+  LUNAR_CALENDAR_NO_MONTH_CHANGE		= 1 << 2,
+  LUNAR_CALENDAR_SHOW_WEEK_NUMBERS	= 1 << 3,
+  LUNAR_CALENDAR_WEEK_START_MONDAY	= 1 << 4,
+  LUNAR_CALENDAR_SHOW_LUNAR		= 1 << 5
+} LunarCalendarDisplayOptions;
 
-struct _GclCalendar
+struct _LunarCalendar
 {
   GtkWidget widget;
   
@@ -72,7 +72,7 @@ struct _GclCalendar
   
   gint num_marked_dates;
   gint marked_date[31];
-  GclCalendarDisplayOptions  display_flags;
+  LunarCalendarDisplayOptions  display_flags;
   GdkColor marked_date_color[31];
   
   GdkGC *gc;			/* unused */
@@ -84,7 +84,7 @@ struct _GclCalendar
   gint highlight_row;
   gint highlight_col;
   
-  GclCalendarPrivate *priv;
+  LunarCalendarPrivate *priv;
   gchar grow_space [32];
 
   /* Padding for future expansion */
@@ -94,56 +94,56 @@ struct _GclCalendar
   void (*_gtk_reserved4) (void);
 };
 
-struct _GclCalendarClass
+struct _LunarCalendarClass
 {
   GtkWidgetClass parent_class;
   
   /* Signal handlers */
-  void (* month_changed)		(GclCalendar *calendar);
-  void (* day_selected)			(GclCalendar *calendar);
-  void (* day_selected_double_click)	(GclCalendar *calendar);
-  void (* prev_month)			(GclCalendar *calendar);
-  void (* next_month)			(GclCalendar *calendar);
-  void (* prev_year)			(GclCalendar *calendar);
-  void (* next_year)			(GclCalendar *calendar);
+  void (* month_changed)		(LunarCalendar *calendar);
+  void (* day_selected)			(LunarCalendar *calendar);
+  void (* day_selected_double_click)	(LunarCalendar *calendar);
+  void (* prev_month)			(LunarCalendar *calendar);
+  void (* next_month)			(LunarCalendar *calendar);
+  void (* prev_year)			(LunarCalendar *calendar);
+  void (* next_year)			(LunarCalendar *calendar);
   
 };
 
 
-GType	   gcl_calendar_get_type	(void) G_GNUC_CONST;
-GtkWidget* gcl_calendar_new		(void);
+GType	   lunar_calendar_get_type	(void) G_GNUC_CONST;
+GtkWidget* lunar_calendar_new		(void);
 
-gboolean   gcl_calendar_select_month	(GclCalendar *calendar, 
+gboolean   lunar_calendar_select_month	(LunarCalendar *calendar, 
 					 guint	      month,
 					 guint	      year);
-void	   gcl_calendar_select_day	(GclCalendar *calendar,
+void	   lunar_calendar_select_day	(LunarCalendar *calendar,
 					 guint	      day);
 
-gboolean   gcl_calendar_mark_day	(GclCalendar *calendar,
+gboolean   lunar_calendar_mark_day	(LunarCalendar *calendar,
 					 guint	      day);
-gboolean   gcl_calendar_unmark_day	(GclCalendar *calendar,
+gboolean   lunar_calendar_unmark_day	(LunarCalendar *calendar,
 					 guint	      day);
-void	   gcl_calendar_clear_marks	(GclCalendar *calendar);
+void	   lunar_calendar_clear_marks	(LunarCalendar *calendar);
 
 
-void	   gcl_calendar_set_display_options (GclCalendar    	      *calendar,
-					     GclCalendarDisplayOptions flags);
-GclCalendarDisplayOptions
-           gcl_calendar_get_display_options (GclCalendar   	      *calendar);
+void	   lunar_calendar_set_display_options (LunarCalendar    	      *calendar,
+					     LunarCalendarDisplayOptions flags);
+LunarCalendarDisplayOptions
+           lunar_calendar_get_display_options (LunarCalendar   	      *calendar);
 #ifndef GTK_DISABLE_DEPRECATED
-void	   gcl_calendar_display_options (GclCalendar		  *calendar,
-					 GclCalendarDisplayOptions flags);
+void	   lunar_calendar_display_options (LunarCalendar		  *calendar,
+					 LunarCalendarDisplayOptions flags);
 #endif
 
-void	   gcl_calendar_get_date	(GclCalendar *calendar, 
+void	   lunar_calendar_get_date	(LunarCalendar *calendar, 
 					 guint	     *year,
 					 guint	     *month,
 					 guint	     *day);
 #ifndef GTK_DISABLE_DEPRECATED
-void	   gcl_calendar_freeze		(GclCalendar *calendar);
-void	   gcl_calendar_thaw		(GclCalendar *calendar);
+void	   lunar_calendar_freeze		(LunarCalendar *calendar);
+void	   lunar_calendar_thaw		(LunarCalendar *calendar);
 #endif
 
 G_END_DECLS
 
-#endif /* __GCL_CALENDAR_H__ */
+#endif /* __LUNAR_CALENDAR_H__ */

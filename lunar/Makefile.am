@@ -3,44 +3,44 @@ NULL=
 INCLUDES =                                              \
 	-I$(top_srcdir)					\
         -I$(srcdir) 					\
-	$(LIBGCL_CFLAGS)				\
-        -DGCL_HOLIDAYDIR=\""$(datadir)/libgcl/"\"     \
+	$(LIBLUNAR_CFLAGS)				\
+        -DLUNAR_HOLIDAYDIR=\""$(datadir)/liblunar/"\"     \
 	$(NULL)
 
 INST_H_FILES = 		\
-	gcl.h			\
-	gcl-date.h		\
-	gcl-calendar.h		\
-	gcl-main.h
+	lunar.h			\
+	lunar-date.h		\
+	lunar-calendar.h		\
+	lunar-main.h
 
 BUILT_SOURCES =         	\
-        gcl-enum-types.c        \
-        gcl-enum-types.h
+        lunar-enum-types.c        \
+        lunar-enum-types.h
 
-lib_LTLIBRARIES = libgcl-1.la
+lib_LTLIBRARIES = liblunar-1.la
 
-libgcl_1_includedir = $(includedir)/libgcl-1/gcl
+liblunar_1_includedir = $(includedir)/liblunar-1/lunar
 
-libgcl_1_la_SOURCES =	\
-	gcl-date.c		\
-	gcl-calendar.c		\
-	gcl-main.c		\
+liblunar_1_la_SOURCES =	\
+	lunar-date.c		\
+	lunar-calendar.c		\
+	lunar-main.c		\
 	$(BUILT_SOURCES)	\
 	$(NULL)
 
-libgcl_1_include_HEADERS =	\
+liblunar_1_include_HEADERS =	\
 	$(INST_H_FILES)		\
 	$(NULL)
 
-libgcl_1_la_LIBADD = 	\
-	$(LIBGCL_LIBS)		\
+liblunar_1_la_LIBADD = 	\
+	$(LIBLUNAR_LIBS)		\
 	$(NULL)
 
-gcl-enum-types.h: gcl-enum-types.h.template $(INST_H_FILES) $(GLIB_MKENUMS)
-	(cd $(srcdir) && $(GLIB_MKENUMS) --template gcl-enum-types.h.template $(INST_H_FILES)) > $@
+lunar-enum-types.h: lunar-enum-types.h.template $(INST_H_FILES) $(GLIB_MKENUMS)
+	(cd $(srcdir) && $(GLIB_MKENUMS) --template lunar-enum-types.h.template $(INST_H_FILES)) > $@
         
-gcl-enum-types.c: gcl-enum-types.c.template $(INST_H_FILES) $(GLIB_MKENUMS)
-	(cd $(srcdir) && $(GLIB_MKENUMS) --template gcl-enum-types.c.template $(INST_H_FILES)) > $@
+lunar-enum-types.c: lunar-enum-types.c.template $(INST_H_FILES) $(GLIB_MKENUMS)
+	(cd $(srcdir) && $(GLIB_MKENUMS) --template lunar-enum-types.c.template $(INST_H_FILES)) > $@
 
 
 EXTRA_DIST = 

@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <gtk/gtk.h>
-#include <gcl/gcl.h>
+#include <lunar/lunar.h>
 
 #define DEF_PAD 10
 #define DEF_PAD_SMALL 5
@@ -58,7 +58,7 @@ static void calendar_date_to_string( CalendarData *data,
   GDate date;
   guint year, month, day;
 
-  gcl_calendar_get_date (GCL_CALENDAR (data->window),
+  lunar_calendar_get_date (LUNAR_CALENDAR (data->window),
 			 &year, &month, &day);
   g_date_set_dmy (&date, day, month + 1, year);
   g_date_strftime (buffer, buff_len - 1, "%x", &date);
@@ -105,13 +105,13 @@ static void calendar_day_selected_double_click ( GtkWidget    *widget,
   calendar_date_to_string (data, buffer + 27, 256 - 27);
   calendar_set_signal_strings (buffer, data);
 
-  gcl_calendar_get_date (GCL_CALENDAR (data->window),
+  lunar_calendar_get_date (LUNAR_CALENDAR (data->window),
 			 NULL, NULL, &day);
 
-  if (GCL_CALENDAR (data->window)->marked_date[day-1] == 0) {
-    gcl_calendar_mark_day (GCL_CALENDAR (data->window), day);
+  if (LUNAR_CALENDAR (data->window)->marked_date[day-1] == 0) {
+    lunar_calendar_mark_day (LUNAR_CALENDAR (data->window), day);
   } else { 
-    gcl_calendar_unmark_day (GCL_CALENDAR (data->window), day);
+    lunar_calendar_unmark_day (LUNAR_CALENDAR (data->window), day);
   }
 }
 
@@ -162,7 +162,7 @@ static void calendar_set_flags( CalendarData *calendar )
 	options = options + (1 << i);
       }
   if (calendar->window)
-    gcl_calendar_display_options (GCL_CALENDAR (calendar->window), options);
+    lunar_calendar_display_options (LUNAR_CALENDAR (calendar->window), options);
 }
 
 static void calendar_toggle_flag( GtkWidget    *toggle,
@@ -297,10 +297,10 @@ static void create_calendar( void )
   /* Calendar widget */
   frame = gtk_frame_new ("Calendar");
   gtk_box_pack_start(GTK_BOX (hbbox), frame, FALSE, TRUE, DEF_PAD);
-  calendar=gcl_calendar_new ();
+  calendar=lunar_calendar_new ();
   calendar_data.window = calendar;
   calendar_set_flags (&calendar_data);
-  gcl_calendar_mark_day (GCL_CALENDAR (calendar), 19);	
+  lunar_calendar_mark_day (LUNAR_CALENDAR (calendar), 19);	
   gtk_container_add (GTK_CONTAINER (frame), calendar);
   g_signal_connect (calendar, "month_changed", 
 		    G_CALLBACK (calendar_month_changed),

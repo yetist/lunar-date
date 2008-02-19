@@ -1,6 +1,6 @@
-diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
---- gcl/gcl-calendar.c	2008-01-31 22:21:41.995098283 +0800
-+++ gcl.new/gcl-calendar.c	2008-01-31 22:20:56.644016875 +0800
+diff -ur lunar/lunar-calendar.c lunar.new/lunar-calendar.c
+--- lunar/lunar-calendar.c	2008-01-31 22:21:41.995098283 +0800
++++ lunar.new/lunar-calendar.c	2008-01-31 22:20:56.644016875 +0800
 @@ -29,34 +29,24 @@
   * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
   */
@@ -27,13 +27,13 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
 -#endif
 -
 -#undef GTK_DISABLE_DEPRECATED
--#include "gclcalendar.h"
+-#include "lunarcalendar.h"
 +#include <gtk/gtk.h>
 +#include <glib/gi18n-lib.h>
 +#include <gdk/gdkkeysyms.h>
 +#include <string.h>
-+#include "gcl-calendar.h"
-+#include "gcl-date.h"
++#include "lunar-calendar.h"
++#include "lunar-date.h"
  
 -#include "gtkdnd.h"
 -#include "gtkintl.h"
@@ -69,7 +69,7 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
    GdkWindow *main_win;
    GdkWindow *week_win;
    GdkWindow *arrow_win[4];
-+  GCLDate   *date;
++  LUNARDate   *date;
  
    guint header_h;
    guint day_name_h;
@@ -86,18 +86,18 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
  						 gint              y,
  						 guint             time);
  
-+static gchar* gcl_calendar_lunar_day_str (GclCalendar *calendar, gint year, gint month, gint day);
-+static gchar* gcl_calendar_lunar_year_str (GclCalendar *calendar, gint year, gint month, gint day);
++static gchar* lunar_calendar_lunar_day_str (LunarCalendar *calendar, gint year, gint month, gint day);
++static gchar* lunar_calendar_lunar_year_str (LunarCalendar *calendar, gint year, gint month, gint day);
 +
- static void calendar_start_spinning (GclCalendar *calendar,
+ static void calendar_start_spinning (LunarCalendar *calendar,
  				     gint         click_child);
- static void calendar_stop_spinning  (GclCalendar *calendar);
+ static void calendar_stop_spinning  (LunarCalendar *calendar);
 @@ -491,6 +491,18 @@
  							 P_("If TRUE, week numbers are displayed"),
  							 FALSE,
  							 GTK_PARAM_READWRITE));
 +/**
-+ * GclCalendar:show-lunar-date:
++ * LunarCalendar:show-lunar-date:
 + *
 + * Determines whether chinese lunar date are displayed.
 + */
@@ -109,71 +109,71 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
 +							 FALSE,
 +							 GTK_PARAM_READWRITE));
  
-   gcl_calendar_signals[MONTH_CHANGED_SIGNAL] =
+   lunar_calendar_signals[MONTH_CHANGED_SIGNAL] =
      g_signal_new (I_("month_changed"),
 @@ -498,7 +510,7 @@
  		  G_SIGNAL_RUN_FIRST,
- 		  G_STRUCT_OFFSET (GclCalendarClass, month_changed),
+ 		  G_STRUCT_OFFSET (LunarCalendarClass, month_changed),
  		  NULL, NULL,
 -		  _gtk_marshal_VOID__VOID,
 +		  g_cclosure_marshal_VOID__VOID,
  		  G_TYPE_NONE, 0);
-   gcl_calendar_signals[DAY_SELECTED_SIGNAL] =
+   lunar_calendar_signals[DAY_SELECTED_SIGNAL] =
      g_signal_new (I_("day_selected"),
 @@ -506,7 +518,7 @@
  		  G_SIGNAL_RUN_FIRST,
- 		  G_STRUCT_OFFSET (GclCalendarClass, day_selected),
+ 		  G_STRUCT_OFFSET (LunarCalendarClass, day_selected),
  		  NULL, NULL,
 -		  _gtk_marshal_VOID__VOID,
 +		  g_cclosure_marshal_VOID__VOID,
  		  G_TYPE_NONE, 0);
-   gcl_calendar_signals[DAY_SELECTED_DOUBLE_CLICK_SIGNAL] =
+   lunar_calendar_signals[DAY_SELECTED_DOUBLE_CLICK_SIGNAL] =
      g_signal_new (I_("day_selected_double_click"),
 @@ -514,7 +526,7 @@
  		  G_SIGNAL_RUN_FIRST,
- 		  G_STRUCT_OFFSET (GclCalendarClass, day_selected_double_click),
+ 		  G_STRUCT_OFFSET (LunarCalendarClass, day_selected_double_click),
  		  NULL, NULL,
 -		  _gtk_marshal_VOID__VOID,
 +		  g_cclosure_marshal_VOID__VOID,
  		  G_TYPE_NONE, 0);
-   gcl_calendar_signals[PREV_MONTH_SIGNAL] =
+   lunar_calendar_signals[PREV_MONTH_SIGNAL] =
      g_signal_new (I_("prev_month"),
 @@ -522,7 +534,7 @@
  		  G_SIGNAL_RUN_FIRST,
- 		  G_STRUCT_OFFSET (GclCalendarClass, prev_month),
+ 		  G_STRUCT_OFFSET (LunarCalendarClass, prev_month),
  		  NULL, NULL,
 -		  _gtk_marshal_VOID__VOID,
 +		  g_cclosure_marshal_VOID__VOID,
  		  G_TYPE_NONE, 0);
-   gcl_calendar_signals[NEXT_MONTH_SIGNAL] =
+   lunar_calendar_signals[NEXT_MONTH_SIGNAL] =
      g_signal_new (I_("next_month"),
 @@ -530,7 +542,7 @@
  		  G_SIGNAL_RUN_FIRST,
- 		  G_STRUCT_OFFSET (GclCalendarClass, next_month),
+ 		  G_STRUCT_OFFSET (LunarCalendarClass, next_month),
  		  NULL, NULL,
 -		  _gtk_marshal_VOID__VOID,
 +		  g_cclosure_marshal_VOID__VOID,
  		  G_TYPE_NONE, 0);
-   gcl_calendar_signals[PREV_YEAR_SIGNAL] =
+   lunar_calendar_signals[PREV_YEAR_SIGNAL] =
      g_signal_new (I_("prev_year"),
 @@ -538,7 +550,7 @@
  		  G_SIGNAL_RUN_FIRST,
- 		  G_STRUCT_OFFSET (GclCalendarClass, prev_year),
+ 		  G_STRUCT_OFFSET (LunarCalendarClass, prev_year),
  		  NULL, NULL,
 -		  _gtk_marshal_VOID__VOID,
 +		  g_cclosure_marshal_VOID__VOID,
  		  G_TYPE_NONE, 0);
-   gcl_calendar_signals[NEXT_YEAR_SIGNAL] =
+   lunar_calendar_signals[NEXT_YEAR_SIGNAL] =
      g_signal_new (I_("next_year"),
 @@ -546,7 +558,7 @@
  		  G_SIGNAL_RUN_FIRST,
- 		  G_STRUCT_OFFSET (GclCalendarClass, next_year),
+ 		  G_STRUCT_OFFSET (LunarCalendarClass, next_year),
  		  NULL, NULL,
 -		  _gtk_marshal_VOID__VOID,
 +		  g_cclosure_marshal_VOID__VOID,
  		  G_TYPE_NONE, 0);
    
-   g_type_class_add_private (gobject_class, sizeof (GclCalendarPrivate));
+   g_type_class_add_private (gobject_class, sizeof (LunarCalendarPrivate));
 @@ -559,12 +571,8 @@
    time_t secs;
    struct tm *tm;
@@ -184,7 +184,7 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
    char buffer[255];
    time_t tmp_time;
 -#endif
-   GclCalendarPrivate *priv;
+   LunarCalendarPrivate *priv;
    gchar *year_before;
  #ifdef HAVE__NL_TIME_FIRST_WEEKDAY
 @@ -585,33 +593,17 @@
@@ -225,7 +225,7 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
    gtk_drag_dest_add_text_targets (widget);
  
    priv->year_before = 0;
-+  priv->date = gcl_date_new();
++  priv->date = lunar_date_new();
  
    /* Translate to calendar:YM if you want years to be displayed
     * before months; otherwise translate to calendar:MY.
@@ -265,12 +265,12 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
 +  guint tmp_year=0;
 +  guint tmp_month;
 +
-   g_return_if_fail (GCL_IS_CALENDAR (calendar));
+   g_return_if_fail (LUNAR_IS_CALENDAR (calendar));
  
    year = calendar->year;
    month = calendar->month + 1;
    
-+  priv->lunar_year=gcl_calendar_lunar_year_str(calendar, year, month, calendar->selected_day);
++  priv->lunar_year=lunar_calendar_lunar_year_str(calendar, year, month, calendar->selected_day);
    ndays_in_month = month_length[leap (year)][month];
    
    first_day = day_of_week (year, month, 1);
@@ -287,7 +287,7 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
 +              tmp_year = year;
 +              tmp_month = month-1;
 +          }
-+          priv->lunar_day[row][col]=gcl_calendar_lunar_day_str(calendar, tmp_year, tmp_month, day);
++          priv->lunar_day[row][col]=lunar_calendar_lunar_day_str(calendar, tmp_year, tmp_month, day);
  	  calendar->day_month[row][col] = MONTH_PREV;
  	  day++;
  	}
@@ -296,7 +296,7 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
      {
        calendar->day[row][col] = day;
 +      /* get lunar day of the current month */
-+      priv->lunar_day[row][col]=gcl_calendar_lunar_day_str(calendar, year, month, day);
++      priv->lunar_day[row][col]=lunar_calendar_lunar_day_str(calendar, year, month, day);
        calendar->day_month[row][col] = MONTH_CURRENT;
        
        col++;
@@ -313,17 +313,17 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
 +              tmp_year = year;
 +              tmp_month = month+1;
 +          }
-+          priv->lunar_day[row][col]=gcl_calendar_lunar_day_str(calendar, tmp_year, tmp_month, day);
++          priv->lunar_day[row][col]=lunar_calendar_lunar_day_str(calendar, tmp_year, tmp_month, day);
  	  calendar->day_month[row][col] = MONTH_NEXT;
  	  day++;
  	}
 @@ -1220,6 +1224,11 @@
- 				   GCL_CALENDAR_SHOW_WEEK_NUMBERS,
+ 				   LUNAR_CALENDAR_SHOW_WEEK_NUMBERS,
  				   g_value_get_boolean (value));
        break;
 +    case PROP_SHOW_LUNAR:
 +      calendar_set_display_option (calendar,
-+				   GCL_CALENDAR_SHOW_LUNAR,
++				   LUNAR_CALENDAR_SHOW_LUNAR,
 +				   g_value_get_boolean (value));
 +      break;
      default:
@@ -331,11 +331,11 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
        break;
 @@ -1263,6 +1272,10 @@
        g_value_set_boolean (value, calendar_get_display_option (calendar,
- 							       GCL_CALENDAR_SHOW_WEEK_NUMBERS));
+ 							       LUNAR_CALENDAR_SHOW_WEEK_NUMBERS));
        break;
 +    case PROP_SHOW_LUNAR:
 +      g_value_set_boolean (value, calendar_get_display_option (calendar,
-+							       GCL_CALENDAR_SHOW_LUNAR));
++							       LUNAR_CALENDAR_SHOW_LUNAR));
 +      break;
      default:
        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -345,10 +345,10 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
         * If you don't understand this, leave it as "2000"
         */
 +      //compute year width
-+      if (calendar->display_flags & GCL_CALENDAR_SHOW_LUNAR)
++      if (calendar->display_flags & LUNAR_CALENDAR_SHOW_LUNAR)
 +      {
 +          GString*    tmp_year_format = g_string_new("2000");
-+          g_string_append (tmp_year_format, gcl_calendar_lunar_year_str (calendar, 1957, 11, 20));
++          g_string_append (tmp_year_format, lunar_calendar_lunar_year_str (calendar, 1957, 11, 20));
 +          pango_layout_set_text (layout, Q_(tmp_year_format->str), -1);
 +          g_string_free (tmp_year_format, TRUE);
 +      }
@@ -367,7 +367,7 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
      {
        gchar buffer[32];
 +      /* comput day width */
-+      if (calendar->display_flags & GCL_CALENDAR_SHOW_LUNAR)                 
++      if (calendar->display_flags & LUNAR_CALENDAR_SHOW_LUNAR)                 
 +          g_snprintf (buffer, sizeof (buffer), "%s", _("Shi2Er2Yue4"));
 +      else
        g_snprintf (buffer, sizeof (buffer), Q_("calendar:day:digits|%d"), i * 11);
@@ -378,7 +378,7 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
        {
  	gchar buffer[32];
 +        /* compute week width */
-+        if (calendar->display_flags & GCL_CALENDAR_SHOW_LUNAR)
++        if (calendar->display_flags & LUNAR_CALENDAR_SHOW_LUNAR)
 +            g_snprintf (buffer, sizeof (buffer), _("%dZhou1"), i * 11);
 +        else
  	g_snprintf (buffer, sizeof (buffer), Q_("calendar:week:digits|%d"), i * 11);
@@ -389,7 +389,7 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
      }
  
 +  //compute main_eight, priv->max_day_char_descent *2 two rows
-+  if (calendar->display_flags & GCL_CALENDAR_SHOW_LUNAR)                 
++  if (calendar->display_flags & LUNAR_CALENDAR_SHOW_LUNAR)                 
 +  {
 +      priv->main_h = (CALENDAR_MARGIN + calendar_margin
 +              + 6 * (priv->max_day_char_ascent
@@ -405,7 +405,7 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
     * translation. "%Y" is appropriate for most locales.
     */
    strftime (buffer, sizeof (buffer), Q_("calendar year format|%Y"), tm);
-+  if (calendar->display_flags & GCL_CALENDAR_SHOW_LUNAR)                 
++  if (calendar->display_flags & LUNAR_CALENDAR_SHOW_LUNAR)                 
 +      g_sprintf(buffer, "%s%s", buffer, priv->lunar_year);
    str = g_locale_to_utf8 (buffer, -1, NULL, NULL, NULL);
    layout = gtk_widget_create_pango_layout (widget, str);
@@ -415,7 +415,7 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
         * too.
         */
 +      /* show week */
-+      if (calendar->display_flags & GCL_CALENDAR_SHOW_LUNAR)                 
++      if (calendar->display_flags & LUNAR_CALENDAR_SHOW_LUNAR)                 
 +          g_snprintf (buffer, sizeof (buffer), _("%dZhou1"), week);
 +      else
        g_snprintf (buffer, sizeof (buffer), Q_("calendar:week:digits|%d"), week);
@@ -434,7 +434,7 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
  
    day = calendar->day[row][col];
 +  //get lunar_day from array for show
-+  if (calendar->display_flags & GCL_CALENDAR_SHOW_LUNAR)                 
++  if (calendar->display_flags & LUNAR_CALENDAR_SHOW_LUNAR)                 
 +  {
 +      lunar_day = priv->lunar_day[row][col];
 +  }
@@ -446,7 +446,7 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
     * too.
     */
 +  //show days
-+  if (calendar->display_flags & GCL_CALENDAR_SHOW_LUNAR)                 
++  if (calendar->display_flags & LUNAR_CALENDAR_SHOW_LUNAR)                 
 +  {
 +      gint len;
 +      len = strlen(lunar_day) % 2 == 0? strlen(lunar_day)/2: strlen(lunar_day)/2+1;
@@ -478,23 +478,23 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
  	    }
  	}
  
-+      if ((flags ^ calendar->display_flags) & GCL_CALENDAR_SHOW_LUNAR)
++      if ((flags ^ calendar->display_flags) & LUNAR_CALENDAR_SHOW_LUNAR)
 +	{
 +	  resize++;
 +	  
-+	  if (flags & GCL_CALENDAR_SHOW_LUNAR)
++	  if (flags & LUNAR_CALENDAR_SHOW_LUNAR)
 +	    {
-+	      calendar->display_flags |= GCL_CALENDAR_SHOW_LUNAR;
++	      calendar->display_flags |= LUNAR_CALENDAR_SHOW_LUNAR;
 +	    }
 +	}
-       if ((flags ^ calendar->display_flags) & GCL_CALENDAR_WEEK_START_MONDAY)
- 	g_warning ("GCL_CALENDAR_WEEK_START_MONDAY is ignored; the first day of the week is determined from the locale");
+       if ((flags ^ calendar->display_flags) & LUNAR_CALENDAR_WEEK_START_MONDAY)
+ 	g_warning ("LUNAR_CALENDAR_WEEK_START_MONDAY is ignored; the first day of the week is determined from the locale");
        
 @@ -3309,6 +3382,8 @@
      g_object_notify (G_OBJECT (calendar), "no-month-change");
-   if ((old_flags ^ calendar->display_flags) & GCL_CALENDAR_SHOW_WEEK_NUMBERS)
+   if ((old_flags ^ calendar->display_flags) & LUNAR_CALENDAR_SHOW_WEEK_NUMBERS)
      g_object_notify (G_OBJECT (calendar), "show-week-numbers");
-+  if ((old_flags ^ calendar->display_flags) & GCL_CALENDAR_SHOW_LUNAR)
++  if ((old_flags ^ calendar->display_flags) & LUNAR_CALENDAR_SHOW_LUNAR)
 +    g_object_notify (G_OBJECT (calendar), "show-lunar-date");
    g_object_thaw_notify (G_OBJECT (calendar));
  }
@@ -506,59 +506,59 @@ diff -ur gcl/gcl-calendar.c gcl.new/gcl-calendar.c
 +  //get the content of the select day
 +  //char year_tmp[40];
 +  gint year, month;
-+  GclCalendarPrivate *priv = GCL_CALENDAR_GET_PRIVATE (calendar);
++  LunarCalendarPrivate *priv = LUNAR_CALENDAR_GET_PRIVATE (calendar);
 +
 +  year = calendar->year;
 +  month = calendar->month + 1;
-+  if (calendar->display_flags & GCL_CALENDAR_SHOW_LUNAR)                 
++  if (calendar->display_flags & LUNAR_CALENDAR_SHOW_LUNAR)                 
 +  {
-+      priv->lunar_year=gcl_calendar_lunar_year_str(calendar, year, month, day);
++      priv->lunar_year=lunar_calendar_lunar_year_str(calendar, year, month, day);
 +  }
    
    /* Select the new day */
    if (day != 0)
 @@ -3520,5 +3606,34 @@
-   g_return_if_fail (GCL_IS_CALENDAR (calendar));
+   g_return_if_fail (LUNAR_IS_CALENDAR (calendar));
  }
  
-+gchar* gcl_calendar_lunar_day_str (GclCalendar *calendar, gint year, gint month, gint day)
++gchar* lunar_calendar_lunar_day_str (LunarCalendar *calendar, gint year, gint month, gint day)
 +{
 +  GtkWidget *widget = GTK_WIDGET (calendar);
-+  GclCalendarPrivate *priv = GCL_CALENDAR_GET_PRIVATE (calendar);
++  LunarCalendarPrivate *priv = LUNAR_CALENDAR_GET_PRIVATE (calendar);
 +
-+  gcl_date_set_solar_date(priv->date, year, month, day, 0, NULL);
++  lunar_date_set_solar_date(priv->date, year, month, day, 0, NULL);
 +
 +  char* buf;
 +
-+  if (strlen(buf = gcl_date_strftime(priv->date, "%(jieri)")) > 0)
++  if (strlen(buf = lunar_date_strftime(priv->date, "%(jieri)")) > 0)
 +  {
 +      return buf;
 +  }
-+  if (strcmp(gcl_date_strftime(priv->date, "%(ri)"), "1") == 0)
-+      return gcl_date_strftime(priv->date, "%(YUE)");
++  if (strcmp(lunar_date_strftime(priv->date, "%(ri)"), "1") == 0)
++      return lunar_date_strftime(priv->date, "%(YUE)");
 +  else
-+      return gcl_date_strftime(priv->date, "%(RI)");
++      return lunar_date_strftime(priv->date, "%(RI)");
 +}
 +
-+gchar* gcl_calendar_lunar_year_str (GclCalendar *calendar, gint year, gint month, gint day)
++gchar* lunar_calendar_lunar_year_str (LunarCalendar *calendar, gint year, gint month, gint day)
 +{
 +  GtkWidget *widget = GTK_WIDGET (calendar);
-+  GclCalendarPrivate *priv = GCL_CALENDAR_GET_PRIVATE (calendar);
++  LunarCalendarPrivate *priv = LUNAR_CALENDAR_GET_PRIVATE (calendar);
 +
-+  gcl_date_set_solar_date(priv->date, year, month, day, 0, NULL);
++  lunar_date_set_solar_date(priv->date, year, month, day, 0, NULL);
 +
-+  return gcl_date_strftime(priv->date, _("Nian %(shengxiao) %(Y60)%(M60)%(D60)"));
++  return lunar_date_strftime(priv->date, _("Nian %(shengxiao) %(Y60)%(M60)%(D60)"));
 +}
 +
- #define __GCL_CALENDAR_C__
+ #define __LUNAR_CALENDAR_C__
 -#include "gtkaliasdef.c"
 +
-diff -ur gcl/gcl-calendar.h gcl.new/gcl-calendar.h
---- gcl/gcl-calendar.h	2008-01-31 22:21:41.916110333 +0800
-+++ gcl.new/gcl-calendar.h	2008-01-31 22:20:56.643017027 +0800
+diff -ur lunar/lunar-calendar.h lunar.new/lunar-calendar.h
+--- lunar/lunar-calendar.h	2008-01-31 22:21:41.916110333 +0800
++++ lunar.new/lunar-calendar.h	2008-01-31 22:20:56.643017027 +0800
 @@ -29,12 +29,7 @@
- #ifndef __GCL_CALENDAR_H__
- #define __GCL_CALENDAR_H__
+ #ifndef __LUNAR_CALENDAR_H__
+ #define __LUNAR_CALENDAR_H__
  
 -#include <gdk/gdk.h>
 -#include <gtk/gtkwidget.h>
@@ -571,12 +571,12 @@ diff -ur gcl/gcl-calendar.h gcl.new/gcl-calendar.h
  G_BEGIN_DECLS
  
 @@ -57,7 +52,8 @@
-   GCL_CALENDAR_SHOW_DAY_NAMES		= 1 << 1,
-   GCL_CALENDAR_NO_MONTH_CHANGE		= 1 << 2,
-   GCL_CALENDAR_SHOW_WEEK_NUMBERS	= 1 << 3,
--  GCL_CALENDAR_WEEK_START_MONDAY	= 1 << 4
-+  GCL_CALENDAR_WEEK_START_MONDAY	= 1 << 4,
-+  GCL_CALENDAR_SHOW_LUNAR		= 1 << 5
- } GclCalendarDisplayOptions;
+   LUNAR_CALENDAR_SHOW_DAY_NAMES		= 1 << 1,
+   LUNAR_CALENDAR_NO_MONTH_CHANGE		= 1 << 2,
+   LUNAR_CALENDAR_SHOW_WEEK_NUMBERS	= 1 << 3,
+-  LUNAR_CALENDAR_WEEK_START_MONDAY	= 1 << 4
++  LUNAR_CALENDAR_WEEK_START_MONDAY	= 1 << 4,
++  LUNAR_CALENDAR_SHOW_LUNAR		= 1 << 5
+ } LunarCalendarDisplayOptions;
  
- struct _GclCalendar
+ struct _LunarCalendar
