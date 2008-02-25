@@ -1,7 +1,18 @@
+=== liblunar-0.2.5 released ===
+
+2008-02-25  yetist  <yetist@gmail.com>
+
+	* README: 
+	* configure.ac: 
+	* NEWS: 
+
+	liblunar-0.2.5 released
+
 2008-02-25  yetist  <yetist@gmail.com>
 
 	* docs/reference/lunar-docs.sgml: change document name. 
 	* po/zh_CN.po: filled in the header of po/zh_CN.po
+
 2008-02-19  yetist  <yetist@gmail.com>
 
 	* lunar/lunar-main.c: 

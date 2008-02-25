@@ -1,3 +1,13 @@
+==============
+liblunar-0.2.5
+==============
+NEWS:
+    - change names from "gcl" to "lunar" (file name、api name、doc names).
+    - change the python module name to "lunar".
+    - fixed that if select day changed, the header doesn't change at 0.2.4.
+    - po/zh_CN.po: filled in the header of po/zh_CN.po
+    - filled in "This file is part of ________." of some cource files.
+
 =============
 liblunar-0.2.4
 =============
