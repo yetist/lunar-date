@@ -1,13 +1,13 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# liblunar package simplified Chinese translation file.
+# Copyright (C) 2008  yetist <yetist@gmail.com>.
+# This file is distributed under the same license as the liblunar package.
+# yetist <yetist@gmail.com>, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: liblunar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-19 12:48+0800\n"
+"POT-Creation-Date: 2008-02-25 10:19+0800\n"
 "PO-Revision-Date: 2007-09-03 19:05+0700\n"
 "Last-Translator: yetist <yetist@gmail.com>\n"
 "Language-Team: yetist@gmail.com <yetist@gmail.com>\n"
@@ -416,7 +416,7 @@ msgstr "calendar:week_start:1"
 
 #: ../lunar/lunar-calendar.c:1617
 msgid "year measurement template|2000"
-msgstr "abc|然后几番卡带拉萨几番拉萨"
+msgstr "2000"
 
 #: ../lunar/lunar-calendar.c:1650
 msgid "Shi2Er2Yue4"

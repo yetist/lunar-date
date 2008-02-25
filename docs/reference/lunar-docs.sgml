@@ -9,8 +9,8 @@
 
 <book id="index">
   <bookinfo>
-    <title>libLUNAR Reference Manual</title>
-    <releaseinfo>for libLUNAR &version;</releaseinfo>
+    <title>liblunar Reference Manual</title>
+    <releaseinfo>for liblunar &version;</releaseinfo>
   </bookinfo>
 
   &LUNARInit;
