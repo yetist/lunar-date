@@ -1,3 +1,10 @@
+2008-03-03  yetist  <yetist@gmail.com>
+
+	* pinyin.sh: 
+	* lunar/lunar-date.c: 
+	* po/zh_CN.po: 
+	revert to r33. add pinyin.sh.
+
 === liblunar-0.2.6 released ===
 
 2008-03-03  yetist  <yetist@gmail.com>
