@@ -368,7 +368,7 @@ diff -ur lunar/lunar-calendar.c lunar.new/lunar-calendar.c
        gchar buffer[32];
 +      /* comput day width */
 +      if (calendar->display_flags & LUNAR_CALENDAR_SHOW_LUNAR)                 
-+          g_snprintf (buffer, sizeof (buffer), "%s", _("Shi2Er2Yue4"));
++          g_snprintf (buffer, sizeof (buffer), "%s", _("Sh\303\255\303\250ryu\303\250"));
 +      else
        g_snprintf (buffer, sizeof (buffer), Q_("calendar:day:digits|%d"), i * 11);
        pango_layout_set_text (layout, buffer, -1);	  
@@ -379,7 +379,7 @@ diff -ur lunar/lunar-calendar.c lunar.new/lunar-calendar.c
  	gchar buffer[32];
 +        /* compute week width */
 +        if (calendar->display_flags & LUNAR_CALENDAR_SHOW_LUNAR)
-+            g_snprintf (buffer, sizeof (buffer), _("%dZhou1"), i * 11);
++            g_snprintf (buffer, sizeof (buffer), _("%dzh\305\215u"), i * 11);
 +        else
  	g_snprintf (buffer, sizeof (buffer), Q_("calendar:week:digits|%d"), i * 11);
  	pango_layout_set_text (layout, buffer, -1);	  
@@ -416,7 +416,7 @@ diff -ur lunar/lunar-calendar.c lunar.new/lunar-calendar.c
         */
 +      /* show week */
 +      if (calendar->display_flags & LUNAR_CALENDAR_SHOW_LUNAR)                 
-+          g_snprintf (buffer, sizeof (buffer), _("%dZhou1"), week);
++          g_snprintf (buffer, sizeof (buffer), _("%dzh\305\215u"), week);
 +      else
        g_snprintf (buffer, sizeof (buffer), Q_("calendar:week:digits|%d"), week);
        pango_layout_set_text (layout, buffer, -1);
@@ -547,7 +547,7 @@ diff -ur lunar/lunar-calendar.c lunar.new/lunar-calendar.c
 +
 +  lunar_date_set_solar_date(priv->date, year, month, day, 0, NULL);
 +
-+  return lunar_date_strftime(priv->date, _("Nian %(shengxiao) %(Y60)%(M60)%(D60)"));
++  return lunar_date_strftime(priv->date, _("Ni\303\241n %(shengxiao) %(Y60)%(M60)%(D60)"));
 +}
 +
  #define __LUNAR_CALENDAR_C__

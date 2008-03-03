@@ -277,13 +277,13 @@ static int days_in_lunar_month[2]  = {29,30};
 
 
 static	char	*gan_list[] = {
-    N_("Jia3"),	N_("Yi3"),	 N_("Bing3"), N_("Ding1"), N_("Wu4"),
-    N_("Ji3"),	N_("Geng1"), N_("Xin1"),  N_("Ren2"),  N_("Gui3")
+    N_("Ji\307\216"),	N_("Y\307\220"),	 N_("B\307\220ng"), N_("D\304\253ng"), N_("W\303\271"),
+    N_("J\307\220"),	N_("G\304\223ng"), N_("X\304\253n"),  N_("R\303\251n"),  N_("Gu\307\220")
 };
 
 static	char	*zhi_list[] = {
-    N_("Zi3"),	N_("Chou3"),  N_("Yin2"),  N_("Mao3"),  N_("Chen2"), N_("Si4"),
-    N_("Wu3"),	N_("Wei4"),	 N_("Shen1"), N_("You3"),  N_("Xu1"),   N_("Hai4")
+    N_("Z\307\220"),	N_("Ch\307\222u"),  N_("Y\303\255n"),  N_("M\307\216o"),  N_("Ch\303\251n"), N_("S\303\254"),
+    N_("W\307\224"),	N_("W\303\250i"),	 N_("Sh\304\223n"), N_("Y\307\222u"),  N_("X\305\253"),   N_("H\303\240i")
 };
 
 static	char   *shengxiao_list[] = {
@@ -295,18 +295,18 @@ static	char   *lunar_month_list[] = {
     N_("Jul"), N_("Aug"), N_("Sep"), N_("Oct"), N_("Nov"), N_("Dec")
 };
 static	char   *lunar_day_list[] = {
-    N_("Chu1Yi1"), N_("Chu1Er4"), N_("Chu1San1"), N_("Chu1Si4"), N_("Chu1Wu3"), 
-    N_("Chu1Liu6"), N_("Chu1Qi1"), N_("Chu1Ba1"), N_("Chu1Jiu3"), N_("Chu1Shi2"), 
-    N_("Shi2Yi1"), N_("Shi2Er4"), N_("Shi1San1"), N_("Shi1Si4"), N_("Shi1Wu3"),
-    N_("Shi1Liu6"), N_("Shi1Qi1"), N_("Shi1Ba1"), N_("Shi1Jiu3"), N_("Er4Shi2"), 
-    N_("Er4Yi1"), N_("Er4Er4"), N_("Er4San1"), N_("Er4Si4"), N_("Er4Wu3"), 
-    N_("Er4Liu6"), N_("Er4Qi1"), N_("Er4Ba1"), N_("Er4Jiu3"), N_("San1Shi2")
+    N_("Ch\305\253y\304\253"), N_("Ch\305\253\303\250r"), N_("Ch\305\253s\304\201n"), N_("Ch\305\253s\303\254"), N_("Ch\305\253w\307\224"), 
+    N_("Ch\305\253li\303\271"), N_("Ch\305\253q\304\253"), N_("Ch\305\253b\304\201"), N_("Ch\305\253ji\307\224"), N_("Ch\305\253sh\303\255"), 
+    N_("Sh\303\255y\304\253"), N_("Sh\303\255\303\250r"), N_("Sh\303\255s\304\201n"), N_("Sh\303\255s\303\254"), N_("Sh\303\255w\307\224"),
+    N_("Sh\303\255li\303\271"), N_("Sh\303\255q\304\253"), N_("Sh\303\255b\304\201"), N_("Sh\303\255ji\307\224"), N_("\303\210rsh\303\255"), 
+    N_("\303\210ry\304\253"), N_("\303\210r\303\250r"), N_("\303\210rs\304\201n"), N_("\303\210rs\303\254"), N_("\303\210rw\307\224"), 
+    N_("\303\210rli\303\271"), N_("\303\210rq\304\253"), N_("\303\210rb\304\201"), N_("\303\210rji\307\224"), N_("S\304\201nsh\303\255")
 };
 
 static char *hanzi_num[] = {
-    N_("ling2"), N_("yi1"), N_("er4"), N_("san1"), N_("si4"),
-    N_("wu3"), N_("liu6"), N_("qi1"), N_("ba1"), N_("jiu3"),
-    N_("shi2")
+    N_("l\303\255ng"), N_("y\304\253"), N_("\303\250r"), N_("s\304\201n"), N_("s\303\254"),
+    N_("w\307\224"), N_("li\303\271"), N_("q\304\253"), N_("b\304\201"), N_("ji\307\224"),
+    N_("sh\303\255")
 };
 
 static void _cl_date_calc_lunar(LUNARDate *date, GError **error);
@@ -636,7 +636,7 @@ gchar* lunar_date_strftime (LUNARDate *date, const char *format)
     if (strstr(format, "%(YUE)") != NULL)
     {
         if (date->lunar->isleap)
-            tmp = g_strdup_printf("%s%s", _("run4"), _(lunar_month_list[date->lunar->month-1]));
+            tmp = g_strdup_printf("%s%s", _("R\303\271n"), _(lunar_month_list[date->lunar->month-1]));
         else
             tmp = g_strdup_printf("%s", _(lunar_month_list[date->lunar->month-1]));
         str = g_string_replace(str, "%(YUE)", tmp, -1);
