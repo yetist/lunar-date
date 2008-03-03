@@ -1,3 +1,10 @@
+=== liblunar-0.2.6 released ===
+
+2008-03-03  yetist  <yetist@gmail.com>
+
+	* configure.ac: 
+	liblunar-0.2.6 released
+
 2008-03-03  yetist  <yetist@gmail.com>
 
 	* lunar/calendar.patch: 
