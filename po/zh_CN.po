@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: liblunar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-25 10:19+0800\n"
+"POT-Creation-Date: 2008-03-03 10:08+0800\n"
 "PO-Revision-Date: 2007-09-03 19:05+0700\n"
 "Last-Translator: yetist <yetist@gmail.com>\n"
 "Language-Team: yetist@gmail.com <yetist@gmail.com>\n"
@@ -18,91 +18,91 @@ msgstr ""
 "X-Poedit-Country: CHINA\n"
 
 #: ../lunar/lunar-date.c:280
-msgid "Jia3"
+msgid "Jiǎ"
 msgstr "甲"
 
 #: ../lunar/lunar-date.c:280
-msgid "Yi3"
+msgid "Yǐ"
 msgstr "乙"
 
 #: ../lunar/lunar-date.c:280
-msgid "Bing3"
+msgid "Bǐng"
 msgstr "丙"
 
 #: ../lunar/lunar-date.c:280
-msgid "Ding1"
+msgid "Dīng"
 msgstr "丁"
 
 #: ../lunar/lunar-date.c:280
-msgid "Wu4"
+msgid "Wù"
 msgstr "戊"
 
 #: ../lunar/lunar-date.c:281
-msgid "Ji3"
+msgid "Jǐ"
 msgstr "己"
 
 #: ../lunar/lunar-date.c:281
-msgid "Geng1"
+msgid "Gēng"
 msgstr "庚"
 
 #: ../lunar/lunar-date.c:281
-msgid "Xin1"
+msgid "Xīn"
 msgstr "辛"
 
 #: ../lunar/lunar-date.c:281
-msgid "Ren2"
+msgid "Rén"
 msgstr "壬"
 
 #: ../lunar/lunar-date.c:281
-msgid "Gui3"
+msgid "Guǐ"
 msgstr "癸"
 
 #: ../lunar/lunar-date.c:285
-msgid "Zi3"
+msgid "Zǐ"
 msgstr "子"
 
 #: ../lunar/lunar-date.c:285
-msgid "Chou3"
+msgid "Chǒu"
 msgstr "丑"
 
 #: ../lunar/lunar-date.c:285
-msgid "Yin2"
+msgid "Yín"
 msgstr "寅"
 
 #: ../lunar/lunar-date.c:285
-msgid "Mao3"
+msgid "Mǎo"
 msgstr "卯"
 
 #: ../lunar/lunar-date.c:285
-msgid "Chen2"
+msgid "Chén"
 msgstr "辰"
 
 #: ../lunar/lunar-date.c:285
-msgid "Si4"
+msgid "Sì"
 msgstr "巳"
 
 #: ../lunar/lunar-date.c:286
-msgid "Wu3"
+msgid "Wǔ"
 msgstr "午"
 
 #: ../lunar/lunar-date.c:286
-msgid "Wei4"
+msgid "Wèi"
 msgstr "未"
 
 #: ../lunar/lunar-date.c:286
-msgid "Shen1"
+msgid "Shēn"
 msgstr "申"
 
 #: ../lunar/lunar-date.c:286
-msgid "You3"
+msgid "Yǒu"
 msgstr "酉"
 
 #: ../lunar/lunar-date.c:286
-msgid "Xu1"
+msgid "Xū"
 msgstr "戌"
 
 #: ../lunar/lunar-date.c:286
-msgid "Hai4"
+msgid "Hài"
 msgstr "亥"
 
 #: ../lunar/lunar-date.c:290
@@ -202,167 +202,167 @@ msgid "Dec"
 msgstr "腊月"
 
 #: ../lunar/lunar-date.c:298
-msgid "Chu1Yi1"
+msgid "Chūyī"
 msgstr "初一"
 
 #: ../lunar/lunar-date.c:298
-msgid "Chu1Er4"
+msgid "Chūèr"
 msgstr "初二"
 
 #: ../lunar/lunar-date.c:298
-msgid "Chu1San1"
+msgid "Chūsān"
 msgstr "初三"
 
 #: ../lunar/lunar-date.c:298
-msgid "Chu1Si4"
+msgid "Chūsì"
 msgstr "初四"
 
 #: ../lunar/lunar-date.c:298
-msgid "Chu1Wu3"
+msgid "Chūwǔ"
 msgstr "初五"
 
 #: ../lunar/lunar-date.c:299
-msgid "Chu1Liu4"
+msgid "Chūliù"
 msgstr "初六"
 
 #: ../lunar/lunar-date.c:299
-msgid "Chu1Qi1"
+msgid "Chūqī"
 msgstr "初七"
 
 #: ../lunar/lunar-date.c:299
-msgid "Chu1Ba1"
+msgid "Chūbā"
 msgstr "初八"
 
 #: ../lunar/lunar-date.c:299
-msgid "Chu1Jiu3"
+msgid "Chūjiǔ"
 msgstr "初九"
 
 #: ../lunar/lunar-date.c:299
-msgid "Chu1Shi2"
+msgid "Chūshí"
 msgstr "初十"
 
 #: ../lunar/lunar-date.c:300
-msgid "Shi2Yi1"
+msgid "Shíyī"
 msgstr "十一"
 
 #: ../lunar/lunar-date.c:300
-msgid "Shi2Er4"
+msgid "Shíèr"
 msgstr "十二"
 
 #: ../lunar/lunar-date.c:300
-msgid "Shi1San1"
+msgid "Shísān"
 msgstr "十三"
 
 #: ../lunar/lunar-date.c:300
-msgid "Shi1Si4"
+msgid "Shísì"
 msgstr "十四"
 
 #: ../lunar/lunar-date.c:300
-msgid "Shi1Wu3"
+msgid "Shíwǔ"
 msgstr "十五"
 
 #: ../lunar/lunar-date.c:301
-msgid "Shi1Liu4"
+msgid "Shíliù"
 msgstr "十六"
 
 #: ../lunar/lunar-date.c:301
-msgid "Shi1Qi1"
+msgid "Shíqī"
 msgstr "十七"
 
 #: ../lunar/lunar-date.c:301
-msgid "Shi1Ba1"
+msgid "Shíbā"
 msgstr "十八"
 
 #: ../lunar/lunar-date.c:301
-msgid "Shi1Jiu3"
+msgid "Shíjiǔ"
 msgstr "十九"
 
 #: ../lunar/lunar-date.c:301
-msgid "Er4Shi2"
+msgid "Èrshí"
 msgstr "二十"
 
 #: ../lunar/lunar-date.c:302
-msgid "Er4Yi1"
+msgid "Èryī"
 msgstr "廿一"
 
 #: ../lunar/lunar-date.c:302
-msgid "Er4Er4"
+msgid "Èrèr"
 msgstr "廿二"
 
 #: ../lunar/lunar-date.c:302
-msgid "Er4San1"
+msgid "Èrsān"
 msgstr "廿三"
 
 #: ../lunar/lunar-date.c:302
-msgid "Er4Si4"
+msgid "Èrsì"
 msgstr "廿四"
 
 #: ../lunar/lunar-date.c:302
-msgid "Er4Wu3"
+msgid "Èrwǔ"
 msgstr "廿五"
 
 #: ../lunar/lunar-date.c:303
-msgid "Er4Liu4"
+msgid "Èrliù"
 msgstr "廿六"
 
 #: ../lunar/lunar-date.c:303
-msgid "Er4Qi1"
+msgid "Èrqī"
 msgstr "廿七"
 
 #: ../lunar/lunar-date.c:303
-msgid "Er4Ba1"
+msgid "Èrbā"
 msgstr "廿八"
 
 #: ../lunar/lunar-date.c:303
-msgid "Er4Jiu3"
+msgid "Èrjiǔ"
 msgstr "廿九"
 
 #: ../lunar/lunar-date.c:303
-msgid "San1Shi2"
+msgid "Sānshí"
 msgstr "三十"
 
 #: ../lunar/lunar-date.c:307
-msgid "ling2"
+msgid "líng"
 msgstr "○"
 
 #: ../lunar/lunar-date.c:307
-msgid "yi1"
+msgid "yī"
 msgstr "一"
 
 #: ../lunar/lunar-date.c:307
-msgid "er4"
+msgid "èr"
 msgstr "二"
 
 #: ../lunar/lunar-date.c:307
-msgid "san1"
+msgid "sān"
 msgstr "三"
 
 #: ../lunar/lunar-date.c:307
-msgid "si4"
+msgid "sì"
 msgstr "四"
 
 #: ../lunar/lunar-date.c:308
-msgid "wu3"
+msgid "wǔ"
 msgstr "五"
 
 #: ../lunar/lunar-date.c:308
-msgid "liu6"
+msgid "liù"
 msgstr "六"
 
 #: ../lunar/lunar-date.c:308
-msgid "qi1"
+msgid "qī"
 msgstr "七"
 
 #: ../lunar/lunar-date.c:308
-msgid "ba1"
+msgid "bā"
 msgstr "八"
 
 #: ../lunar/lunar-date.c:308
-msgid "jiu3"
+msgid "jiǔ"
 msgstr "九"
 
 #: ../lunar/lunar-date.c:309
-msgid "shi2"
+msgid "shí"
 msgstr "十"
 
 #: ../lunar/lunar-date.c:397 ../lunar/lunar-date.c:443
@@ -370,7 +370,7 @@ msgid "Year out of range."
 msgstr "年超出范围."
 
 #: ../lunar/lunar-date.c:639
-msgid "Run4"
+msgid "Rùn"
 msgstr "闰"
 
 #: ../lunar/lunar-date.c:868
@@ -419,7 +419,7 @@ msgid "year measurement template|2000"
 msgstr "2000"
 
 #: ../lunar/lunar-calendar.c:1650
-msgid "Shi2Er2Yue4"
+msgid "Shíèryuè"
 msgstr "十二月"
 
 #: ../lunar/lunar-calendar.c:1652 ../lunar/lunar-calendar.c:2264
@@ -429,7 +429,7 @@ msgstr "%d"
 
 #: ../lunar/lunar-calendar.c:1688 ../lunar/lunar-calendar.c:2122
 #, c-format
-msgid "%dZhou1"
+msgid "%dzhōu"
 msgstr "%d周"
 
 #: ../lunar/lunar-calendar.c:1690 ../lunar/lunar-calendar.c:2124
@@ -453,7 +453,7 @@ msgid "calendar year format|%Y"
 msgstr "%Y"
 
 #: ../lunar/lunar-calendar.c:3648
-msgid "Nian %(shengxiao) %(Y60)%(M60)%(D60)"
+msgid "Nián %(shengxiao) %(Y60)%(M60)%(D60)"
 msgstr "年 %(shengxiao) %(Y60)%(M60)%(D60)"
 
 #~ msgid "2000"
