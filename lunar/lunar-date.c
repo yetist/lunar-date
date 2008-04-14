@@ -327,6 +327,7 @@ static int mymemcnt(const char *mem, int len, const char *pat, int pat_len);
 static GString* g_string_replace (GString *string, const gchar* old, const gchar* new, int count);
 char* num_2_hanzi(int n);
 char* mday_2_hanzi(int n);
+int year_jieqi(int year, int n, char* result);
 
 GQuark lunar_date_error_quark (void)
 {
@@ -525,7 +526,7 @@ gchar*      lunar_date_get_jieri          (LUNARDate *date)
     weekday = get_day_of_week ( date->solar->year, date->solar->month, date->solar->day);
     weekth = get_weekth_of_month ( date->solar->day);
     if (g_key_file_has_group(keyfile, "WEEK"))
-                                                                  {
+    {
         str_day = g_strdup_printf("%02d%01d%01d", date->solar->month, weekth, weekday);
         if (g_key_file_has_key (keyfile, "WEEK", str_day, NULL))
         {
@@ -533,10 +534,117 @@ gchar*      lunar_date_get_jieri          (LUNARDate *date)
             jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "WEEK", str_day, NULL));
         }
     }
+
+    //jie2qi4
+    static char str_jq[24][20] = {'9'};
+    int i;
+    char yc[5] = {str_jq[0][0], str_jq[0][1], str_jq[0][2], str_jq[0][3], '\0'};
+    if(atoi(yc) != date->solar->year)
+    {
+        for(i=0; i<24; i++)
+        {
+            year_jieqi(date->solar->year, i, str_jq[i]);
+        }
+    }
+    str_day = g_strdup_printf("%04d%02d%02d", date->solar->year, date->solar->month, date->solar->day);
+    gchar** jq_day;
+    for (i=0; i<24; i++)
+    {
+        jq_day = g_strsplit(str_jq[i], " ", 2);
+        if (g_ascii_strcasecmp(jq_day[0], str_day) == 0)
+        {
+            jieri=g_string_append(jieri, " ");
+            jieri=g_string_append(jieri, jq_day[1]);
+        }
+    }
+    g_strfreev(jq_day);
+
     gchar* oo = g_strdup(g_strstrip(jieri->str));
     g_string_free(jieri, TRUE);
     g_free(str_day);
     return oo;
+}
+
+/**
+ * year_jieqi:
+ *
+ * 计算 year 年第 n 个节气的日期(公历).
+ * 从小寒开始, 精确到分钟, 1900-2100年应该没问题.
+ **/
+int year_jieqi(int year, int n, char* result)
+{
+
+    /* 1900/1/6 02:05:00 小寒  */
+    static const double x_1900_1_6_2_5 = 693966.08680556;
+    static const int termInfo[] = {
+            0     ,21208 ,42467 ,63836 ,85337 ,107014,
+            128867,150921,173149,195551,218072,240693,
+            263343,285989,308563,331033,353350,375494,
+            397447,419210,440795,462224,483532,504758
+    };
+    static const char* solar_term_name[] = {
+            "小寒","大寒","立春","雨水",
+            "惊蛰","春分","清明","谷雨",
+            "立夏","小满","芒种","夏至",
+            "小暑","大暑","立秋","处暑",
+            "白露","秋分","寒露","霜降",
+            "立冬","小雪","大雪","冬至"
+    };
+    static const int mdays[] = {0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
+
+    int y, m, d, diff;
+    unsigned days, _days;
+
+    _days = x_1900_1_6_2_5+365.2422*(year-1900)+termInfo[n]/(60.*24);
+
+    days = 100 * (_days - _days/(3652425L/(3652425L-3652400L)));
+    y    = days/36524; days%=36524;
+    m    = 1 + days/3044;        /* [1..12] */
+    d    = 1 + (days%3044)/100;    /* [1..31] */
+
+    diff =y*365+y/4-y/100+y/400+mdays[m-1]+d-((m<=2&&((y&3)==0)&&((y%100)!=0||y%400==0))) - _days;
+
+    if(diff > 0 && diff >= d)    /* ~0.5% */
+    {
+        if(m == 1)
+        {
+            --y; m = 12;
+            d = 31 - (diff-d);
+        }
+        else 
+        {            
+            d = mdays[m-1] - (diff-d);
+            if(--m == 2)
+                d += ((y&3)==0) && ((y%100)!=0||y%400==0);
+        }
+    }
+    else
+    {
+        if((d -= diff) > mdays[m])    /* ~1.6% */
+        {
+            if(m == 2)
+            {
+                if(((y&3)==0) && ((y%100)!=0||y%400==0))
+                {
+                    if(d != 29)
+                        m = 3, d -= 29;
+                }
+                else
+                {
+                    m = 3, d -= 28;
+                }
+            }
+            else
+            {
+                d -= mdays[m];
+                if(m++ == 12)
+                    ++y, m = 1;
+            }
+        }
+    }    
+
+    g_sprintf(result, "%04d%02d%02d %s", y, m, d, solar_term_name[n]);
+    result = NULL;
 }
 
 /**

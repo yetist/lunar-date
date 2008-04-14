@@ -1,3 +1,10 @@
+2008-04-15  redwoods  <redwooods@gmail.com>
+
+	* lunar/lunar-date.c:
+	Add function of jie2qi4.
+	* data/holiday.dat:
+	Modify some festivals.
+
 2008-03-03  yetist  <yetist@gmail.com>
 
 	* pinyin.sh: 
