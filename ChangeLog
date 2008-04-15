@@ -1,5 +1,13 @@
 2008-04-15  yetist  <yetist@gmail.com>
 
+	* lunar/lunar-date.c: 
+	* po/zh_CN.po: 
+	use C style unicode of solar term.
+	* AUTHORS: add author.
+	* tests/test-date.c: init random.
+
+2008-04-15  yetist  <yetist@gmail.com>
+
 	* lunar/lunar-date.c: add thank.
 	* data/holiday.dat: remove my birthday.
 

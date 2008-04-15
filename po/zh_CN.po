@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: liblunar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-03 10:08+0800\n"
+"POT-Creation-Date: 2008-04-15 23:37+0800\n"
 "PO-Revision-Date: 2007-09-03 19:05+0700\n"
 "Last-Translator: yetist <yetist@gmail.com>\n"
 "Language-Team: yetist@gmail.com <yetist@gmail.com>\n"
@@ -17,378 +17,474 @@ msgstr ""
 "X-Poedit-Language: Chinese\n"
 "X-Poedit-Country: CHINA\n"
 
-#: ../lunar/lunar-date.c:280
+#: ../lunar/lunar-date.c:290
 msgid "Jiǎ"
 msgstr "甲"
 
-#: ../lunar/lunar-date.c:280
+#: ../lunar/lunar-date.c:290
 msgid "Yǐ"
 msgstr "乙"
 
-#: ../lunar/lunar-date.c:280
+#: ../lunar/lunar-date.c:290
 msgid "Bǐng"
 msgstr "丙"
 
-#: ../lunar/lunar-date.c:280
+#: ../lunar/lunar-date.c:290
 msgid "Dīng"
 msgstr "丁"
 
-#: ../lunar/lunar-date.c:280
+#: ../lunar/lunar-date.c:290
 msgid "Wù"
 msgstr "戊"
 
-#: ../lunar/lunar-date.c:281
+#: ../lunar/lunar-date.c:291
 msgid "Jǐ"
 msgstr "己"
 
-#: ../lunar/lunar-date.c:281
+#: ../lunar/lunar-date.c:291
 msgid "Gēng"
 msgstr "庚"
 
-#: ../lunar/lunar-date.c:281
+#: ../lunar/lunar-date.c:291
 msgid "Xīn"
 msgstr "辛"
 
-#: ../lunar/lunar-date.c:281
+#: ../lunar/lunar-date.c:291
 msgid "Rén"
 msgstr "壬"
 
-#: ../lunar/lunar-date.c:281
+#: ../lunar/lunar-date.c:291
 msgid "Guǐ"
 msgstr "癸"
 
-#: ../lunar/lunar-date.c:285
+#: ../lunar/lunar-date.c:295
 msgid "Zǐ"
 msgstr "子"
 
-#: ../lunar/lunar-date.c:285
+#: ../lunar/lunar-date.c:295
 msgid "Chǒu"
 msgstr "丑"
 
-#: ../lunar/lunar-date.c:285
+#: ../lunar/lunar-date.c:295
 msgid "Yín"
 msgstr "寅"
 
-#: ../lunar/lunar-date.c:285
+#: ../lunar/lunar-date.c:295
 msgid "Mǎo"
 msgstr "卯"
 
-#: ../lunar/lunar-date.c:285
+#: ../lunar/lunar-date.c:295
 msgid "Chén"
 msgstr "辰"
 
-#: ../lunar/lunar-date.c:285
+#: ../lunar/lunar-date.c:295
 msgid "Sì"
 msgstr "巳"
 
-#: ../lunar/lunar-date.c:286
+#: ../lunar/lunar-date.c:296
 msgid "Wǔ"
 msgstr "午"
 
-#: ../lunar/lunar-date.c:286
+#: ../lunar/lunar-date.c:296
 msgid "Wèi"
 msgstr "未"
 
-#: ../lunar/lunar-date.c:286
+#: ../lunar/lunar-date.c:296
 msgid "Shēn"
 msgstr "申"
 
-#: ../lunar/lunar-date.c:286
+#: ../lunar/lunar-date.c:296
 msgid "Yǒu"
 msgstr "酉"
 
-#: ../lunar/lunar-date.c:286
+#: ../lunar/lunar-date.c:296
 msgid "Xū"
 msgstr "戌"
 
-#: ../lunar/lunar-date.c:286
+#: ../lunar/lunar-date.c:296
 msgid "Hài"
 msgstr "亥"
 
-#: ../lunar/lunar-date.c:290
+#: ../lunar/lunar-date.c:300
 msgid "Mouse"
 msgstr "鼠"
 
-#: ../lunar/lunar-date.c:290
+#: ../lunar/lunar-date.c:300
 msgid "Ox"
 msgstr "牛"
 
-#: ../lunar/lunar-date.c:290
+#: ../lunar/lunar-date.c:300
 msgid "Tiger"
 msgstr "虎"
 
-#: ../lunar/lunar-date.c:290
+#: ../lunar/lunar-date.c:300
 msgid "Rabbit"
 msgstr "兔"
 
-#: ../lunar/lunar-date.c:290
+#: ../lunar/lunar-date.c:300
 msgid "Dragon"
 msgstr "龙"
 
-#: ../lunar/lunar-date.c:290
+#: ../lunar/lunar-date.c:300
 msgid "Snake"
 msgstr "蛇"
 
-#: ../lunar/lunar-date.c:291
+#: ../lunar/lunar-date.c:301
 msgid "Horse"
 msgstr "马"
 
-#: ../lunar/lunar-date.c:291
+#: ../lunar/lunar-date.c:301
 msgid "Goat"
 msgstr "羊"
 
-#: ../lunar/lunar-date.c:291
+#: ../lunar/lunar-date.c:301
 msgid "Monkey"
 msgstr "猴"
 
-#: ../lunar/lunar-date.c:291
+#: ../lunar/lunar-date.c:301
 msgid "Rooster"
 msgstr "鸡"
 
-#: ../lunar/lunar-date.c:291
+#: ../lunar/lunar-date.c:301
 msgid "Dog"
 msgstr "狗"
 
-#: ../lunar/lunar-date.c:291
+#: ../lunar/lunar-date.c:301
 msgid "Pig"
 msgstr "猪"
 
-#: ../lunar/lunar-date.c:294
+#: ../lunar/lunar-date.c:304
 msgid "Jan"
 msgstr "一月"
 
-#: ../lunar/lunar-date.c:294
+#: ../lunar/lunar-date.c:304
 msgid "Feb"
 msgstr "二月"
 
-#: ../lunar/lunar-date.c:294
+#: ../lunar/lunar-date.c:304
 msgid "Mar"
 msgstr "三月"
 
-#: ../lunar/lunar-date.c:294
+#: ../lunar/lunar-date.c:304
 msgid "Apr"
 msgstr "四月"
 
-#: ../lunar/lunar-date.c:294
+#: ../lunar/lunar-date.c:304
 msgid "May"
 msgstr "五月"
 
-#: ../lunar/lunar-date.c:294
+#: ../lunar/lunar-date.c:304
 msgid "Jun"
 msgstr "六月"
 
-#: ../lunar/lunar-date.c:295
+#: ../lunar/lunar-date.c:305
 msgid "Jul"
 msgstr "七月"
 
-#: ../lunar/lunar-date.c:295
+#: ../lunar/lunar-date.c:305
 msgid "Aug"
 msgstr "八月"
 
-#: ../lunar/lunar-date.c:295
+#: ../lunar/lunar-date.c:305
 msgid "Sep"
 msgstr "九月"
 
-#: ../lunar/lunar-date.c:295
+#: ../lunar/lunar-date.c:305
 msgid "Oct"
 msgstr "十月"
 
-#: ../lunar/lunar-date.c:295
+#: ../lunar/lunar-date.c:305
 msgid "Nov"
 msgstr "冬月"
 
-#: ../lunar/lunar-date.c:295
+#: ../lunar/lunar-date.c:305
 msgid "Dec"
 msgstr "腊月"
 
-#: ../lunar/lunar-date.c:298
+#: ../lunar/lunar-date.c:308
 msgid "Chūyī"
 msgstr "初一"
 
-#: ../lunar/lunar-date.c:298
+#: ../lunar/lunar-date.c:308
 msgid "Chūèr"
 msgstr "初二"
 
-#: ../lunar/lunar-date.c:298
+#: ../lunar/lunar-date.c:308
 msgid "Chūsān"
 msgstr "初三"
 
-#: ../lunar/lunar-date.c:298
+#: ../lunar/lunar-date.c:308
 msgid "Chūsì"
 msgstr "初四"
 
-#: ../lunar/lunar-date.c:298
+#: ../lunar/lunar-date.c:308
 msgid "Chūwǔ"
 msgstr "初五"
 
-#: ../lunar/lunar-date.c:299
+#: ../lunar/lunar-date.c:309
 msgid "Chūliù"
 msgstr "初六"
 
-#: ../lunar/lunar-date.c:299
+#: ../lunar/lunar-date.c:309
 msgid "Chūqī"
 msgstr "初七"
 
-#: ../lunar/lunar-date.c:299
+#: ../lunar/lunar-date.c:309
 msgid "Chūbā"
 msgstr "初八"
 
-#: ../lunar/lunar-date.c:299
+#: ../lunar/lunar-date.c:309
 msgid "Chūjiǔ"
 msgstr "初九"
 
-#: ../lunar/lunar-date.c:299
+#: ../lunar/lunar-date.c:309
 msgid "Chūshí"
 msgstr "初十"
 
-#: ../lunar/lunar-date.c:300
+#: ../lunar/lunar-date.c:310
 msgid "Shíyī"
 msgstr "十一"
 
-#: ../lunar/lunar-date.c:300
+#: ../lunar/lunar-date.c:310
 msgid "Shíèr"
 msgstr "十二"
 
-#: ../lunar/lunar-date.c:300
+#: ../lunar/lunar-date.c:310
 msgid "Shísān"
 msgstr "十三"
 
-#: ../lunar/lunar-date.c:300
+#: ../lunar/lunar-date.c:310
 msgid "Shísì"
 msgstr "十四"
 
-#: ../lunar/lunar-date.c:300
+#: ../lunar/lunar-date.c:310
 msgid "Shíwǔ"
 msgstr "十五"
 
-#: ../lunar/lunar-date.c:301
+#: ../lunar/lunar-date.c:311
 msgid "Shíliù"
 msgstr "十六"
 
-#: ../lunar/lunar-date.c:301
+#: ../lunar/lunar-date.c:311
 msgid "Shíqī"
 msgstr "十七"
 
-#: ../lunar/lunar-date.c:301
+#: ../lunar/lunar-date.c:311
 msgid "Shíbā"
 msgstr "十八"
 
-#: ../lunar/lunar-date.c:301
+#: ../lunar/lunar-date.c:311
 msgid "Shíjiǔ"
 msgstr "十九"
 
-#: ../lunar/lunar-date.c:301
+#: ../lunar/lunar-date.c:311
 msgid "Èrshí"
 msgstr "二十"
 
-#: ../lunar/lunar-date.c:302
+#: ../lunar/lunar-date.c:312
 msgid "Èryī"
 msgstr "廿一"
 
-#: ../lunar/lunar-date.c:302
+#: ../lunar/lunar-date.c:312
 msgid "Èrèr"
 msgstr "廿二"
 
-#: ../lunar/lunar-date.c:302
+#: ../lunar/lunar-date.c:312
 msgid "Èrsān"
 msgstr "廿三"
 
-#: ../lunar/lunar-date.c:302
+#: ../lunar/lunar-date.c:312
 msgid "Èrsì"
 msgstr "廿四"
 
-#: ../lunar/lunar-date.c:302
+#: ../lunar/lunar-date.c:312
 msgid "Èrwǔ"
 msgstr "廿五"
 
-#: ../lunar/lunar-date.c:303
+#: ../lunar/lunar-date.c:313
 msgid "Èrliù"
 msgstr "廿六"
 
-#: ../lunar/lunar-date.c:303
+#: ../lunar/lunar-date.c:313
 msgid "Èrqī"
 msgstr "廿七"
 
-#: ../lunar/lunar-date.c:303
+#: ../lunar/lunar-date.c:313
 msgid "Èrbā"
 msgstr "廿八"
 
-#: ../lunar/lunar-date.c:303
+#: ../lunar/lunar-date.c:313
 msgid "Èrjiǔ"
 msgstr "廿九"
 
-#: ../lunar/lunar-date.c:303
+#: ../lunar/lunar-date.c:313
 msgid "Sānshí"
 msgstr "三十"
 
-#: ../lunar/lunar-date.c:307
+#: ../lunar/lunar-date.c:317
 msgid "líng"
 msgstr "○"
 
-#: ../lunar/lunar-date.c:307
+#: ../lunar/lunar-date.c:317
 msgid "yī"
 msgstr "一"
 
-#: ../lunar/lunar-date.c:307
+#: ../lunar/lunar-date.c:317
 msgid "èr"
 msgstr "二"
 
-#: ../lunar/lunar-date.c:307
+#: ../lunar/lunar-date.c:317
 msgid "sān"
 msgstr "三"
 
-#: ../lunar/lunar-date.c:307
+#: ../lunar/lunar-date.c:317
 msgid "sì"
 msgstr "四"
 
-#: ../lunar/lunar-date.c:308
+#: ../lunar/lunar-date.c:318
 msgid "wǔ"
 msgstr "五"
 
-#: ../lunar/lunar-date.c:308
+#: ../lunar/lunar-date.c:318
 msgid "liù"
 msgstr "六"
 
-#: ../lunar/lunar-date.c:308
+#: ../lunar/lunar-date.c:318
 msgid "qī"
 msgstr "七"
 
-#: ../lunar/lunar-date.c:308
+#: ../lunar/lunar-date.c:318
 msgid "bā"
 msgstr "八"
 
-#: ../lunar/lunar-date.c:308
+#: ../lunar/lunar-date.c:318
 msgid "jiǔ"
 msgstr "九"
 
-#: ../lunar/lunar-date.c:309
+#: ../lunar/lunar-date.c:319
 msgid "shí"
 msgstr "十"
 
-#: ../lunar/lunar-date.c:397 ../lunar/lunar-date.c:443
+#: ../lunar/lunar-date.c:408 ../lunar/lunar-date.c:454
 msgid "Year out of range."
 msgstr "年超出范围."
 
-#: ../lunar/lunar-date.c:639
+#: ../lunar/lunar-date.c:596
+msgid "Xiǎohán"
+msgstr "小寒"
+
+#: ../lunar/lunar-date.c:596
+msgid "Dàhán"
+msgstr "大寒"
+
+#: ../lunar/lunar-date.c:596
+msgid "Lìchūn"
+msgstr "立春"
+
+#: ../lunar/lunar-date.c:596
+msgid "Yǔshuǐ"
+msgstr "雨水"
+
+#: ../lunar/lunar-date.c:597
+msgid "Jīngzhé"
+msgstr "惊蛰"
+
+#: ../lunar/lunar-date.c:597
+msgid "Chūnfēn"
+msgstr "春分"
+
+#: ../lunar/lunar-date.c:597
+msgid "Qīngmíng"
+msgstr "清明"
+
+#: ../lunar/lunar-date.c:597
+msgid "Gǔyǔ"
+msgstr "谷雨"
+
+#: ../lunar/lunar-date.c:598
+msgid "Lìxià"
+msgstr "立夏"
+
+#: ../lunar/lunar-date.c:598
+msgid "Xiǎomǎn"
+msgstr "小满"
+
+#: ../lunar/lunar-date.c:598
+msgid "Mángzhòng"
+msgstr "芒种"
+
+#: ../lunar/lunar-date.c:598
+msgid "Xiàzhì"
+msgstr "夏至"
+
+#: ../lunar/lunar-date.c:599
+msgid "Xiǎoshǔ"
+msgstr "小暑"
+
+#: ../lunar/lunar-date.c:599
+msgid "Dàshǔ"
+msgstr "大暑"
+
+#: ../lunar/lunar-date.c:599
+msgid "Lìqīu"
+msgstr "立秋"
+
+#: ../lunar/lunar-date.c:599
+msgid "Chùshǔ"
+msgstr "处暑"
+
+#: ../lunar/lunar-date.c:600
+msgid "Báilòu"
+msgstr "白露"
+
+#: ../lunar/lunar-date.c:600
+msgid "Qīufēn"
+msgstr "秋分"
+
+#: ../lunar/lunar-date.c:600
+msgid "Hánlòu"
+msgstr "寒露"
+
+#: ../lunar/lunar-date.c:600
+msgid "Shuāngjiàng"
+msgstr "霜降"
+
+#: ../lunar/lunar-date.c:601
+msgid "Lìdōng"
+msgstr "立冬"
+
+#: ../lunar/lunar-date.c:601
+msgid "Xiǎoxuě"
+msgstr "小雪"
+
+#: ../lunar/lunar-date.c:601
+msgid "Dàxuě"
+msgstr "大雪"
+
+#: ../lunar/lunar-date.c:601
+msgid "Dōngzhì"
+msgstr "冬至"
+
+#: ../lunar/lunar-date.c:757
 msgid "Rùn"
 msgstr "闰"
 
-#: ../lunar/lunar-date.c:868
+#: ../lunar/lunar-date.c:986
 msgid "Internal error: pick a larger constant for BYEAR."
 msgstr "内部错误：参考年的数值过小。"
 
-#: ../lunar/lunar-date.c:884 ../lunar/lunar-date.c:893
-#: ../lunar/lunar-date.c:931
+#: ../lunar/lunar-date.c:1002 ../lunar/lunar-date.c:1011
+#: ../lunar/lunar-date.c:1049
 #, c-format
 msgid "Day out of range: \"%d\""
 msgstr "日超出范围：\"%d\""
 
-#: ../lunar/lunar-date.c:914
+#: ../lunar/lunar-date.c:1032
 #, c-format
 msgid "%d is not a leap month in year %d.\n"
 msgstr "%d 年的 %d 月不是闰月。\n"
 
-#: ../lunar/lunar-date.c:950 ../lunar/lunar-date.c:1013
+#: ../lunar/lunar-date.c:1068 ../lunar/lunar-date.c:1131
 #, c-format
 msgid "Year out of range. \"%d\""
 msgstr "年超出范围. \"%d\""
@@ -455,443 +551,3 @@ msgstr "%Y"
 #: ../lunar/lunar-calendar.c:3648
 msgid "Nián %(shengxiao) %(Y60)%(M60)%(D60)"
 msgstr "年 %(shengxiao) %(Y60)%(M60)%(D60)"
-
-#~ msgid "2000"
-#~ msgstr "2000"
-
-#~ msgid "%d"
-#~ msgstr "%d"
-
-#~ msgid "%Y"
-#~ msgstr "%Y"
-
-#~ msgid "年 %s %s%s年%s%s月%s%s日"
-#~ msgstr "年 %s年  %s%s年%s%s月%s%s日"
-
-#~ msgid "十二月"
-#~ msgstr "十二月"
-
-#~ msgid "Chu1Liu4"
-#~ msgstr "初六"
-
-#~ msgid "nian2"
-#~ msgstr "年"
-
-#~ msgid "yue4"
-#~ msgstr "月"
-
-#~ msgid "ri4"
-#~ msgstr "日"
-
-#, fuzzy
-#~ msgid "Qi1"
-#~ msgstr "廿七"
-
-#, fuzzy
-#~ msgid "Shi2"
-#~ msgstr "时"
-
-#, fuzzy
-#~ msgid "Zheng1"
-#~ msgstr "正月"
-
-#~ msgid "Er4Yue4"
-#~ msgstr "二月"
-
-#~ msgid "San1Yue4"
-#~ msgstr "三月"
-
-#~ msgid "Si4Yue4"
-#~ msgstr "四月"
-
-#~ msgid "Wu3Yue4"
-#~ msgstr "五月"
-
-#~ msgid "liu6Yue4"
-#~ msgstr "六月"
-
-#~ msgid "Qi1Yue4"
-#~ msgstr "七月"
-
-#~ msgid "Ba1Yue4"
-#~ msgstr "八月"
-
-#~ msgid "Jiu3Yue4"
-#~ msgstr "九月"
-
-#~ msgid "Shi2Yue4"
-#~ msgstr "十月"
-
-#~ msgid "Shi2Yi1Yue4"
-#~ msgstr "十一月"
-
-#~ msgid "Er1"
-#~ msgstr "二"
-
-#~ msgid "Shi2Er2"
-#~ msgstr "十二"
-
-#~ msgid "La4"
-#~ msgstr "十二"
-
-#~ msgid "%l:%M:%S %p"
-#~ msgstr "%p%l:%M:%S"
-
-#~ msgid "%l:%M %p"
-#~ msgstr "%p%l:%M"
-
-#~ msgid "%H:%M:%S"
-#~ msgstr "%H:%M:%S"
-
-#~ msgid "%H:%M"
-#~ msgstr "%H:%M"
-
-#~ msgid "%a %b %e"
-#~ msgstr "%-m月%-d日%A"
-
-#~ msgid ""
-#~ "%1$s\n"
-#~ "%2$s"
-#~ msgstr ""
-#~ "%1$s\n"
-#~ "%2$s"
-
-#~ msgid "%1$s, %2$s"
-#~ msgstr "%1$s %2$s"
-
-#~ msgid "%A %B %d"
-#~ msgstr "%-m月%-d日%A"
-
-#~ msgid "Click to view your appointments and tasks"
-#~ msgstr "单击可查看您的约会和任务"
-
-#~ msgid "Click to view month calendar"
-#~ msgstr "单击可查看月历"
-
-#~ msgid "%b %d"
-#~ msgstr "%-m月%-d日"
-
-#~ msgid "Tasks"
-#~ msgstr "任务"
-
-#~ msgid "All Day"
-#~ msgstr "全天"
-
-#~ msgid "Appointments"
-#~ msgstr "约会"
-
-#~ msgid "Calendar"
-#~ msgstr "日历"
-
-#~ msgid "Computer Clock"
-#~ msgstr "计算机时钟"
-
-#~ msgid "%I:%M:%S %p"
-#~ msgstr "%p%I:%M:%S"
-
-#~ msgid "%I:%M %p"
-#~ msgstr "%p%I:%M"
-
-#~ msgid "%A, %B %d %Y"
-#~ msgstr "%Y年%-m月%-d日%A"
-
-#~ msgid "Failed to launch time configuration tool: %s"
-#~ msgstr "启动时间配置工具失败：%s"
-
-#~ msgid ""
-#~ "Failed to locate a program for configuring the date and time. Perhaps "
-#~ "none is installed?"
-#~ msgstr "找不到用于配置日期和时间的程序。可能没有安装？"
-
-#~ msgid "Custom format"
-#~ msgstr "自定义格式"
-
-#~ msgid "There was an error displaying help: %s"
-#~ msgstr "显示帮助时发生错误：%s"
-
-#~ msgid "Lunar Preferences"
-#~ msgstr "首选项"
-
-#~ msgid "Clock _type:"
-#~ msgstr "时钟类型(_T)："
-
-#~ msgid "12 hour"
-#~ msgstr "12 小时"
-
-#~ msgid "24 hour"
-#~ msgstr "24 小时"
-
-#~ msgid "UNIX time"
-#~ msgstr "UNIX 时间"
-
-#~ msgid "Internet time"
-#~ msgstr "Internet 时间"
-
-#~ msgid "Custom _format:"
-#~ msgstr "自定义格式(_F)："
-
-#~ msgid "Show _seconds"
-#~ msgstr "显示秒(_S)"
-
-#~ msgid "Show _date"
-#~ msgstr "显示日期(_D)"
-
-#~ msgid "Show _lunar date"
-#~ msgstr "显示农历日期(_L)"
-
-#~ msgid "Use _UTC"
-#~ msgstr "使用 _UTC"
-
-#~ msgid "Lunar"
-#~ msgstr "农历日期"
-
-#~ msgid "The Lunar displays the current time and lunar date"
-#~ msgstr "时钟显示当前时间和日期"
-
-#~ msgid "translator-credits"
-#~ msgstr ""
-#~ "Wang Jian <lark@linux.net.cn>\n"
-#~ "Jiang Xiong <jxiong@gwu.edu>\n"
-#~ "Zipeco <zipeco@btamail.net.cn>\n"
-#~ "Wang Li <charles@linux.net.cn>\n"
-#~ "Funda Wang <fundawang@linux.net.cn>\n"
-#~ "yetist <yetist@gmail.com>"
-
-#~ msgid "24-hour"
-#~ msgstr "24-hour"
-
-#~ msgid "Custom format of the clock"
-#~ msgstr "时钟的自定义格式"
-
-#~ msgid "Hour format"
-#~ msgstr "小时格式"
-
-#~ msgid "If true, display date in the clock, in addition to time."
-#~ msgstr "如果为 true，则在时钟上除了显示时间外，还要显示日期。"
-
-#~ msgid "If true, display seconds in time."
-#~ msgstr "如果为 true，则显示时间时显示秒数。"
-
-#~ msgid "If true, display time in Universal Coordinated Time zone."
-#~ msgstr "如果为 true，则显示 UTC 时区的时间。"
-
-#~ msgid "If true, show date in a tooltip when the pointer is over the clock."
-#~ msgstr "如果为 true，则当鼠标在时钟上停留时在工具提示中显示日期。"
-
-#~ msgid "If true, show week numbers in the calendar."
-#~ msgstr "如果为 true，则在日历中显示周序号。"
-
-#~ msgid "Show date in clock"
-#~ msgstr "在时钟上显示日期"
-
-#~ msgid "Show date in tooltip"
-#~ msgstr "在提示中显示日期"
-
-#~ msgid "Show time with seconds"
-#~ msgstr "显示带秒的时间"
-
-#~ msgid "Show week numbers in calendar"
-#~ msgstr "在日历中显示周序号"
-
-#~ msgid ""
-#~ "The use of this key was deprecated in GNOME 2.6 in favour of the 'format' "
-#~ "key. The schema is retained for compatibility with older versions."
-#~ msgstr ""
-#~ "在 GNOME 2.6 中不推荐使用此键，而应该使用“format”键。此大纲仅为与旧版本兼"
-#~ "容而保留。"
-
-#~ msgid ""
-#~ "This key specifies the format used by the clock applet when the format "
-#~ "key is set to \"custom\". You can use conversion specifiers understood by "
-#~ "strftime() to obtain a specific format."
-#~ msgstr ""
-#~ "当 format 键设为“custom”时，此键指定了时钟小程序要使用的格式。您可以选择 "
-#~ "strftime() 明白的格式符来获取特定格式。"
-
-#~ msgid ""
-#~ "This key specifies the hour format used by the clock applet. Possible "
-#~ "values are \"12-hour\", \"24-hour\", \"internet\", \"unix\" and \"custom"
-#~ "\". If set to \"internet\", the clock will display Internet time. The "
-#~ "Internet time system divides the day into 1000 \".beats\". There are no "
-#~ "time zones in this system, so time is the same all over the world. If set "
-#~ "to \"unix\", the clock will display time in seconds since Epoch, i.e. "
-#~ "1970-01-01. If set to \"custom\", the clock will display time according "
-#~ "to the format specified in the custom_format key."
-#~ msgstr ""
-#~ "此键指定了时钟小程序所使用的小时格式。可供选择的值为“12-hour”、“24-"
-#~ "hour”、“internet”、“unix”和“custom”。如果设定为“internet”，时钟将显示 "
-#~ "Internet 时间。Internet 时间将一天分为 1000“拍”。此系统中没有时区之分，所"
-#~ "以全世界的时间都是相同的。如果设定为“unix”，时钟将会以自新纪元(即 1970-01-"
-#~ "01)开始已过的秒数。如果设定为“custom”，时钟将会根据 custom_format 键中指定"
-#~ "的格式来显示时间。"
-
-#~ msgid ""
-#~ "This key specifies the program to run in order to configure the time."
-#~ msgstr "此处指定了配置时间所要运行的程序。"
-
-#~ msgid "Time configuration tool"
-#~ msgstr "时间配置工具"
-
-#~ msgid "Use Internet time"
-#~ msgstr "使用 Internet 时间"
-
-#~ msgid "Use UNIX time"
-#~ msgstr "使用 UNIX 时间"
-
-#~ msgid "Use UTC"
-#~ msgstr "使用 UTC"
-
-#~ msgid "Factory for creating lunar applets."
-#~ msgstr "创建农历小程序的车间。"
-
-#~ msgid "Get the current time and lunar date"
-#~ msgstr "获取当前时间和农历日期"
-
-#~ msgid "Lunar Applet Factory"
-#~ msgstr "农历小程序车间"
-
-#~ msgid "Lunar Date"
-#~ msgstr "农历日期"
-
-#~ msgid "Ad_just Date & Time"
-#~ msgstr "调整日期和时间(_J)"
-
-#~ msgid "Copy _Date"
-#~ msgstr "复制日期(_D)"
-
-#~ msgid "Copy _Time"
-#~ msgstr "复制时间(_T)"
-
-#~ msgid "_About"
-#~ msgstr "关于(_A)"
-
-#~ msgid "_Help"
-#~ msgstr "帮助(_H)"
-
-#~ msgid "_Preferences"
-#~ msgstr "首选项(_P)"
-
-#~ msgid "*%s"
-#~ msgstr "润%s"
-
-#~ msgid "%s"
-#~ msgstr "%s月"
-
-#~ msgid "Sun"
-#~ msgstr "日"
-
-#~ msgid "Mon"
-#~ msgstr "一"
-
-#~ msgid "Tue"
-#~ msgstr "二"
-
-#~ msgid "Wed"
-#~ msgstr "三"
-
-#~ msgid "Thu"
-#~ msgstr "四"
-
-#~ msgid "Fri"
-#~ msgstr "五"
-
-#~ msgid "Sat"
-#~ msgstr "六"
-
-#~ msgid "1"
-#~ msgstr "初一"
-
-#~ msgid "2"
-#~ msgstr "初二"
-
-#~ msgid "3"
-#~ msgstr "初三"
-
-#~ msgid "4"
-#~ msgstr "初四"
-
-#~ msgid "5"
-#~ msgstr "初五"
-
-#~ msgid "6"
-#~ msgstr "初六"
-
-#~ msgid "7"
-#~ msgstr "初七"
-
-#~ msgid "8"
-#~ msgstr "初八"
-
-#~ msgid "9"
-#~ msgstr "初九"
-
-#~ msgid "10"
-#~ msgstr "初十"
-
-#~ msgid "11"
-#~ msgstr "十一"
-
-#~ msgid "12"
-#~ msgstr "十二"
-
-#~ msgid "13"
-#~ msgstr "十三"
-
-#~ msgid "14"
-#~ msgstr "十四"
-
-#~ msgid "15"
-#~ msgstr "十五"
-
-#~ msgid "16"
-#~ msgstr "十六"
-
-#~ msgid "17"
-#~ msgstr "十七"
-
-#~ msgid "18"
-#~ msgstr "十八"
-
-#~ msgid "19"
-#~ msgstr "十九"
-
-#~ msgid "21"
-#~ msgstr "廿一"
-
-#~ msgid "22"
-#~ msgstr "廿二"
-
-#~ msgid "23"
-#~ msgstr "廿三"
-
-#~ msgid "24"
-#~ msgstr "廿四"
-
-#~ msgid "25"
-#~ msgstr "廿五"
-
-#~ msgid "26"
-#~ msgstr "廿六"
-
-#~ msgid "27"
-#~ msgstr "廿七"
-
-#~ msgid "28"
-#~ msgstr "廿八"
-
-#~ msgid "29"
-#~ msgstr "廿九"
-
-#~ msgid "30"
-#~ msgstr "三十"
-
-#, fuzzy
-#~ msgid "abc|2000"
-#~ msgstr "PLATFORM 2000"
-
-#~ msgid "Clock Preferences"
-#~ msgstr "时钟首选项"
-
-#, fuzzy
-#~ msgid "Clock"
-#~ msgstr "时钟"

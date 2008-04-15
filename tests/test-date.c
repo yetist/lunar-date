@@ -60,6 +60,7 @@ void random_test(void)
     LUNARDate *date;
 
     date = lunar_date_new();
+    srandom(time(NULL));
     GDateYear year = random() % 150 + 1900;
     GDateMonth month = random() % 12 + 1;
     GDateDay day = random() % 31 + 1;
@@ -97,6 +98,7 @@ void test(gchar* argv[])
     GDateMonth month =  atoi(argv[2]);
     GDateDay day = atoi(argv[3]);
 
+    srandom(time(NULL));
     gboolean isleap = random() % 1;
     GDateHour hour = random() % 24 + 1;
 
