@@ -20,6 +20,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
+ *
+ *
+ * Thanks to the lunar authors:
+ * Fung F. Lee   <lee@umunhum.stanford.edu>
+ * Ricky Yeung   <cryeung@hotmail.com>
+ * because algorithm from lunar: http://packages.debian.org/unstable/utils/lunar
+ *
+ * Special thanks to
+ * redwooods <redwooods@gmail.com>
+ * who added solar term.
  * */
 
 #if HAVE_CONFIG_H

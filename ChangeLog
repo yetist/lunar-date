@@ -1,3 +1,8 @@
+2008-04-15  yetist  <yetist@gmail.com>
+
+	* lunar/lunar-date.c: add thank.
+	* data/holiday.dat: remove my birthday.
+
 2008-04-15  redwoods  <redwooods@gmail.com>
 
 	* lunar/lunar-date.c:
