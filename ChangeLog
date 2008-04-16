@@ -1,3 +1,10 @@
+2008-04-17  redwoods  <redwooods@gmail.com>
+
+	* lunar/lunar-date.c:
+	Change type of "year_jieqi()".
+	* po/zh_CN.po:
+	Keep Sunday as the first day of a week.
+
 2008-04-15  yetist  <yetist@gmail.com>
 
 	* lunar/lunar-date.c: 

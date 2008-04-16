@@ -337,7 +337,7 @@ static int mymemcnt(const char *mem, int len, const char *pat, int pat_len);
 static GString* g_string_replace (GString *string, const gchar* old, const gchar* new, int count);
 char* num_2_hanzi(int n);
 char* mday_2_hanzi(int n);
-int year_jieqi(int year, int n, char* result);
+void year_jieqi(int year, int n, char* result);
 
 GQuark lunar_date_error_quark (void)
 {
@@ -578,10 +578,10 @@ gchar*      lunar_date_get_jieri          (LUNARDate *date)
 /**
  * year_jieqi:
  *
- * 计算 year 年第 n 个节气的日期(公历).
- * 从小寒开始, 精确到分钟, 1900-2100年应该没问题.
+ * 传回 year 年第 n 个节气的日期(公历).
+ * 以小寒为第0个节气. 1900-2100年应该没问题.
  **/
-int year_jieqi(int year, int n, char* result)
+void year_jieqi(int year, int n, char* result)
 {
 
     /* 1900/1/6 02:05:00 小寒  */
