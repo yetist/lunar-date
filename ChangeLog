@@ -1,5 +1,10 @@
 2008-04-17  yetist  <yetist@gmail.com>
 
+	* lunar/calendar.patch: 
+	update patch file to gtk+-2.12.8.
+
+2008-04-17  yetist  <yetist@gmail.com>
+
 	* lunar/lunar-calendar.c: 
 	* lunar/lunar-date.c: 
 	fixed: 
