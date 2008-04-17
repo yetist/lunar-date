@@ -1,5 +1,5 @@
 #!/bin/sh
-GTK_VERSION=2.12.1
+GTK_VERSION=2.12.8
 
 sed_it () {
 	sed \
