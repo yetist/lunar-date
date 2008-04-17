@@ -1,5 +1,13 @@
 2008-04-17  yetist  <yetist@gmail.com>
 
+	* lunar/lunar-calendar.c: 
+	* lunar/lunar-date.c: 
+	fixed: 
+		- when year less-than 1900 or greater than 2049, calendar will show error lunar.
+		- when we view 1900 Jan, the calendar will crash.
+
+2008-04-17  yetist  <yetist@gmail.com>
+
 	* lunar/update-calendar.sh:
 	* lunar/lunar-calendar.c: 
 	update GtkCalendar to 2.12.8

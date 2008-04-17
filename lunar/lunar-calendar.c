@@ -825,8 +825,8 @@ calendar_compute_days (LunarCalendar *calendar)
   year = calendar->year;
   month = calendar->month + 1;
   
-  priv->lunar_year=lunar_calendar_lunar_year_str(calendar, year, month, calendar->selected_day);
   ndays_in_month = month_length[leap (year)][month];
+  priv->lunar_year=lunar_calendar_lunar_year_str(calendar, year, month, calendar->selected_day);
   
   first_day = day_of_week (year, month, 1);
   first_day = (first_day + 7 - priv->week_start) % 7;
@@ -1113,16 +1113,7 @@ calendar_set_month_prev (LunarCalendar *calendar)
     calendar->month--;
   
   month_len = month_length[leap (calendar->year)][calendar->month + 1];
-  
-  calendar_compute_days (calendar);
-  
-  g_signal_emit (calendar,
-		 lunar_calendar_signals[PREV_MONTH_SIGNAL],
-		 0);
-  g_signal_emit (calendar,
-		 lunar_calendar_signals[MONTH_CHANGED_SIGNAL],
-		 0);
-  
+
   if (month_len < calendar->selected_day)
     {
       calendar->selected_day = 0;
@@ -1134,6 +1125,15 @@ calendar_set_month_prev (LunarCalendar *calendar)
 	calendar->selected_day = calendar->selected_day + 1 + month_length[leap (calendar->year)][calendar->month + 1];
       lunar_calendar_select_day (calendar, calendar->selected_day);
     }
+
+  calendar_compute_days (calendar);
+  
+  g_signal_emit (calendar,
+		 lunar_calendar_signals[PREV_MONTH_SIGNAL],
+		 0);
+  g_signal_emit (calendar,
+		 lunar_calendar_signals[MONTH_CHANGED_SIGNAL],
+		 0);
 
   gtk_widget_queue_draw (GTK_WIDGET (calendar));
 }
@@ -3621,10 +3621,18 @@ lunar_calendar_thaw (LunarCalendar *calendar)
 
 gchar* lunar_calendar_lunar_day_str (LunarCalendar *calendar, gint year, gint month, gint day)
 {
+  GError *error = NULL;
   GtkWidget *widget = GTK_WIDGET (calendar);
   LunarCalendarPrivate *priv = LUNAR_CALENDAR_GET_PRIVATE (calendar);
 
-  lunar_date_set_solar_date(priv->date, year, month, day, 0, NULL);
+  lunar_date_set_solar_date(priv->date, year, month, day, 0, &error);
+  if (error)
+  {
+      lunar_calendar_set_display_options (calendar, calendar->display_flags & ~LUNAR_CALENDAR_SHOW_LUNAR);
+      return "";
+  }
+  else
+      lunar_calendar_set_display_options (calendar, calendar->display_flags | LUNAR_CALENDAR_SHOW_LUNAR);
 
   char* buf;
 
@@ -3640,10 +3648,18 @@ gchar* lunar_calendar_lunar_day_str (LunarCalendar *calendar, gint year, gint mo
 
 gchar* lunar_calendar_lunar_year_str (LunarCalendar *calendar, gint year, gint month, gint day)
 {
+  GError *error = NULL;
   GtkWidget *widget = GTK_WIDGET (calendar);
   LunarCalendarPrivate *priv = LUNAR_CALENDAR_GET_PRIVATE (calendar);
 
-  lunar_date_set_solar_date(priv->date, year, month, day, 0, NULL);
+  lunar_date_set_solar_date(priv->date, year, month, day, 7, &error);
+  if (error)
+  {
+      lunar_calendar_set_display_options (calendar, calendar->display_flags & ~LUNAR_CALENDAR_SHOW_LUNAR);
+      return "";
+  }
+  else
+      lunar_calendar_set_display_options (calendar, calendar->display_flags | LUNAR_CALENDAR_SHOW_LUNAR);
 
   return lunar_date_strftime(priv->date, _("Ni\303\241n %(shengxiao) %(Y60)%(M60)%(D60)"));
 }

@@ -401,7 +401,7 @@ void            lunar_date_set_solar_date     (LUNARDate *date,
 {
     GError *calc_error = NULL;
 
-    if (!(year>=BEGIN_YEAR && year< BEGIN_YEAR+NUM_OF_YEARS))
+    if (year < BEGIN_YEAR || year > BEGIN_YEAR+NUM_OF_YEARS || (year == BEGIN_YEAR && month == 1))
     {
         g_set_error(error, LUNAR_DATE_ERROR,
                 LUNAR_DATE_ERROR_YEAR,
@@ -680,9 +680,10 @@ void year_jieqi(int year, int n, char* result)
  *
  * %(y8)年%(m8)月%(d8)日%(h8)时     八字：小写 not use
  *
- * %(shengxiao)%(jieri)             生肖和节日->猪
+ * %(shengxiao)                     生肖：猪
+ * %(jieri)                         节日(节日、纪念日、节气等)：立春
  *
- * 使用%(jieri)时，如果此日没有节日，那么将为空。
+ * 使用%(jieri)时，如果此日没有节日或节气，那么将为空。
  * 节日可以自定义，只要按照格式修改$(prefix)/share/liblunar/hodiday.dat即可。
  *
  * Return value: a newly-allocated output string, nul-terminated
