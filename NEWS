@@ -1,4 +1,23 @@
 ==============
+liblunar-1.0.0
+==============
+NEWS:
+    - support solar term (by redwoods <redwooods@gmail.com>).
+    - modify some festivals.
+    - keep Sunday as the first day of a week.
+    - update Calendar to GTK+-2.12.8
+    - show lunar automatic.
+    - fixed: 
+        * when year less-than 1900 or greater than 2049, calendar will show error lunar.
+        * when we view 1900 Jan, the calendar will crash.
+
+==============
+liblunar-0.2.6
+==============
+NEWS:
+    - use pinyin on "C" locale. But only in UTF-8.
+
+==============
 liblunar-0.2.5
 ==============
 NEWS:

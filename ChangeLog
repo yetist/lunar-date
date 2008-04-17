@@ -1,3 +1,14 @@
+=== liblunar-1.0.0 released ===
+
+2008-04-17  yetist  <yetist@gmail.com>
+
+	* ChangeLog: 
+	* README: 
+	* configure.ac: 
+	* NEWS: 
+
+	liblunar-1.0.0 released
+
 2008-04-17  yetist  <yetist@gmail.com>
 
 	* lunar/calendar.patch: 
@@ -7,6 +18,7 @@
 
 	* lunar/lunar-calendar.c: 
 	* lunar/lunar-date.c: 
+	show lunar automatic.
 	fixed: 
 		- when year less-than 1900 or greater than 2049, calendar will show error lunar.
 		- when we view 1900 Jan, the calendar will crash.
