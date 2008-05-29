@@ -45,6 +45,17 @@
 #define NUM_OF_YEARS 150
 #define NUM_OF_MONTHS 13
 
+typedef struct  _CLDate              CLDate;
+
+struct _CLDate
+{
+    guint year   : 16;
+    guint month  : 4;
+    guint day    : 6;
+    guint hour   : 4;
+    gboolean    isleap; /* the lunar month is a leap month */
+};
+
 static CLDate first_solar_date  = {1900, 1, 31, 0, FALSE }; /* 1900年1月31日 */
 static CLDate first_lunar_date  = {1900, 1, 1, 0, FALSE };  /* 1900年元月初一 */
 static CLDate first_gan_date    = {6, 4, 0, 0, FALSE };     /* 庚年午月甲日甲时 */
@@ -266,7 +277,7 @@ gchar fest[NUM_OF_YEARS][12] = {
 {3, 5, 4, 5, 5, 6, 7, 7, 8, 7, 7, 5}	/* 2049 */
 };
 
-struct _LUNARDate
+struct _LunarDate
 {
     CLDate *solar;
     CLDate *lunar;
@@ -319,17 +330,17 @@ static char *hanzi_num[] = {
     N_("sh\303\255")
 };
 
-static void _cl_date_calc_lunar(LUNARDate *date, GError **error);
-static void _cl_date_calc_solar(LUNARDate *date, GError **error);
-static gint _cl_date_make_lunar_month_days(LUNARDate *date, gint year);
-static void _cl_date_make_all_lunar_data(LUNARDate *date);
-static void _cl_date_days_to_lunar (LUNARDate *date, GError **error);
-static void _cl_date_days_to_solar(LUNARDate *date, GError **error);
-static void _cl_date_calc_ganzhi(LUNARDate *date);
-static void _cl_date_calc_bazi(LUNARDate *date);
-static gint _cl_date_get_bazi_lunar (LUNARDate *date);
+static void _cl_date_calc_lunar(LunarDate *date, GError **error);
+static void _cl_date_calc_solar(LunarDate *date, GError **error);
+static gint _cl_date_make_lunar_month_days(LunarDate *date, gint year);
+static void _cl_date_make_all_lunar_data(LunarDate *date);
+static void _cl_date_days_to_lunar (LunarDate *date, GError **error);
+static void _cl_date_days_to_solar(LunarDate *date, GError **error);
+static void _cl_date_calc_ganzhi(LunarDate *date);
+static void _cl_date_calc_bazi(LunarDate *date);
+static gint _cl_date_get_bazi_lunar (LunarDate *date);
 static glong _date_calc_days_since_reference_year (CLDate *d, GError **error);
-static void _date_calc_days_since_lunar_year (LUNARDate *date, GError **error);
+static void _date_calc_days_since_lunar_year (LunarDate *date, GError **error);
 static gint get_day_of_week (gint year, gint month, gint day);
 static gint get_weekth_of_month (gint day);
 static int mymemfind(const char *mem, int len, const char *pat, int pat_len);
@@ -363,13 +374,13 @@ static gint _cmp_date (gint month1, gint day1, gint month2, gint day2)
 /**
  * lunar_date_new:
  *
- * Allocates a #LUNARDate and initializes it. Free the return value with lunar_date_free().
+ * Allocates a #LunarDate and initializes it. Free the return value with lunar_date_free().
  *
- * Return value: a newly-allocated #LUNARDate
+ * Return value: a newly-allocated #LunarDate
  **/
-LUNARDate*     lunar_date_new                (void)
+LunarDate*     lunar_date_new                (void)
 {
-    LUNARDate *date = g_new0 (LUNARDate, 1);
+    LunarDate *date = g_new0 (LunarDate, 1);
     date->solar = g_new0 (CLDate, 1);
     date->lunar = g_new0 (CLDate, 1);
     date->lunar2 = g_new0 (CLDate, 1);
@@ -383,16 +394,16 @@ LUNARDate*     lunar_date_new                (void)
 
 /**
  * lunar_date_set_solar_date:
- * @date: a #LUNARDate.
+ * @date: a #LunarDate.
  * @year: year to set.
  * @month: month to set.
  * @day: day to set.
  * @hour: hour to set.
  * @error: location to store the error occuring, or NULL to ignore errors.
  *
- * Sets the solar year, month, day and the hour for a #LUNARDate.
+ * Sets the solar year, month, day and the hour for a #LunarDate.
  **/
-void            lunar_date_set_solar_date     (LUNARDate *date,
+void            lunar_date_set_solar_date     (LunarDate *date,
         GDateYear year,
         GDateMonth month,
         GDateDay day,
@@ -427,7 +438,7 @@ void            lunar_date_set_solar_date     (LUNARDate *date,
 
 /**
  * lunar_date_set_lunar_date:
- * @date: a #LUNARDate.
+ * @date: a #LunarDate.
  * @year: year to set.
  * @month: month to set.
  * @day: day to set.
@@ -435,9 +446,9 @@ void            lunar_date_set_solar_date     (LUNARDate *date,
  * @isleap: indicate whether the month is a leap month.
  * @error: location to store the error occuring, or #NULL to ignore errors.
  *
- * Sets the lunar year, month, day and the hour for a #LUNARDate. If the month is a leap month, you should set the isleap to TRUE.
+ * Sets the lunar year, month, day and the hour for a #LunarDate. If the month is a leap month, you should set the isleap to TRUE.
  **/
-void            lunar_date_set_lunar_date     (LUNARDate *date,
+void            lunar_date_set_lunar_date     (LunarDate *date,
         GDateYear year,
         GDateMonth month, 
         GDateDay day,
@@ -473,14 +484,14 @@ void            lunar_date_set_lunar_date     (LUNARDate *date,
 
 /**
  * lunar_date_get_jieri:
- * @date: a #LUNARDate
+ * @date: a #LunarDate
  *
  * Returns the holiday of the date. The date must be valid.
  *
  * Return value:  a newly-allocated holiday string of the date.
  * This can be changed in $(datadir)/liblunar/holiday.dat file.
  **/
-gchar*      lunar_date_get_jieri          (LUNARDate *date)
+gchar*      lunar_date_get_jieri          (LunarDate *date)
 {
     GString* jieri;
     jieri=g_string_new("");
@@ -659,7 +670,7 @@ void year_jieqi(int year, int n, char* result)
 
 /**
  * lunar_date_strftime:
- * @date: a #LUNARDate
+ * @date: a #LunarDate
  * @format: specify the output format. this
  *
  * 使用给定的格式来输出字符串。类似于strftime的用法。可使用的格式及输出如下：
@@ -688,7 +699,7 @@ void year_jieqi(int year, int n, char* result)
  *
  * Return value: a newly-allocated output string, nul-terminated
  **/
-gchar* lunar_date_strftime (LUNARDate *date, const char *format)
+gchar* lunar_date_strftime (LunarDate *date, const char *format)
 {
     gchar *s, *tmp;
     GString *str = g_string_new(format);
@@ -867,11 +878,11 @@ gchar* lunar_date_strftime (LUNARDate *date, const char *format)
 
 /**
  * lunar_date_free:
- * @date: a #LUNARDate
+ * @date: a #LunarDate
  *
- * Frees a #LUNARDate returned from lunar_date_new().
+ * Frees a #LunarDate returned from lunar_date_new().
  **/
-void            lunar_date_free                   (LUNARDate *date)
+void            lunar_date_free                   (LunarDate *date)
 {
     g_return_if_fail (date != NULL);
 
@@ -886,7 +897,7 @@ void            lunar_date_free                   (LUNARDate *date)
 
 }
 
-static void _cl_date_calc_lunar(LUNARDate *date, GError **error)
+static void _cl_date_calc_lunar(LunarDate *date, GError **error)
 {
     glong days;
     GError *calc_error = NULL;
@@ -917,7 +928,7 @@ static void _cl_date_calc_lunar(LUNARDate *date, GError **error)
     date->lunar->hour = date->solar->hour;
 }
 
-static void _cl_date_calc_solar(LUNARDate *date, GError **error)
+static void _cl_date_calc_solar(LunarDate *date, GError **error)
 {
     GError *calc_error = NULL;
     _date_calc_days_since_lunar_year(date, &calc_error);
@@ -936,7 +947,7 @@ static void _cl_date_calc_solar(LUNARDate *date, GError **error)
 }
 
 //TODO
-static void _cl_date_calc_ganzhi(LUNARDate *date)
+static void _cl_date_calc_ganzhi(LunarDate *date)
 {
     int	year, month;
     year = date->lunar->year - first_lunar_date.year;
@@ -952,7 +963,7 @@ static void _cl_date_calc_ganzhi(LUNARDate *date)
     date->gan->hour = (date->gan->day * 12 + date->zhi->hour) % 10;
 }
 
-static void _cl_date_calc_bazi(LUNARDate *date)
+static void _cl_date_calc_bazi(LunarDate *date)
 {
     int	year, month;
 
@@ -1016,7 +1027,7 @@ static glong _date_calc_days_since_reference_year (CLDate *d, GError **error)
     return days;
 }
 /* Compute offset days of a lunar date from the beginning of the table */
-static void _date_calc_days_since_lunar_year (LUNARDate *date, GError **error)
+static void _date_calc_days_since_lunar_year (LunarDate *date, GError **error)
 {
     int year, i, m, leap_month;
 
@@ -1053,7 +1064,7 @@ static void _date_calc_days_since_lunar_year (LUNARDate *date, GError **error)
     }
 }
 
-static void _cl_date_days_to_lunar (LUNARDate *date, GError **error)
+static void _cl_date_days_to_lunar (LunarDate *date, GError **error)
 {
     int i, m, nYear, leap_month;
 
@@ -1094,7 +1105,7 @@ static void _cl_date_days_to_lunar (LUNARDate *date, GError **error)
     date->lunar->day = offset + 1;
 }
 
-static void _cl_date_days_to_solar(LUNARDate *date, GError **error)
+static void _cl_date_days_to_solar(LunarDate *date, GError **error)
 {
     GError *calc_error = NULL;
     gint	adj, i, m, days;
@@ -1151,7 +1162,7 @@ static void _cl_date_days_to_solar(LUNARDate *date, GError **error)
     }
 }
 
-static void _cl_date_make_all_lunar_data(LUNARDate *date)
+static void _cl_date_make_all_lunar_data(LunarDate *date)
 {
     gint year, i, leap;
     long code;
@@ -1179,7 +1190,7 @@ static void _cl_date_make_all_lunar_data(LUNARDate *date)
 }
 
 /* Compute the days of each month in the given lunar year */
-static gint _cl_date_make_lunar_month_days(LUNARDate *date, gint year)
+static gint _cl_date_make_lunar_month_days(LunarDate *date, gint year)
 {
     int i, leap_month;
     long code;
@@ -1221,7 +1232,7 @@ static gint _cl_date_make_lunar_month_days(LUNARDate *date, gint year)
 }
 
 /* Compare two dates and return <,=,> 0 if the 1st is <,=,> the 2nd */
-static gint _cl_date_get_bazi_lunar (LUNARDate *date)
+static gint _cl_date_get_bazi_lunar (LunarDate *date)
 {
     int m, flag;
 

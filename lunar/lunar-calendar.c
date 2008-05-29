@@ -238,7 +238,7 @@ struct _LunarCalendarPrivate
   GdkWindow *main_win;
   GdkWindow *week_win;
   GdkWindow *arrow_win[4];
-  LUNARDate   *date;
+  LunarDate   *date;
 
   guint header_h;
   guint day_name_h;

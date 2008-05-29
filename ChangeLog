@@ -1,3 +1,15 @@
+2008-05-29  yetist  <yetist@gmail.com>
+
+	* lunar/lunar-date.h: 
+	* lunar/lunar-calendar.c: 
+	* lunar/lunar-date.c: 
+	* docs/reference/lunar-sections.txt: 
+	* docs/reference/tmpl/lunardate.sgml: 
+	* docs/reference/tmpl/lunar-unused.sgml: 
+	* docs/reference/tmpl/lunarcalendar.sgml: 
+	* tests/test-date.c: 
+	Change struct name from "LUNARDate" to "LunarDate";
+
 === liblunar-1.0.0 released ===
 
 2008-04-17  yetist  <yetist@gmail.com>

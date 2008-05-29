@@ -22,31 +22,6 @@ a gtk widget that can displays a chinese lunar calendar
 
 </para>
 
-@widget: 
-@header_style: 
-@label_style: 
-@month: 
-@year: 
-@selected_day: 
-@day_month: 
-@day: 
-@num_marked_dates: 
-@marked_date: 
-@display_flags: 
-@marked_date_color: 
-@gc: 
-@xor_gc: 
-@focus_row: 
-@focus_col: 
-@highlight_row: 
-@highlight_col: 
-@priv: 
-@grow_space: 
-@_gtk_reserved1: 
-@_gtk_reserved2: 
-@_gtk_reserved3: 
-@_gtk_reserved4: 
-
 <!-- ##### ENUM LunarCalendarDisplayOptions ##### -->
 <para>
 

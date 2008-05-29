@@ -30,8 +30,7 @@
 G_BEGIN_DECLS
 
 typedef guint8  GDateHour;
-typedef struct  _CLDate              CLDate;
-typedef struct  _LUNARDate             LUNARDate;
+typedef struct  _LunarDate             LunarDate;
 
 #define LUNAR_DATE_ERROR	(lunar_date_error_quark ())
 
@@ -41,36 +40,27 @@ typedef enum
     LUNAR_DATE_ERROR_DAY,
     LUNAR_DATE_ERROR_YEAR,
     LUNAR_DATE_ERROR_LEAP
-} LUNARDateError;
+} LunarDateError;
 
 GQuark lunar_date_error_quark (void);
 
-struct _CLDate
-{
-    guint year   : 16;
-    guint month  : 4;
-    guint day    : 6;
-    guint hour   : 4;
-    gboolean    isleap; /* the lunar month is a leap month */
-};
-
-LUNARDate*    lunar_date_new                (void);
-void        lunar_date_set_solar_date     (LUNARDate *date,
+LunarDate*    lunar_date_new                (void);
+void        lunar_date_set_solar_date     (LunarDate *date,
                                             GDateYear year,
                                             GDateMonth month,
                                             GDateDay day,
                                             GDateHour hour,
                                             GError  **error);
-void        lunar_date_set_lunar_date     (LUNARDate *date,
+void        lunar_date_set_lunar_date     (LunarDate *date,
                                             GDateYear year,
                                             GDateMonth month, 
                                             GDateDay day,
                                             GDateHour hour,
                                             gboolean isleap,
                                             GError **error);
-gchar*      lunar_date_get_jieri          (LUNARDate *date);
-gchar*      lunar_date_strftime           (LUNARDate *date, const char *format);
-void        lunar_date_free               (LUNARDate *date);
+gchar*      lunar_date_get_jieri          (LunarDate *date);
+gchar*      lunar_date_strftime           (LunarDate *date, const char *format);
+void        lunar_date_free               (LunarDate *date);
 
 G_END_DECLS
 
