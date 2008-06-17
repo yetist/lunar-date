@@ -1,3 +1,13 @@
+2008-06-17  yetist  <yetist@gmail.com>
+
+	* lunar/calendar.patch: 
+	* lunar/Makefile.am: 
+	* README: 
+	* tests/Makefile.am: 
+	* configure.ac: 
+	* INSTALL: 
+	做一些修改。
+
 2008-05-29  yetist  <yetist@gmail.com>
 
 	* lunar/lunar-date.h: 

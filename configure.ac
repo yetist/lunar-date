@@ -42,9 +42,25 @@ AC_SUBST(CUR_DATE)
 GLIB2_REQUIRED=2.4.0
 GTK_REQUIRED=2.4.0
 
-PKG_CHECK_MODULES(LIBLUNAR, glib-2.0 >= $GLIB2_REQUIRED gtk+-2.0 >= $GTK_REQUIRED)
+AC_ARG_ENABLE([gtk],
+	AS_HELP_STRING([--disable-gtk],[Enable gtk support]),
+	enable_gtk=$enableval,
+	enable_gtk=yes)
+AC_MSG_RESULT([$enable_gtk])
+
+
+PKG_CHECK_MODULES(LIBLUNAR, glib-2.0 >= $GLIB2_REQUIRED)
+
+if test "x$enable_gtk" = "xyes" ; then
+  PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED)
+  LIBLUNAR_CFLAGS="$LIBLUNAR_CFLAGS $GTK_CFLAGS"
+  LIBLUNAR_LIBS="$LIBLUNAR_LIBS $GTK_LIBS"
+fi
+
 AC_SUBST(LIBLUNAR_CFLAGS)
 AC_SUBST(LIBLUNAR_LIBS)
+
+AM_CONDITIONAL([ENABLE_GTK],[test "x$enable_gtk" = "xyes"])
 
 
 dnl run in source tree
@@ -65,12 +81,16 @@ dnl ================================================================
 dnl Python
 dnl ================================================================
 
+if test "x$enable_gtk" = "xyes" ; then
 AC_MSG_CHECKING([whether Python support is requested])
 AC_ARG_ENABLE([python],
-	AS_HELP_STRING([--enable-python],[Enable python support]),
+	AS_HELP_STRING([--disable-python],[Enable python support]),
 	[enable_python=$enableval have_python=$enableval],
 	[enable_python=autodetect have_python=yes])
 AC_MSG_RESULT([$enable_python])
+else
+    have_python=no
+fi
 
 if test "x$have_python" != "xno"; then
 	AM_PATH_PYTHON([2.3],[],[no])

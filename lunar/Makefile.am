@@ -10,8 +10,12 @@ INCLUDES =                                              \
 INST_H_FILES = 		\
 	lunar.h			\
 	lunar-date.h		\
-	lunar-calendar.h		\
 	lunar-main.h
+
+if ENABLE_GTK
+INST_H_FILES += 		\
+	lunar-calendar.h
+endif
 
 BUILT_SOURCES =         	\
         lunar-enum-types.c        \
@@ -23,10 +27,14 @@ liblunar_1_includedir = $(includedir)/liblunar-1/lunar
 
 liblunar_1_la_SOURCES =	\
 	lunar-date.c		\
-	lunar-calendar.c		\
 	lunar-main.c		\
 	$(BUILT_SOURCES)	\
 	$(NULL)
+
+if ENABLE_GTK
+liblunar_1_la_SOURCES +=	\
+	lunar-calendar.c
+endif
 
 liblunar_1_include_HEADERS =	\
 	$(INST_H_FILES)		\
