@@ -43,7 +43,7 @@ GLIB2_REQUIRED=2.4.0
 GTK_REQUIRED=2.4.0
 
 AC_ARG_ENABLE([gtk],
-	AS_HELP_STRING([--disable-gtk],[Enable gtk support]),
+	AS_HELP_STRING([--disable-gtk],[Disable gtk support]),
 	enable_gtk=$enableval,
 	enable_gtk=yes)
 AC_MSG_RESULT([$enable_gtk])
@@ -55,6 +55,7 @@ if test "x$enable_gtk" = "xyes" ; then
   PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED)
   LIBLUNAR_CFLAGS="$LIBLUNAR_CFLAGS $GTK_CFLAGS"
   LIBLUNAR_LIBS="$LIBLUNAR_LIBS $GTK_LIBS"
+  AC_DEFINE(ENABLE_GTK, 1, [enable gtk for liblunar.])
 fi
 
 AC_SUBST(LIBLUNAR_CFLAGS)

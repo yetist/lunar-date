@@ -1,3 +1,12 @@
+2008-07-17  yetist  <yetist@gmail.com>
+
+	* lunar/lunar-main.c: 
+	* lunar/lunar.h: 
+	* lunar/Makefile.am: 
+	* ChangeLog: 
+	* configure.ac: 
+	完善了一下--disable-gtk编译参数。
+
 2008-06-17  yetist  <yetist@gmail.com>
 
 	* lunar/calendar.patch: 
@@ -6,7 +15,7 @@
 	* tests/Makefile.am: 
 	* configure.ac: 
 	* INSTALL: 
-	做一些修改。
+	做一些修改。增加--disable-gtk编译参数。
 
 2008-05-29  yetist  <yetist@gmail.com>
 

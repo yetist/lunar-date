@@ -12,14 +12,16 @@ INST_H_FILES = 		\
 	lunar-date.h		\
 	lunar-main.h
 
+BUILT_SOURCES = 
+
 if ENABLE_GTK
 INST_H_FILES += 		\
 	lunar-calendar.h
-endif
 
-BUILT_SOURCES =         	\
+BUILT_SOURCES +=         	\
         lunar-enum-types.c        \
         lunar-enum-types.h
+endif
 
 lib_LTLIBRARIES = liblunar-1.la
 
@@ -44,11 +46,13 @@ liblunar_1_la_LIBADD = 	\
 	$(LIBLUNAR_LIBS)		\
 	$(NULL)
 
+if ENABLE_GTK
 lunar-enum-types.h: lunar-enum-types.h.template $(INST_H_FILES) $(GLIB_MKENUMS)
 	(cd $(srcdir) && $(GLIB_MKENUMS) --template lunar-enum-types.h.template $(INST_H_FILES)) > $@
         
 lunar-enum-types.c: lunar-enum-types.c.template $(INST_H_FILES) $(GLIB_MKENUMS)
 	(cd $(srcdir) && $(GLIB_MKENUMS) --template lunar-enum-types.c.template $(INST_H_FILES)) > $@
+endif
 
 
 EXTRA_DIST =  lunar-enum-types.h.template lunar-enum-types.c.template
