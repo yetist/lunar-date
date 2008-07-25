@@ -19,3 +19,7 @@ pkgconfig_DATA = liblunar-1.pc
 
 DISTCHECK_CONFIGURE_FLAGS =     \
 	--enable-gtk-doc
+
+dist-hook:
+	$(MAKE) -C "$(srcdir)/po" "$(GETTEXT_PACKAGE).pot"
+	cp "$(srcdir)/po/$(GETTEXT_PACKAGE).pot" "$(distdir)/po/"

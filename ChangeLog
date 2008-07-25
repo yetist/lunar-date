@@ -1,3 +1,8 @@
+2008-07-25  yetist  <yetist@gmail.com>
+
+	* Makefile.am: 
+	打包时增加pot文件，#4.
+
 2008-07-17  yetist  <yetist@gmail.com>
 
 	* lunar/lunar-main.c: 
