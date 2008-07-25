@@ -1,4 +1,13 @@
 ==============
+liblunar-1.0.1
+==============
+NEWS:
+    - Change struct name from "LUNARDate" to "LunarDate";
+    - add -disable-gtk for compile.
+    - add pot file when make dist. see #4.
+    this release just for translation.
+
+==============
 liblunar-1.0.0
 ==============
 NEWS:
