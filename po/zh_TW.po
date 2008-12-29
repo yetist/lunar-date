@@ -1,4 +1,4 @@
-# liblunar package simplified Chinese translation file.
+# liblunar package traditional Chinese translation file.
 # Copyright (C) 2008  yetist <yetist@gmail.com>.
 # This file is distributed under the same license as the liblunar package.
 # yetist <yetist@gmail.com>, 2008.
@@ -124,7 +124,7 @@ msgstr "兔"
 
 #: ../lunar/lunar-date.c:300
 msgid "Dragon"
-msgstr "龙"
+msgstr "龍"
 
 #: ../lunar/lunar-date.c:300
 msgid "Snake"
@@ -132,7 +132,7 @@ msgstr "蛇"
 
 #: ../lunar/lunar-date.c:301
 msgid "Horse"
-msgstr "马"
+msgstr "馬"
 
 #: ../lunar/lunar-date.c:301
 msgid "Goat"
@@ -144,7 +144,7 @@ msgstr "猴"
 
 #: ../lunar/lunar-date.c:301
 msgid "Rooster"
-msgstr "鸡"
+msgstr "雞"
 
 #: ../lunar/lunar-date.c:301
 msgid "Dog"
@@ -152,7 +152,7 @@ msgstr "狗"
 
 #: ../lunar/lunar-date.c:301
 msgid "Pig"
-msgstr "猪"
+msgstr "豬"
 
 #: ../lunar/lunar-date.c:304
 msgid "Jan"
@@ -200,7 +200,7 @@ msgstr "冬月"
 
 #: ../lunar/lunar-date.c:305
 msgid "Dec"
-msgstr "腊月"
+msgstr "臘月"
 
 #: ../lunar/lunar-date.c:308
 msgid "Chūyī"
@@ -368,7 +368,7 @@ msgstr "十"
 
 #: ../lunar/lunar-date.c:408 ../lunar/lunar-date.c:454
 msgid "Year out of range."
-msgstr "年超出范围."
+msgstr "年超出范圍."
 
 #: ../lunar/lunar-date.c:596
 msgid "Xiǎohán"
@@ -388,7 +388,7 @@ msgstr "雨水"
 
 #: ../lunar/lunar-date.c:597
 msgid "Jīngzhé"
-msgstr "惊蛰"
+msgstr "驚蟄"
 
 #: ../lunar/lunar-date.c:597
 msgid "Chūnfēn"
@@ -408,11 +408,11 @@ msgstr "立夏"
 
 #: ../lunar/lunar-date.c:598
 msgid "Xiǎomǎn"
-msgstr "小满"
+msgstr "小滿"
 
 #: ../lunar/lunar-date.c:598
 msgid "Mángzhòng"
-msgstr "芒种"
+msgstr "芒種"
 
 #: ../lunar/lunar-date.c:598
 msgid "Xiàzhì"
@@ -432,7 +432,7 @@ msgstr "立秋"
 
 #: ../lunar/lunar-date.c:599
 msgid "Chùshǔ"
-msgstr "处暑"
+msgstr "處暑"
 
 #: ../lunar/lunar-date.c:600
 msgid "Báilòu"
@@ -468,27 +468,27 @@ msgstr "冬至"
 
 #: ../lunar/lunar-date.c:757
 msgid "Rùn"
-msgstr "闰"
+msgstr "閏"
 
 #: ../lunar/lunar-date.c:986
 msgid "Internal error: pick a larger constant for BYEAR."
-msgstr "内部错误：参考年的数值过小。"
+msgstr "內部錯誤：參考年的數值過小。"
 
 #: ../lunar/lunar-date.c:1002 ../lunar/lunar-date.c:1011
 #: ../lunar/lunar-date.c:1049
 #, c-format
 msgid "Day out of range: \"%d\""
-msgstr "日超出范围：\"%d\""
+msgstr "日超出范圍：\"%d\""
 
 #: ../lunar/lunar-date.c:1032
 #, c-format
 msgid "%d is not a leap month in year %d.\n"
-msgstr "%d 年的 %d 月不是闰月。\n"
+msgstr "%d 年的 %d 月不是閏月。\n"
 
 #: ../lunar/lunar-date.c:1068 ../lunar/lunar-date.c:1131
 #, c-format
 msgid "Year out of range. \"%d\""
-msgstr "年超出范围. \"%d\""
+msgstr "年超出范圍. \"%d\""
 
 #. Translate to calendar:YM if you want years to be displayed
 #. * before months; otherwise translate to calendar:MY.

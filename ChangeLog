@@ -1,3 +1,10 @@
+2008-12-29  yetist  <wuxiaotian@redflag-linux.com>
+
+	* po/LINGUAS: 
+	* po/zh_TW.po: 
+	* po/zh_CN.po: 
+	add traditional Chinese translation.
+
 2008-12-29  yetist  <yetist@gmail.com>
 
 	* lunar/lunar-calendar.c: replace sprintf with strcat to avoid sprintf bug,
