@@ -1908,7 +1908,7 @@ calendar_paint_header (LunarCalendar *calendar)
    */
   strftime (buffer, sizeof (buffer), Q_("calendar year format|%Y"), tm);
   if (calendar->display_flags & LUNAR_CALENDAR_SHOW_LUNAR)                 
-      g_sprintf(buffer, "%s%s", buffer, priv->lunar_year);
+	  strcat(buffer, priv->lunar_year);
   str = g_locale_to_utf8 (buffer, -1, NULL, NULL, NULL);
   layout = gtk_widget_create_pango_layout (widget, str);
   g_free (str);
