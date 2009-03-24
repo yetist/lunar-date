@@ -2,6 +2,7 @@
 
 PYTHON_MODULES = lunar.la
 
+CFLAGS = -DLIBLUNAR_ENABLE_GTK
 BUILT_SOURCES = calendar.c
 
 pythonsiteexecdir = $(pyexecdir)/gtk-2.0

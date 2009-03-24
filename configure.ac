@@ -55,7 +55,7 @@ if test "x$enable_gtk" = "xyes" ; then
   PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED)
   LIBLUNAR_CFLAGS="$LIBLUNAR_CFLAGS $GTK_CFLAGS"
   LIBLUNAR_LIBS="$LIBLUNAR_LIBS $GTK_LIBS"
-  AC_DEFINE(ENABLE_GTK, 1, [enable gtk for liblunar.])
+  dnl AC_DEFINE(ENABLE_GTK, 1, [enable gtk for liblunar.])
 fi
 
 AC_SUBST(LIBLUNAR_CFLAGS)
@@ -63,6 +63,12 @@ AC_SUBST(LIBLUNAR_LIBS)
 
 AM_CONDITIONAL([ENABLE_GTK],[test "x$enable_gtk" = "xyes"])
 
+AC_ARG_ENABLE([test],
+	AS_HELP_STRING([--disable-test],[Disable test]),
+	enable_test=$enableval,
+	enable_test=yes)
+AC_MSG_RESULT([$enable_test])
+AM_CONDITIONAL([ENABLE_TEST],[test "x$enable_test" = "xyes"])
 
 dnl run in source tree
 AC_ARG_ENABLE(run-in-source-tree,
@@ -244,4 +250,13 @@ liblunar-1.pc
 ])
 
 AC_OUTPUT
+echo "
+
+Configuration:
+
+	Compiler:		${CC}
+	Support GTK+:		$enable_gtk
+	Test enabled:		$enable_test
+	Python Plugins Support: $enable_python
+"
 

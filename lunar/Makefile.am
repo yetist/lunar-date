@@ -7,6 +7,9 @@ INCLUDES =                                              \
         -DLUNAR_HOLIDAYDIR=\""$(datadir)/liblunar/"\"     \
 	$(NULL)
 
+if ENABLE_GTK
+INCLUDES += -DLIBLUNAR_ENABLE_GTK
+endif
 INST_H_FILES = 		\
 	lunar.h			\
 	lunar-date.h		\

@@ -1,3 +1,20 @@
+2009-03-25  yetist  <yetist@gmail.com>
+
+	* lunar/lunar.h: 
+	* lunar/Makefile.am: 
+	* ChangeLog: 
+	* docs/reference/tmpl/lunarcalendar.sgml: 
+	* bindings/python/Makefile.am: 
+	* tests/Makefile.am: 
+	* configure.ac: 
+	* INSTALL: 
+	* Makefile.am: 
+	* po/zh_HK.po: 
+	* po/LINGUAS: 
+	* po/zh_TW.po: 
+	--disable-gtk编译参数修改
+	zh_TW, zh_CN的翻译。
+
 2008-12-29  yetist  <wuxiaotian@redflag-linux.com>
 
 	* po/LINGUAS: 
