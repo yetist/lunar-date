@@ -1,4 +1,11 @@
 ==============
+liblunar-2.0.0
+==============
+NEWS:
+    - fixed some bugs.
+    - add zh_TW, zh_HK translate.
+
+==============
 liblunar-1.0.1
 ==============
 NEWS:
