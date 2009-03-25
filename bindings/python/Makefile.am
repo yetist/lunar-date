@@ -2,7 +2,6 @@
 
 PYTHON_MODULES = lunar.la
 
-CFLAGS = -DLIBLUNAR_ENABLE_GTK
 BUILT_SOURCES = calendar.c
 
 pythonsiteexecdir = $(pyexecdir)/gtk-2.0
@@ -26,6 +25,14 @@ calendar.c: calendar.defs calendar.override  $(top_builddir)/lunar/lunar-enum-ty
 		--register $(PYGTK_DEFSDIR)/gtk-types.defs \
 		--override $*.override \
 		--prefix py$* $(<F) ) > $@ 
+
+BINDING_CALENDAR_HEADERS_SRCDIR_IN = \
+       lunar/lunar-calendar.h
+
+BINDING_HEADERS_BUILDDIR_IN = lunar/lunar-main.h
+
+BINDING_CALENDAR_HEADERS_SRCDIR        := $(addprefix $(top_srcdir)/,$(BINDING_CALENDAR_HEADERS_SRCDIR_IN))
+BINDING_HEADERS_BUILDDIR	:= $(addprefix $(top_builddir)/,$(BINDING_HEADERS_BUILDDIR_IN))
 
 regenerate-python-binding:
 	$(PYGTK_H2DEF) $(sort $(BINDING_CALENDAR_HEADERS_SRCDIR) $(BINDING_HEADERS_BUILDDIR)) > calendar.defs.new

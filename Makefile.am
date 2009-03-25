@@ -1,8 +1,5 @@
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = po lunar data bindings docs
-if ENABLE_TEST
-SUBDIRS += tests
-endif
+SUBDIRS = po lunar data bindings docs tests
 
 EXTRA_DIST =                    \
 	autogen.sh		\
@@ -20,8 +17,7 @@ DISTCLEANFILES =                \
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = liblunar-1.pc
 
-DISTCHECK_CONFIGURE_FLAGS =     \
-	--enable-gtk-doc
+DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 
 dist-hook:
 	$(MAKE) -C "$(srcdir)/po" "$(GETTEXT_PACKAGE).pot"

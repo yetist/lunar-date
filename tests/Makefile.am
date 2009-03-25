@@ -11,7 +11,6 @@ noinst_PROGRAMS =test-date
 
 if ENABLE_GTK
 noinst_PROGRAMS += test-calendar
-INCLUDES += -DLIBLUNAR_ENABLE_GTK
 endif
 
 test_date_SOURCES =          		\

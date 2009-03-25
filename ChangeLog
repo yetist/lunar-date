@@ -1,3 +1,14 @@
+2009-03-25  yetist  <wuxiaotian@redflag-linux.com>
+
+	* lunar/lunar.h: 
+	* lunar/Makefile.am: 
+	* docs/reference/Makefile.am: 
+	* bindings/python/Makefile.am: 
+	* tests/Makefile.am: 
+	* configure.ac: 
+	* Makefile.am: 
+	2.0.0 bug fixed.
+
 === liblunar-2.0.0 released ===
 
 2009-03-25  yetist  <yetist@gmail.com>

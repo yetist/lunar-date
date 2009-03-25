@@ -61,13 +61,18 @@ expand_content_files=
 # Only needed if you are using gtkdoc-scangobj to dynamically query widget
 # signals and properties.
 #
-INCLUDES=                                               \
-        $(YETI_CFLAGS)                                  \
+GTKDOC_CFLAGS =                                               \
+        $(LUNAR_CFLAGS)                                  \
         -I$(top_srcdir)                                 \
-        -I$(top_builddir)/lunar
+        -I$(top_srcdir)/lunar                           \
+        -I$(top_builddir)				\
+        -I$(top_builddir)/lunar				\
+        $(PYGTK_CFLAGS)                 \
+        $(PYTHON_CFLAGS)                \
+        $(AM_CFLAGS)
 
 GTKDOC_LIBS=                                            \
-        $(YETI_LIBS)                               \
+        $(LUNAR_LIBS)                               \
         $(top_builddir)/lunar/lunar-1.la
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.
