@@ -105,7 +105,7 @@ dnl ================================================================
 if test "x$enable_gtk" = "xyes" ; then
 AC_MSG_CHECKING([whether Python support is requested])
 AC_ARG_ENABLE([python],
-	AS_HELP_STRING([--disable-python],[Enable python support]),
+	AS_HELP_STRING([--enable-python],[Enable python support]),
 	[enable_python=$enableval have_python=$enableval],
 	[enable_python=autodetect have_python=yes])
 AC_MSG_RESULT([$enable_python])
@@ -139,31 +139,6 @@ if test "x$have_python" != "xno"; then
 	AC_SUBST([PYTHON_LIB_LOC])
 	AC_SUBST([PYTHON_CFLAGS])
 	AC_SUBST([PYTHON_EXTRA_LIBS])
-
-	dnl FIXME: do we really need this test?
-	AC_MSG_CHECKING([whether we can build a shared library depending on libpython])
-	rm -rf testpython
-	mkdir testpython
-	cd testpython
-	cat > testpython.c <<EOF
-#include <Python.h>
-int testpython (void)
-{
-Py_Exit (0);
-}
-EOF
-
-	if /bin/sh ../libtool --mode=compile ${CC} $PYTHON_CFLAGS -c testpython.c >/dev/null 2>&1 && \
-		/bin/sh ../libtool --mode=link ${CC} -o testpython.la -rpath `pwd` -module -avoid-version -no-undefined $PYTHON_LIB_LOC testpython.lo $PYTHON_LIBS $PYTHON_EXTRA_LIBS >/dev/null 2>&1 && \
-		grep 'dlname.*testpython' testpython.la >/dev/null 2>&1; then
-		result=yes
-	else
-		result=no
-		have_python=no
-	fi
-	cd ..
-	rm -rf testpython
-	AC_MSG_RESULT([$result])
 fi
 
 if test "x$have_python" != "xyes"; then
@@ -176,12 +151,14 @@ if test "x$have_python" != "xyes"; then
 fi
 
 if test "x$have_python" != "xno"; then
-	PYGOBJECT_REQUIRED=2.11.5
-	PYGTK_REQUIRED=2.9.7
+	PYGOBJECT_REQUIRED=2.15.4
+	PYGTK_REQUIRED=2.12.0
+	PYGTKSOURCEVIEW_REQUIRED=2.2.0
 
 	PKG_CHECK_MODULES([PYGTK], [
 		pygobject-2.0 >= $PYGOBJECT_REQUIRED
-		pygtk-2.0 >= $PYGTK_REQUIRED],
+		pygtk-2.0 >= $PYGTK_REQUIRED
+		pygtksourceview-2.0 >= $PYGTKSOURCEVIEW_REQUIRED],
 		[],
 		[
 		have_python=no
@@ -238,8 +215,6 @@ AM_CONDITIONAL([ENABLE_PYTHON],[test "x$enable_python" = "xyes"])
 
 dnl This allows the bug-report script to know whether python has been enabled
 AC_SUBST(enable_python)
-
-
 
 dnl  Language Support 
 GETTEXT_PACKAGE=liblunar

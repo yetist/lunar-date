@@ -1,3 +1,8 @@
+2009-03-26  yetist  <yetist@gmail.com>
+
+	* configure.ac: 
+	modify for python check.
+
 2009-03-25  yetist  <wuxiaotian@redflag-linux.com>
 
 	* lunar/lunar.h: 
