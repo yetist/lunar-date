@@ -1,3 +1,8 @@
+2009-03-26  yetist  <yetist@gmail.com>
+
+	* configure.ac: 
+	start 2.0.2 ...
+
 === liblunar-2.0.1 released ===
 
 2009-03-26  yetist  <yetist@gmail.com>
@@ -12,7 +17,7 @@
 	* configure.ac: 
 	modify for python check.
 
-2009-03-25  yetist  <wuxiaotian@redflag-linux.com>
+2009-03-25  yetist  <yetist@gmail.com>
 
 	* lunar/lunar.h: 
 	* lunar/Makefile.am: 
