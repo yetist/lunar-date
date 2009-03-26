@@ -1,4 +1,10 @@
 ==============
+liblunar-2.0.1
+==============
+NEWS:
+    - fixed detect python error.
+
+==============
 liblunar-2.0.0
 ==============
 NEWS:
