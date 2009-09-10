@@ -22,8 +22,11 @@
  * Boston, MA 02111-1307, USA.
  * */
 
+#ifdef HAVE_CONFIG_H
+    #include <config.h>
+#endif
 #include <lunar/lunar.h>
-
+#include <glib/gi18n.h>
 
 void display (LunarDate *date, gboolean islunar)
 {
@@ -123,12 +126,21 @@ void test(gchar* argv[])
 
 int main (int argc, char* argv[])
 {
+	setlocale (LC_ALL, "");
+    bindtextdomain (GETTEXT_PACKAGE, LIBLUNAR_LOCALEDIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	textdomain (GETTEXT_PACKAGE);
     lunar_init(&argc, &argv);
     if (argc == 4)
     {
         test(argv);
     }
-    else
+	else if (argc == 2 && (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0))
+    {
+		printf("usage: test-date [year month day]\n");
+		return 0;
+    }
+	else 
     {
         int i = 10;
         while (i-- >=0)
