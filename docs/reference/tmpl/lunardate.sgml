@@ -1,0 +1,118 @@
+<!-- ##### SECTION Title ##### -->
+LunarDate
+
+<!-- ##### SECTION Short_Description ##### -->
+Translate the date between solar and chinese lunar.
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### TYPEDEF GDateHour ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### STRUCT LunarDate ##### -->
+<para>
+The LUNARDate struct contains only private fields and should not be used directly.
+</para>
+
+
+<!-- ##### MACRO LUNAR_DATE_ERROR ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### ENUM LunarDateError ##### -->
+<para>
+
+</para>
+
+@LUNAR_DATE_ERROR_INTERNAL: a internal error was found.
+@LUNAR_DATE_ERROR_DAY: the day is out of the range.
+@LUNAR_DATE_ERROR_YEAR: the year is out of the range.
+@LUNAR_DATE_ERROR_LEAP: the <parameter>isleap</parameter> parameter of lunar_date_set_lunar_date() is not corret.
+
+<!-- ##### FUNCTION lunar_date_error_quark ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### FUNCTION lunar_date_new ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### FUNCTION lunar_date_set_solar_date ##### -->
+<para>
+
+</para>
+
+@date: 
+@year: 
+@month: 
+@day: 
+@hour: 
+@error: 
+
+
+<!-- ##### FUNCTION lunar_date_set_lunar_date ##### -->
+<para>
+
+</para>
+
+@date: 
+@year: 
+@month: 
+@day: 
+@hour: 
+@isleap: 
+@error: 
+
+
+<!-- ##### FUNCTION lunar_date_get_jieri ##### -->
+<para>
+
+</para>
+
+@date: 
+@Returns: 
+
+
+<!-- ##### FUNCTION lunar_date_strftime ##### -->
+<para>
+
+</para>
+
+@date: 
+@format: 
+@Returns: 
+
+
+<!-- ##### FUNCTION lunar_date_free ##### -->
+<para>
+
+</para>
+
+@date: 
+
+

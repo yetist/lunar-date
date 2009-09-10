@@ -1,0 +1,5 @@
+usr/share/liblunar/*
+usr/share/locale/*
+usr/lib/*.a
+usr/lib/*.so*
+usr/lib/*.la

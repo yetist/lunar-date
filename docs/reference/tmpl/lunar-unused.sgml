@@ -1,0 +1,93 @@
+<!-- ##### STRUCT CLDate ##### -->
+<para>
+
+</para>
+
+@year: 
+@month: 
+@day: 
+@hour: 
+@isleap: 
+
+<!-- ##### ENUM JieRi ##### -->
+<para>
+
+</para>
+
+@JIERI_JIEQI: 
+@JIERI_SOLAR: 
+@JIERI_WEEK: 
+@JIERI_LUNAR: 
+
+<!-- ##### STRUCT LUNARDate ##### -->
+<para>
+The LUNARDate struct contains only private fields and should not be used directly.
+</para>
+
+
+<!-- ##### ENUM LUNARDateError ##### -->
+<para>
+
+</para>
+
+@LUNAR_DATE_ERROR_INTERNAL: a internal error was found.
+@LUNAR_DATE_ERROR_DAY: the day is out of the range.
+@LUNAR_DATE_ERROR_YEAR: the year is out of the range.
+@LUNAR_DATE_ERROR_LEAP: the <parameter>isleap</parameter> parameter of lunar_date_set_lunar_date() is not corret.
+
+<!-- ##### FUNCTION lunar_date_get_bazi ##### -->
+<para>
+
+</para>
+
+@date: 
+@year: 
+@month: 
+@day: 
+@hour: 
+@Returns: 
+
+<!-- ##### FUNCTION lunar_date_get_ganzhi ##### -->
+<para>
+
+</para>
+
+@date: 
+@year: 
+@month: 
+@day: 
+@hour: 
+@Returns: 
+
+<!-- ##### FUNCTION lunar_date_get_lunar_date ##### -->
+<para>
+
+</para>
+
+@date: 
+@year: 
+@month: 
+@day: 
+@hour: 
+@Returns: 
+
+<!-- ##### FUNCTION lunar_date_get_shengxiao ##### -->
+<para>
+
+</para>
+
+@date: 
+@Returns: 
+
+<!-- ##### FUNCTION lunar_date_get_solar_date ##### -->
+<para>
+
+</para>
+
+@date: 
+@year: 
+@month: 
+@day: 
+@hour: 
+@Returns: 
+

@@ -1,0 +1,143 @@
+;; -*- scheme -*-
+; object definitions ...
+(define-object Calendar
+  (in-module "Lunar")
+  (parent "GtkWidget")
+  (c-name "LunarCalendar")
+  (gtype-id "LUNAR_TYPE_CALENDAR")
+)
+
+;; Enumerations and flags ...
+
+(define-flags CalendarDisplayOptions
+  (in-module "Lunar")
+  (c-name "LunarCalendarDisplayOptions")
+  (gtype-id "LUNAR_TYPE_CALENDAR_DISPLAY_OPTIONS")
+  (values
+    '("show-heading" "LUNAR_CALENDAR_SHOW_HEADING")
+    '("show-day-names" "LUNAR_CALENDAR_SHOW_DAY_NAMES")
+    '("no-month-change" "LUNAR_CALENDAR_NO_MONTH_CHANGE")
+    '("show-week-numbers" "LUNAR_CALENDAR_SHOW_WEEK_NUMBERS")
+    '("week-start-monday" "LUNAR_CALENDAR_WEEK_START_MONDAY")
+    '("show-lunar" "LUNAR_CALENDAR_SHOW_LUNAR")
+  )
+)
+
+
+;; From lunar-calendar.h
+
+(define-function lunar_calendar_get_type
+  (c-name "lunar_calendar_get_type")
+  (return-type "GType")
+)
+
+(define-function lunar_calendar_new
+  (c-name "lunar_calendar_new")
+  (is-constructor-of "LunarCalendar")
+  (return-type "GtkWidget*")
+)
+
+(define-method select_month
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_select_month")
+  (return-type "gboolean")
+  (parameters
+    '("guint" "month")
+    '("guint" "year")
+  )
+)
+
+(define-method select_day
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_select_day")
+  (return-type "none")
+  (parameters
+    '("guint" "day")
+  )
+)
+
+(define-method mark_day
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_mark_day")
+  (return-type "gboolean")
+  (parameters
+    '("guint" "day")
+  )
+)
+
+(define-method unmark_day
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_unmark_day")
+  (return-type "gboolean")
+  (parameters
+    '("guint" "day")
+  )
+)
+
+(define-method clear_marks
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_clear_marks")
+  (return-type "none")
+)
+
+(define-method set_display_options
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_set_display_options")
+  (return-type "none")
+  (parameters
+    '("LunarCalendarDisplayOptions" "flags")
+  )
+)
+
+(define-method get_display_options
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_get_display_options")
+  (return-type "LunarCalendarDisplayOptions")
+)
+
+(define-method display_options
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_display_options")
+  (return-type "none")
+  (parameters
+    '("LunarCalendarDisplayOptions" "flags")
+  )
+)
+
+(define-method get_date
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_get_date")
+  (return-type "none")
+  (parameters
+    '("guint*" "year")
+    '("guint*" "month")
+    '("guint*" "day")
+  )
+)
+
+(define-method freeze
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_freeze")
+  (return-type "none")
+)
+
+(define-method thaw
+  (of-object "LunarCalendar")
+  (c-name "lunar_calendar_thaw")
+  (return-type "none")
+)
+
+
+
+;; From lunar-main.h
+
+(define-function lunar_init
+  (c-name "lunar_init")
+  (return-type "none")
+  (parameters
+    '("int*" "argc")
+    '("char***" "argv")
+  )
+)
+
+

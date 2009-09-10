@@ -1,0 +1,90 @@
+==============
+liblunar-2.0.1
+==============
+NEWS:
+    - fixed detect python error.
+
+==============
+liblunar-2.0.0
+==============
+NEWS:
+    - fixed some bugs.
+    - add zh_TW, zh_HK translate.
+
+==============
+liblunar-1.0.1
+==============
+NEWS:
+    - Change struct name from "LUNARDate" to "LunarDate";
+    - add -disable-gtk for compile.
+    - add pot file when make dist. see #4.
+    this release just for translation.
+
+==============
+liblunar-1.0.0
+==============
+NEWS:
+    - support solar term (by redwoods <redwooods@gmail.com>).
+    - modify some festivals.
+    - keep Sunday as the first day of a week.
+    - update Calendar to GTK+-2.12.8
+    - show lunar automatic.
+    - fixed: 
+        * when year less-than 1900 or greater than 2049, calendar will show error lunar.
+        * when we view 1900 Jan, the calendar will crash.
+
+==============
+liblunar-0.2.6
+==============
+NEWS:
+    - use pinyin on "C" locale. But only in UTF-8.
+
+==============
+liblunar-0.2.5
+==============
+NEWS:
+    - change names from "gcl" to "lunar" (file name、api name、doc names).
+    - change the python module name to "lunar".
+    - fixed that if select day changed, the header doesn't change at 0.2.4.
+    - po/zh_CN.po: filled in the header of po/zh_CN.po
+    - filled in "This file is part of ________." of some cource files.
+
+=============
+liblunar-0.2.4
+=============
+NEWS:
+    - add python bindings for calendar.
+    Compile with --disable-python to disable python bindings, default is auto detect python support.
+    Useage:
+    $ python
+    Python 2.4.4 (#1, Feb  1 2008, 12:23:41) 
+    [GCC 4.1.2 (Gentoo 4.1.2 p1.0.2)] on linux2
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import gclcalendar
+    >>> help gclcalendar
+
+=============
+liblunar-0.2.3
+=============
+新的特性：
+   - 增加节日/纪念日自定义功能:修改$(prefix)/liblunar/holiday.dat文件。
+   - 增加新的gcl_calendar窗口小部件以显示农历(基于gtkcalendar).
+   - 增加函数gcl_date_strftime()函数，以提供更灵活的调用接口(用法类似于strftime).
+   - 删除以下接口函数:
+       gcl_date_get_solar_date()
+       gcl_date_get_lunar_date()
+       gcl_date_get_shengxiao()
+       gcl_date_get_ganzhi()
+       gcl_date_get_bazi()
+其它：
+   - 增加 run-in-source-tree 配置参数，方便开发阶段的调试。
+   - 国际化的支持趋于完善。
+   - 增加一个测试程序test-calendar.
+
+已知bug:
+   - 在gcl_calendar 显示年份的区域，如果使用非中文locale,
+   在某种情况下， 有时你会发现显示年份的区域宽度有点小，不能显示全部内容。
+   (这个bug我已经在努力修复，可我不能找到一个显示出来的宽度是最长的日期，所以这bug可能还会出现)
+   - 这个项目已经重名(libgcl), 暂时准备使用liblunar这个名字(这个问题可以讨论).
+
+下载地址：http://liblunar.googlecode.com/files/libgcl-XXX.tar.bz2

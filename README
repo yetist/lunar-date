@@ -1,0 +1,45 @@
+====================
+README for liblunar
+====================
+
+
+General Information
+====================
+
+This is version 1.0.0 of liblunar. liblunar is a chinese lunar library.
+
+The official web site is:
+
+        http://liblunar.googlecode.com
+
+You can download the latest liblunar tarball from the googlecode http server:
+
+        http://code.google.com/p/liblunar/downloads/
+
+
+Installation
+=============
+
+liblunar requires GTK+-2.12.x libraries.
+PyGobject 2.12.x and PyGtk 2.12.x are required to enable python plugins support.
+
+Simple install procedure::
+
+  $ tar -zxf liblunar-1.0.0.tar.gz              # unpack the sources
+  $ cd liblunar-1.0.0                           # change to the toplevel directory
+  $ ./configure                                 # run the `configure' script
+  $ make                                        # build gedit
+  [ Become root if necessary ]
+  $ sudo make install                           # install gedit
+
+See the file 'INSTALL' for more detailed information.
+
+
+How to report bugs
+===================
+
+Bugs should be reported to the googlecode bug tracking system.
+(http://code.google.com/p/liblunar/issues)
+
+..
+    vim:set ft=rst:

@@ -1,0 +1,6 @@
+liblunar (@VERSION@-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- yetist <yetist@gmail.com>  @CUR_DATE@
+
