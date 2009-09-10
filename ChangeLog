@@ -1,5 +1,14 @@
 2009-09-10  yetist  <yetist@gmail.com>
 
+	*  lunar/Makefile.am: 
+	*  tests/Makefile.am: 
+	*  tests/test-date.c: 
+	*  configure.ac: 
+	*  Makefile.am: 
+	remove gtk support from liblunar.
+
+2009-09-10  yetist  <yetist@gmail.com>
+
 	*  pinyin.sh: 
 	*  m4: 
 	*  m4/python.m4: 

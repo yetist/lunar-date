@@ -9,15 +9,8 @@ INCLUDES =                                              \
 
 noinst_PROGRAMS =test-date
 
-if ENABLE_GTK
-noinst_PROGRAMS += test-calendar
-endif
-
 test_date_SOURCES =          		\
         test-date.c
-
-test_calendar_SOURCES =          		\
-	test-calendar.c
 
 AM_CPPFLAGS =                		\
         -I.                  		\
@@ -27,4 +20,3 @@ AM_CPPFLAGS =                		\
 LIBS =                       		\
         $(LIBLUNAR_LIBS)       		\
         $(top_builddir)/lunar/liblunar-1.la
-

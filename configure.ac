@@ -38,51 +38,11 @@ CUR_DATE=${cur_date}
 AC_SUBST(CUR_DATE)
 
 GLIB2_REQUIRED=2.4.0
-GTK_REQUIRED=2.4.0
-
-AC_ARG_ENABLE([gtk],
-	AS_HELP_STRING([--disable-gtk],[Disable gtk support]),
-	enable_gtk=$enableval,
-	enable_gtk=yes)
-AC_MSG_RESULT([$enable_gtk])
-
 
 PKG_CHECK_MODULES(LIBLUNAR, glib-2.0 >= $GLIB2_REQUIRED)
 
-if test "x$enable_gtk" = "xyes" ; then
-  PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED)
-  LIBLUNAR_CFLAGS="$LIBLUNAR_CFLAGS $GTK_CFLAGS"
-  LIBLUNAR_LIBS="$LIBLUNAR_LIBS $GTK_LIBS"
-
-  dnl AC_DEFINE(ENABLE_GTK, 1, [enable gtk for liblunar.])
-  cat >${srcdir}/lunar/lunar.h <<EOF
-#ifndef __LUNAR_H__
-#define __LUNAR_H__  1
-
-#define  LIBLUNAR_ENABLE_GTK 1
-
-#include <lunar/lunar-date.h>
-#include <lunar/lunar-calendar.h>
-#include <lunar/lunar-main.h>
-#endif /*__LUNAR_H__ */
-
-EOF
-else
-  cat >${srcdir}/lunar/lunar.h <<EOF
-#ifndef __LUNAR_H__
-#define __LUNAR_H__  1
-
-#include <lunar/lunar-date.h>
-#include <lunar/lunar-main.h>
-#endif /*__LUNAR_H__ */
-
-EOF
-fi
-
 AC_SUBST(LIBLUNAR_CFLAGS)
 AC_SUBST(LIBLUNAR_LIBS)
-
-AM_CONDITIONAL([ENABLE_GTK],[test "x$enable_gtk" = "xyes"])
 
 dnl run in source tree
 AC_ARG_ENABLE(run-in-source-tree,
@@ -227,13 +187,8 @@ AM_GLIB_DEFINE_LOCALEDIR(LIBLUNAR_LOCALEDIR)
 AC_CONFIG_FILES([
 liblunar-1.pc
 lunar/Makefile
-bindings/Makefile
-bindings/python/Makefile
 tests/Makefile
 data/Makefile
-docs/Makefile
-docs/reference/Makefile
-docs/reference/version.xml
 po/Makefile.in
 Makefile
 ])
