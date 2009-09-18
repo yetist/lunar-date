@@ -137,7 +137,7 @@ int main (int argc, char* argv[])
     }
 	else if (argc == 2 && (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0))
     {
-		printf("usage: test-date [year month day]\n");
+		g_printf("usage: test-date [year month day]\n");
 		return 0;
     }
 	else 

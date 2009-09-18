@@ -489,7 +489,8 @@ void            lunar_date_set_lunar_date     (LunarDate *date,
  * Returns the holiday of the date. The date must be valid.
  *
  * Return value:  a newly-allocated holiday string of the date.
- * This can be changed in $(datadir)/liblunar/holiday.dat file.
+ * This can be changed in  <ulink url="http://www.freedesktop.org/wiki/Specifications/basedir-spec">$XDG_CONFIG_HOME</ulink>/liblunar/hodiday.dat file.
+ *
  **/
 gchar*      lunar_date_get_jieri          (LunarDate *date)
 {
@@ -503,7 +504,6 @@ gchar*      lunar_date_get_jieri          (LunarDate *date)
 
     keyfile = g_key_file_new();
 
-    cfgfile = g_build_filename(LUNAR_HOLIDAYDIR, "holiday.dat", NULL);
 #ifdef RUN_IN_SOURCE_TREE
     if (!g_file_test(cfgfile, G_FILE_TEST_IS_REGULAR))
     {
@@ -517,6 +517,13 @@ gchar*      lunar_date_get_jieri          (LunarDate *date)
             }
         }
     }
+#else
+    cfgfile = g_build_filename( g_get_user_config_dir() , "liblunar", "holiday.dat", NULL);
+	if ( ! g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
+	{
+		g_free(cfgfile);
+    	cfgfile = g_build_filename(LUNAR_HOLIDAYDIR, "holiday.dat", NULL);
+	}
 #endif
 
     if (!g_key_file_load_from_file(keyfile, cfgfile, G_KEY_FILE_KEEP_COMMENTS, NULL))
@@ -695,7 +702,7 @@ void year_jieqi(int year, int n, char* result)
  * %(jieri)                         节日(节日、纪念日、节气等)：立春
  *
  * 使用%(jieri)时，如果此日没有节日或节气，那么将为空。
- * 节日可以自定义，只要按照格式修改$(prefix)/share/liblunar/hodiday.dat即可。
+ * 支持自定义节日，只要按照格式修改 <ulink url="http://www.freedesktop.org/wiki/Specifications/basedir-spec">$XDG_CONFIG_HOME</ulink>/liblunar/hodiday.dat 文件即可。
  *
  * Return value: a newly-allocated output string, nul-terminated
  **/
