@@ -30,8 +30,6 @@ IT_PROG_INTLTOOL([0.35.0])
 
 GTK_DOC_CHECK(1.0)
 
-AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
-
 AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
 cur_date=`date -R`
 CUR_DATE=${cur_date}
@@ -62,16 +60,12 @@ dnl ================================================================
 dnl Python
 dnl ================================================================
 
-if test "x$enable_gtk" = "xyes" ; then
 AC_MSG_CHECKING([whether Python support is requested])
 AC_ARG_ENABLE([python],
-	AS_HELP_STRING([--enable-python],[Enable python support]),
+	AS_HELP_STRING([--enable-python],[Enable python binding]),
 	[enable_python=$enableval have_python=$enableval],
 	[enable_python=autodetect have_python=yes])
 AC_MSG_RESULT([$enable_python])
-else
-    have_python=no
-fi
 
 if test "x$have_python" != "xno"; then
 	AM_PATH_PYTHON([2.3],[],[no])
@@ -190,6 +184,9 @@ lunar/Makefile
 tests/Makefile
 data/Makefile
 po/Makefile.in
+docs/Makefile
+docs/reference/Makefile
+docs/reference/version.xml
 Makefile
 ])
 
@@ -200,7 +197,6 @@ Configuration:
 
         Source code location:   ${srcdir}
 	Compiler:		${CC}
-	Support GTK+:		$enable_gtk
-	Python Plugins Support: $enable_python
+	Python binding Support: $enable_python
 "
 
