@@ -25,6 +25,8 @@
 #ifndef __LUNAR_MAIN_H__
 #define __LUNAR_MAIN_H__  1
 
+#include    <glib.h>
+
 G_BEGIN_DECLS
 
 void    lunar_init               (int    *argc, char ***argv);
