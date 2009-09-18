@@ -28,6 +28,8 @@ Translate the date between solar and chinese lunar.
 The LUNARDate struct contains only private fields and should not be used directly.
 </para>
 
+@object: 
+@priv: 
 
 <!-- ##### MACRO LUNAR_DATE_ERROR ##### -->
 <para>

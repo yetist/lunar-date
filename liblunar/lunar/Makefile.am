@@ -20,6 +20,7 @@ liblunar_1_includedir = $(includedir)/liblunar-1/lunar
 
 liblunar_1_la_SOURCES =	\
 	lunar-date.c		\
+	lunar-date-private.c		\
 	lunar-main.c		\
 	$(NULL)
 
