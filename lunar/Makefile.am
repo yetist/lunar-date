@@ -21,7 +21,6 @@ liblunar_1_includedir = $(includedir)/liblunar-1/lunar
 liblunar_1_la_SOURCES =	\
 	lunar-date.c		\
 	lunar-main.c		\
-	$(BUILT_SOURCES)	\
 	$(NULL)
 
 liblunar_1_include_HEADERS =	\
@@ -31,3 +30,5 @@ liblunar_1_include_HEADERS =	\
 liblunar_1_la_LIBADD = 	\
 	$(LIBLUNAR_LIBS)		\
 	$(NULL)
+
+-include $(top_srcdir)/git.mk

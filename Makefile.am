@@ -22,3 +22,5 @@ DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 dist-hook:
 	$(MAKE) -C "$(srcdir)/po" "$(GETTEXT_PACKAGE).pot"
 	cp "$(srcdir)/po/$(GETTEXT_PACKAGE).pot" "$(distdir)/po/"
+
+-include $(top_srcdir)/git.mk
