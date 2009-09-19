@@ -1,10 +1,10 @@
 AC_PREREQ(2.59)
 
 m4_define([liblunar_major_version], [2])
-m4_define([liblunar_minor_version], [0])
-m4_define([liblunar_micro_version], [2])
+m4_define([liblunar_minor_version], [1])
+m4_define([liblunar_micro_version], [0])
 m4_define([liblunar_real_version], [liblunar_major_version.liblunar_minor_version.liblunar_micro_version])
-m4_define([liblunar_version], [2.0.2])
+m4_define([liblunar_version], [2.1.0.rc1])
 
 AC_INIT(liblunar, liblunar_version, yetist@gmail.com)
 AC_COPYRIGHT([Copyright (C) 2007-2009 yetist@gmail.com])
