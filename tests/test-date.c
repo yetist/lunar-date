@@ -36,8 +36,8 @@ void display (LunarDate *date, gboolean islunar)
     g_printf("format:%%(year)年%%(month)月%%(day)日%%(hour)时->%s\n", lunar_date_strftime(date, "%(year)年%(month)月%(day)日%(hour)时"));
     g_printf("format:%%(NIAN)年%%(YUE)月%%(RI)日%%(SHI)时->%s\n", lunar_date_strftime(date, "%(NIAN)年%(YUE)月%(RI)日%(SHI)时"));
     g_printf("format:%%(nian)年%%(yue)月%%(ri)日%%(shi)时->%s\n", lunar_date_strftime(date, "%(nian)年%(yue)月%(ri)日%(shi)时"));
-    g_printf("format:%%(Y60)年%%(M60)月%%(D60)日->%s\n", lunar_date_strftime(date, "%(Y60)年%(M60)月%(D60)日"));
-    g_printf("format:%%(Y8)年%%(M8)月%%(D8)日->%s\n", lunar_date_strftime(date, "%(Y8)年%(M8)月%(D8)日"));
+    g_printf("format:%%(Y60)年%%(M60)月%%(D60)日%%(H60)时->%s\n", lunar_date_strftime(date, "%(Y60)年%(M60)月%(D60)日%(H60)时"));
+    g_printf("format:%%(Y8)年%%(M8)月%%(D8)日%%(H8)时->%s\n", lunar_date_strftime(date, "%(Y8)年%(M8)月%(D8)日%(H8)时"));
     g_printf("format:%%(shengxiao)->%s\n", lunar_date_strftime(date, "%(shengxiao)"));
     g_printf("format:%%(jieri)->%s\n", lunar_date_strftime(date, "%(jieri)"));
 }
