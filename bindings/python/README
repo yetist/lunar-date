@@ -1,0 +1,31 @@
+说明:
+
+一、关于gdate.h文件
+这个文件是取自glib的gdate.h，用到了其中关于GDathMonth的枚举定义那一部分，
+因为pygobject没有加入到GDateMonth的处理，所以h2def.py 无法生成正确的defs文件。
+
+二、关于lunardate.c的生成
+同样是因为pygobject没有处理GDateDay、GDateYear的类型定义，所以需要手工把defs文件中的
+GDateYear、GDateDay、GDateHour分别使用guint16、guint8、guint8替换，然后再生成lunardate.c文件。
+替换脚本：
+sed_defs() {
+	sed \
+	-e 's/GDateYear/guint16/g'	\
+	-e 's/GDateDay/guint8/g'	\
+	-e 's/GDateHour/guint8/g'	\
+	$@
+}
+
+sed_defs ./lunardate.defs
+或者直接给codegen打上patch，直接来生成lunardate.c文件，patch如下:
+--- /usr/share/pygobject/2.0/codegen/argtypes.py	2009-05-29 07:07:09.000000000 +0800
++++ argtypes.py	2009-09-19 16:30:21.864511559 +0800
+@@ -980,6 +980,9 @@
+ matcher.register('guint16', arg)
+ matcher.register('gint16', arg)
+ matcher.register('gint32', arg)
++matcher.register('GDateDay', arg)
++matcher.register('GDateYear', arg)
++matcher.register('GDateHour', arg)
+ matcher.register('GTime', arg)
+ matcher.register('GSeekType', arg) # Hack, but we have no python wrapper
