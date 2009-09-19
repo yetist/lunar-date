@@ -1,5 +1,5 @@
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = po lunar data tests docs
+SUBDIRS = po lunar data tests docs bindings
 
 EXTRA_DIST =                    \
 	autogen.sh		\

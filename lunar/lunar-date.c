@@ -223,6 +223,22 @@ void            lunar_date_set_solar_date     (LunarDate *date,
         return;
     }
 
+	if (!g_date_valid_month(month))
+    {
+        g_set_error(error, LUNAR_DATE_ERROR,
+                LUNAR_DATE_ERROR_MONTH,
+                _("Month out of range."));
+        return;
+    }
+
+    if (hour < 0 || hour > 23)
+    {
+        g_set_error(error, LUNAR_DATE_ERROR,
+                LUNAR_DATE_ERROR_HOUR,
+                _("Hour out of range."));
+        return;
+    }
+
     priv->solar->year = year;
     priv->solar->month = month;
     priv->solar->day = day;
@@ -272,6 +288,22 @@ void            lunar_date_set_lunar_date     (LunarDate *date,
         return;
     }
 
+	if (!g_date_valid_month(month))
+    {
+        g_set_error(error, LUNAR_DATE_ERROR,
+                LUNAR_DATE_ERROR_MONTH,
+                _("Month out of range."));
+        return;
+    }
+
+    if (hour < 0 || hour > 23)
+    {
+        g_set_error(error, LUNAR_DATE_ERROR,
+                LUNAR_DATE_ERROR_HOUR,
+                _("Hour out of range."));
+        return;
+    }
+
     priv->lunar->year = year;
     priv->lunar->month = month;
     priv->lunar->day = day;
@@ -312,21 +344,24 @@ gchar*      lunar_date_get_jieri          (LunarDate *date)
     priv = LUNAR_DATE_GET_PRIVATE (date);
     keyfile = g_key_file_new();
 
+    cfgfile = g_build_filename( g_get_user_config_dir() , "liblunar", "holiday.dat", NULL);
 #ifdef RUN_IN_SOURCE_TREE
-    if (!g_file_test(cfgfile, G_FILE_TEST_IS_REGULAR))
+	if ( ! g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
     {
+		g_free(cfgfile);
         cfgfile = g_build_filename("data", "holiday.dat", NULL);
-        if (!g_file_test(cfgfile, G_FILE_TEST_IS_REGULAR))
+		if ( ! g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
         {
+			g_free(cfgfile);
             cfgfile = g_build_filename(".", "holiday.dat", NULL);
-            if (!g_file_test(cfgfile, G_FILE_TEST_IS_REGULAR))
+			if ( ! g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
             {
+				g_free(cfgfile);
                 cfgfile = g_build_filename("..", "holiday.dat", NULL);
             }
         }
     }
 #else
-    cfgfile = g_build_filename( g_get_user_config_dir() , "liblunar", "holiday.dat", NULL);
 	if ( ! g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
 	{
 		g_free(cfgfile);
@@ -416,13 +451,9 @@ gchar*      lunar_date_get_jieri          (LunarDate *date)
  *
  * %(nian)年%(yue)月%(ri)日%(shi)时 阴历：小写->2007年12月14日
  *
- * %(Y60)年%(M60)月%(D60)日%(H60)时 干支：大写->丁亥年癸丑月庚申日
+ * %(Y60)年%(M60)月%(D60)日 干支：大写->丁亥年癸丑月庚申日
  *
- * %(y60)年%(m60)月%(d60)日%(h60)时 干支：小写 not use
- *
- * %(Y8)年%(M8)月%(D8)日%(H8)时     八字：大写->丁亥年癸丑月庚申日
- *
- * %(y8)年%(m8)月%(d8)日%(h8)时     八字：小写 not use
+ * %(Y8)年%(M8)月%(D8)日     八字：大写->丁亥年癸丑月庚申日
  *
  * %(shengxiao)                     生肖：猪
  * %(jieri)                         节日(节日、纪念日、节气等)：立春

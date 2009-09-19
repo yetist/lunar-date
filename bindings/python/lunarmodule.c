@@ -21,39 +21,63 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include "../../config.h"
+#include <config.h>
 #endif
 
 /* include this first, before NO_IMPORT_PYGOBJECT is defined */
 #include <Python.h>
+#include <pyglib.h>
 #include <pygobject.h>
-#include <pygtk/pygtk.h>
 #include <pyerrors.h>
 #include "../../lunar/lunar.h"
+#include "../../lunar/lunar-date.h"
+#include "../../lunar/lunar-date-private.h"
 
-extern void pycalendar_register_classes(PyObject *d);
-extern void pycalendar_add_constants(PyObject *module, const gchar *strip_prefix);
-extern PyMethodDef pycalendar_functions[];
-extern DL_EXPORT(void) initlunar(void);
-extern PyTypeObject PyLunarCalendar_Type;
+extern void pylunardate_register_classes(PyObject *d);
+extern void pylunardate_add_constants(PyObject *module, const gchar *strip_prefix);
+extern PyMethodDef pylunardate_functions[];
+extern DL_EXPORT(void) init_lunardate(void);
+extern PyTypeObject PyLunarDate_Type;
 
 DL_EXPORT(void)
-initlunar(void)
+init_lunardate(void)
 {
     PyObject *m, *d;
+    PyObject *tuple;
+    PyObject *e;
 
     /* initialise pygobject */
     init_pygobject();
-    init_pygtk();
     
-    m = Py_InitModule("lunar", pycalendar_functions);
+    /* perform any initialisation required by the library here */
+    m = Py_InitModule("liblunar._lunardate", pylunardate_functions);
     d = PyModule_GetDict(m);
 
-    pycalendar_register_classes(d);
-    pycalendar_add_constants(m, "LUNAR_");
+    init_pygobject_check(2, 15, 2);
+
+    pylunardate_register_classes(d);
+    pylunardate_add_constants(m, "LUNAR_");
+
+/*
+    PyModule_AddStringConstant(m, "ERROR", g_quark_to_string(LUNAR_DATE_ERROR));
+    e = pyglib_register_exception_for_domain("lunar.Error", LUNAR_DATE_ERROR);
+    PyDict_SetItemString(d, "Error", e);
+    Py_DECREF(e);
+
+    PyModule_AddStringConstant(m, "FILE_ATTRIBUTE_STANDARD_TYPE",
+			       G_FILE_ATTRIBUTE_STANDARD_TYPE);
+*/
+
+    /* liblunar version */
+    tuple = Py_BuildValue ("(iii)",
+			   LIBLUNAR_MAJOR_VERSION,
+			   LIBLUNAR_MINOR_VERSION,
+			   LIBLUNAR_MICRO_VERSION);
+    PyDict_SetItemString(d, "liblunar_version", tuple); 
+    Py_DECREF(tuple);
 
     if (PyErr_Occurred()) {
-        Py_FatalError("can't initialise module lunarcalendar");
+        Py_FatalError("can't initialise module lunar._lunardate");
     }
 
 }

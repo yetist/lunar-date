@@ -17,7 +17,21 @@ AC_CONFIG_MACRO_DIR([m4])
 AM_MAINTAINER_MODE
 
 LIBLUNAR_VERSION=liblunar_real_version
-AC_SUBST(LIBLUNAR_VERSION)
+
+LIBLUNAR_MAJOR_VERSION=liblunar_major_version
+LIBLUNAR_MINOR_VERSION=liblunar_minor_version
+LIBLUNAR_MICRO_VERSION=liblunar_micro_version
+
+AC_SUBST(LIBLUNAR_MAJOR_VERSION)
+AC_SUBST(LIBLUNAR_MINOR_VERSION)
+AC_SUBST(LIBLUNAR_MICRO_VERSION)
+
+AC_DEFINE(LIBLUNAR_MAJOR_VERSION, [liblunar_major_version],
+          [Define to the LIBLUNAR major version])
+AC_DEFINE(LIBLUNAR_MINOR_VERSION, [liblunar_minor_version],
+          [Define to the LIBLUNAR minor version])
+AC_DEFINE(LIBLUNAR_MICRO_VERSION, [liblunar_micro_version],
+          [Define to the LIBLUNAR micro version])
 
 AC_PROG_CC
 AC_ISC_POSIX
@@ -29,6 +43,8 @@ AC_PROG_LIBTOOL
 IT_PROG_INTLTOOL([0.35.0])
 
 GTK_DOC_CHECK(1.0)
+
+AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
 
 AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
 cur_date=`date -R`
@@ -107,45 +123,35 @@ fi
 
 if test "x$have_python" != "xno"; then
 	PYGOBJECT_REQUIRED=2.15.4
-	PYGTK_REQUIRED=2.12.0
-	PYGTKSOURCEVIEW_REQUIRED=2.2.0
 
-	PKG_CHECK_MODULES([PYGTK], [
-		pygobject-2.0 >= $PYGOBJECT_REQUIRED
-		pygtk-2.0 >= $PYGTK_REQUIRED
-		pygtksourceview-2.0 >= $PYGTKSOURCEVIEW_REQUIRED],
-		[],
+	PKG_CHECK_MODULES([PYGOBJECT], [ pygobject-2.0 >= $PYGOBJECT_REQUIRED ], [],
 		[
 		have_python=no
 		if test "x$enable_python" = "xyes"; then
-			AC_MSG_ERROR([$PYGTK_PKG_ERRORS])
+			AC_MSG_ERROR([$PYGOBJECT_PKG_ERRORS])
 		elif test "x$enable_python" = "xautodetect"; then
                         enable_python=no
-			AC_MSG_WARN([$PYGTK_PKG_ERRORS])
+			AC_MSG_WARN([$PYGOBJECT_PKG_ERRORS])
 			AC_MSG_WARN([Disabling python support])
 		fi
 		])
 
-	AC_SUBST([PYGTK_CFLAGS])
-	AC_SUBST([PYGTK_LIBS])
+	AC_SUBST([PYGOBJECT_CFLAGS])
+	AC_SUBST([PYGOBJECT_LIBS])
 fi
 
 if test "x$have_python" != "xno"; then
-	AC_MSG_CHECKING([for pygtk defs])
-	PYGTK_DEFSDIR=`$PKG_CONFIG --variable=defsdir pygtk-2.0`
-	AC_MSG_RESULT([$PYGTK_DEFSDIR])
 
-	AC_MSG_CHECKING([for pygtk codegen])
-	PYGTK_CODEGEN="$PYTHON `$PKG_CONFIG --variable=codegendir pygtk-2.0`/codegen.py"
-	AC_MSG_RESULT([$PYGTK_CODEGEN])
+	AC_MSG_CHECKING([for pygobject codegen])
+	PYGOBJECT_CODEGEN="$PYTHON `$PKG_CONFIG --variable=codegendir pygobject-2.0`/codegen.py"
+	AC_MSG_RESULT([$PYGOBJECT_CODEGEN])
 
-	AC_MSG_CHECKING([for pygtk h2def])
-	PYGTK_H2DEF="$PYTHON `$PKG_CONFIG --variable=codegendir pygtk-2.0`/h2def.py"
-	AC_MSG_RESULT([$PYGTK_H2DEF])
+	AC_MSG_CHECKING([for pygobject h2def])
+	PYGOBJECT_H2DEF="$PYTHON `$PKG_CONFIG --variable=codegendir pygobject-2.0`/h2def.py"
+	AC_MSG_RESULT([$PYGOBJECT_H2DEF])
 
-	AC_SUBST([PYGTK_DEFSDIR])
-	AC_SUBST([PYGTK_CODEGEN])
-	AC_SUBST([PYGTK_H2DEF])
+	AC_SUBST([PYGOBJECT_CODEGEN])
+	AC_SUBST([PYGOBJECT_H2DEF])
 
 	dnl Check for -fno-strict-aliasing
 	FLAGS="-fno-strict-aliasing"
@@ -182,6 +188,8 @@ AM_GLIB_DEFINE_LOCALEDIR(LIBLUNAR_LOCALEDIR)
 AC_CONFIG_FILES([
 liblunar-1.pc
 lunar/Makefile
+bindings/Makefile
+bindings/python/Makefile
 tests/Makefile
 data/Makefile
 po/Makefile.in
