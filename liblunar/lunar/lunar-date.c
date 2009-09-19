@@ -231,6 +231,7 @@ void            lunar_date_set_solar_date     (LunarDate *date,
         return;
     }
 
+	if (hour == 24) hour = 0;
     if (hour < 0 || hour > 23)
     {
         g_set_error(error, LUNAR_DATE_ERROR,
@@ -296,6 +297,7 @@ void            lunar_date_set_lunar_date     (LunarDate *date,
         return;
     }
 
+	if (hour == 24) hour = 0;
     if (hour < 0 || hour > 23)
     {
         g_set_error(error, LUNAR_DATE_ERROR,
@@ -443,20 +445,20 @@ gchar*      lunar_date_get_jieri          (LunarDate *date)
  *
  * 使用给定的格式来输出字符串。类似于strftime的用法。可使用的格式及输出如下：
  *
- * %(YEAR)年%(MONTH)月%(DAY)日      公历：大写->二OO八年一月二十一日
+ * %(YEAR)年%(MONTH)月%(DAY)%(HOUR)日       公历：大写->二OO八年一月二十一日
  *
- * %(year)年%(month)月%(day)日      公历：小写->2008年1月21日
+ * %(year)年%(month)月%(day)%(hour)日       公历：小写->2008年1月21日
  *
- * %(NIAN)年%(YUE)月%(RI)日%(SHI)时 阴历：大写->丁亥年腊月十四日
+ * %(NIAN)年%(YUE)月%(RI)日%(SHI)时 		阴历：大写->丁亥年腊月十四日
  *
- * %(nian)年%(yue)月%(ri)日%(shi)时 阴历：小写->2007年12月14日
+ * %(nian)年%(yue)月%(ri)日%(shi)时 		阴历：小写->2007年12月14日
  *
- * %(Y60)年%(M60)月%(D60)日 干支：大写->丁亥年癸丑月庚申日
+ * %(Y60)年%(M60)月%(D60)日%(H60)时 		干支：大写->丁亥年癸丑月庚申日
  *
- * %(Y8)年%(M8)月%(D8)日     八字：大写->丁亥年癸丑月庚申日
+ * %(Y8)年%(M8)月%(D8)日%(H8)时     		八字：大写->丁亥年癸丑月庚申日
  *
- * %(shengxiao)                     生肖：猪
- * %(jieri)                         节日(节日、纪念日、节气等)：立春
+ * %(shengxiao)                     		生肖：猪
+ * %(jieri)                         		节日(节日、纪念日、节气等)：立春
  *
  * 使用%(jieri)时，如果此日没有节日或节气，那么将为空。
  * 支持自定义节日，只要按照格式修改 <ulink url="http://www.freedesktop.org/wiki/Specifications/basedir-spec">$XDG_CONFIG_HOME</ulink>/liblunar/hodiday.dat 文件即可。
@@ -596,6 +598,10 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
         str = g_string_replace(str, "%(D60)", tmp, -1);
         g_free(tmp);
     }
+    if (strstr(format, "%(H60)") != NULL)
+    {
+        str = g_string_replace(str, "%(H60)", _(zhi_list[priv->lunar->hour/2]), -1);
+    }
 
     //bazi
     if (strstr(format, "%(Y8)") != NULL)
@@ -615,6 +621,10 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
         tmp = g_strdup_printf("%s%s", _(gan_list[priv->gan2->day]), _(zhi_list[priv->zhi2->day]));
         str = g_string_replace(str, "%(D8)", tmp, -1);
         g_free(tmp);
+    }
+    if (strstr(format, "%(H8)") != NULL)
+    {
+        str = g_string_replace(str, "%(H8)", _(zhi_list[priv->lunar->hour/2]), -1);
     }
 
     //shengxiao
