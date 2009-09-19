@@ -47,7 +47,9 @@ regenerate-python-binding:
 EXTRA_DIST = \
 	lunardate.override	\
 	lunardate.defs		\
-	lunardate-demo.py
+	lunardate-demo.py	\
+	gdate.h			\
+	README
 
 CLEANFILES = $(BUILT_SOURCES)
 

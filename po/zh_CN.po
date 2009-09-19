@@ -191,51 +191,51 @@ msgstr "猪"
 
 #: ../lunar/lunar-date-private.h:287
 msgid "Jan"
-msgstr "一月"
+msgstr "一"
 
 #: ../lunar/lunar-date-private.h:287
 msgid "Feb"
-msgstr "二月"
+msgstr "二"
 
 #: ../lunar/lunar-date-private.h:287
 msgid "Mar"
-msgstr "三月"
+msgstr "三"
 
 #: ../lunar/lunar-date-private.h:287
 msgid "Apr"
-msgstr "四月"
+msgstr "四"
 
 #: ../lunar/lunar-date-private.h:287
 msgid "May"
-msgstr "五月"
+msgstr "五"
 
 #: ../lunar/lunar-date-private.h:287
 msgid "Jun"
-msgstr "六月"
+msgstr "六"
 
 #: ../lunar/lunar-date-private.h:288
 msgid "Jul"
-msgstr "七月"
+msgstr "七"
 
 #: ../lunar/lunar-date-private.h:288
 msgid "Aug"
-msgstr "八月"
+msgstr "八"
 
 #: ../lunar/lunar-date-private.h:288
 msgid "Sep"
-msgstr "九月"
+msgstr "九"
 
 #: ../lunar/lunar-date-private.h:288
 msgid "Oct"
-msgstr "十月"
+msgstr "十"
 
 #: ../lunar/lunar-date-private.h:288
 msgid "Nov"
-msgstr "冬月"
+msgstr "冬"
 
 #: ../lunar/lunar-date-private.h:288
 msgid "Dec"
-msgstr "腊月"
+msgstr "腊"
 
 #: ../lunar/lunar-date-private.h:291
 msgid "Chūyī"
