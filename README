@@ -28,9 +28,9 @@ Simple install procedure::
   $ tar -zxf liblunar-1.0.0.tar.gz              # unpack the sources
   $ cd liblunar-1.0.0                           # change to the toplevel directory
   $ ./configure                                 # run the `configure' script
-  $ make                                        # build gedit
+  $ make                                        # build liblunar
   [ Become root if necessary ]
-  $ sudo make install                           # install gedit
+  $ sudo make install                           # install liblunar
 
 See the file 'INSTALL' for more detailed information.
 

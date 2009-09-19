@@ -26,7 +26,7 @@ liblunar_1_includedir = $(includedir)/liblunar-1/lunar
 
 liblunar_1_la_SOURCES =	\
 	lunar-date.c		\
-	lunar-date-private.c		\
+	lunar-date-private.c	\
 	lunar-main.c		\
 	$(NULL)
 
@@ -35,7 +35,7 @@ liblunar_1_include_HEADERS =	\
 	$(NULL)
 
 liblunar_1_la_LIBADD = 	\
-	$(LIBLUNAR_LIBS)		\
+	$(LIBLUNAR_LIBS)	\
 	$(NULL)
 
 if ENABLE_PYTHON
@@ -45,5 +45,7 @@ lunar-enum-types.h: lunar-enum-types.h.template $(INST_H_FILES) $(GLIB_MKENUMS)
 lunar-enum-types.c: lunar-enum-types.c.template $(INST_H_FILES) $(GLIB_MKENUMS)
 	(cd $(srcdir) && $(GLIB_MKENUMS) --template lunar-enum-types.c.template $(INST_H_FILES)) > $@
 endif
+
+EXTRA_DIST =  lunar-enum-types.h.template lunar-enum-types.c.template lunar-date-private.h
 
 -include $(top_srcdir)/git.mk
