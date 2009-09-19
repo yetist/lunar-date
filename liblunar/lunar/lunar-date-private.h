@@ -41,7 +41,7 @@ struct _CLDate
     guint year   : 16;
     guint month  : 4;
     guint day    : 6;
-    guint hour   : 4;
+    guint hour   : 5;
     gboolean    isleap; /* the lunar month is a leap month */
 };
 
