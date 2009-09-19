@@ -156,7 +156,7 @@ calendar_detail_cb (GtkCalendar *gcalendar,
 		return g_strdup_printf("<span foreground=\"blue\">%s</span>", buf);
   }
   if (strcmp(lunar_date_strftime(priv->date, "%(ri)"), "1") == 0)
-      return g_strdup(lunar_date_strftime(priv->date, "%(YUE)"));
+      return g_strdup(lunar_date_strftime(priv->date, "%(YUE)月"));
   else
       return g_strdup(lunar_date_strftime(priv->date, "%(RI)"));
 }
