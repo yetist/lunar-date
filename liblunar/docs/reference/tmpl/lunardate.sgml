@@ -30,9 +30,9 @@ Translate the date between solar and chinese lunar.
 
 @LUNAR_DATE_ERROR_INTERNAL: a internal error was found.
 @LUNAR_DATE_ERROR_YEAR: the year is out of the range.
-@LUNAR_DATE_ERROR_MONTH: 
+@LUNAR_DATE_ERROR_MONTH: the month is out of the range.
 @LUNAR_DATE_ERROR_DAY: the day is out of the range.
-@LUNAR_DATE_ERROR_HOUR: 
+@LUNAR_DATE_ERROR_HOUR: the hour is out of the range.
 @LUNAR_DATE_ERROR_LEAP: the <parameter>isleap</parameter> parameter of lunar_date_set_lunar_date() is not corret.
 
 <!-- ##### FUNCTION lunar_date_new ##### -->

@@ -2,6 +2,7 @@ NULL=
 
 INCLUDES =                                              \
 	-I$(top_srcdir)					\
+	-I$(top_srcdir)/lunar				\
         -I$(srcdir) 					\
 	$(LIBLUNAR_CFLAGS)				\
         -DLUNAR_HOLIDAYDIR=\""$(datadir)/liblunar/"\"     \
