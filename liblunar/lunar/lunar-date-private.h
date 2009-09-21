@@ -23,77 +23,77 @@
 #define __LUNAR_DATE_PRIVATE_H__  1
 
 #if HAVE_CONFIG_H
-    #include <config.h>
+	#include <config.h>
 #endif
 #include <glib.h>
 #include <glib/gi18n-lib.h>
 G_BEGIN_DECLS
 
-#define REFERENCE_YEAR  1201
-#define BEGIN_YEAR  1900	/* Note that LC1900.1.1 is SC1900.1.31 */
+#define REFERENCE_YEAR	1201
+#define BEGIN_YEAR	1900	/* Note that LC1900.1.1 is SC1900.1.31 */
 #define NUM_OF_YEARS 150
 #define NUM_OF_MONTHS 13
 
-typedef struct  _CLDate              CLDate;
+typedef struct	_CLDate				 CLDate;
 
 struct _CLDate
 {
-    guint year   : 16;
-    guint month  : 4;
-    guint day    : 6;
-    guint hour   : 5;
-    gboolean    isleap; /* the lunar month is a leap month */
+	guint year	 : 16;
+	guint month  : 4;
+	guint day	 : 6;
+	guint hour	 : 5;
+	gboolean	isleap; /* the lunar month is a leap month */
 };
 
-static CLDate first_solar_date  = {1900, 1, 31, 0, FALSE }; /* 1900年1月31日 */
-static CLDate first_lunar_date  = {1900, 1, 1, 0, FALSE };  /* 1900年元月初一 */
-static CLDate first_gan_date    = {6, 4, 0, 0, FALSE };     /* 庚年午月甲日甲时 */
-static CLDate first_zhi_date    = {0, 2, 4, 0, FALSE};     /* 子年寅月辰日子时 */
+static CLDate first_solar_date	= {1900, 1, 31, 0, FALSE }; /* 1900年1月31日 */
+static CLDate first_lunar_date	= {1900, 1, 1, 0, FALSE };	/* 1900年元月初一 */
+static CLDate first_gan_date	= {6, 4, 0, 0, FALSE };		/* 庚年午月甲日甲时 */
+static CLDate first_zhi_date	= {0, 2, 4, 0, FALSE};	   /* 子年寅月辰日子时 */
 
 static long years_info[NUM_OF_YEARS] = {
-    /* encoding:
+	/* encoding:
 		b bbbbbbbbbbbb bbbb
-       bit#    	1 111111000000 0000
-	        6 543210987654 3210
-    		. ............ ....
-       month#	  000000000111
-	        M 123456789012   L
+	   bit#		1 111111000000 0000
+			6 543210987654 3210
+			. ............ ....
+	   month#	  000000000111
+			M 123456789012	 L
 				
-    b_j = 1 for long month, b_j = 0 for short month
-    L is the leap month of the year if 1<=L<=12; NO leap month if L = 0.
-    The leap month (if exists) is long one iff M = 1.
-    */
-    					                0x04bd8,	/* 1900 */
-    0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950,	/* 1905 */
-    0x16554, 0x056a0, 0x09ad0, 0x055d2, 0x04ae0,	/* 1910 */
-    0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540,	/* 1915 */
-    0x0d6a0, 0x0ada2, 0x095b0, 0x14977, 0x04970,	/* 1920 */
-    0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54,	/* 1925 */
-    0x02b60, 0x09570, 0x052f2, 0x04970, 0x06566,	/* 1930 */
-    0x0d4a0, 0x0ea50, 0x06e95, 0x05ad0, 0x02b60,	/* 1935 */
-    0x186e3, 0x092e0, 0x1c8d7, 0x0c950, 0x0d4a0,	/* 1940 */
-    0x1d8a6, 0x0b550, 0x056a0, 0x1a5b4, 0x025d0,	/* 1945 */
-    0x092d0, 0x0d2b2, 0x0a950, 0x0b557, 0x06ca0,	/* 1950 */
-    0x0b550, 0x15355, 0x04da0, 0x0a5d0, 0x14573,	/* 1955 */
-    0x052d0, 0x0a9a8, 0x0e950, 0x06aa0, 0x0aea6,	/* 1960 */
-    0x0ab50, 0x04b60, 0x0aae4, 0x0a570, 0x05260,	/* 1965 */
-    0x0f263, 0x0d950, 0x05b57, 0x056a0, 0x096d0,	/* 1970 */
-    0x04dd5, 0x04ad0, 0x0a4d0, 0x0d4d4, 0x0d250,	/* 1975 */
-    0x0d558, 0x0b540, 0x0b5a0, 0x195a6, 0x095b0,	/* 1980 */
-    0x049b0, 0x0a974, 0x0a4b0, 0x0b27a, 0x06a50,	/* 1985 */
-    0x06d40, 0x0af46, 0x0ab60, 0x09570, 0x04af5,	/* 1990 */
-    0x04970, 0x064b0, 0x074a3, 0x0ea50, 0x06b58,	/* 1995 */
-    0x05ac0, 0x0ab60, 0x096d5, 0x092e0, 0x0c960,	/* 2000 */
-    0x0d954, 0x0d4a0, 0x0da50, 0x07552, 0x056a0,	/* 2005 */
-    0x0abb7, 0x025d0, 0x092d0, 0x0cab5, 0x0a950,	/* 2010 */
-    0x0b4a0, 0x0baa4, 0x0ad50, 0x055d9, 0x04ba0,	/* 2015 */
-    0x0a5b0, 0x15176, 0x052b0, 0x0a930, 0x07954,	/* 2020 */
-    0x06aa0, 0x0ad50, 0x05b52, 0x04b60, 0x0a6e6,	/* 2025 */
-    0x0a4e0, 0x0d260, 0x0ea65, 0x0d530, 0x05aa0,	/* 2030 */
-    0x076a3, 0x096d0, 0x04bd7, 0x04ad0, 0x0a4d0,	/* 2035 */
-    0x1d0b6, 0x0d250, 0x0d520, 0x0dd45, 0x0b5a0,	/* 2040 */
-    0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0,	/* 2045 */
-    0x0aa50, 0x1b255, 0x06d20, 0x0ada0			/* 2049 */
+	b_j = 1 for long month, b_j = 0 for short month
+	L is the leap month of the year if 1<=L<=12; NO leap month if L = 0.
+	The leap month (if exists) is long one iff M = 1.
+	*/
+										0x04bd8,	/* 1900 */
+	0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950,	/* 1905 */
+	0x16554, 0x056a0, 0x09ad0, 0x055d2, 0x04ae0,	/* 1910 */
+	0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540,	/* 1915 */
+	0x0d6a0, 0x0ada2, 0x095b0, 0x14977, 0x04970,	/* 1920 */
+	0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54,	/* 1925 */
+	0x02b60, 0x09570, 0x052f2, 0x04970, 0x06566,	/* 1930 */
+	0x0d4a0, 0x0ea50, 0x06e95, 0x05ad0, 0x02b60,	/* 1935 */
+	0x186e3, 0x092e0, 0x1c8d7, 0x0c950, 0x0d4a0,	/* 1940 */
+	0x1d8a6, 0x0b550, 0x056a0, 0x1a5b4, 0x025d0,	/* 1945 */
+	0x092d0, 0x0d2b2, 0x0a950, 0x0b557, 0x06ca0,	/* 1950 */
+	0x0b550, 0x15355, 0x04da0, 0x0a5d0, 0x14573,	/* 1955 */
+	0x052d0, 0x0a9a8, 0x0e950, 0x06aa0, 0x0aea6,	/* 1960 */
+	0x0ab50, 0x04b60, 0x0aae4, 0x0a570, 0x05260,	/* 1965 */
+	0x0f263, 0x0d950, 0x05b57, 0x056a0, 0x096d0,	/* 1970 */
+	0x04dd5, 0x04ad0, 0x0a4d0, 0x0d4d4, 0x0d250,	/* 1975 */
+	0x0d558, 0x0b540, 0x0b5a0, 0x195a6, 0x095b0,	/* 1980 */
+	0x049b0, 0x0a974, 0x0a4b0, 0x0b27a, 0x06a50,	/* 1985 */
+	0x06d40, 0x0af46, 0x0ab60, 0x09570, 0x04af5,	/* 1990 */
+	0x04970, 0x064b0, 0x074a3, 0x0ea50, 0x06b58,	/* 1995 */
+	0x05ac0, 0x0ab60, 0x096d5, 0x092e0, 0x0c960,	/* 2000 */
+	0x0d954, 0x0d4a0, 0x0da50, 0x07552, 0x056a0,	/* 2005 */
+	0x0abb7, 0x025d0, 0x092d0, 0x0cab5, 0x0a950,	/* 2010 */
+	0x0b4a0, 0x0baa4, 0x0ad50, 0x055d9, 0x04ba0,	/* 2015 */
+	0x0a5b0, 0x15176, 0x052b0, 0x0a930, 0x07954,	/* 2020 */
+	0x06aa0, 0x0ad50, 0x05b52, 0x04b60, 0x0a6e6,	/* 2025 */
+	0x0a4e0, 0x0d260, 0x0ea65, 0x0d530, 0x05aa0,	/* 2030 */
+	0x076a3, 0x096d0, 0x04bd7, 0x04ad0, 0x0a4d0,	/* 2035 */
+	0x1d0b6, 0x0d250, 0x0d520, 0x0dd45, 0x0b5a0,	/* 2040 */
+	0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0,	/* 2045 */
+	0x0aa50, 0x1b255, 0x06d20, 0x0ada0			/* 2049 */
 };
 
 /*
@@ -270,42 +270,42 @@ static int days_in_solar_month[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31,
 static int days_in_lunar_month[2]  = {29,30}; 
 
 static	char	*gan_list[] = {
-    N_("Ji\307\216"),	N_("Y\307\220"),	 N_("B\307\220ng"), N_("D\304\253ng"), N_("W\303\271"),
-    N_("J\307\220"),	N_("G\304\223ng"), N_("X\304\253n"),  N_("R\303\251n"),  N_("Gu\307\220")
+	N_("Ji\307\216"),	N_("Y\307\220"),	 N_("B\307\220ng"), N_("D\304\253ng"), N_("W\303\271"),
+	N_("J\307\220"),	N_("G\304\223ng"), N_("X\304\253n"),  N_("R\303\251n"),  N_("Gu\307\220")
 };
 
 static	char	*zhi_list[] = {
-    N_("Z\307\220"),	N_("Ch\307\222u"),  N_("Y\303\255n"),  N_("M\307\216o"),  N_("Ch\303\251n"), N_("S\303\254"),
-    N_("W\307\224"),	N_("W\303\250i"),	 N_("Sh\304\223n"), N_("Y\307\222u"),  N_("X\305\253"),   N_("H\303\240i")
+	N_("Z\307\220"),	N_("Ch\307\222u"),	N_("Y\303\255n"),  N_("M\307\216o"),  N_("Ch\303\251n"), N_("S\303\254"),
+	N_("W\307\224"),	N_("W\303\250i"),	 N_("Sh\304\223n"), N_("Y\307\222u"),  N_("X\305\253"),   N_("H\303\240i")
 };
 
 static	char   *shengxiao_list[] = {
-    N_("Mouse"), N_("Ox"), N_("Tiger"), N_("Rabbit"), N_("Dragon"), N_("Snake"),
-    N_("Horse"), N_("Goat"), N_("Monkey"), N_("Rooster"), N_("Dog"), N_("Pig")
+	N_("Mouse"), N_("Ox"), N_("Tiger"), N_("Rabbit"), N_("Dragon"), N_("Snake"),
+	N_("Horse"), N_("Goat"), N_("Monkey"), N_("Rooster"), N_("Dog"), N_("Pig")
 };
 static	char   *lunar_month_list[] = {
-    N_("Jan"), N_("Feb"), N_("Mar"), N_("Apr"), N_("May"), N_("Jun"),
-    N_("Jul"), N_("Aug"), N_("Sep"), N_("Oct"), N_("Nov"), N_("Dec")
+	N_("Jan"), N_("Feb"), N_("Mar"), N_("Apr"), N_("May"), N_("Jun"),
+	N_("Jul"), N_("Aug"), N_("Sep"), N_("Oct"), N_("Nov"), N_("Dec")
 };
 static	char   *lunar_day_list[] = {
-    N_("Ch\305\253y\304\253"), N_("Ch\305\253\303\250r"), N_("Ch\305\253s\304\201n"), N_("Ch\305\253s\303\254"), N_("Ch\305\253w\307\224"), 
-    N_("Ch\305\253li\303\271"), N_("Ch\305\253q\304\253"), N_("Ch\305\253b\304\201"), N_("Ch\305\253ji\307\224"), N_("Ch\305\253sh\303\255"), 
-    N_("Sh\303\255y\304\253"), N_("Sh\303\255\303\250r"), N_("Sh\303\255s\304\201n"), N_("Sh\303\255s\303\254"), N_("Sh\303\255w\307\224"),
-    N_("Sh\303\255li\303\271"), N_("Sh\303\255q\304\253"), N_("Sh\303\255b\304\201"), N_("Sh\303\255ji\307\224"), N_("\303\210rsh\303\255"), 
-    N_("\303\210ry\304\253"), N_("\303\210r\303\250r"), N_("\303\210rs\304\201n"), N_("\303\210rs\303\254"), N_("\303\210rw\307\224"), 
-    N_("\303\210rli\303\271"), N_("\303\210rq\304\253"), N_("\303\210rb\304\201"), N_("\303\210rji\307\224"), N_("S\304\201nsh\303\255")
+	N_("Ch\305\253y\304\253"), N_("Ch\305\253\303\250r"), N_("Ch\305\253s\304\201n"), N_("Ch\305\253s\303\254"), N_("Ch\305\253w\307\224"), 
+	N_("Ch\305\253li\303\271"), N_("Ch\305\253q\304\253"), N_("Ch\305\253b\304\201"), N_("Ch\305\253ji\307\224"), N_("Ch\305\253sh\303\255"), 
+	N_("Sh\303\255y\304\253"), N_("Sh\303\255\303\250r"), N_("Sh\303\255s\304\201n"), N_("Sh\303\255s\303\254"), N_("Sh\303\255w\307\224"),
+	N_("Sh\303\255li\303\271"), N_("Sh\303\255q\304\253"), N_("Sh\303\255b\304\201"), N_("Sh\303\255ji\307\224"), N_("\303\210rsh\303\255"), 
+	N_("\303\210ry\304\253"), N_("\303\210r\303\250r"), N_("\303\210rs\304\201n"), N_("\303\210rs\303\254"), N_("\303\210rw\307\224"), 
+	N_("\303\210rli\303\271"), N_("\303\210rq\304\253"), N_("\303\210rb\304\201"), N_("\303\210rji\307\224"), N_("S\304\201nsh\303\255")
 };
 
 static char *hanzi_num[] = {
-    N_("l\303\255ng"), N_("y\304\253"), N_("\303\250r"), N_("s\304\201n"), N_("s\303\254"),
-    N_("w\307\224"), N_("li\303\271"), N_("q\304\253"), N_("b\304\201"), N_("ji\307\224"),
-    N_("sh\303\255")
+	N_("l\303\255ng"), N_("y\304\253"), N_("\303\250r"), N_("s\304\201n"), N_("s\303\254"),
+	N_("w\307\224"), N_("li\303\271"), N_("q\304\253"), N_("b\304\201"), N_("ji\307\224"),
+	N_("sh\303\255")
 };
 
 gboolean leap (guint year);
-gint 	_cmp_date (gint month1, gint day1, gint month2, gint day2);
-void 	year_jieqi(int year, int n, char* result);
-gint 	get_day_of_week (gint year, gint month, gint day);
+gint	_cmp_date (gint month1, gint day1, gint month2, gint day2);
+void	year_jieqi(int year, int n, char* result);
+gint	get_day_of_week (gint year, gint month, gint day);
 glong _date_calc_days_since_reference_year (CLDate *d, GError **error);
 gint get_weekth_of_month (gint day);
 int mymemfind(const char *mem, int len, const char *pat, int pat_len);
