@@ -1,0 +1,26 @@
+;; -*- scheme -*-
+; object definitions ...
+(define-object Calendar
+  (in-module "Lunar")
+  (parent "GtkCalendar")
+  (c-name "LunarCalendar")
+  (gtype-id "LUNAR_TYPE_CALENDAR")
+)
+
+;; Enumerations and flags ...
+
+
+;; From lunar-calendar.h
+
+(define-function lunar_calendar_get_type
+  (c-name "lunar_calendar_get_type")
+  (return-type "GType")
+)
+
+(define-function lunar_calendar_new
+  (c-name "lunar_calendar_new")
+  (is-constructor-of "LunarCalendar")
+  (return-type "GtkWidget*")
+)
+
+
