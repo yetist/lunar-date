@@ -23,3 +23,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from _lunardate import *
 del _lunardate
+
+try:
+    from _lunarcalendar import *
+except ImportError:
+    pass
+else:
+    del _lunarcalendar
