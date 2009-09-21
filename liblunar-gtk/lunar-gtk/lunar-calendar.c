@@ -19,15 +19,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-#include "lunar-date.h"
+#include <lunar/lunar.h>
 #include "lunar-calendar.h"
 
 enum {
-    LAST_SIGNAL
+	LAST_SIGNAL
 };
 
 enum {
-    PROP_0,
+	PROP_0,
 };
 
 #define LUNAR_CALENDAR_GET_PRIVATE(obj)  (G_TYPE_INSTANCE_GET_PRIVATE((obj), LUNAR_TYPE_CALENDAR, LunarCalendarPrivate))
@@ -35,7 +35,7 @@ enum {
 
 struct _LunarCalendarPrivate
 {
-  	LunarDate   *date;
+	LunarDate   *date;
 };
 
 static void lunar_calendar_set_property  (GObject          *object,
@@ -78,7 +78,7 @@ lunar_calendar_init (LunarCalendar *calendar)
     LunarCalendarPrivate *priv;
 
     priv = LUNAR_CALENDAR_GET_PRIVATE (calendar);
-  	priv->date = lunar_date_new();
+	priv->date = lunar_date_new();
 
 	if (gtk_calendar_get_display_options(GTK_CALENDAR(calendar)) & GTK_CALENDAR_SHOW_DETAILS)
     gtk_calendar_set_detail_func (GTK_CALENDAR (calendar), calendar_detail_cb, calendar, NULL);
