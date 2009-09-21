@@ -3,6 +3,7 @@ AC_PREREQ(2.59)
 m4_define([liblunar_major_version], [2])
 m4_define([liblunar_minor_version], [1])
 m4_define([liblunar_micro_version], [0])
+m4_define([liblunar_binary_age], [m4_eval(100 * liblunar_minor_version + liblunar_micro_version)])
 m4_define([liblunar_real_version], [liblunar_major_version.liblunar_minor_version.liblunar_micro_version])
 m4_define([liblunar_version], [2.1.0.rc2])
 
@@ -17,6 +18,9 @@ AC_CONFIG_MACRO_DIR([m4])
 AM_MAINTAINER_MODE
 
 LIBLUNAR_VERSION=liblunar_real_version
+LIBLUnAR_BINARY_AGE=liblunar_binary_age
+AC_SUBST(LIBLUNAR_VERSION)
+AC_SUBST(LIBLUNAR_BINARY_AGE)
 
 LIBLUNAR_MAJOR_VERSION=liblunar_major_version
 LIBLUNAR_MINOR_VERSION=liblunar_minor_version
@@ -32,6 +36,8 @@ AC_DEFINE(LIBLUNAR_MINOR_VERSION, [liblunar_minor_version],
           [Define to the LIBLUNAR minor version])
 AC_DEFINE(LIBLUNAR_MICRO_VERSION, [liblunar_micro_version],
           [Define to the LIBLUNAR micro version])
+AC_DEFINE(LIBLUNAR_BINARY_AGE, [liblunar_binary_age],
+	            [Define to the LIBLUNAR binary age])
 
 AC_PROG_CC
 AC_ISC_POSIX
@@ -187,6 +193,7 @@ AM_GLIB_DEFINE_LOCALEDIR(LIBLUNAR_LOCALEDIR)
 
 AC_CONFIG_FILES([
 liblunar-1.pc
+lunar/lunar-config.h
 lunar/Makefile
 bindings/Makefile
 bindings/python/Makefile

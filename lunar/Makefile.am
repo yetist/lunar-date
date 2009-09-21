@@ -10,6 +10,7 @@ INCLUDES =                                              \
 INST_H_FILES = 		\
 	lunar.h			\
 	lunar-date.h		\
+	lunar-config.h		\
 	lunar-main.h
 
 BUILT_SOURCES = 
@@ -46,6 +47,6 @@ lunar-enum-types.c: lunar-enum-types.c.template $(INST_H_FILES) $(GLIB_MKENUMS)
 	(cd $(srcdir) && $(GLIB_MKENUMS) --template lunar-enum-types.c.template $(INST_H_FILES)) > $@
 endif
 
-EXTRA_DIST =  lunar-enum-types.h.template lunar-enum-types.c.template lunar-date-private.h
+EXTRA_DIST =  lunar-enum-types.h.template lunar-enum-types.c.template lunar-date-private.h lunar-config.h.in
 
 -include $(top_srcdir)/git.mk
