@@ -1,22 +1,62 @@
 #!/bin/sh
-# Run this to generate all the initial makefiles, etc.
 
-srcdir=`dirname $0`
-test -z "$srcdir" && srcdir=.
+ECHO_C=
+ECHO_N=
+case `echo -n x` in
+-n*)
+  case `echo 'x\c'` in
+  *c*) ;;
+  *)   ECHO_C='\c';;
+  esac;;
+*)
+  ECHO_N='-n';;
+esac
 
-PKG_NAME="liblunar"
+# some terminal codes ...
+boldface="`tput bold 2>/dev/null`"
+normal="`tput sgr0 2>/dev/null`"
+printbold() {
+    echo $ECHO_N "$boldface" $ECHO_C
+    echo "$@"
+    echo $ECHO_N "$normal" $ECHO_C
+}    
 
-(test -f $srcdir/configure.ac \
-  && test -f $srcdir/INSTALL\
-  && test -d $srcdir/lunar) || {
-    echo -n "**Error**: Directory "\`$srcdir\'" does not look like the"
-    echo " top-level $PKG_NAME directory"
-    exit 1
-}
+printbold Running libtoolize...
+libtoolize --force --copy
+printbold Running glib-gettextize...
+glib-gettextize --force --copy
+printbold Running intltoolize...
+intltoolize --force --copy --automake
+printbold Running gtkdocize...
+gtkdocize --copy
+printbold Running aclocal...
+aclocal -I m4
+printbold Running autoconf...
+autoconf
+printbold Running autoheader...
+autoheader
 
-which gnome-autogen.sh || {
-    echo "You need to install gnome-common from the GNOME CVS"
-    exit 1
-}
+if [ -f COPYING ]; then
+	cp -pf COPYING COPYING.autogen_bak
+fi
+if [ -f INSTALL ]; then
+	cp -pf INSTALL INSTALL.autogen_bak
+fi
 
-ACLOCAL_FLAGS="$ACLOCAL_FLAGS -I m4" REQUIRED_AUTOMAKE_VERSION=1.8 REQUIRED_MACROS=python.m4 USE_GNOME2_MACROS=1 USE_COMMON_DOC_BUILD=yes . gnome-autogen.sh $@
+printbold Running automake...
+automake --gnu --add-missing --force --copy
+
+if [ -f COPYING.autogen_bak ]; then
+	cmp COPYING COPYING.autogen_bak > /dev/null || cp -pf COPYING.autogen_bak COPYING
+	rm -f COPYING.autogen_bak
+fi
+if [ -f INSTALL.autogen_bak ]; then
+	cmp INSTALL INSTALL.autogen_bak > /dev/null || cp -pf INSTALL.autogen_bak INSTALL
+	rm -f INSTALL.autogen_bak
+fi
+
+conf_flags="--enable-maintainer-mode"
+
+printbold Running ./configure $conf_flags "$@" ...
+./configure $conf_flags "$@" \
+&& echo Now type \`make\' to compile liblunar
