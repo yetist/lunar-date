@@ -1,6 +1,6 @@
 /* vi: set sw=4 ts=4: */
 /*
- * lunar-calendar.h: This file is part of ____
+ * lunar-calendar.h: This file is part of liblunar-gtk.
  *
  * Copyright (C) 2009 yetist <yetist@gmail.com>
  *
@@ -35,21 +35,21 @@ G_BEGIN_DECLS
 
 typedef struct _LunarCalendar             LunarCalendar;
 typedef struct _LunarCalendarClass        LunarCalendarClass;
-typedef struct _LunarCalendarPrivate        LunarCalendarPrivate;
+typedef struct _LunarCalendarPrivate      LunarCalendarPrivate;
 
 struct _LunarCalendar
 {
-  GtkCalendar      calendar;
-  LunarCalendarPrivate   *priv;
+	GtkCalendar		calendar;
+	LunarCalendarPrivate   *priv;
 };
 
 struct _LunarCalendarClass
 {
-  GtkCalendarClass     parent_class;
+	GtkCalendarClass     parent_class;
 };
 
-GType      lunar_calendar_get_type           (void) G_GNUC_CONST;
-GtkWidget*     lunar_calendar_new                (void);
+GType		lunar_calendar_get_type           (void) G_GNUC_CONST;
+GtkWidget*	lunar_calendar_new                (void);
 
 G_END_DECLS
 
