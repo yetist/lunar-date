@@ -22,7 +22,7 @@
  * Boston, MA 02111-1307, USA.
  * */
 #ifdef HAVE_CONFIG_H
-    #include <config.h>
+	#include <config.h>
 #endif
 #include <glib/gi18n-lib.h>
 #include "lunar-main.h"
@@ -36,8 +36,8 @@
  *
  */
 
-void    lunar_init               (int    *argc, char ***argv)
+void	lunar_init				 (int	 *argc, char ***argv)
 {
-    bindtextdomain (GETTEXT_PACKAGE, LIBLUNAR_LOCALEDIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	bindtextdomain (GETTEXT_PACKAGE, LIBLUNAR_LOCALEDIR);
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 }
