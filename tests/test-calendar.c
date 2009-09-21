@@ -241,6 +241,15 @@ calendar_toggle_flag (GtkWidget    *toggle,
   
 }
 
+void calendar_select_color (GtkWidget    *button,
+                                 CalendarData *calendar)
+{
+	GdkColor color;
+
+  gtk_color_button_get_color(GTK_COLOR_BUTTON(button), &color);
+  lunar_calendar_set_jieri_color(LUNAR_CALENDAR(calendar->calendar_widget), &color);
+}
+
 void calendar_select_font (GtkWidget    *button,
                                  CalendarData *calendar)
 {
@@ -456,7 +465,6 @@ create_calendar(void)
   hpaned = gtk_hpaned_new ();
 
   /* Calendar widget */
-
   calendar = lunar_calendar_new ();
   calendar_data.calendar_widget = calendar;
   frame = create_frame ("<b>Calendar</b>", calendar, 0, 0);
@@ -518,6 +526,23 @@ create_calendar(void)
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 0);
 
+  /* Color button */
+  GdkColor color;
+  gdk_color_parse("red", &color);
+
+  button = gtk_color_button_new_with_color(&color);
+  lunar_calendar_set_jieri_color(calendar, &color);
+  g_signal_connect (button, "color-set", G_CALLBACK(calendar_select_color), &calendar_data);
+
+  label = gtk_label_new_with_mnemonic ("Holiday _Color:");
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), button);
+  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  gtk_size_group_add_widget (size, label);
+
+  hbox = gtk_hbox_new (FALSE, DEF_PAD_SMALL);
+  gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 0);
   /* Build the width entry */
 
   button = gtk_spin_button_new_with_range (0, 127, 1);

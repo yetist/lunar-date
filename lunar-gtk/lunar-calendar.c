@@ -1,6 +1,6 @@
 /* vi: set sw=4 ts=4: */
 /*
- * lunar-calendar.c: This file is part of ____
+ * lunar-calendar.c: This file is part of liblunar-gtk.
  *
  * Copyright (C) 2009 yetist <yetist@gmail.com>
  *
@@ -19,7 +19,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
+#include <gdk/gdk.h>
 #include <lunar/lunar.h>
+#include <string.h>
 #include "lunar-calendar.h"
 
 enum {
@@ -32,10 +34,10 @@ enum {
 
 #define LUNAR_CALENDAR_GET_PRIVATE(obj)  (G_TYPE_INSTANCE_GET_PRIVATE((obj), LUNAR_TYPE_CALENDAR, LunarCalendarPrivate))
 
-
 struct _LunarCalendarPrivate
 {
 	LunarDate   *date;
+	GdkColor	*color;
 };
 
 static void lunar_calendar_set_property  (GObject          *object,
@@ -79,6 +81,10 @@ lunar_calendar_init (LunarCalendar *calendar)
 
     priv = LUNAR_CALENDAR_GET_PRIVATE (calendar);
 	priv->date = lunar_date_new();
+	priv->color = g_new0(GdkColor, 1);
+	priv->color->red = 0x0;
+	priv->color->green = 0x0;
+	priv->color->blue = 0xffff;
 
 	if (gtk_calendar_get_display_options(GTK_CALENDAR(calendar)) & GTK_CALENDAR_SHOW_DETAILS)
     gtk_calendar_set_detail_func (GTK_CALENDAR (calendar), calendar_detail_cb, calendar, NULL);
@@ -128,6 +134,15 @@ lunar_calendar_get_property (GObject      *object,
     }
 }
 
+void		lunar_calendar_set_jieri_color		(LunarCalendar *lunar, const GdkColor *color)
+{
+  LunarCalendarPrivate *priv = LUNAR_CALENDAR_GET_PRIVATE (lunar);
+  if (gdk_color_equal(priv->color, color))
+		  return;
+  priv->color = gdk_color_copy(color);
+  gtk_widget_queue_draw(GTK_WIDGET(lunar));
+}
+
 static gchar*
 calendar_detail_cb (GtkCalendar *gcalendar,
                     guint        year,
@@ -136,7 +151,7 @@ calendar_detail_cb (GtkCalendar *gcalendar,
                     gpointer     data)
 {
   GError *error = NULL;
-  GtkWidget *calendar = LUNAR_CALENDAR(data);
+  LunarCalendar *calendar = LUNAR_CALENDAR(data);
   LunarCalendarPrivate *priv = LUNAR_CALENDAR_GET_PRIVATE (calendar);
   gboolean show_detail;
   g_object_get (calendar, "show-details", &show_detail, NULL);
@@ -153,7 +168,7 @@ calendar_detail_cb (GtkCalendar *gcalendar,
 
   if (strlen(buf = lunar_date_strftime(priv->date, "%(jieri)")) > 0)
   {
-		return g_strdup_printf("<span foreground=\"blue\">%s</span>", buf);
+		return g_strdup_printf("<span foreground=\"%s\">%s</span>", gdk_color_to_string(priv->color), buf);
   }
   if (strcmp(lunar_date_strftime(priv->date, "%(ri)"), "1") == 0)
       return g_strdup(lunar_date_strftime(priv->date, "%(YUE)月"));
