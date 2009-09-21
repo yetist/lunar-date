@@ -101,6 +101,7 @@ calendar_get_detail (CalendarData *data,
   return (detail ? g_strdup (detail) : NULL);
 }
 
+#if 0
 static void
 calendar_update_details (CalendarData *data)
 {
@@ -116,6 +117,7 @@ calendar_update_details (CalendarData *data)
 
   g_free (detail);
 }
+#endif
 
 static void
 calendar_set_signal_strings (char         *sig_str,
@@ -150,7 +152,7 @@ calendar_day_selected (GtkWidget    *widget,
   calendar_date_to_string (data, buffer+14, 256-14);
   calendar_set_signal_strings (buffer, data);
 
-  calendar_update_details (data);
+  //calendar_update_details (data);
 }
 
 static void
@@ -531,7 +533,7 @@ create_calendar(void)
   gdk_color_parse("red", &color);
 
   button = gtk_color_button_new_with_color(&color);
-  lunar_calendar_set_jieri_color(calendar, &color);
+  lunar_calendar_set_jieri_color(LUNAR_CALENDAR(calendar), &color);
   g_signal_connect (button, "color-set", G_CALLBACK(calendar_select_color), &calendar_data);
 
   label = gtk_label_new_with_mnemonic ("Holiday _Color:");
@@ -583,6 +585,7 @@ create_calendar(void)
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 0);
 
+#if 0
   /* Build the right details frame */
 
   vbox = gtk_vbox_new(FALSE, DEF_PAD_SMALL);
@@ -635,6 +638,7 @@ create_calendar(void)
                     G_CALLBACK(calendar_toggle_details),
                     &calendar_data);
   gtk_box_pack_start (GTK_BOX (vbox), toggle, FALSE, TRUE, 0);
+#endif
   
   /* Build the Right frame with the flags in */ 
 
