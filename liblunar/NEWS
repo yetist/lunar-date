@@ -1,4 +1,11 @@
 ==============
+liblunar-2.2.0
+==============
+NEWS:
+    - remove the gtk+ widget from liblunar.
+    - add python binding for liblunar.
+
+==============
 liblunar-2.0.1
 ==============
 NEWS:

@@ -1,3 +1,19 @@
+commit 900d0543b07176fc64d8fc7f57d1914f4b21f2a5
+Author: Xiaotian Wu <yetist@gmail.com>
+Date:   Tue Sep 22 17:48:06 2009 +0800
+
+    update for release
+
+ liblunar-gtk/ChangeLog    |  267 +++++++++++++++++++++++++++++++++++++++
+ liblunar-gtk/INSTALL      |  302
+ ---------------------------------------------
+ liblunar-gtk/INSTALL.in   |   16 +++
+ liblunar-gtk/Makefile.am  |   67 ++++++++++-
+ liblunar-gtk/README.in    |   28 ++++
+ liblunar-gtk/autogen.sh   |    2 +-
+ liblunar-gtk/configure.ac |    2 +-
+ 7 files changed, 378 insertions(+), 306 deletions(-)
+
 commit 30f5bfcc5b7b892f2ddb35ba4f7afb4839b06db1
 Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
 Date:   Tue Sep 22 06:36:40 2009 +0000
