@@ -1,0 +1,16 @@
+Prerequisites
+=============
+
+LibLunar-gtk requires Gtk+-2.16.x libraries.
+PyGtk 2.16.x are required to enable python binding support.
+
+Simple install procedure
+========================
+
+  $ tar -zxf liblunar-gtk-@LIBLUNAR_VERSION@.tar.gz              # unpack the sources
+  $ cd liblunar-gtk-@LIBLUNAR_VERSION@                           # change to the toplevel directory
+  $ ./configure                                 # run the `configure' script
+  $ make                                        # build liblunar-gtk
+  [ Become root if necessary ]
+  $ sudo make install                           # install liblunar-gtk
+

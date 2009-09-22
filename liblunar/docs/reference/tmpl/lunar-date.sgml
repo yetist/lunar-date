@@ -23,6 +23,12 @@ Translate the date between solar and chinese lunar.
 </para>
 
 
+<!-- ##### STRUCT LunarDate ##### -->
+<para>
+
+</para>
+
+
 <!-- ##### ENUM LunarDateError ##### -->
 <para>
 
