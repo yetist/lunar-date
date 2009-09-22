@@ -1,18 +1,18 @@
-<INCLUDE>lunar/lunar.h</INCLUDE>
-
 <SECTION>
-<FILE>lunarmain</FILE>
+<FILE>lunar-misc</FILE>
 LIBLUNAR_MAJOR_VERSION
 LIBLUNAR_MINOR_VERSION
 LIBLUNAR_MICRO_VERSION
-LIBLUNAR_CHECK_VERSION
 lunar_init
 lunar_check_version
+LIBLUNAR_CHECK_VERSION
 </SECTION>
 
 <SECTION>
-<FILE>lunardate</FILE>
+<FILE>lunar-date</FILE>
 GDateHour
+<TITLE>LunarDate</TITLE>
+LunarDate
 LunarDateError
 lunar_date_new
 lunar_date_set_solar_date
@@ -20,4 +20,12 @@ lunar_date_set_lunar_date
 lunar_date_get_jieri
 lunar_date_strftime
 lunar_date_free
+<SUBSECTION Standard>
+LUNAR_DATE
+LUNAR_IS_DATE
+LUNAR_TYPE_DATE
+lunar_date_get_type
+LUNAR_DATE_CLASS
+LUNAR_IS_DATE_CLASS
+LUNAR_DATE_GET_CLASS
 </SECTION>

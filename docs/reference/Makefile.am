@@ -67,13 +67,13 @@ GTKDOC_CFLAGS =                                               \
         -I$(top_srcdir)/lunar                           \
         -I$(top_builddir)				\
         -I$(top_builddir)/lunar				\
-        $(PYGTK_CFLAGS)                 \
+        $(PYGOBJECT_CFLAGS)                 \
         $(PYTHON_CFLAGS)                \
         $(AM_CFLAGS)
 
 GTKDOC_LIBS=                                            \
         $(LUNAR_LIBS)                               \
-        $(top_builddir)/lunar/lunar-1.la
+        $(top_builddir)/lunar/liblunar-1.la
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.
 include $(top_srcdir)/gtk-doc.make
