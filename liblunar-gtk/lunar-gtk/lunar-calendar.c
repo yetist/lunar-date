@@ -90,12 +90,6 @@ lunar_calendar_init (LunarCalendar *calendar)
     gtk_calendar_set_detail_func (GTK_CALENDAR (calendar), calendar_detail_cb, calendar, NULL);
 }
 
-GtkWidget*
-lunar_calendar_new (void)
-{
-    return g_object_new (LUNAR_TYPE_CALENDAR, NULL);
-}
-
 static void
 lunar_calendar_set_property (GObject      *object,
                             guint         prop_id,
@@ -134,6 +128,27 @@ lunar_calendar_get_property (GObject      *object,
     }
 }
 
+/**
+ * lunar_calendar_new:
+ * 
+ * Creates a new lunar calendar, with the current date being selected. 
+ * 
+ * Return value: a newly #LunarCalendar widget
+ **/
+GtkWidget*
+lunar_calendar_new (void)
+{
+    return g_object_new (LUNAR_TYPE_CALENDAR, NULL);
+}
+
+/**
+ * lunar_calendar_set_jieri_color:
+ * @lunar: a #LunarCalendar
+ * @color: the holiday color.
+ *
+ * Setup the holiday(jieri) color.
+ *
+ **/
 void		lunar_calendar_set_jieri_color		(LunarCalendar *lunar, const GdkColor *color)
 {
   LunarCalendarPrivate *priv = LUNAR_CALENDAR_GET_PRIVATE (lunar);
