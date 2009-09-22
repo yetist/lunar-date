@@ -4,8 +4,8 @@ libdir=@libdir@
 includedir=@includedir@
 
 Name: liblunar-gtk
-Description: Chinese Lunar Library
-Requires.private: liblunar-1
+Description: Chinese Lunar Library Gtk Widget
+Requires.private: liblunar-1 gtk+-2.0
 Version: @VERSION@
 Libs: -L${libdir} -llunar-gtk
 Cflags: -I${includedir}/liblunar-1

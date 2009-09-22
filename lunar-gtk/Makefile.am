@@ -3,7 +3,9 @@ INCLUDES =                                              \
         -I$(srcdir) 					\
 	$(LIBLUNAR_CFLAGS)
 
-INST_H_FILES = lunar-calendar.h
+INST_H_FILES = \
+	       lunar.h	\
+	       lunar-calendar.h 
 
 lib_LTLIBRARIES = liblunar-gtk.la
 
