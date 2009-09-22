@@ -38,26 +38,6 @@ The micro version number of the LibLunar library.
 
 
 
-<!-- ##### MACRO LIBLUNAR_CHECK_VERSION ##### -->
-<para>
-Checks the version of the LibLunar library.
-Returns %TRUE if the version of the LibLunar header files is the same
-as or newer than the passed-in version.
-
-<example>
-<title>Checking the version of the LibLunar library</title>
-<programlisting>
-  if (!LIBLUNAR_CHECK_VERSION (2, 1, 0))
-	    g_error ("LibLunar version 2.1.0 or above is needed");
-	    </programlisting>
-</example>
-</para>
-
-@major: the major version number.
-@minor: the minor version number.
-@micro: the micro version number.
-
-
 <!-- ##### FUNCTION lunar_init ##### -->
 <para>
 
@@ -76,5 +56,25 @@ as or newer than the passed-in version.
 @required_minor: 
 @required_micro: 
 @Returns: 
+
+
+<!-- ##### MACRO LIBLUNAR_CHECK_VERSION ##### -->
+<para>
+Checks the version of the LibLunar library.
+Returns %TRUE if the version of the LibLunar header files is the same
+as or newer than the passed-in version.
+
+<example>
+<title>Checking the version of the LibLunar library</title>
+<programlisting>
+  if (!LIBLUNAR_CHECK_VERSION (2, 1, 0))
+	    g_error ("LibLunar version 2.1.0 or above is needed");
+	    </programlisting>
+</example>
+</para>
+
+@major: the major version number.
+@minor: the minor version number.
+@micro: the micro version number.
 
 
