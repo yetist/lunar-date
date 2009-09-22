@@ -49,3 +49,5 @@ clean-local:
 .la.so:
 	        $(LN_S) .libs/$@ $@ || true
 
+
+-include $(top_srcdir)/git.mk

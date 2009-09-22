@@ -156,6 +156,9 @@ lunar-gtk/Makefile
 bindings/Makefile
 bindings/python/Makefile
 tests/Makefile
+docs/Makefile
+docs/reference/Makefile
+docs/reference/version.xml
 Makefile
 ])
 
