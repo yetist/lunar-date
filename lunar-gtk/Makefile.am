@@ -19,6 +19,4 @@ liblunar_gtk_la_LIBADD = 	\
 	$(LIBLUNAR_LIBS)	\
 	$(NULL)
 
-EXTRA_DIST =  lunar-enum-types.h.template lunar-enum-types.c.template
-
 -include $(top_srcdir)/git.mk
