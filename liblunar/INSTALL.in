@@ -1,0 +1,16 @@
+Prerequisites
+=============
+
+LibLunar requires GLib-2.4.x libraries.
+PyGobject 2.4.x are required to enable python plugins support.
+
+Simple install procedure
+========================
+
+  $ tar -zxf liblunar-@LIBLUNAR_VERSION@.tar.gz              # unpack the sources
+  $ cd liblunar-@LIBLUNAR_VERSION@                           # change to the toplevel directory
+  $ ./configure                                 # run the `configure' script
+  $ make                                        # build liblunar
+  [ Become root if necessary ]
+  $ sudo make install                           # install liblunar
+
