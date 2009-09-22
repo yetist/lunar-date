@@ -158,7 +158,6 @@ bindings/python/Makefile
 tests/Makefile
 docs/Makefile
 docs/reference/Makefile
-docs/reference/version.xml
 Makefile
 ])
 
