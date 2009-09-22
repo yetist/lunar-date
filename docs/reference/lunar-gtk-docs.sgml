@@ -10,5 +10,11 @@
   <chapter>
     <title>LibLunar-gtk</title>
     <xi:include href="xml/lunar-calendar.xml"/>
+    <para role="gallery">
+	    <link linkend="LunarCalendar">
+		    <inlinegraphic fileref="lunar-calendar.png" format="PNG"></inlinegraphic>
+	    </link>
+    </para>
   </chapter>
+
 </book>

@@ -46,7 +46,7 @@ IGNORE_HFILES=
 
 
 # Images to copy into HTML directory.
-HTML_IMAGES=
+HTML_IMAGES=$(srcdir)/images/lunar-calendar.png
 
 # Extra SGML files that are included by $(DOC_MAIN_SGML_FILE).
 # e.g. content_files=running.sgml building.sgml changes-2.0.sgml
@@ -80,7 +80,7 @@ include $(top_srcdir)/gtk-doc.make
 
 # Other files to distribute
 # e.g. EXTRA_DIST += version.xml.in
-EXTRA_DIST += version.xml.in
+EXTRA_DIST += 
 
 #regenerate-types:
 #	grep _get_type $(DOC_SOURCE_DIR)/gtk*.h | grep -oR '^.*\.h' | sort | uniq - | sed -r 's/^.*\.h$/#include "\0"/' > gtkchinesecalendar.types
