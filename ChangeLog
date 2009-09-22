@@ -1,0 +1,267 @@
+commit 30f5bfcc5b7b892f2ddb35ba4f7afb4839b06db1
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Tue Sep 22 06:36:40 2009 +0000
+
+    update headers
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@104
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ liblunar-gtk/liblunar-gtk.pc.in    |    4 ++--
+ liblunar-gtk/lunar-gtk/Makefile.am |    4 +++-
+ liblunar-gtk/lunar-gtk/lunar.h     |   35
+ +++++++++++++++++++++++++++++++++++
+ liblunar-gtk/tests/test-calendar.c |    2 +-
+ 4 files changed, 41 insertions(+), 4 deletions(-)
+
+commit 780c31cb37f8410308ffb2b2f322b66e2aa99a6d
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Tue Sep 22 06:16:55 2009 +0000
+
+    update the document
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@103
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ .../docs/reference/tmpl/lunar-calendar.sgml        |    2 +-
+ liblunar-gtk/lunar-gtk/lunar-calendar.c            |   27
+ +++++++++++++++----
+ 2 files changed, 22 insertions(+), 7 deletions(-)
+
+commit d3032c83d661298e17d6ccb493ea71c389835165
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Tue Sep 22 06:16:33 2009 +0000
+
+    remove version.xml
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@102
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ liblunar-gtk/docs/reference/Makefile.am |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit 45dd1dbabcd8ad471d6b3ed5d2b3951d10720369
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Tue Sep 22 06:16:17 2009 +0000
+
+    update configure.ac
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@101
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ liblunar-gtk/configure.ac |    1 -
+ 1 files changed, 0 insertions(+), 1 deletions(-)
+
+commit fb863ed9900dc42118e92dc6eeef96daddb1826f
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Tue Sep 22 06:16:03 2009 +0000
+
+    add image for lunar-calendar doc
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@100
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ liblunar-gtk/docs/reference/Makefile.am            |    4 ++--
+ .../docs/reference/images/lunar-calendar.png       |  Bin 0 ->
+ 29272 bytes
+ liblunar-gtk/docs/reference/lunar-gtk-docs.sgml    |    6 ++++++
+ 3 files changed, 8 insertions(+), 2 deletions(-)
+
+commit 1e257be37331145ad51a92a8df4c95c06bfd6e05
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Tue Sep 22 06:15:45 2009 +0000
+
+    modify docs
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@99
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ liblunar-gtk/Makefile.am                           |    3 +-
+ liblunar-gtk/bindings/Makefile.am                  |    2 +
+ liblunar-gtk/bindings/python/Makefile.am           |    2 +
+ liblunar-gtk/configure.ac                          |    3 +
+ liblunar-gtk/docs/Makefile.am                      |    3 +
+ liblunar-gtk/docs/reference/Makefile.am            |   89
+ ++++++++++++++++++++
+ liblunar-gtk/docs/reference/lunar-gtk-docs.sgml    |   14 +++
+ liblunar-gtk/docs/reference/lunar-gtk-sections.txt |   18 ++++
+ liblunar-gtk/docs/reference/lunar-gtk.types        |    3 +
+ .../docs/reference/tmpl/lunar-calendar.sgml        |   42 +++++++++
+ 10 files changed, 177 insertions(+), 2 deletions(-)
+
+commit 95fb4fdbc90c860492cbc471309d00b38e1324e5
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Tue Sep 22 06:15:03 2009 +0000
+
+    add git.mk
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@98
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ liblunar-gtk/git.mk |  182
+ +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 files changed, 182 insertions(+), 0 deletions(-)
+
+commit 090fe16b1b8e98ce11ccf5aea875ef1d27d93f78
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Tue Sep 22 06:14:50 2009 +0000
+
+    update lunar-gtk/Makefile.am
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@97
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ liblunar-gtk/lunar-gtk/Makefile.am |    2 --
+ 1 files changed, 0 insertions(+), 2 deletions(-)
+
+commit e059e92c206c816b12e2f898297b6d31b5c36267
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Tue Sep 22 06:14:35 2009 +0000
+
+    update Makefile.am
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@96
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ liblunar-gtk/Makefile.am |    9 +--------
+ 1 files changed, 1 insertions(+), 8 deletions(-)
+
+commit 53917ed44534b452d2da849bec8d664832214a9b
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Tue Sep 22 06:14:18 2009 +0000
+
+    add ChangeLog
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@95
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+
+commit c9c550f9967194f59eb0773aaa7eb0a5103f1159
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Mon Sep 21 11:03:15 2009 +0000
+
+    modify test-calendar.c
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@94
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ liblunar-gtk/tests/test-calendar.c |    8 ++++++--
+ 1 files changed, 6 insertions(+), 2 deletions(-)
+
+commit 919bfc2ebaef13a8b30b6df01464135fceedca55
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Mon Sep 21 10:38:34 2009 +0000
+
+    add lunar_set_jieri_color()
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@93
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ liblunar-gtk/configure.ac               |    5 +++--
+ liblunar-gtk/lunar-gtk/lunar-calendar.c |   23 +++++++++++++++++++----
+ liblunar-gtk/lunar-gtk/lunar-calendar.h |    5 +++--
+ liblunar-gtk/tests/test-calendar.c      |   27
+ ++++++++++++++++++++++++++-
+ 4 files changed, 51 insertions(+), 9 deletions(-)
+
+commit 223f5af94b480a222d77dc34eff5e5bac96d4b12
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Mon Sep 21 10:38:18 2009 +0000
+
+    update liblunar-gtk
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@92
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ liblunar-gtk/COPYING                               |  674
+ +++++++++++++++++++
+ liblunar-gtk/INSTALL                               |  302 +++++++++
+ liblunar-gtk/Makefile.am                           |   21 +
+ liblunar-gtk/autogen.sh                            |   22 +
+ liblunar-gtk/bindings/Makefile.am                  |    5 +
+ liblunar-gtk/bindings/python/Makefile.am           |   51 ++
+ liblunar-gtk/bindings/python/lunar-demo.py         |   20 +
+ liblunar-gtk/bindings/python/lunarcalendar.defs    |   26 +
+ .../bindings/python/lunarcalendar.override         |   18 +
+ liblunar-gtk/bindings/python/lunarmodule.c         |   62 ++
+ liblunar-gtk/configure.ac                          |  170 +++++
+ liblunar-gtk/liblunar-gtk.pc.in                    |   11 +
+ liblunar-gtk/lunar-gtk/Makefile.am                 |   24 +
+ liblunar-gtk/m4/python.m4                          |   62 ++
+ liblunar-gtk/tests/Makefile.am                     |   23 +
+ liblunar-gtk/tests/test.c                          |   43 --
+ liblunar-gtk/tests/testcalendar.c                  |  701
+ --------------------
+ 17 files changed, 1491 insertions(+), 744 deletions(-)
+
+commit 0568e54f664bcb9de49f6db9791b927d2424e093
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Mon Sep 21 10:37:36 2009 +0000
+
+    modify liblunar-gtk
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@91
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ liblunar-gtk/lunar-gtk/lunar-calendar.c |  166 ++++++++
+ liblunar-gtk/lunar-gtk/lunar-calendar.h |   60 +++
+ liblunar-gtk/makefile                   |    3 -
+ liblunar-gtk/src/lunar-calendar.c       |  166 --------
+ liblunar-gtk/src/lunar-calendar.h       |   60 ---
+ liblunar-gtk/tests/test-calendar.c      |  625
+ ++++++++++++++++++++++---------
+ 6 files changed, 681 insertions(+), 399 deletions(-)
+
+commit a68d295524986a1319087c6a79febbc8954cf856
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Sat Sep 19 15:40:31 2009 +0000
+
+    add gdate.h, update po, update python demo
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@85
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ liblunar-gtk/src/lunar-calendar.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit d30a3f8f50b933bebdbc5dc45ec1104d340b23a5
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Fri Sep 18 04:12:39 2009 +0000
+
+    delete lunar dir
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@70
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ liblunar-gtk/lunar-calendar.c      |  166 ---------
+ liblunar-gtk/lunar-calendar.h      |   60 ---
+ liblunar-gtk/src/lunar-calendar.c  |  166 +++++++++
+ liblunar-gtk/src/lunar-calendar.h  |   60 +++
+ liblunar-gtk/test-calendar.c       |  416 ---------------------
+ liblunar-gtk/test.c                |   43 ---
+ liblunar-gtk/testcalendar.c        |  701
+ ------------------------------------
+ liblunar-gtk/tests/test-calendar.c |  416 +++++++++++++++++++++
+ liblunar-gtk/tests/test.c          |   43 +++
+ liblunar-gtk/tests/testcalendar.c  |  701
+ ++++++++++++++++++++++++++++++++++++
+ 10 files changed, 1386 insertions(+), 1386 deletions(-)
+
+commit 295cd3cc8adeb34eaffae1e9bd66225dfda0565b
+Author: yetist <yetist@cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8>
+Date:   Fri Sep 11 05:34:22 2009 +0000
+
+    add liblunar-gtk
+
+    git-svn-id: https://liblunar.googlecode.com/svn/trunk@69
+    cc9c8f76-6a3f-0410-a6b3-db9e14ee52d8
+
+ liblunar-gtk/lunar-calendar.c |  166 ++++++++++
+ liblunar-gtk/lunar-calendar.h |   60 ++++
+ liblunar-gtk/makefile         |    3 +
+ liblunar-gtk/test-calendar.c  |  416 ++++++++++++++++++++++++
+ liblunar-gtk/test.c           |   43 +++
+ liblunar-gtk/testcalendar.c   |  701
+ +++++++++++++++++++++++++++++++++++++++++
+ 6 files changed, 1389 insertions(+), 0 deletions(-)

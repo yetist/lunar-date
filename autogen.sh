@@ -7,7 +7,7 @@ test -z "$srcdir" && srcdir=.
 PKG_NAME="liblunar-gtk"
 
 (test -f $srcdir/configure.ac \
-  && test -f $srcdir/INSTALL\
+  && test -f $srcdir/NEWS\
   && test -d $srcdir/lunar-gtk) || {
     echo -n "**Error**: Directory "\`$srcdir\'" does not look like the"
     echo " top-level $PKG_NAME directory"
