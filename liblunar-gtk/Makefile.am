@@ -1,5 +1,4 @@
-#SUBDIRS = src tests docs bindings
-SUBDIRS = lunar-gtk tests bindings
+SUBDIRS = lunar-gtk tests bindings docs
 EXTRA_DIST =                    \
 	autogen.sh		\
 	liblunar-gtk.pc.in	\

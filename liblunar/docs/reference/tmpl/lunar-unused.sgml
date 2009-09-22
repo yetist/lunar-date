@@ -1,3 +1,177 @@
+<!-- ##### SECTION ./tmpl/lunar-config.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/lunar-config.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/lunar-config.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/lunar-config.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/lunar-config.sgml:Title ##### -->
+lunar-config
+
+
+<!-- ##### SECTION ./tmpl/lunar-date-private.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/lunar-date-private.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/lunar-date-private.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/lunar-date-private.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/lunar-date-private.sgml:Title ##### -->
+lunar-date-private
+
+
+<!-- ##### SECTION ./tmpl/lunar-enum-types.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/lunar-enum-types.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/lunar-enum-types.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/lunar-enum-types.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/lunar-enum-types.sgml:Title ##### -->
+lunar-enum-types
+
+
+<!-- ##### SECTION ./tmpl/lunar-main.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/lunar-main.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/lunar-main.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/lunar-main.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/lunar-main.sgml:Title ##### -->
+lunar-main
+
+
+<!-- ##### SECTION ./tmpl/lunar.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/lunar.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/lunar.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/lunar.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/lunar.sgml:Title ##### -->
+lunar
+
+
+<!-- ##### SECTION ./tmpl/lunardate.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/lunardate.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/lunardate.sgml:Short_Description ##### -->
+Translate the date between solar and chinese lunar.
+
+
+<!-- ##### SECTION ./tmpl/lunardate.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/lunardate.sgml:Title ##### -->
+LunarDate
+
+
+<!-- ##### SECTION ./tmpl/lunarmain.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/lunarmain.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/lunarmain.sgml:Short_Description ##### -->
+Initialization functions
+
+
+<!-- ##### SECTION ./tmpl/lunarmain.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/lunarmain.sgml:Title ##### -->
+Intialization
+
+
+<!-- ##### MACRO BEGIN_YEAR ##### -->
+<para>
+
+</para>
+
+
 <!-- ##### STRUCT CLDate ##### -->
 <para>
 
@@ -8,6 +182,12 @@
 @day: 
 @hour: 
 @isleap: 
+
+<!-- ##### MACRO G_TYPE_DATE_MONTH ##### -->
+<para>
+
+</para>
+
 
 <!-- ##### ENUM JieRi ##### -->
 <para>
@@ -43,13 +223,86 @@ The LUNARDate struct contains only private fields and should not be used directl
 </para>
 
 
-<!-- ##### STRUCT LunarDate ##### -->
+<!-- ##### MACRO LUNAR_TYPE_DATE_ERROR ##### -->
 <para>
 
 </para>
 
-@object: 
-@priv: 
+
+<!-- ##### STRUCT LunarDatePrivate ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO NUM_OF_MONTHS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO NUM_OF_YEARS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO REFERENCE_YEAR ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION g_date_month_get_type ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+<!-- ##### FUNCTION g_string_replace ##### -->
+<para>
+
+</para>
+
+@string: 
+@old: 
+@new: 
+@count: 
+@Returns: 
+
+<!-- ##### FUNCTION get_day_of_week ##### -->
+<para>
+
+</para>
+
+@year: 
+@month: 
+@day: 
+@Returns: 
+
+<!-- ##### FUNCTION get_weekth_of_month ##### -->
+<para>
+
+</para>
+
+@day: 
+@Returns: 
+
+<!-- ##### FUNCTION leap ##### -->
+<para>
+
+</para>
+
+@year: 
+@Returns: 
+
+<!-- ##### FUNCTION lunar_date_error_get_type ##### -->
+<para>
+
+</para>
+
+@Returns: 
 
 <!-- ##### FUNCTION lunar_date_error_quark ##### -->
 <para>
@@ -113,4 +366,51 @@ The LUNARDate struct contains only private fields and should not be used directl
 @day: 
 @hour: 
 @Returns: 
+
+<!-- ##### FUNCTION mday_2_hanzi ##### -->
+<para>
+
+</para>
+
+@n: 
+@Returns: 
+
+<!-- ##### FUNCTION mymemcnt ##### -->
+<para>
+
+</para>
+
+@mem: 
+@len: 
+@pat: 
+@pat_len: 
+@Returns: 
+
+<!-- ##### FUNCTION mymemfind ##### -->
+<para>
+
+</para>
+
+@mem: 
+@len: 
+@pat: 
+@pat_len: 
+@Returns: 
+
+<!-- ##### FUNCTION num_2_hanzi ##### -->
+<para>
+
+</para>
+
+@n: 
+@Returns: 
+
+<!-- ##### FUNCTION year_jieqi ##### -->
+<para>
+
+</para>
+
+@year: 
+@n: 
+@result: 
 

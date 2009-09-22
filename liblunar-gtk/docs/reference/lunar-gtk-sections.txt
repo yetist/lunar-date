@@ -1,0 +1,18 @@
+<INCLUDE>lunar-gtk/lunar.h</INCLUDE>
+
+<SECTION>
+<FILE>lunar-calendar</FILE>
+<TITLE>LunarCalendar</TITLE>
+LunarCalendar
+lunar_calendar_set_jieri_color
+lunar_calendar_new
+<SUBSECTION Standard>
+LUNAR_CALENDAR
+LUNAR_IS_CALENDAR
+LUNAR_TYPE_CALENDAR
+lunar_calendar_get_type
+LUNAR_CALENDAR_CLASS
+LUNAR_IS_CALENDAR_CLASS
+LUNAR_CALENDAR_GET_CLASS
+</SECTION>
+

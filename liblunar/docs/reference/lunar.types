@@ -1,0 +1,2 @@
+#include "lunar-date.h"
+lunar_date_get_type
