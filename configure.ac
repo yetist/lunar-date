@@ -1,6 +1,6 @@
 AC_PREREQ(2.59)
 
-m4_define([lib_version], [2.2.0])
+m4_define([lib_version], [2.2.1])
 AC_INIT(liblunar-gtk, lib_version, yetist@gmail.com)
 AC_COPYRIGHT([Copyright (C) 2007-2009 yetist@gmail.com])
 
