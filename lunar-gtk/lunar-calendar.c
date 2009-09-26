@@ -22,6 +22,7 @@
 #include <gdk/gdk.h>
 #include <lunar/lunar.h>
 #include <string.h>
+#include <stdlib.h>
 #include "lunar-calendar.h"
 
 enum {
@@ -165,15 +166,24 @@ void  lunar_calendar_day_selected(GtkCalendar *calendar)
 	LunarDate *lunar;
 	GError *error = NULL;
 
+	if (getenv("LIBLUNAR_GTK_IGNORE_NON_CHINESE") != NULL)
+	{
+		const gchar* const * langs =  g_get_language_names();
+
+		if (langs[0] && langs[0][0] != '\0')
+			if (!g_str_has_prefix(langs[0], "zh_CN"))
+				g_object_set (calendar, "show-details", FALSE, NULL);
+	}
+
 	LunarCalendarPrivate *priv = LUNAR_CALENDAR_GET_PRIVATE (calendar);
 	gtk_calendar_get_date(calendar, &year, &month, &day);
 	lunar_date_set_solar_date(priv->date, year, month + 1, day, 0, &error);
 	char *format = g_strdup_printf("%(year)年%(month)月%(day)日\n"
 			"农历 %(YUE)月%(RI)日\n"
-			"干支：%(Y60)年%(M60)月%(D60)日\n"
-			"八字：%(Y8)年%(M8)月%(D8)日\n"
+			"干支：%(Y60)年 %(M60)月 %(D60)日\n"
+			"八字：%(Y8)年 %(M8)月 %(D8)日\n"
 			"生肖：%(shengxiao)\n"
-			"<span foreground=\"blue\" size=\"x-small\">%s</span>\n", lunar_date_get_jieri(priv->date, "\n"));
+			"<span foreground=\"blue\">%s</span>\n", lunar_date_get_jieri(priv->date, "\n"));
 	gtk_widget_set_tooltip_markup(GTK_WIDGET(calendar), lunar_date_strftime(priv->date, format));
 }
 
@@ -196,6 +206,18 @@ calendar_detail_cb (GtkCalendar *gcalendar,
 	if (error)
 	{
 		return NULL;
+	}
+
+	if (getenv("LIBLUNAR_GTK_IGNORE_NON_CHINESE") != NULL)
+	{
+		const gchar* const * langs =  g_get_language_names();
+
+		if (langs[0] && langs[0][0] != '\0')
+			if (!g_str_has_prefix(langs[0], "zh_CN"))
+			{
+				g_object_set (calendar, "show-details", FALSE, NULL);
+				return NULL;
+			}
 	}
 
 	char* buf;
