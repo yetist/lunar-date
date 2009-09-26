@@ -82,6 +82,7 @@ Translate the date between solar and chinese lunar.
 </para>
 
 @date: 
+@delimiter: 
 @Returns: 
 
 
