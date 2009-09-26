@@ -83,7 +83,7 @@ void		lunar_date_set_lunar_date	  (LunarDate *date,
 											GDateHour hour,
 											gboolean isleap,
 											GError **error);
-gchar*		lunar_date_get_jieri		  (LunarDate *date);
+gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter);
 gchar*		lunar_date_strftime			  (LunarDate *date, const char *format);
 void		lunar_date_free				  (LunarDate *date);
 

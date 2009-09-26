@@ -50,7 +50,7 @@ static void lunar_calendar_get_property  (GObject          *object,
                                          GParamSpec       *pspec);
 
 static void lunar_calendar_month_changed (GtkCalendar *calendar, gpointer     user_data);
-static void lunar_calendar_day_selected  (GtkCalendar *calendar, gpointer     user_data);
+void  lunar_calendar_day_selected(GtkCalendar *calendar);
 
 static gchar*
 calendar_detail_cb (GtkCalendar *gcalendar,
@@ -70,6 +70,7 @@ lunar_calendar_class_init (LunarCalendarClass *class)
 
     gobject_class->set_property = lunar_calendar_set_property;
     gobject_class->get_property = lunar_calendar_get_property;
+	gcalendar_class->day_selected = lunar_calendar_day_selected;
 
     g_type_class_add_private (class, sizeof (LunarCalendarPrivate));
 }
@@ -156,6 +157,24 @@ void		lunar_calendar_set_jieri_color		(LunarCalendar *lunar, const GdkColor *col
 		  return;
   priv->color = gdk_color_copy(color);
   gtk_widget_queue_draw(GTK_WIDGET(lunar));
+}
+
+void  lunar_calendar_day_selected(GtkCalendar *calendar)
+{
+	guint year, month, day;
+	LunarDate *lunar;
+	GError *error = NULL;
+
+	LunarCalendarPrivate *priv = LUNAR_CALENDAR_GET_PRIVATE (calendar);
+	gtk_calendar_get_date(calendar, &year, &month, &day);
+	lunar_date_set_solar_date(priv->date, year, month + 1, day, 0, &error);
+	char *format = g_strdup_printf("%(year)年%(month)月%(day)日\n"
+	"农历 %(YUE)月%(RI)日\n"
+	"干支：%(Y60)年%(M60)月%(D60)日\n"
+	"八字：%(Y8)年%(M8)月%(D8)日\n"
+	"生肖：%(shengxiao)\n"
+	"<span foreground=\"blue\" size=\"x-small\">%s</span>\n", lunar_date_get_jieri(priv->date, "\n"));
+	gtk_widget_set_tooltip_markup(GTK_WIDGET(calendar), lunar_date_strftime(priv->date, format));
 }
 
 static gchar*
