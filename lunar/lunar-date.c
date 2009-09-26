@@ -325,14 +325,15 @@ void			lunar_date_set_lunar_date	  (LunarDate *date,
 /**
  * lunar_date_get_jieri:
  * @date: a #LunarDate
+ * @delimiter: used to join the holidays.
  *
- * Returns the holiday of the date. The date must be valid.
+ * Returns the all holiday of the date, joined with the delimiter. The date must be valid.
  *
  * Return value:  a newly-allocated holiday string of the date.
  * This can be changed in  <ulink url="http://www.freedesktop.org/wiki/Specifications/basedir-spec">$XDG_CONFIG_HOME</ulink>/liblunar/hodiday.dat file.
  *
  **/
-gchar*		lunar_date_get_jieri		  (LunarDate *date)
+gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter)
 {
 	LunarDatePrivate *priv;
 	GString* jieri;
@@ -381,7 +382,7 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date)
 		str_day = g_strdup_printf("%02d%02d", priv->lunar->month, priv->lunar->day);
 		if (g_key_file_has_key (keyfile, "LUNAR", str_day, NULL))
 		{
-			jieri=g_string_append(jieri, " ");
+			jieri=g_string_append(jieri, delimiter);
 			jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "LUNAR", str_day, NULL));
 		}
 	}
@@ -391,7 +392,7 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date)
 		str_day = g_strdup_printf("%02d%02d", priv->solar->month, priv->solar->day);
 		if (g_key_file_has_key (keyfile, "SOLAR", str_day, NULL))
 		{
-			jieri=g_string_append(jieri, " ");
+			jieri=g_string_append(jieri, delimiter);
 			jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "SOLAR", str_day, NULL));
 		}
 	}
@@ -403,7 +404,7 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date)
 		str_day = g_strdup_printf("%02d%01d%01d", priv->solar->month, weekth, weekday);
 		if (g_key_file_has_key (keyfile, "WEEK", str_day, NULL))
 		{
-			jieri=g_string_append(jieri, " ");
+			jieri=g_string_append(jieri, delimiter);
 			jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "WEEK", str_day, NULL));
 		}
 	}
@@ -426,7 +427,7 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date)
 		jq_day = g_strsplit(str_jq[i], " ", 2);
 		if (g_ascii_strcasecmp(jq_day[0], str_day) == 0)
 		{
-			jieri=g_string_append(jieri, " ");
+			jieri=g_string_append(jieri, delimiter);
 			jieri=g_string_append(jieri, jq_day[1]);
 		}
 	}
@@ -636,16 +637,31 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 	//jieri
 	if (strstr(format, "%(jieri)") != NULL)
 	{
-		if (strstr(lunar_date_get_jieri(date), " " ) != NULL)
+		gchar bufs[128];
+		if (strstr(lunar_date_get_jieri(date, " "), " " ) != NULL)
 		{
-			char** buf = g_strsplit(lunar_date_get_jieri(date), " ", -1);
-			tmp = strdup(*buf);
+			char** buf = g_strsplit(lunar_date_get_jieri(date, " "), " ", -1);
+			if (g_utf8_validate(*buf, -1, NULL))
+				g_utf8_strncpy(bufs, *buf, 3);
+			else
+			{
+				strncpy(bufs, *buf, 4);
+				bufs[4]= '\0';
+			}
 			g_strfreev(buf);
 		}
 		else
-			tmp = strdup(lunar_date_get_jieri(date));
-		str = g_string_replace(str, "%(jieri)", tmp, -1);
-		g_free(tmp);
+		{
+			gchar *b= lunar_date_get_jieri(date, " ");
+			if (g_utf8_validate(b, -1, NULL))
+				g_utf8_strncpy(bufs, b, 3);
+			else
+			{
+				strncpy(bufs, b, 4);
+				bufs[4]= '\0';
+			}
+		}
+		str = g_string_replace(str, "%(jieri)", bufs, -1);
 	}
 
 	s = strdup(str->str);
