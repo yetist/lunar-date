@@ -15,9 +15,10 @@
   (gtype-id "LUNAR_TYPE_DATE_ERROR")
   (values
     '("internal" "LUNAR_DATE_ERROR_INTERNAL")
-    '("day" "LUNAR_DATE_ERROR_DAY")
-    '("month" "LUNAR_DATE_ERROR_MONTH")
     '("year" "LUNAR_DATE_ERROR_YEAR")
+    '("month" "LUNAR_DATE_ERROR_MONTH")
+    '("day" "LUNAR_DATE_ERROR_DAY")
+    '("hour" "LUNAR_DATE_ERROR_HOUR")
     '("leap" "LUNAR_DATE_ERROR_LEAP")
   )
 )
@@ -93,6 +94,9 @@
   (of-object "LunarDate")
   (c-name "lunar_date_get_jieri")
   (return-type "gchar*")
+  (parameters
+    '("const-gchar*" "delimiter")
+  )
 )
 
 (define-method strftime
@@ -120,6 +124,16 @@
   (parameters
     '("int*" "argc")
     '("char***" "argv")
+  )
+)
+
+(define-function lunar_check_version
+  (c-name "lunar_check_version")
+  (return-type "const-gchar*")
+  (parameters
+    '("guint" "required_major")
+    '("guint" "required_minor")
+    '("guint" "required_micro")
   )
 )
 
