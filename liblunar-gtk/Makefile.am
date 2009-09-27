@@ -33,7 +33,10 @@ pkgconfig_DATA = liblunar-gtk.pc
 
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 
-.PHONY: sanity snapshot snapcheck ChangeLog
+.PHONY: release sanity snapshot snapcheck ChangeLog
+
+release:
+	googlecode-upload.py -s $(distdir).tar.lzma -p liblunar -u yetist@gmail.com -l Featured,Type-Source,OpSys-Linux $(distdir).tar.lzma
 
 sanity:
 	./sanity_check $(VERSION)
