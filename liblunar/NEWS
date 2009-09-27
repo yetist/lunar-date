@@ -1,4 +1,10 @@
 ==============
+liblunar-2.2.1
+==============
+NEWS:
+    - change lunar_date_get_jieri() api.
+
+==============
 liblunar-2.2.0
 ==============
 NEWS:
