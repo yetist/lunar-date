@@ -27,7 +27,11 @@
 GtkWidget* gtk_calendar_new (void)
 {
 	GtkWidget* calendar;
+	GtkCalendarDisplayOptions flags;
 	calendar = lunar_calendar_new();
+	flags = gtk_calendar_get_display_options(GTK_CALENDAR(calendar));
+	flags |= GTK_CALENDAR_SHOW_DETAILS;
+	gtk_calendar_set_display_options(GTK_CALENDAR(calendar), flags);
 	return calendar;
 }
 

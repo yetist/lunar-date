@@ -31,6 +31,7 @@ liblunar_gtk_preload_include_HEADERS =	\
 
 liblunar_gtk_preload_la_LIBADD = 	\
 	$(LIBLUNAR_LIBS)	\
+	$(srcdir)/liblunar-gtk.la	\
 	-ldl			\
 	$(NULL)
 
