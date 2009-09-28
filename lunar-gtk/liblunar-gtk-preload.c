@@ -56,9 +56,9 @@ void  gtk_calendar_set_display_options (GtkCalendar *calendar, GtkCalendarDispla
 		fprintf(stderr, "%s\n", error);
 		exit(EXIT_FAILURE);
 	}
+	dlclose(handle);
 
 	(*_gtk_calendar_set_display_options) (calendar, flags);
-	dlclose(handle);
 }
 
 void  gtk_calendar_display_options (GtkCalendar *calendar, GtkCalendarDisplayOptions flags)
@@ -66,6 +66,32 @@ void  gtk_calendar_display_options (GtkCalendar *calendar, GtkCalendarDisplayOpt
 	gtk_calendar_set_display_options (calendar, flags);
 }
 
+gpointer g_object_newv (GType object_type, guint n_parameters, GParameter *parameters)
+{
+	void *handle;
+	char *error;
+	gpointer (* _g_object_newv) (GType object_type, guint n_parameters, GParameter *parameters) = NULL;
+
+	handle = dlopen("/usr/lib/libgobject-2.0.so", RTLD_LAZY);
+	if (!handle) {
+		fprintf(stderr, "%s\n", dlerror());
+		exit(EXIT_FAILURE);
+	}
+
+	dlerror();
+
+	*(void **) (&_g_object_newv) = dlsym(handle, "g_object_newv");
+
+	if ((error = dlerror()) != NULL)  {
+		fprintf(stderr, "%s\n", error);
+		exit(EXIT_FAILURE);
+	}
+	dlclose(handle);
+
+	if (g_type_is_a(object_type, g_type_from_name("GtkCalendar")))
+		object_type = lunar_calendar_get_type();
+	return (*_g_object_newv) (object_type, n_parameters, parameters);
+}
 /*
 vi:ts=4:wrap:ai:
 */
