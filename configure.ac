@@ -1,7 +1,19 @@
 AC_PREREQ(2.59)
 
-m4_define([lib_version], [2.2.1])
-AC_INIT(liblunar-gtk, lib_version, yetist@gmail.com)
+m4_define([liblunar_gtk_major_version], [2])
+m4_define([liblunar_gtk_minor_version], [2])
+m4_define([liblunar_gtk_micro_version], [2])
+m4_define([liblunar_gtk_interface_age], [1])
+m4_define([liblunar_gtk_binary_age],
+	            [m4_eval(100 * liblunar_gtk_minor_version + liblunar_gtk_micro_version)])
+m4_define([liblunar_gtk_version],
+	            [liblunar_gtk_major_version.liblunar_gtk_minor_version.liblunar_gtk_micro_version])
+m4_define([liblunar_gtk_lt_current],
+	  [m4_eval(100 * liblunar_gtk_minor_version + liblunar_gtk_micro_version - liblunar_gtk_interface_age)])
+m4_define([liblunar_gtk_lt_revision], [liblunar_gtk_interface_age])
+m4_define([liblunar_gtk_lt_age], [m4_eval(liblunar_gtk_binary_age - liblunar_gtk_interface_age)])
+
+AC_INIT(liblunar-gtk, liblunar_gtk_version, yetist@gmail.com)
 AC_COPYRIGHT([Copyright (C) 2007-2009 yetist@gmail.com])
 
 AM_INIT_AUTOMAKE(1.8 dist-bzip2 no-define)
@@ -10,9 +22,17 @@ AM_CONFIG_HEADER(config.h)
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_MAINTAINER_MODE
+
+LT_CURRENT=liblunar_gtk_lt_current
+LT_REVISION=liblunar_gtk_lt_revision
+LT_AGE=liblunar_gtk_lt_age
+AC_SUBST(LT_CURRENT)
+AC_SUBST(LT_REVISION)
+AC_SUBST(LT_AGE)
+
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 
-LIBLUNAR_GTK_VERSION=lib_version
+LIBLUNAR_GTK_VERSION=liblunar_gtk_version
 AC_SUBST(LIBLUNAR_GTK_VERSION)
 
 AC_PROG_CC
@@ -28,7 +48,7 @@ AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
 
 AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
 
-LIBLUNAR_REQUIRED=lib_version
+LIBLUNAR_REQUIRED=2.2.1
 GTK2_REQUIRED=2.16
 GDK2_REQUIRED=2.16
 
