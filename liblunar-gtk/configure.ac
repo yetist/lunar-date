@@ -2,7 +2,7 @@ AC_PREREQ(2.59)
 
 m4_define([liblunar_gtk_major_version], [2])
 m4_define([liblunar_gtk_minor_version], [2])
-m4_define([liblunar_gtk_micro_version], [3])
+m4_define([liblunar_gtk_micro_version], [4])
 m4_define([liblunar_gtk_interface_age], [1])
 m4_define([liblunar_gtk_binary_age],
 	            [m4_eval(100 * liblunar_gtk_minor_version + liblunar_gtk_micro_version)])

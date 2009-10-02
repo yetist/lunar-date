@@ -58,7 +58,7 @@ snapshot:
 snapcheck:
 	$(MAKE) distcheck distdir=$(PACKAGE)-snap`date +"%Y%m%d"`
 
-CHANGELOG_START = tags/liblunar-2.0.1
+CHANGELOG_START = tags/v2.2.1
 
 ChangeLog:
 	@echo Creating $@

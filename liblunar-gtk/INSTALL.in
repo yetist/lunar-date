@@ -14,3 +14,12 @@ Simple install procedure
   [ Become root if necessary ]
   $ sudo make install                           # install liblunar-gtk
 
+if you want to use LunarCalendar to replace the GtkCalendar, please edit this file like that:
+
+$ cat /etc/X11/xinit/xinitrc.d/99-liblunar-preload 
+#!/bin/sh
+LD_PRELOAD="/usr/lib/liblunar-gtk-preload.so"
+export LD_PRELOAD
+
+and change the mode like that, then restart X.
+$ chmod +x /etc/X11/xinit/xinitrc.d/99-liblunar-preload
