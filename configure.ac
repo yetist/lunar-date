@@ -2,10 +2,15 @@ AC_PREREQ(2.59)
 
 m4_define([liblunar_major_version], [2])
 m4_define([liblunar_minor_version], [2])
-m4_define([liblunar_micro_version], [1])
+m4_define([liblunar_micro_version], [3])
+m4_define([liblunar_interface_age], [1])
 m4_define([liblunar_binary_age], [m4_eval(100 * liblunar_minor_version + liblunar_micro_version)])
-m4_define([liblunar_real_version], [liblunar_major_version.liblunar_minor_version.liblunar_micro_version])
-m4_define([liblunar_version], [2.2.1])
+m4_define([liblunar_version], [liblunar_major_version.liblunar_minor_version.liblunar_micro_version])
+
+m4_define([liblunar_lt_current],
+	            [m4_eval(100 * liblunar_minor_version + liblunar_micro_version - liblunar_interface_age)])
+m4_define([liblunar_lt_revision], [liblunar_interface_age])
+m4_define([liblunar_lt_age], [m4_eval(liblunar_binary_age - liblunar_interface_age)])
 
 AC_INIT(liblunar, liblunar_version, yetist@gmail.com)
 AC_COPYRIGHT([Copyright (C) 2007-2009 yetist@gmail.com])
@@ -16,12 +21,23 @@ AM_CONFIG_HEADER(config.h)
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_MAINTAINER_MODE
+
+LT_CURRENT=liblunar_lt_current
+LT_REVISION=liblunar_lt_revision
+LT_AGE=liblunar_lt_age
+AC_SUBST(LT_CURRENT)
+AC_SUBST(LT_REVISION)
+AC_SUBST(LT_AGE)
+
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 
-LIBLUNAR_VERSION=liblunar_real_version
+LIBLUNAR_VERSION=liblunar_version
 LIBLUNAR_BINARY_AGE=liblunar_binary_age
 AC_SUBST(LIBLUNAR_VERSION)
 AC_SUBST(LIBLUNAR_BINARY_AGE)
+
+LIBTOOL_EXPORT_OPTIONS='-export-symbols-regex "^lunar.*"'
+AC_SUBST(LIBTOOL_EXPORT_OPTIONS)
 
 LIBLUNAR_MAJOR_VERSION=liblunar_major_version
 LIBLUNAR_MINOR_VERSION=liblunar_minor_version
