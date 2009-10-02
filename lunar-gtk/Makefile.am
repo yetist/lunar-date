@@ -1,3 +1,5 @@
+export_symbols = $(LIBTOOL_EXPORT_OPTIONS)
+
 INCLUDES =                                              \
 	-I$(top_srcdir)					\
         -I$(srcdir) 					\
@@ -21,7 +23,9 @@ liblunar_gtk_la_LIBADD = 	\
 	$(LIBLUNAR_LIBS)	\
 	$(NULL)
 
-liblunar_gtk_la_LDFLAGS =  -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) 
+liblunar_gtk_la_LDFLAGS = \
+	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \
+	-export-dynamic $(export_symbols)
 
 
 liblunar_gtk_preload_includedir = $(includedir)/liblunar-1/lunar-gtk

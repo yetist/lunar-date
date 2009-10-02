@@ -23,7 +23,7 @@
 #include <dlfcn.h>
 #include <gtk/gtk.h>
 #include <lunar-gtk/lunar.h>
-
+/*
 GtkWidget* gtk_calendar_new (void)
 {
 	GtkWidget* calendar;
@@ -34,6 +34,7 @@ GtkWidget* gtk_calendar_new (void)
 	gtk_calendar_set_display_options(GTK_CALENDAR(calendar), flags);
 	return calendar;
 }
+*/
 
 void  gtk_calendar_set_display_options (GtkCalendar *calendar, GtkCalendarDisplayOptions flags)
 {
