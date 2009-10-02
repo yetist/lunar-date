@@ -1,5 +1,7 @@
 NULL=
 
+export_symbols = $(LIBTOOL_EXPORT_OPTIONS)
+
 INCLUDES =                                              \
 	-I$(top_srcdir)					\
         -I$(srcdir) 					\
@@ -38,6 +40,10 @@ liblunar_1_include_HEADERS =	\
 liblunar_1_la_LIBADD = 	\
 	$(LIBLUNAR_LIBS)	\
 	$(NULL)
+
+liblunar_1_la_LDFLAGS = \
+	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \
+	-export-dynamic $(export_symbols)
 
 if ENABLE_PYTHON
 lunar-enum-types.h: lunar-enum-types.h.template $(INST_H_FILES) $(GLIB_MKENUMS)
