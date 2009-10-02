@@ -47,7 +47,7 @@ DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 .PHONY: release sanity snapshot snapcheck ChangeLog
 
 release:
-	googlecode-upload.py -s $(distdir).tar.gz -p liblunar -u yetist@gmail.com -l Featured,Type-Source,OpSys-Linux $(distdir).tar.gz
+	googlecode_upload.py -s $(distdir).tar.gz -p liblunar -u yetist@gmail.com -l Featured,Type-Source,OpSys-Linux $(distdir).tar.gz
 
 sanity:
 	./sanity_check $(VERSION)
