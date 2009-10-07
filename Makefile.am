@@ -3,6 +3,7 @@ SUBDIRS = po lunar data tests docs bindings
 
 EXTRA_DIST =                    \
 	liblunar-1.pc.in	\
+	liblunar-1.vapi		\
         ChangeLog.pre-2-2       \
 	sanity_check		\
 	xmldocs.make 		\
@@ -41,6 +42,11 @@ MAINTAINERCLEANFILES = 		\
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = liblunar-1.pc
+
+if WITH_VALA
+vapidir = $(VAPIDIR)
+vapi_DATA = liblunar-1.vapi
+endif
 
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 

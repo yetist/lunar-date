@@ -67,12 +67,23 @@ IT_PROG_INTLTOOL([0.35.0])
 
 GTK_DOC_CHECK(1.0)
 
+GOBJECT_INTROSPECTION_CHECK([0.6.3])
+
 AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
 
 AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
 cur_date=`date -R`
 CUR_DATE=${cur_date}
 AC_SUBST(CUR_DATE)
+
+PKG_CHECK_MODULES(VALA, [vala-1.0 >= 0.3.1], have_vala=yes, have_vala=no)
+
+AM_CONDITIONAL(WITH_VALA, [test "x$have_vala" = "xyes"])
+
+if test "x$have_vala" = "xyes"; then
+	VAPIDIR=`pkg-config --variable=vapidir vala-1.0`
+	AC_SUBST(VAPIDIR)
+fi
 
 GLIB2_REQUIRED=2.4.0
 GOBJECT_REQUIRED=2.4.0

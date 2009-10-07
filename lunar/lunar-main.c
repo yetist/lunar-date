@@ -38,6 +38,7 @@
 
 void	lunar_init				 (int	 *argc, char ***argv)
 {
+	setlocale(LC_ALL, "");
 	bindtextdomain (GETTEXT_PACKAGE, LIBLUNAR_LOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 }
