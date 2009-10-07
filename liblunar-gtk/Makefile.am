@@ -1,6 +1,8 @@
 SUBDIRS = lunar-gtk tests bindings docs
 EXTRA_DIST =                    \
 	liblunar-gtk.pc.in	\
+	liblunar-gtk.vapi	\
+	liblunar-gtk.deps	\
 	sanity_check		\
 	xmldocs.make 		\
 	omf.make
@@ -30,6 +32,12 @@ MAINTAINERCLEANFILES = 		\
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = liblunar-gtk.pc
+
+if WITH_VALA
+vapidir = $(VAPIDIR)
+vapi_DATA = liblunar-gtk.vapi	\
+	    liblunar-gtk.deps
+endif
 
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 
