@@ -25,18 +25,18 @@ $(top_builddir)/lunar/lunar-enum-types.h:
 	cd $(top_builddir)/lunar && $(MAKE) lunar-enum-types.h
 
 lunardate.c: lunardate.defs lunardate.override  $(top_builddir)/lunar/lunar-enum-types.h
-	( cd $(srcdir) && $(PYGOBJECT_CODEGEN) \
+	$(AM_V_GEN) ( cd $(srcdir) && $(PYGOBJECT_CODEGEN) \
 		--override $*.override \
 		--prefix py$* $(<F) ) > $@ 
 
 BINDING_LUNAR_HEADERS_SRCDIR_IN = lunar/lunar-date.h
 BINDING_HEADERS_BUILDDIR_IN = lunar/lunar-main.h
 
-BINDING_LUNAR_HEADERS_SRCDIR        := $(addprefix $(top_srcdir)/,$(BINDING_LUNAR_HEADERS_SRCDIR_IN))
-BINDING_HEADERS_BUILDDIR	:= $(addprefix $(top_builddir)/,$(BINDING_HEADERS_BUILDDIR_IN))
+BINDING_LUNAR_HEADERS_SRCDIR := $(addprefix $(top_srcdir)/,$(BINDING_LUNAR_HEADERS_SRCDIR_IN))
+BINDING_HEADERS_BUILDDIR := $(addprefix $(top_builddir)/,$(BINDING_HEADERS_BUILDDIR_IN))
 
 regenerate-python-binding:
-	$(PYGOBJECT_H2DEF) $(sort $(BINDING_LUNAR_HEADERS_SRCDIR) $(BINDING_HEADERS_BUILDDIR)) gdate.h > lunardate.defs.new; \
+	$(AM_V_GEN) $(PYGOBJECT_H2DEF) $(sort $(BINDING_LUNAR_HEADERS_SRCDIR) $(BINDING_HEADERS_BUILDDIR)) gdate.h > lunardate.defs.new; \
 	sed -i	\
 	-e 's/GDateYear/guint16/g'	\
 	-e 's/GDateDay/guint8/g'	\
@@ -62,6 +62,6 @@ clean-local:
 	rm -f $(pythonsiteexec_LTLIBRARIES:.la=.so)
 
 .la.so:
-	        $(LN_S) .libs/$@ $@ || true
+	        $(AM_V_GEN) $(LN_S) .libs/$@ $@ || true
 
 -include $(top_srcdir)/git.mk
