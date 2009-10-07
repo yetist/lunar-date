@@ -22,4 +22,6 @@ LIBS =                       		\
         $(LIBLUNAR_LIBS)       		\
         $(top_builddir)/lunar/liblunar-1.la
 
+EXTRA_DIST = date.vala
+
 -include $(top_srcdir)/git.mk

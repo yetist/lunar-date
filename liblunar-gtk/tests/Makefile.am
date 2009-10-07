@@ -20,4 +20,6 @@ LIBS =                       		\
         $(LIBLUNAR_LIBS)       		\
         $(top_builddir)/lunar-gtk/liblunar-gtk.la
 
+EXTRA_DIST = calendar.vala
+
 -include $(top_srcdir)/git.mk
