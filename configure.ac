@@ -51,6 +51,15 @@ AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
 
 AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
 
+PKG_CHECK_MODULES(VALA, [vala-1.0 >= 0.3.1], have_vala=yes, have_vala=no)
+
+AM_CONDITIONAL(WITH_VALA, [test "x$have_vala" = "xyes"])
+
+if test "x$have_vala" = "xyes"; then
+	VAPIDIR=`pkg-config --variable=vapidir vala-1.0`
+	AC_SUBST(VAPIDIR)
+fi
+
 LIBLUNAR_REQUIRED=2.2.1
 GTK2_REQUIRED=2.16
 GDK2_REQUIRED=2.16
