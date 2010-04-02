@@ -374,8 +374,10 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter)
 
 	if (!g_key_file_load_from_file(keyfile, cfgfile, G_KEY_FILE_KEEP_COMMENTS, NULL))
 	{
+		g_free(cfgfile);
 		;
 	}
+	g_free(cfgfile);
 
 	if (g_key_file_has_group(keyfile, "LUNAR"))
 	{
@@ -385,6 +387,7 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter)
 			jieri=g_string_append(jieri, delimiter);
 			jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "LUNAR", str_day, NULL));
 		}
+		g_free(str_day);
 	}
 
 	if (g_key_file_has_group(keyfile, "SOLAR"))
@@ -395,6 +398,7 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter)
 			jieri=g_string_append(jieri, delimiter);
 			jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "SOLAR", str_day, NULL));
 		}
+		g_free(str_day);
 	}
 
 	weekday = get_day_of_week ( priv->solar->year, priv->solar->month, priv->solar->day);
@@ -407,6 +411,7 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter)
 			jieri=g_string_append(jieri, delimiter);
 			jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "WEEK", str_day, NULL));
 		}
+		g_free(str_day);
 	}
 
 	//jie2qi4
@@ -431,11 +436,12 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter)
 			jieri=g_string_append(jieri, jq_day[1]);
 		}
 	}
+	g_free(str_day);
 	g_strfreev(jq_day);
 
 	gchar* oo = g_strdup(g_strstrip(jieri->str));
 	g_string_free(jieri, TRUE);
-	g_free(str_day);
+	g_key_file_free(keyfile);
 	return oo;
 }
 
@@ -638,9 +644,11 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 	if (strstr(format, "%(jieri)") != NULL)
 	{
 		gchar bufs[128];
-		if (strstr(lunar_date_get_jieri(date, " "), " " ) != NULL)
+		gchar *tmp;
+		tmp = lunar_date_get_jieri(date, " ");
+		if (strstr(tmp, " " ) != NULL)
 		{
-			char** buf = g_strsplit(lunar_date_get_jieri(date, " "), " ", -1);
+			char** buf = g_strsplit(tmp, " ", -1);
 			if (g_utf8_validate(*buf, -1, NULL))
 				g_utf8_strncpy(bufs, *buf, 3);
 			else
@@ -652,15 +660,15 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 		}
 		else
 		{
-			gchar *b= lunar_date_get_jieri(date, " ");
-			if (g_utf8_validate(b, -1, NULL))
-				g_utf8_strncpy(bufs, b, 3);
+			if (g_utf8_validate(tmp, -1, NULL))
+				g_utf8_strncpy(bufs, tmp, 3);
 			else
 			{
-				strncpy(bufs, b, 4);
+				strncpy(bufs, tmp, 4);
 				bufs[4]= '\0';
 			}
 		}
+		g_free(tmp);
 		str = g_string_replace(str, "%(jieri)", bufs, -1);
 	}
 

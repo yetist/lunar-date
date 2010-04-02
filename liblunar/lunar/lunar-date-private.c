@@ -239,6 +239,8 @@ mymemcnt(const char *mem, int len, const char *pat, int pat_len)
 GString* g_string_replace (GString *string, const gchar* old, const gchar* new, int count)
 {
 	int nfound, offset;
+	char* strp = string->str;
+	gsize strl = string->len;
 
 	int old_len = strlen(old);
 	int new_len = strlen(new);
@@ -281,8 +283,11 @@ GString* g_string_replace (GString *string, const gchar* old, const gchar* new, 
 			g_string_append_c(new_str, *string->str);
 		}
 	}
-	g_string_free(string, FALSE);
-	return new_str;
+	string->str = strp;
+	string->len = strl;
+	string = g_string_assign(string, new_str->str);
+	g_string_free(new_str, TRUE);
+	return string;
 
 return_same:
 	return string;

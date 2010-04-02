@@ -74,6 +74,7 @@ void random_test(void)
 	if (error)
 	{
 		g_printf("Error: %s \n", error->message);
+		g_error_free(error);
 		return;
 	}
 	display(date, TRUE);
@@ -82,6 +83,7 @@ void random_test(void)
 	if (error)
 	{
 		g_printf("Error: %s \n", error->message);
+		g_error_free(error);
 		return;
 	}
 	display(date, FALSE);
@@ -109,6 +111,7 @@ void test(gchar* argv[])
 	if (error)
 	{
 		g_printf("Error: %s \n", error->message);
+		g_error_free(error);
 		return;
 	}
 	display(date, TRUE);
@@ -117,6 +120,7 @@ void test(gchar* argv[])
 	if (error)
 	{
 		g_printf("Error: %s \n", error->message);
+		g_error_free(error);
 		return;
 	}
 	display(date, FALSE);
