@@ -1,10 +1,13 @@
 SUBDIRS = lunar-gtk tests bindings docs
+ACLOCAL_AMFLAGS = -I m4INTROSPECTION_GIRS
 EXTRA_DIST =                    \
 	liblunar-gtk.pc.in	\
 	liblunar-gtk.vapi	\
 	liblunar-gtk.deps	\
 	sanity_check		\
 	xmldocs.make 		\
+  	m4/introspection.m4	\
+  	m4/python.m4	\
 	omf.make
 
 MAINTAINERCLEANFILES = 		\
@@ -33,13 +36,13 @@ MAINTAINERCLEANFILES = 		\
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = liblunar-gtk.pc
 
-if WITH_VALA
-vapidir = $(VAPIDIR)
-vapi_DATA = liblunar-gtk.vapi	\
-	    liblunar-gtk.deps
-endif
+#if WITH_VALA
+#vapidir = $(VAPIDIR)
+#vapi_DATA = liblunar-gtk.vapi	\
+#	    liblunar-gtk.deps
+#endif
 
-DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
+DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc --enable-introspection
 
 .PHONY: release sanity snapshot snapcheck ChangeLog
 

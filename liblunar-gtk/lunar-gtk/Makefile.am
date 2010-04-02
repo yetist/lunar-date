@@ -1,4 +1,12 @@
 export_symbols = $(LIBTOOL_EXPORT_OPTIONS)
+-include $(INTROSPECTION_MAKEFILE)
+INTROSPECTION_GIRS =
+INTROSPECTION_SCANNER_ARGS =
+#        --add-include-path=../gdk
+INTROSPECTION_COMPILER_ARGS = \
+	--includedir=$(srcdir) \
+	--includedir=.
+CLEANFILES =
 
 INCLUDES =                                              \
 	-I$(top_srcdir)					\
@@ -47,40 +55,25 @@ liblunar_gtk_preload_la_LIBADD = 	\
 liblunar_gtk_preload_la_LDFLAGS =  -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) 
 
 if HAVE_INTROSPECTION
-lunarcalendar.gir: $(INTROSPECTION_SCANNER) liblunar-gtk.la
-	$(AM_V_GEN) $(INTROSPECTION_SCANNER) -v \
-        --namespace lunarcalendar --nsversion=1 \
-        $(INCLUDES) \
-        --c-include='lunar-gtk/lunar.h' \
-        --include=GObject-2.0 \
-	--include=Gtk+-2.0 \
-        --library=liblunar-gtk.la \
-        --libtool="$(top_builddir)/libtool" \
-        --pkg gobject-2.0 \
-        --pkg gtk+-2.0 \
-        --output $@ \
+introspection_files = \
         $(source_h) \
         $(source_c)
 
-BUILT_GIRSOURCES = lunarcalendar.gir
+LunarCalendar-1.gir: $(INTROSPECTION_SCANNER) liblunar-gtk.la Makefile
+LunarCalendar_1_gir_SCANNERFLAGS = --strip-prefix=Lunar
+LunarCalendar_1_gir_INCLUDES = GObject-2.0 Gtk-2.0
+LunarCalendar_1_gir_CFLAGS = $(INCLUDES)
+LunarCalendar_1_gir_LIBS = liblunar-gtk.la
+LunarCalendar_1_gir_FILES = $(introspection_files)
+INTROSPECTION_GIRS += LunarCalendar-1.gir
 
 girdir = $(datadir)/gir-1.0
-gir_DATA = $(BUILT_GIRSOURCES)
+dist_gir_DATA = $(INTROSPECTION_GIRS)
 
-lunarcalendar.typelib: lunarcalendar.gir
+typelibsdir = $(libdir)/girepository-1.0
+typelibs_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 
-typelibsdir = $(libdir)/girepository-1.0/
-
-typelibs_DATA = $(BUILT_GIRSOURCES:.gir=.typelib)
-
-%.typelib:%.gir $(INTROSPECTION_COMPILER)
-	$(AM_V_GEN) LD_LIBRARY_PATH=.libs$${LD_LIBRARY_PATH:+:$$LD_LIBRARY_PATH} \
-        $(INTROSPECTION_COMPILER) \
-        --includedir=$(srcdir) \
-        --includedir=. \
-        $(INTROSPECTION_COMPILER_OPTS) $< -o $(@F)
-
-CLEANFILES = $(BUILT_GIRSOURCES) $(typelibs_DATA)
+CLEANFILES += $(dist_gir_DATA) $(typelibs_DATA)
 endif
 
 -include $(top_srcdir)/git.mk
