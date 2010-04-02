@@ -52,6 +52,8 @@ static void lunar_calendar_get_property  (GObject          *object,
 
 static void lunar_calendar_month_changed (GtkCalendar *calendar, gpointer     user_data);
 void  lunar_calendar_day_selected(GtkCalendar *calendar);
+static void lunar_calendar_finalize (GObject *gobject);
+static void lunar_calendar_dispose (GObject *gobject);
 
 static gchar*
 calendar_detail_cb (GtkCalendar *gcalendar,
@@ -71,6 +73,8 @@ lunar_calendar_class_init (LunarCalendarClass *class)
 
 	gobject_class->set_property = lunar_calendar_set_property;
 	gobject_class->get_property = lunar_calendar_get_property;
+	gobject_class->dispose = lunar_calendar_dispose;
+	gobject_class->finalize = lunar_calendar_finalize;
 	gcalendar_class->day_selected = lunar_calendar_day_selected;
 
 	g_type_class_add_private (class, sizeof (LunarCalendarPrivate));
@@ -90,6 +94,39 @@ lunar_calendar_init (LunarCalendar *calendar)
 
 	if (gtk_calendar_get_display_options(GTK_CALENDAR(calendar)) & GTK_CALENDAR_SHOW_DETAILS)
 		gtk_calendar_set_detail_func (GTK_CALENDAR (calendar), calendar_detail_cb, calendar, NULL);
+}
+
+static void
+lunar_calendar_finalize (GObject *gobject)
+{
+	LunarCalendar *calendar;
+
+	calendar = LUNAR_CALENDAR (gobject);
+	lunar_date_free(calendar->priv->date);
+	gdk_color_free(calendar->priv->color);
+
+	G_OBJECT_CLASS (lunar_calendar_parent_class)->finalize(gobject);
+}
+
+static void
+lunar_calendar_dispose (GObject *gobject)
+{
+	LunarCalendar *calendar;
+
+	calendar = LUNAR_CALENDAR (gobject);
+
+  if (calendar->priv->date)
+    {
+      g_object_unref (calendar->priv->date);
+      calendar->priv->date = NULL;
+    }
+  if (calendar->priv->color)
+    {
+      g_object_unref (calendar->priv->color);
+	  calendar->priv->color = NULL;
+	}
+
+  G_OBJECT_CLASS (lunar_calendar_parent_class)->dispose(gobject);
 }
 
 static void
@@ -185,6 +222,7 @@ void  lunar_calendar_day_selected(GtkCalendar *calendar)
 			"生肖：%(shengxiao)\n"
 			"<span foreground=\"blue\">%s</span>\n", lunar_date_get_jieri(priv->date, "\n"));
 	gtk_widget_set_tooltip_markup(GTK_WIDGET(calendar), lunar_date_strftime(priv->date, format));
+	g_free(format);
 }
 
 static gchar*
