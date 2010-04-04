@@ -59,13 +59,13 @@ introspection_files = \
         $(source_h) \
         $(source_c)
 
-LunarCalendar-1.gir: $(INTROSPECTION_SCANNER) liblunar-gtk.la Makefile
-LunarCalendar_1_gir_SCANNERFLAGS = --strip-prefix=Lunar
-LunarCalendar_1_gir_INCLUDES = GObject-2.0 Gtk-2.0
-LunarCalendar_1_gir_CFLAGS = $(INCLUDES)
-LunarCalendar_1_gir_LIBS = liblunar-gtk.la
-LunarCalendar_1_gir_FILES = $(introspection_files)
-INTROSPECTION_GIRS += LunarCalendar-1.gir
+LunarCalendar-1.0.gir: $(INTROSPECTION_SCANNER) liblunar-gtk.la Makefile
+LunarCalendar_1_0_gir_SCANNERFLAGS = --strip-prefix=Lunar
+LunarCalendar_1_0_gir_INCLUDES = GObject-2.0 Gtk-2.0
+LunarCalendar_1_0_gir_CFLAGS = $(INCLUDES)
+LunarCalendar_1_0_gir_LIBS = liblunar-gtk.la
+LunarCalendar_1_0_gir_FILES = $(introspection_files)
+INTROSPECTION_GIRS += LunarCalendar-1.0.gir
 
 girdir = $(datadir)/gir-1.0
 dist_gir_DATA = $(INTROSPECTION_GIRS)
