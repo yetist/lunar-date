@@ -36,11 +36,11 @@ MAINTAINERCLEANFILES = 		\
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = liblunar-gtk.pc
 
-#if WITH_VALA
-#vapidir = $(VAPIDIR)
-#vapi_DATA = liblunar-gtk.vapi	\
-#	    liblunar-gtk.deps
-#endif
+if WITH_VALA
+vapidir = $(VAPIDIR)
+vapi_DATA = liblunar-gtk.vapi	\
+	    liblunar-gtk.deps
+endif
 
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc --enable-introspection
 
