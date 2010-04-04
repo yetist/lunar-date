@@ -1,4 +1,4 @@
-AC_PREREQ(2.59)
+AC_PREREQ(2.62)
 
 m4_define([liblunar_major_version], [2])
 m4_define([liblunar_minor_version], [2])
@@ -15,7 +15,7 @@ m4_define([liblunar_lt_age], [m4_eval(liblunar_binary_age - liblunar_interface_a
 AC_INIT(liblunar, liblunar_version, yetist@gmail.com)
 AC_COPYRIGHT([Copyright (C) 2007-2009 yetist@gmail.com])
 
-AM_INIT_AUTOMAKE(1.8 dist-bzip2 no-define)
+AM_INIT_AUTOMAKE([1.8 dist-bzip2 no-define -Wno-portability])
 AC_CONFIG_SRCDIR(lunar/lunar-date.h)
 AM_CONFIG_HEADER(config.h)
 AC_CONFIG_MACRO_DIR([m4])
@@ -67,7 +67,7 @@ IT_PROG_INTLTOOL([0.35.0])
 
 GTK_DOC_CHECK(1.0)
 
-GOBJECT_INTROSPECTION_CHECK([0.6.4])
+GOBJECT_INTROSPECTION_CHECK([0.6.7])
 
 AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
 
