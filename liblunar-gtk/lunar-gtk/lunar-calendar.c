@@ -73,8 +73,8 @@ lunar_calendar_class_init (LunarCalendarClass *class)
 
 	gobject_class->set_property = lunar_calendar_set_property;
 	gobject_class->get_property = lunar_calendar_get_property;
-	gobject_class->dispose = lunar_calendar_dispose;
-	gobject_class->finalize = lunar_calendar_finalize;
+	//gobject_class->dispose = lunar_calendar_dispose;
+	//gobject_class->finalize = lunar_calendar_finalize;
 	gcalendar_class->day_selected = lunar_calendar_day_selected;
 
 	g_type_class_add_private (class, sizeof (LunarCalendarPrivate));
