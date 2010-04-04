@@ -1,5 +1,6 @@
 ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = po lunar data tests docs bindings
+ACLOCAL_AMFLAGS = -I m4INTROSPECTION_GIRS
 
 EXTRA_DIST =                    \
 	liblunar-1.pc.in	\
@@ -8,6 +9,8 @@ EXTRA_DIST =                    \
 	sanity_check		\
 	xmldocs.make 		\
 	omf.make		\
+  	m4/introspection.m4	\
+  	m4/python.m4		\
         intltool-extract.in     \
         intltool-merge.in       \
         intltool-update.in
@@ -48,7 +51,7 @@ vapidir = $(VAPIDIR)
 vapi_DATA = liblunar-1.vapi
 endif
 
-DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
+DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc --enable-introspection
 
 .PHONY: release sanity snapshot snapcheck ChangeLog
 

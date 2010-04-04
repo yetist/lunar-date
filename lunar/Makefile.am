@@ -2,6 +2,15 @@ NULL=
 
 export_symbols = $(LIBTOOL_EXPORT_OPTIONS)
 
+-include $(INTROSPECTION_MAKEFILE)
+INTROSPECTION_GIRS =
+INTROSPECTION_SCANNER_ARGS =
+#        --add-include-path=../gdk
+INTROSPECTION_COMPILER_ARGS = \
+	--includedir=$(srcdir) \
+	--includedir=.
+CLEANFILES =
+
 INCLUDES =                                              \
 	-I$(top_srcdir)					\
         -I$(srcdir) 					\
@@ -58,38 +67,25 @@ DISTCLEANFILES = lunar-enum-types.h lunar-enum-types.c
 endif
 
 if HAVE_INTROSPECTION
-lunardate.gir: $(INTROSPECTION_SCANNER) liblunar-1.la
-	$(AM_V_GEN) $(INTROSPECTION_SCANNER) -v \
-        --namespace lunardate --nsversion=1 \
-        $(INCLUDES) \
-        --c-include='lunar/lunar.h' \
-        --include=GObject-2.0 \
-        --library=liblunar-1.la \
-        --libtool="$(top_builddir)/libtool" \
-        --pkg gobject-2.0 \
-        --output $@ \
+introspection_files = \
         $(source_h) \
         $(source_c)
 
-BUILT_GIRSOURCES = lunardate.gir
+LunarDate-1.0.gir: $(INTROSPECTION_SCANNER) liblunar-1.la Makefile
+LunarDate_1_0_gir_SCANNERFLAGS = --strip-prefix=Lunar
+LunarDate_1_0_gir_INCLUDES = GObject-2.0
+LunarDate_1_0_gir_CFLAGS = $(INCLUDES)
+LunarDate_1_0_gir_LIBS = liblunar-1.la
+LunarDate_1_0_gir_FILES = $(introspection_files)
+INTROSPECTION_GIRS += LunarDate-1.0.gir
 
 girdir = $(datadir)/gir-1.0
-gir_DATA = $(BUILT_GIRSOURCES)
+dist_gir_DATA = $(INTROSPECTION_GIRS)
 
-lunardate.typelib: lunardate.gir
+typelibsdir = $(libdir)/girepository-1.0
+typelibs_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 
-typelibsdir = $(libdir)/girepository-1.0/
-
-typelibs_DATA = $(BUILT_GIRSOURCES:.gir=.typelib)
-
-%.typelib:%.gir $(INTROSPECTION_COMPILER)
-	$(AM_V_GEN) LD_LIBRARY_PATH=.libs$${LD_LIBRARY_PATH:+:$$LD_LIBRARY_PATH} \
-        $(INTROSPECTION_COMPILER) \
-        --includedir=$(srcdir) \
-        --includedir=. \
-        $(INTROSPECTION_COMPILER_OPTS) $< -o $(@F)
-
-CLEANFILES = $(BUILT_GIRSOURCES) $(typelibs_DATA)
+CLEANFILES += $(dist_gir_DATA) $(typelibs_DATA)
 endif
 
 EXTRA_DIST =  lunar-enum-types.h.template lunar-enum-types.c.template lunar-date-private.h lunar-config.h.in
