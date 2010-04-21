@@ -17,6 +17,9 @@ Translate the date between solar and chinese lunar.
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### TYPEDEF GDateHour ##### -->
 <para>
 
@@ -46,6 +49,7 @@ Translate the date between solar and chinese lunar.
 
 </para>
 
+@void: 
 @Returns: 
 
 
