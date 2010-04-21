@@ -2,7 +2,7 @@ AC_PREREQ(2.62)
 
 m4_define([liblunar_major_version], [2])
 m4_define([liblunar_minor_version], [2])
-m4_define([liblunar_micro_version], [4])
+m4_define([liblunar_micro_version], [5])
 m4_define([liblunar_interface_age], [1])
 m4_define([liblunar_binary_age], [m4_eval(100 * liblunar_minor_version + liblunar_micro_version)])
 m4_define([liblunar_version], [liblunar_major_version.liblunar_minor_version.liblunar_micro_version])
@@ -62,6 +62,10 @@ AC_HEADER_STDC
 
 AC_PROG_INSTALL
 AC_PROG_LIBTOOL
+
+AC_PATH_PROG(VALAC, valac, valac)
+
+AC_SUBST(VALAC)
 
 IT_PROG_INTLTOOL([0.35.0])
 
