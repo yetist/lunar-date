@@ -17,6 +17,9 @@ a gtk widget that can displays a chinese lunar calendar
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### STRUCT LunarCalendar ##### -->
 <para>
 
@@ -37,6 +40,7 @@ a gtk widget that can displays a chinese lunar calendar
 
 </para>
 
+@void: 
 @Returns: 
 
 
