@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 from gi.repository import Gtk as gtk
-from gi.repository import LunarCalendar as liblunar
+from gi.repository import LunarCalendar as lunarcal
 
 def main_quit(object, *args):
     gtk.main_quit()
@@ -31,12 +31,8 @@ if __name__ == '__main__':
     window = gtk.Window()
     window.connect("delete-event", main_quit)
 
-    cal = liblunar.Calendar()
-#        cal.set_display_options(gtk.CALENDAR_SHOW_HEADING
-#                |gtk.CALENDAR_SHOW_DAY_NAMES
-#                |gtk.CALENDAR_SHOW_WEEK_NUMBERS
-#                |gtk.CALENDAR_SHOW_DETAILS
-#                )
+    cal = lunarcal.Calendar()
+    #cal.set_display_options(gtk.CALENDAR_SHOW_HEADING|gtk.CALENDAR_SHOW_DAY_NAMES |gtk.CALENDAR_SHOW_WEEK_NUMBERS |gtk.CALENDAR_SHOW_DETAILS)
     window.add(cal)
     window.show_all()
     gtk.main()
