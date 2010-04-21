@@ -17,6 +17,9 @@ Initialization and Version info functions
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### MACRO LIBLUNAR_MAJOR_VERSION ##### -->
 <para>
 The major version number of the LibLunar library.
