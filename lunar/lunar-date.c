@@ -60,6 +60,7 @@ struct _LunarDatePrivate
 	CLDate *zhi;
 	CLDate *gan2;
 	CLDate *zhi2;
+	GList *holidays;
 	glong	days;
 	guint	lunar_year_months[NUM_OF_YEARS];
 	guint	lunar_year_days[NUM_OF_YEARS];
@@ -93,8 +94,36 @@ static void
 lunar_date_init (LunarDate *date)
 {
 	LunarDatePrivate *priv;
+	char * lc = NULL;
+	gchar* dup_lc = NULL;
+	gint i = 0;
 
 	priv = LUNAR_DATE_GET_PRIVATE (date);
+
+	priv->holidays = NULL;
+
+	lc = setlocale(LC_CTYPE,NULL);
+
+	if(lc && *lc)
+		dup_lc = g_strdup(lc);
+
+	if(dup_lc){
+		gchar *hol = NULL;
+		for(i=0;dup_lc && dup_lc[i];i++)
+		{
+			if(dup_lc[i] == '.')
+			{
+				dup_lc[i] = 0;
+				break;
+			}
+		}
+		hol = g_strdup_printf("holiday.%s",dup_lc);
+		priv->holidays = g_list_append(priv->holidays,hol);
+		g_free(dup_lc);
+	}
+
+	priv->holidays = g_list_append(priv->holidays,g_strdup("holiday.dat"));
+
 	priv->solar = g_new0 (CLDate, 1);
 	priv->lunar = g_new0 (CLDate, 1);
 	priv->lunar2 = g_new0 (CLDate, 1);
@@ -365,16 +394,17 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter)
 		}
 	}
 #else
-	if ( ! g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
+	GList *l = priv->holidays;
+	while (l && ! g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
 	{
 		g_free(cfgfile);
-		cfgfile = g_build_filename(LUNAR_HOLIDAYDIR, "holiday.dat", NULL);
+		cfgfile = g_build_filename(LUNAR_HOLIDAYDIR, l->data, NULL);
+		l = l->next;
 	}
 #endif
 
 	if (!g_key_file_load_from_file(keyfile, cfgfile, G_KEY_FILE_KEEP_COMMENTS, NULL))
 	{
-		g_free(cfgfile);
 		;
 	}
 	g_free(cfgfile);
@@ -697,6 +727,8 @@ void			lunar_date_free					  (LunarDate *date)
 	g_free(priv->zhi);
 	g_free(priv->gan2);
 	g_free(priv->zhi2);
+	g_list_foreach(priv->holidays,(GFunc)g_free,NULL);
+	g_list_free(priv->holidays);
 }
 
 static void _cl_date_calc_lunar(LunarDate *date, GError **error)
