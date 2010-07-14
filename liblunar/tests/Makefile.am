@@ -22,15 +22,15 @@ LIBS =                       		\
         $(LIBLUNAR_LIBS)       		\
         $(top_builddir)/lunar/liblunar-1.la
 
-#BUILT_SOURCES = vala-date.vala.stamp
+BUILT_SOURCES = vala-date.vala.stamp
 
-vala_date_VALASOURCES = date.vala
+vala_date_VALASOURCES = vala-date.vala
 vala_date_SOURCES = \
 	$(vala_date_VALASOURCES:.vala=.c) \
 	$(NULL)
 
 vala-date.vala.stamp: $(vala_date_VALASOURCES)
-	$(VALAC) -c --pkg liblunar-1 --save-temps --basedir $(top_srcdir) $^
+	$(VALAC) --vapidir=$(top_builddir) -c --pkg liblunar-1 --save-temps --basedir $(top_srcdir) $^
 	touch $@
 
 EXTRA_DIST = \
