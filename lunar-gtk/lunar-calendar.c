@@ -215,14 +215,18 @@ void  lunar_calendar_day_selected(GtkCalendar *calendar)
 	LunarCalendarPrivate *priv = LUNAR_CALENDAR_GET_PRIVATE (calendar);
 	gtk_calendar_get_date(calendar, &year, &month, &day);
 	lunar_date_set_solar_date(priv->date, year, month + 1, day, 0, &error);
+	char *jieri = lunar_date_get_jieri(priv->date, "\n");
 	char *format = g_strdup_printf("%(year)年%(month)月%(day)日\n"
 			"农历 %(YUE)月%(RI)日\n"
 			"干支：%(Y60)年 %(M60)月 %(D60)日\n"
 			"八字：%(Y8)年 %(M8)月 %(D8)日\n"
 			"生肖：%(shengxiao)\n"
-			"<span foreground=\"blue\">%s</span>\n", lunar_date_get_jieri(priv->date, "\n"));
-	gtk_widget_set_tooltip_markup(GTK_WIDGET(calendar), lunar_date_strftime(priv->date, format));
+			"<span foreground=\"blue\">%s</span>\n", jieri);
+	char *strtime = lunar_date_strftime(priv->date, format);
+	gtk_widget_set_tooltip_markup(GTK_WIDGET(calendar), strtime);
 	g_free(format);
+	g_free(jieri);
+	g_free(strtime);
 }
 
 static gchar*
@@ -259,15 +263,21 @@ calendar_detail_cb (GtkCalendar *gcalendar,
 	}
 
 	char* buf;
+	gchar *val;
 
 	if (strlen(buf = lunar_date_strftime(priv->date, "%(jieri)")) > 0)
 	{
-		return g_strdup_printf("<span foreground=\"%s\">%s</span>", gdk_color_to_string(priv->color), buf);
+		val=g_strdup_printf("<span foreground=\"%s\">%s</span>", gdk_color_to_string(priv->color), buf);
+		g_free(buf);
+		return val;
 	}
 	if (strcmp(lunar_date_strftime(priv->date, "%(ri)"), "1") == 0)
-		return g_strdup(lunar_date_strftime(priv->date, "%(YUE)月"));
+		return lunar_date_strftime(priv->date, "%(YUE)月");
+		//val = g_strdup(lunar_date_strftime(priv->date, "%(YUE)月"));
 	else
-		return g_strdup(lunar_date_strftime(priv->date, "%(RI)"));
+		return  lunar_date_strftime(priv->date, "%(RI)");
+		//val = g_strdup(lunar_date_strftime(priv->date, "%(RI)"));
+	//return val;
 }
 
 /*
