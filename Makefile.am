@@ -67,7 +67,7 @@ snapshot:
 snapcheck:
 	$(MAKE) distcheck distdir=$(PACKAGE)-snap`date +"%Y%m%d"`
 
-CHANGELOG_START = tags/v2.2.1
+CHANGELOG_START = tags/v2.2.3
 
 ChangeLog:
 	@echo Creating $@
