@@ -626,7 +626,12 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 	}
 	if (strstr(format, "%(H60)") != NULL)
 	{
-		str = g_string_replace(str, "%(H60)", _(zhi_list[priv->lunar->hour/2]), -1);
+		int g=0, h=0;
+		h = (priv->lunar->hour+1) % 24 / 2;
+		g = (priv->gan2->day % 5 * 2 + h) % 10;
+		tmp = g_strdup_printf("%s%s", _(gan_list[g]), _(zhi_list[h]));
+		str = g_string_replace(str, "%(H60)", tmp, -1);
+		g_free(tmp);
 	}
 
 	//bazi
@@ -648,9 +653,15 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 		str = g_string_replace(str, "%(D8)", tmp, -1);
 		g_free(tmp);
 	}
+	/* 子时: 23点 --凌晨1 点前... */
 	if (strstr(format, "%(H8)") != NULL)
 	{
-		str = g_string_replace(str, "%(H8)", _(zhi_list[priv->lunar->hour/2]), -1);
+		int g=0, h=0;
+		h = (priv->lunar->hour+1) % 24 / 2;
+		g = (priv->gan2->day % 5 * 2 + h) % 10;
+		tmp = g_strdup_printf("%s%s", _(gan_list[g]), _(zhi_list[h]));
+		str = g_string_replace(str, "%(H8)", tmp, -1);
+		g_free(tmp);
 	}
 
 	//shengxiao
