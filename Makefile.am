@@ -1,6 +1,6 @@
-ACLOCAL_AMFLAGS = -I m4
+#ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = po lunar data tests docs bindings
-ACLOCAL_AMFLAGS = -I m4INTROSPECTION_GIRS
+#ACLOCAL_AMFLAGS = -I m4INTROSPECTION_GIRS
 
 EXTRA_DIST =                    \
 	liblunar-1.pc.in	\
@@ -46,9 +46,10 @@ MAINTAINERCLEANFILES = 		\
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = liblunar-1.pc
 
-if WITH_VALA
-vapidir = $(VAPIDIR)
-vapi_DATA = liblunar-1.vapi
+if HAVE_INTROSPECTION
+if HAVE_VALA
+SUBDIRS += vala
+endif
 endif
 
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc --enable-introspection

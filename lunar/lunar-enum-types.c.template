@@ -7,62 +7,6 @@
 /* enumerations from "@filename@" */
 #include "@filename@"
 
-GType
-g_date_month_get_type (void)
-{
-	static GType the_type = 0;
-	
-	if (the_type == 0)
-	{
-		static const GEnumValue values[] = {
-			{ G_DATE_BAD_MONTH,
-			  "G_DATE_BAD_MONTH",
-			  "bad-month" },
-			{ G_DATE_JANUARY,
-			  "G_DATE_JANUARY",
-			  "january" },
-			{ G_DATE_FEBRUARY,
-			  "G_DATE_FEBRUARY",
-			  "february" },
-			{ G_DATE_MARCH,
-			  "G_DATE_MARCH",
-			  "march" },
-			{ G_DATE_APRIL,
-			  "G_DATE_APRIL",
-			  "april" },
-			{ G_DATE_MAY,
-			  "G_DATE_MAY",
-			  "may" },
-			{ G_DATE_JUNE,
-			  "G_DATE_JUNE",
-			  "june" },
-			{ G_DATE_JULY,
-			  "G_DATE_JULY",
-			  "july" },
-			{ G_DATE_AUGUST,
-			  "G_DATE_AUGUST",
-			  "august" },
-			{ G_DATE_SEPTEMBER,
-			  "G_DATE_SEPTEMBER",
-			  "september" },
-			{ G_DATE_OCTOBER,
-			  "G_DATE_OCTOBER",
-			  "october" },
-			{ G_DATE_NOVEMBER,
-			  "G_DATE_NOVEMBER",
-			  "november" },
-			{ G_DATE_DECEMBER,
-			  "G_DATE_DECEMBER",
-			  "december" },
-			{ 0, NULL, NULL }
-		};
-		the_type = g_enum_register_static (
-				g_intern_static_string ("GDateMonth"),
-				values);
-	}
-	return the_type;
-}
-
 /*** END file-production ***/
 
 /*** BEGIN value-header ***/

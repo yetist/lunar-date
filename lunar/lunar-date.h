@@ -25,7 +25,6 @@
 #ifndef __LUNAR_DATE_H__
 #define __LUNAR_DATE_H__  1
 
-#include	<glib.h>
 #include	<glib-object.h>
 
 G_BEGIN_DECLS

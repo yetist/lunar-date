@@ -67,7 +67,7 @@ void random_test(void)
 	GDateMonth month = random() % 12 + 1;
 	GDateDay day = random() % 31 + 1;
 	gboolean isleap = random() % 1;
-	GDateHour hour = random() % 24 + 1;
+	guint8 hour = random() % 24 + 1;
 
 	g_printf("Test Date: <%u-%u-%u %u>\n", year, month, day, hour);
 	lunar_date_set_lunar_date(date, year, month, day , hour, isleap, &error);
@@ -104,7 +104,7 @@ void test(gchar* argv[])
 
 	srandom(time(NULL));
 	gboolean isleap = random() % 1;
-	GDateHour hour = random() % 24 + 1;
+	guint8 hour = random() % 24 + 1;
 
 	g_printf("Test Date: <%u-%u-%u %u>\n", year, month, day, hour);
 	lunar_date_set_lunar_date(date, year, month, day , hour, isleap, &error);

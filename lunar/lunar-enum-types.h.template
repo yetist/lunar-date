@@ -21,9 +21,6 @@ GType @enum_name@_get_type	(void) G_GNUC_CONST;
 
 /*** BEGIN file-tail ***/
 
-#define G_TYPE_DATE_MONTH	(g_date_month_get_type())
-GType g_date_month_get_type	(void) G_GNUC_CONST;
-
 G_END_DECLS
 
 #endif /* __LUNAR_ENUM_TYPES_H__ */
