@@ -1,6 +1,5 @@
-#ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = po lunar data tests docs bindings
-#ACLOCAL_AMFLAGS = -I m4INTROSPECTION_GIRS
+ACLOCAL_AMFLAGS = -I m4
+SUBDIRS = po lunar data tests docs
 
 EXTRA_DIST =                    \
 	liblunar-1.pc.in	\

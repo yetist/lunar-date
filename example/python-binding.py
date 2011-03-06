@@ -7,9 +7,9 @@ import sys
 
 import locale
 locale.setlocale(locale.LC_ALL, "")
+LunarDate.init(len(sys.argv), *sys.argv)
 
 def test_date():
-    LunarDate.init(sys.argv[0])
     l = LunarDate.Date()
     l.set_solar_date(2010, 4, 2, 18)
     format={"%(YEAR)年%(MONTH)月%(DAY)日%(HOUR)时":"%(YEAR)年%(MONTH)月%(DAY)日%(HOUR)时",
@@ -23,6 +23,4 @@ def test_date():
         print i,"\t"*2, l.strftime(format[i])
     l.free()
 
-t = time.localtime()
-#test_date(t.tm_year, t.tm_mon, t.tm_mday, t.tm_hour)
 test_date()

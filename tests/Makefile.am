@@ -8,10 +8,9 @@ INCLUDES =                                              \
         -DLUNAR_HOLIDAYDIR=\""$(datadir)/liblunar/"\"     \
 	$(NULL)
 
-noinst_PROGRAMS =test-date vala-date
+noinst_PROGRAMS =test-date
 
-test_date_SOURCES =          		\
-        test-date.c
+test_date_SOURCES = test-date.c
 
 AM_CPPFLAGS =                		\
         -I.                  		\
@@ -21,21 +20,5 @@ AM_CPPFLAGS =                		\
 LIBS =                       		\
         $(LIBLUNAR_LIBS)       		\
         $(top_builddir)/lunar/liblunar-1.la
-
-BUILT_SOURCES = vala-date.vala.stamp
-
-vala_date_VALASOURCES = vala-date.vala
-vala_date_SOURCES = \
-	$(vala_date_VALASOURCES:.vala=.c) \
-	$(NULL)
-
-vala-date.vala.stamp: $(vala_date_VALASOURCES)
-	$(VALAC) --vapidir=$(top_builddir) -c --pkg liblunar-1 --save-temps --basedir $(top_srcdir) $^
-	touch $@
-
-EXTRA_DIST = \
-	$(vala_date_VALASOURCES) \
-	vala-date.vala.stamp \
-	$(NULL)
 
 -include $(top_srcdir)/git.mk
