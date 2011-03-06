@@ -225,7 +225,7 @@ void			lunar_date_set_solar_date	  (LunarDate *date,
 		GDateYear year,
 		GDateMonth month,
 		GDateDay day,
-		GDateHour hour,
+		guint8 hour,
 		GError **error)
 {
 	LunarDatePrivate *priv;
@@ -290,7 +290,7 @@ void			lunar_date_set_lunar_date	  (LunarDate *date,
 		GDateYear year,
 		GDateMonth month, 
 		GDateDay day,
-		GDateHour hour,
+		guint8 hour,
 		gboolean isleap,
 		GError **error)
 {

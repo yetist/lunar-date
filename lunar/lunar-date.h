@@ -42,7 +42,7 @@ typedef struct _LunarDate			  LunarDate;
 typedef struct _LunarDateClass		  LunarDateClass;
 typedef struct _LunarDatePrivate	  LunarDatePrivate;
 
-typedef guint8	GDateHour;
+//typedef guint8	GDateHour;
 
 struct _LunarDate
 {
@@ -73,13 +73,13 @@ void		lunar_date_set_solar_date	  (LunarDate *date,
 											GDateYear year,
 											GDateMonth month,
 											GDateDay day,
-											GDateHour hour,
+											guint8 hour,
 											GError	**error);
 void		lunar_date_set_lunar_date	  (LunarDate *date,
 											GDateYear year,
 											GDateMonth month, 
 											GDateDay day,
-											GDateHour hour,
+											guint8 hour,
 											gboolean isleap,
 											GError **error);
 gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter);
