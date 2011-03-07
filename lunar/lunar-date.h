@@ -55,6 +55,15 @@ struct _LunarDateClass
 	GObjectClass	 parent_class;
 };
 
+/**
+ * LunarDateError:
+ * @LUNAR_DATE_ERROR_INTERNAL: internal error.
+ * @LUNAR_DATE_ERROR_YEAR: year setup error.
+ * @LUNAR_DATE_ERROR_MONTH: month setup error.
+ * @LUNAR_DATE_ERROR_DAY: day setup error.
+ * @LUNAR_DATE_ERROR_HOUR: hour setup error.
+ * @LUNAR_DATE_ERROR_LEAP: isleap setup error.
+ */
 typedef enum
 {
 	LUNAR_DATE_ERROR_INTERNAL,
