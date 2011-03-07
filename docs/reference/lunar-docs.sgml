@@ -15,5 +15,11 @@
     <xi:include href="xml/lunar-misc.xml"/>
     <xi:include href="xml/lunar-date.xml"/>
   </chapter>
+
+  <index id="api-index-full">
+	  <title>Index</title>
+	  <xi:include href="xml/api-index-full.xml"><xi:fallback /></xi:include>
+  </index>
+
 </book>
 
