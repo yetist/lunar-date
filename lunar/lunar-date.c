@@ -95,20 +95,30 @@ lunar_date_init (LunarDate *date)
 {
 	LunarDatePrivate *priv;
 	char * lc = NULL;
+	gchar* dup_lc = NULL;
+	gint i = 0;
 
 	priv = LUNAR_DATE_GET_PRIVATE (date);
 
 	priv->holidays = NULL;
 
 	lc = setlocale(LC_CTYPE, NULL);
-
 	if(lc && *lc)
-	{
+		dup_lc = g_strdup(lc);
+
+	if(dup_lc){
 		gchar *hol = NULL;
-		gchar *plc = strchr(lc, '.');
-		hol = g_strdup_printf("holiday.%s", g_strndup(lc, plc-lc));
-		priv->holidays = g_list_append(priv->holidays, hol);
-		g_free(hol);
+		for(i=0;dup_lc && dup_lc[i];i++)
+		{
+			if(dup_lc[i] == '.')
+			{
+				dup_lc[i] = 0;
+				break;
+			}
+		}
+		hol = g_strdup_printf("holiday.%s",dup_lc);
+		priv->holidays = g_list_append(priv->holidays,hol);
+		g_free(dup_lc);
 	}
 
 	priv->holidays = g_list_append(priv->holidays, g_strdup("holiday.dat"));

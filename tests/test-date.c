@@ -23,14 +23,13 @@
  * */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+	#include <config.h>
 #endif
 #include <lunar/lunar.h>
 #include <glib/gi18n.h>
 
-void display (LunarDate *date)
+static void display (LunarDate *date)
 {
-	char a[13][255];
 	g_printf("\n");
 	g_printf("format:%%(YEAR)年%%(MONTH)月%%(DAY)日%%(HOUR)时->%s\n", lunar_date_strftime(date, "%(YEAR)年%(MONTH)月%(DAY)日%(HOUR)时"));
 	g_printf("format:%%(year)年%%(month)月%%(day)日%%(hour)时->%s\n", lunar_date_strftime(date, "%(year)年%(month)月%(day)日%(hour)时"));
@@ -42,8 +41,34 @@ void display (LunarDate *date)
 	g_printf("format:%%(jieri)->%s\n", lunar_date_strftime(date, "%(jieri)"));
 }
 
+void set_lunar_date(LunarDate *date, GDateYear year, GDateMonth month, GDateDay day , guint8 hour, gboolean isleap)
+{
+	GError *error = NULL;
+
+	g_printf("Test Date: <%u-%u-%u %u>\n", year, month, day, hour);
+	lunar_date_set_lunar_date(date, year, month, day , hour, isleap, &error);
+	if (error != NULL)
+	{
+		g_printf("Error: %s \n", error->message);
+		g_error_free(error);
+		return;
+	}
+	display(date);
+
+	lunar_date_set_solar_date(date, year, month, day , hour, &error);
+	if (error != NULL)
+	{
+		g_printf("Error: %s \n", error->message);
+		g_error_free(error);
+		return;
+	}
+	display(date);
+	if (error != NULL)
+		g_error_free(error);
+}
+
 /*
-   gchar* lunar_date_strftime (LunarDate *date, const char *format);
+gchar* lunar_date_strftime (LunarDate *date, const char *format);
  * %(YEAR)年%(MONTH)月%(DAY)日		公历：大写
  * %(year)年%(month)月%(day)日		公历：小写
  * %(NIAN)年%(YUE)月%(RI)日%(SHI)时 阴历：大写
@@ -56,51 +81,34 @@ void display (LunarDate *date)
  * %(shengxiao)%(jieri)				生肖和节日
  */
 
-static void set_date(LunarDate* date, GDateYear year, GDateMonth month, GDateDay day, guint8 hour, gboolean isleap)
-{
-	GError *error = NULL;
-
-	g_printf("Test Date: <%u-%u-%u %u>\n", year, month, day, hour);
-	lunar_date_set_lunar_date(date, year, month, day , hour, isleap, &error);
-	if (error != NULL)
-	{
-		g_printf("Error: %s \n", error->message);
-		g_error_free(error);
-	}
-	display(date);
-
-	lunar_date_set_solar_date(date, year, month, day , hour, &error);
-	if (error != NULL)
-	{
-		g_printf("Error: %s \n", error->message);
-		g_error_free(error);
-		return;
-	}
-	display(date);
-}
-
 void random_test(void)
 {
-	GError *error = NULL;
+	GRand *rand = NULL;
 	LunarDate *date;
 
 	date = lunar_date_new();
-	srandom(time(NULL));
-	GDateYear year = random() % 150 + 1900;
-	GDateMonth month = random() % 12 + 1;
-	GDateDay day = random() % 31 + 1;
-	gboolean isleap = random() % 1;
-	guint8 hour = random() % 24 + 1;
+	rand = g_rand_new ();
 
-	set_date(date, year, month, day, hour, isleap);
+	GDateYear year = g_rand_int_range(rand, 1900, 2049);
+	GDateMonth month = g_rand_int_range(rand, 1, 12);
+	GDateDay day = g_rand_int_range(rand, 1, 31);
+	gboolean isleap = g_rand_int_range(rand, 0, 1);
+	guint8 hour = g_rand_int_range(rand, 0, 23);
 
+	set_lunar_date(date, year, month, day , hour, isleap);
+
+	g_rand_free(rand);
 	lunar_date_free(date);
 }
 
 void test(gchar* argv[])
 {
 	GError *error = NULL;
+	GRand *rand = NULL;
 	LunarDate *date;
+
+	date = lunar_date_new();
+	rand = g_rand_new ();
 
 	date = lunar_date_new();
 
@@ -108,12 +116,12 @@ void test(gchar* argv[])
 	GDateMonth month =	atoi(argv[2]);
 	GDateDay day = atoi(argv[3]);
 
-	srandom(time(NULL));
-	gboolean isleap = random() % 1;
-	guint8 hour = random() % 24 + 1;
+	gboolean isleap = g_rand_int_range(rand, 0, 1);
+	guint8 hour = g_rand_int_range(rand, 0, 23);
 
-	set_date(date, year, month, day, hour, isleap);
+	set_lunar_date(date, year, month, day, hour, isleap);
 
+	g_rand_free(rand);
 	lunar_date_free(date);
 }
 
