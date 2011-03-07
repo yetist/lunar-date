@@ -46,7 +46,7 @@ pkgconfig_DATA = liblunar-1.0.pc
 
 if HAVE_INTROSPECTION
 if HAVE_VALA
-SUBDIRS += vala
+SUBDIRS += vapi
 endif
 endif
 

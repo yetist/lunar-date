@@ -266,7 +266,7 @@ docs/Makefile
 docs/reference/Makefile
 docs/reference/version.xml
 Makefile
-vala/Makefile
+vapi/Makefile
 ])
 
 AC_OUTPUT
