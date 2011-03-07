@@ -25,13 +25,13 @@ BUILT_SOURCES =         	\
         lunar-enum-types.c        \
         lunar-enum-types.h
 
-lib_LTLIBRARIES = liblunar-1.la
+lib_LTLIBRARIES = liblunar-1.0.la
 
-liblunar_1_includedir = $(includedir)/liblunar-1/lunar
-liblunar_1_include_HEADERS = $(source_h)
-liblunar_1_la_SOURCES =	$(source_c) $(BUILT_SOURCES)
-liblunar_1_la_LIBADD = 	$(LIBLUNAR_LIBS)
-liblunar_1_la_LDFLAGS = \
+liblunar_1_0_includedir = $(includedir)/liblunar-1.0/lunar
+liblunar_1_0_include_HEADERS = $(source_h)
+liblunar_1_0_la_SOURCES =	$(source_c) $(BUILT_SOURCES)
+liblunar_1_0_la_LIBADD = 	$(LIBLUNAR_LIBS)
+liblunar_1_0_la_LDFLAGS = \
 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \
 	-export-dynamic $(export_symbols)
 
@@ -48,11 +48,11 @@ INTROSPECTION_GIRS = LunarDate-1.0.gir
 #INTROSPECTION_COMPILER_ARGS - Additional args to pass in to the compiler
 
 
-LunarDate-1.0.gir: liblunar-1.la
+LunarDate-1.0.gir: liblunar-1.0.la
 INTROSPECTION_SCANNER_ARGS = -I$(top_srcdir) -I$(srcdir) --warn-all --identifier-prefix=Lunar
 LunarDate_1_0_gir_NAMESPACE = LunarDate
 LunarDate_1_0_gir_VERSION = 1.0
-LunarDate_1_0_gir_LIBS = $(builddir)/liblunar-1.la
+LunarDate_1_0_gir_LIBS = $(builddir)/liblunar-1.0.la
 LunarDate_1_0_gir_FILES = $(source_h) $(source_c) $(BUILT_SOURCES)
 LunarDate_1_0_gir_INCLUDES = GObject-2.0
 

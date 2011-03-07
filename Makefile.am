@@ -2,8 +2,7 @@ ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = po lunar data tests docs
 
 EXTRA_DIST =                    \
-	liblunar-1.pc.in	\
-	liblunar-1.vapi		\
+	liblunar-1.0.pc.in	\
         ChangeLog.pre-2-2       \
 	sanity_check		\
 	xmldocs.make 		\
@@ -43,7 +42,7 @@ MAINTAINERCLEANFILES = 		\
 	`find "$(srcdir)" -type f -name Makefile.in -print`
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = liblunar-1.pc
+pkgconfig_DATA = liblunar-1.0.pc
 
 if HAVE_INTROSPECTION
 if HAVE_VALA

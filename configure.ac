@@ -256,7 +256,7 @@ AM_GLIB_GNU_GETTEXT
 AM_GLIB_DEFINE_LOCALEDIR(LIBLUNAR_LOCALEDIR)
 
 AC_CONFIG_FILES([
-liblunar-1.pc
+liblunar-1.0.pc
 lunar/lunar-config.h
 lunar/Makefile
 tests/Makefile
