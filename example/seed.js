@@ -1,6 +1,5 @@
 #!/usr/bin/env seed
 Gettext = imports.gettext;
-GLib = imports.gi.GLib;
 LunarDate = imports.gi.LunarDate;
 
 Gettext.bindtextdomain("liblunar", "/usr/share/locale");

@@ -1,6 +1,5 @@
 #!/usr/bin/env gjs-console
 const Gettext = imports.gettext;
-const GLib = imports.gi.GLib;
 const LunarDate = imports.gi.LunarDate;
 
 Gettext.bindtextdomain("liblunar", "/usr/share/locale");

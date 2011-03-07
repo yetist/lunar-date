@@ -1,8 +1,6 @@
 #!/usr/bin/python2
 # coding=utf-8
 from gi.repository import LunarDate
-from gi.repository import GLib
-import time
 import sys
 
 import locale
