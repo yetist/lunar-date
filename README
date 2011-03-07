@@ -1,7 +1,7 @@
 General Information
 ====================
 
-This is LibLunar version @LIBLUNAR_VERSION@. LibLunar is a chinese lunar library.
+LibLunar is a chinese lunar library.
 
 The official web site is:
 
@@ -10,7 +10,6 @@ The official web site is:
 You can download the latest liblunar tarball from the googlecode http server:
 
         http://code.google.com/p/liblunar/downloads/
-
 
 Installation
 =============
