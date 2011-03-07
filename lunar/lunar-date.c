@@ -684,7 +684,6 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 		gchar bufs[128];
 		gchar *tmp;
 		tmp = lunar_date_get_jieri(date, " ");
-		g_printf("%s\n", tmp);
 		if (strstr(tmp, " " ) != NULL)
 		{
 			char** buf = g_strsplit(tmp, " ", -1);
