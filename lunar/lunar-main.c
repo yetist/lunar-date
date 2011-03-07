@@ -29,8 +29,9 @@
 
 /**
  * lunar_init:
- * @argc: Address of the <parameter>argc</parameter> parameter of your main() function. Changed if any arguments were handled.
- * @argv: Address of the <parameter>argv</parameter> parameter of main(). Any parameters understood by lunar_init() are stripped before return.
+ * @argc: (inout): The number of arguments in @argv
+ * @argv: (array length=argc) (inout) (allow-none): A pointer to an array
+ * of arguments.
  *
  * Call this function before using any other liblunar functions in your applications. It will initialize liblunar.
  *
