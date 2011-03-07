@@ -1,15 +1,9 @@
 vapidir = $(datarootdir)/vala/vapi
-vapi_DATA = \
-        liblunar-1.0.vapi \
-        $(NULL)
+vapi_DATA = liblunar-1.0.vapi 
 
-dist_vapi_DATA = \
-        liblunar-1.0.deps \
-        $(NULL)
+dist_vapi_DATA = liblunar-1.0.deps
 
-BUILT_SOURCES = \
-        $(vapi_DATA) \
-        $(NULL)
+BUILT_SOURCES = $(vapi_DATA)
 
 pkgconfigdir = ${libdir}/pkgconfig
 
@@ -24,7 +18,9 @@ liblunar-1.0.vapi: $(top_builddir)/lunar/LunarDate-1.0.gir
 	$(AM_V_GEN)sed -e \
                  's/LunarDate-1.0.h/lunar\/lunar.h/' \
                  < liblunar-1.0.vapi.tmp1 > liblunar-1.0.vapi.tmp2
-	@mv liblunar-1.0.vapi.tmp2 $@
+	$(AM_V_GEN)sed -e \
+                 's/int argc, string argv/[CCode (array_length_pos = 0.9)] ref unowned string[] argv/' \
+                 < liblunar-1.0.vapi.tmp2 > $@
 	@rm liblunar-1.0.vapi.tmp*
 
 CLEANFILES = \
