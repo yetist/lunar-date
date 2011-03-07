@@ -63,17 +63,14 @@ expand_content_files=
 #
 GTKDOC_CFLAGS =                                               \
         $(LUNAR_CFLAGS)                                  \
-        -I$(top_srcdir)                                 \
         -I$(top_srcdir)/lunar                           \
-        -I$(top_builddir)				\
         -I$(top_builddir)/lunar				\
-        $(PYGOBJECT_CFLAGS)                 \
-        $(PYTHON_CFLAGS)                \
+	$(LIBLUNAR_CFLAGS)				\
         $(AM_CFLAGS)
 
 GTKDOC_LIBS=                                            \
-        $(LUNAR_LIBS)                               \
-        $(top_builddir)/lunar/liblunar-1.la
+        $(top_builddir)/lunar/liblunar-1.0.la		\
+        $(LUNAR_LIBS)
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.
 include $(top_srcdir)/gtk-doc.make
@@ -83,7 +80,7 @@ include $(top_srcdir)/gtk-doc.make
 EXTRA_DIST += version.xml.in
 
 #regenerate-types:
-#	grep _get_type $(DOC_SOURCE_DIR)/gtk*.h | grep -oR '^.*\.h' | sort | uniq - | sed -r 's/^.*\.h$/#include "\0"/' > gtkchinesecalendar.types
-#	grep _get_type $(DOC_SOURCE_DIR)/gtk*.h | grep -oR '^.*\.h' | sort | uniq - | sed -re 'y/-/_/' -e 's/^(.*)\.h$/\1_get_type/' >> gtkchinesecalendar.types.new
+	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -r 's/^.*\.h$/#include "\0"/' > gtkchinesecalendar.types
+	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -re 'y/-/_/' -e 's/^(.*)\.h$/\1_get_type/' >> gtkchinesecalendar.types.new
 
 -include $(top_srcdir)/git.mk

@@ -9,8 +9,6 @@ LIBLUNAR_CHECK_VERSION
 </SECTION>
 
 <SECTION>
-<FILE>lunar-date</FILE>
-GDateHour
 <TITLE>LunarDate</TITLE>
 LunarDate
 LunarDateError

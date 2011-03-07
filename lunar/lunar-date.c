@@ -376,31 +376,29 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter)
 	keyfile = g_key_file_new();
 
 	cfgfile = g_build_filename( g_get_user_config_dir() , "liblunar", "holiday.dat", NULL);
-#ifdef RUN_IN_SOURCE_TREE
-	if ( ! g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
-	{
-		g_free(cfgfile);
-		cfgfile = g_build_filename("data", "holiday.dat", NULL);
-		if ( ! g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
-		{
-			g_free(cfgfile);
-			cfgfile = g_build_filename(".", "holiday.dat", NULL);
-			if ( ! g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
-			{
-				g_free(cfgfile);
-				cfgfile = g_build_filename("..", "holiday.dat", NULL);
-			}
-		}
-	}
-#else
 	GList *l = priv->holidays;
 	while (l && ! g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
 	{
 		g_free(cfgfile);
 		cfgfile = g_build_filename(LUNAR_HOLIDAYDIR, l->data, NULL);
+#ifdef RUN_IN_SOURCE_TREE
+		if ( !g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
+		{
+			cfgfile = g_build_filename("data", l->data, NULL);
+			if ( !g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
+			{
+				g_free(cfgfile);
+				cfgfile = g_build_filename(".", l->data, NULL);
+				if ( !g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
+				{
+					g_free(cfgfile);
+					cfgfile = g_build_filename("..", l->data, NULL);
+				}
+			}
+		}
+#endif
 		l = l->next;
 	}
-#endif
 
 	if (!g_key_file_load_from_file(keyfile, cfgfile, G_KEY_FILE_KEEP_COMMENTS, NULL))
 	{
@@ -686,6 +684,7 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 		gchar bufs[128];
 		gchar *tmp;
 		tmp = lunar_date_get_jieri(date, " ");
+		g_printf("%s\n", tmp);
 		if (strstr(tmp, " " ) != NULL)
 		{
 			char** buf = g_strsplit(tmp, " ", -1);
