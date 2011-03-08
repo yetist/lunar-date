@@ -4,11 +4,11 @@
 srcdir=`dirname $0`
 test -z "$srcdir" && srcdir=.
 
-PKG_NAME="liblunar-gtk"
+PKG_NAME="liblunar-calendar"
 
 (test -f $srcdir/configure.ac \
   && test -f $srcdir/NEWS\
-  && test -d $srcdir/lunar-gtk) || {
+  && test -d $srcdir/lunar-calendar) || {
     echo -n "**Error**: Directory "\`$srcdir\'" does not look like the"
     echo " top-level $PKG_NAME directory"
     exit 1
