@@ -3,7 +3,7 @@
  * use the follow command to enable vala support.
  * $ ./configure --enable-vala-bindings ...
  * build this file with:
- * $ valac --pkg liblunar-date-2.0 lunardate.vala
+ * $ valac --pkg lunar-date-2.0 lunardate.vala
  *
  */
 
