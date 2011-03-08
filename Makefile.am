@@ -2,9 +2,9 @@ ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = lunar-calendar tests docs
 ACLOCAL_AMFLAGS = -I m4INTROSPECTION_GIRS
 EXTRA_DIST =                    \
-	lunar-calendar-1.0.pc.in	\
-	lunar-calendar-1.0.vapi	\
-	lunar-calendar-1.0.deps	\
+	lunar-calendar-2.0.pc.in	\
+	lunar-calendar-2.0.vapi	\
+	lunar-calendar-2.0.deps	\
 	sanity_check		\
 	xmldocs.make 		\
   	m4/introspection.m4	\
@@ -35,7 +35,7 @@ MAINTAINERCLEANFILES = 		\
 	`find "$(srcdir)" -type f -name Makefile.in -print`
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = lunar-calendar-1.0.pc
+pkgconfig_DATA = lunar-calendar-2.0.pc
 
 if HAVE_VALA
 SUBDIRS += vapi
