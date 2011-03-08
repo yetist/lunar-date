@@ -37,8 +37,8 @@
 #endif
 #include <glib/gi18n-lib.h>
 #include <string.h>
-#include <lunar/lunar-main.h>
-#include <lunar/lunar-date.h>
+#include <lunar-date/lunar-main.h>
+#include <lunar-date/lunar-date.h>
 #include "lunar-date-private.h"
 
 enum {

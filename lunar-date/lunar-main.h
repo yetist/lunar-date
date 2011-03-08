@@ -26,7 +26,7 @@
 #define __LUNAR_MAIN_H__  1
 
 #include	<glib.h>
-#include	<lunar/lunar-config.h>
+#include	<lunar-date/lunar-config.h>
 
 G_BEGIN_DECLS
 

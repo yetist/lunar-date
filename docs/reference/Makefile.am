@@ -6,7 +6,7 @@
 AUTOMAKE_OPTIONS = 1.6
 
 # The name of the module, e.g. 'glib'.
-DOC_MODULE=lunar
+DOC_MODULE=lunar-date
 
 # The top-level SGML file. You can change this if you want to.
 DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
@@ -14,7 +14,7 @@ DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
 # The directory containing the source code. Relative to $(srcdir).
 # gtk-doc will search all .c & .h files beneath here for inline comments
 # documenting the functions and macros.
-DOC_SOURCE_DIR=../../lunar
+DOC_SOURCE_DIR=../../lunar-date
 
 # Extra options to pass to gtkdoc-scangobj. Not normally needed.
 SCANGOBJ_OPTIONS=
@@ -35,8 +35,8 @@ MKTMPL_OPTIONS=
 FIXXREF_OPTIONS=
 
 # Used for dependencies. The docs will be rebuilt if any of these change.
-HFILE_GLOB=$(top_srcdir)/lunar/*.h
-CFILE_GLOB=$(top_srcdir)/lunar/*.c
+HFILE_GLOB=$(top_srcdir)/lunar-date/*.h
+CFILE_GLOB=$(top_srcdir)/lunar-date/*.c
 
 # Header files to ignore when scanning (These are internal to gedit).
 IGNORE_HFILES= 
@@ -63,14 +63,14 @@ expand_content_files=
 #
 GTKDOC_CFLAGS =                                               \
         $(LUNAR_CFLAGS)                                  \
-        -I$(top_srcdir)/lunar                           \
-        -I$(top_builddir)/lunar				\
+        -I$(top_srcdir)/lunar-date                        \
+        -I$(top_builddir)/lunar-date			\
 	$(LIBLUNAR_CFLAGS)				\
         $(AM_CFLAGS)
 
 GTKDOC_LIBS=                                            \
-        $(top_builddir)/lunar/liblunar-1.0.la		\
-        $(LUNAR_LIBS)
+        $(top_builddir)/lunar-date/liblunar-date-1.0.la		\
+        $(LIBLUNAR_LIBS)
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.
 include $(top_srcdir)/gtk-doc.make

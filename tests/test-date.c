@@ -25,7 +25,7 @@
 #ifdef HAVE_CONFIG_H
 	#include <config.h>
 #endif
-#include <lunar/lunar.h>
+#include <date.h>
 #include <glib/gi18n.h>
 
 static void display (LunarDate *date)

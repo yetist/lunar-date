@@ -25,7 +25,7 @@
 	#include <config.h>
 #endif
 #include <glib/gi18n-lib.h>
-#include <lunar/lunar-main.h>
+#include <lunar-date/lunar-main.h>
 
 /**
  * lunar_init:

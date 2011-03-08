@@ -16,7 +16,7 @@ AC_INIT(liblunar, liblunar_version, yetist@gmail.com)
 AC_COPYRIGHT([Copyright (C) 2007-2011 yetist@gmail.com])
 
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 no-define -Wno-portability])
-AC_CONFIG_SRCDIR(lunar/lunar-date.h)
+AC_CONFIG_SRCDIR(lunar-date/lunar-date.c)
 AM_CONFIG_HEADER(config.h)
 AC_CONFIG_MACRO_DIR([m4])
 
@@ -143,7 +143,7 @@ AC_SUBST(HAVE_VALA)
 dnl ================================================================
 dnl  Language Support 
 dnl ================================================================
-GETTEXT_PACKAGE=liblunar
+GETTEXT_PACKAGE=lunar-date
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Define the gettext package to be used])
 AC_SUBST(GETTEXT_PACKAGE)
 AM_GLIB_GNU_GETTEXT
@@ -151,9 +151,9 @@ AM_GLIB_GNU_GETTEXT
 AM_GLIB_DEFINE_LOCALEDIR(LIBLUNAR_LOCALEDIR)
 
 AC_CONFIG_FILES([
-liblunar-1.0.pc
-lunar/lunar-config.h
-lunar/Makefile
+liblunar-date-1.0.pc
+lunar-date/lunar-config.h
+lunar-date/Makefile
 tests/Makefile
 data/Makefile
 po/Makefile.in

@@ -19,7 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-#include <lunar/lunar-date.h>
+#include <lunar-date/lunar-date.h>
 #include "lunar-date-private.h"
 #include <glib/gi18n-lib.h>
 
