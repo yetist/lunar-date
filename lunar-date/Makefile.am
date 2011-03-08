@@ -24,8 +24,8 @@ lunardate_HEADERS = date.h
 
 
 BUILT_SOURCES =         	\
-        lunar-enum-types.c        \
-        lunar-enum-types.h
+        lunar-date-enum-types.c        \
+        lunar-date-enum-types.h
 
 lib_LTLIBRARIES = liblunar-date-1.0.la
 
@@ -37,12 +37,12 @@ liblunar_date_1_0_la_LDFLAGS = \
 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \
 	-export-dynamic $(export_symbols)
 
-lunar-enum-types.h: lunar-enum-types.h.template $(source_h) $(GLIB_MKENUMS)
-	$(AM_V_GEN) (cd $(srcdir) && $(GLIB_MKENUMS) --template lunar-enum-types.h.template $(source_h)) > $@
+lunar-date-enum-types.h: lunar-date-enum-types.h.template $(source_h) $(GLIB_MKENUMS)
+	$(AM_V_GEN) (cd $(srcdir) && $(GLIB_MKENUMS) --template lunar-date-enum-types.h.template $(source_h)) > $@
         
-lunar-enum-types.c: lunar-enum-types.c.template $(source_h) $(GLIB_MKENUMS)
-	$(AM_V_GEN) (cd $(srcdir) && $(GLIB_MKENUMS) --template lunar-enum-types.c.template $(source_h)) > $@
-DISTCLEANFILES = lunar-enum-types.h lunar-enum-types.c
+lunar-date-enum-types.c: lunar-date-enum-types.c.template $(source_h) $(GLIB_MKENUMS)
+	$(AM_V_GEN) (cd $(srcdir) && $(GLIB_MKENUMS) --template lunar-date-enum-types.c.template $(source_h)) > $@
+DISTCLEANFILES = lunar-date-enum-types.h lunar-date-enum-types.c
 
 if HAVE_INTROSPECTION
 -include $(INTROSPECTION_MAKEFILE)
@@ -67,6 +67,6 @@ typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 CLEANFILES += $(dist_gir_DATA) $(typelibs_DATA)
 endif
 
-EXTRA_DIST =  lunar-enum-types.h.template lunar-enum-types.c.template lunar-date-private.h lunar-config.h.in
+EXTRA_DIST =  lunar-date-enum-types.h.template lunar-date-enum-types.c.template lunar-date-private.h lunar-config.h.in
 
 -include $(top_srcdir)/git.mk
