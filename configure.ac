@@ -107,7 +107,7 @@ AC_SUBST(HAVE_VALA)
 
 
 AC_CONFIG_FILES([
-lunar-calendar-1.0.pc
+lunar-calendar-2.0.pc
 lunar-calendar/Makefile
 tests/Makefile
 docs/Makefile

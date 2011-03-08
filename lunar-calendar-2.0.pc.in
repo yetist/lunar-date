@@ -3,9 +3,9 @@ exec_prefix=@exec_prefix@
 libdir=@libdir@
 includedir=@includedir@
 
-Name: liblunar-gtk-1.0
+Name: liblunar-gtk-2.0
 Description: Chinese Lunar Library Gtk Widget
-Requires.private: liblunar-1.0 gtk+-2.0
+Requires.private: lunar-date-2.0 gtk+-2.0
 Version: @VERSION@
-Libs: -L${libdir} -llunar-gtk-1.0
-Cflags: -I${includedir}/liblunar-1.0
+Libs: -L${libdir} -llunar-calendar-2.0
+Cflags: -I${includedir}/liblunar-2.0
