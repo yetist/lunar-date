@@ -22,7 +22,7 @@
 #include <stdlib.h>
 #include <dlfcn.h>
 #include <gtk/gtk.h>
-#include <lunar-gtk/lunar.h>
+#include <calendar.h>
 
 GtkWidget* gtk_calendar_new (void)
 {

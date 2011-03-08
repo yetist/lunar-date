@@ -22,7 +22,7 @@
 #ifndef __LUNAR_H__ 
 #define __LUNAR_H__  1
 
-#include <lunar-gtk/lunar-calendar.h>
+#include <lunar-calendar/lunar-calendar.h>
 
 #endif /* __LUNAR_H__ */
 

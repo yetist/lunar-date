@@ -1,6 +1,6 @@
 /* vi: set sw=4 ts=4: */
 /*
- * lunar-calendar.h: This file is part of liblunar-gtk.
+ * lunar-calendar.h: This file is part of lunar-calendar.
  *
  * Copyright (C) 2009 yetist <yetist@gmail.com>
  *

@@ -2,7 +2,7 @@ NULL=
 
 INCLUDES =                                              \
 	-I$(top_srcdir)					\
-	-I$(top_srcdir)/src				\
+	-I$(top_srcdir)/lunar-calendar			\
         -I$(srcdir) 					\
 	$(LIBLUNAR_CFLAGS)				\
 	$(NULL)
@@ -18,6 +18,6 @@ AM_CPPFLAGS =                		\
 
 LIBS =                       		\
         $(LIBLUNAR_LIBS)       		\
-        $(top_builddir)/lunar-gtk/liblunar-gtk-1.0.la
+        $(top_builddir)/lunar-calendar/liblunar-calendar-1.0.la
 
 -include $(top_srcdir)/git.mk

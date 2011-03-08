@@ -18,7 +18,7 @@ AC_COPYRIGHT([Copyright (C) 2007-2011 yetist@gmail.com])
 
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 no-define -Wno-portability])
 
-AC_CONFIG_SRCDIR(lunar-gtk/lunar-calendar.c)
+AC_CONFIG_SRCDIR(lunar-calendar/lunar-calendar.c)
 AM_CONFIG_HEADER(config.h)
 AC_CONFIG_MACRO_DIR([m4])
 
@@ -67,7 +67,7 @@ LIBLUNAR_REQUIRED=2.2.1
 GTK2_REQUIRED=2.16
 GDK2_REQUIRED=2.16
 
-PKG_CHECK_MODULES(LIBLUNAR, liblunar-1.0 >= $LIBLUNAR_REQUIRED gtk+-2.0 >= $GTK2_REQUIRED  gdk-2.0 >= $GDK2_REQUIRED )
+PKG_CHECK_MODULES(LIBLUNAR, lunar-date-2.0 >= $LIBLUNAR_REQUIRED gtk+-2.0 >= $GTK2_REQUIRED  gdk-2.0 >= $GDK2_REQUIRED )
 
 AC_SUBST(LIBLUNAR_CFLAGS)
 AC_SUBST(LIBLUNAR_LIBS)
@@ -107,8 +107,8 @@ AC_SUBST(HAVE_VALA)
 
 
 AC_CONFIG_FILES([
-liblunar-gtk.pc
-lunar-gtk/Makefile
+lunar-calendar-1.0.pc
+lunar-calendar/Makefile
 tests/Makefile
 docs/Makefile
 docs/reference/Makefile

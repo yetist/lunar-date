@@ -1,10 +1,10 @@
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = lunar-gtk tests docs
+SUBDIRS = lunar-calendar tests docs
 ACLOCAL_AMFLAGS = -I m4INTROSPECTION_GIRS
 EXTRA_DIST =                    \
-	liblunar-gtk.pc.in	\
-	liblunar-gtk.vapi	\
-	liblunar-gtk.deps	\
+	lunar-calendar-1.0.pc.in	\
+	lunar-calendar-1.0.vapi	\
+	lunar-calendar-1.0.deps	\
 	sanity_check		\
 	xmldocs.make 		\
   	m4/introspection.m4	\
@@ -35,7 +35,7 @@ MAINTAINERCLEANFILES = 		\
 	`find "$(srcdir)" -type f -name Makefile.in -print`
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = liblunar-gtk.pc
+pkgconfig_DATA = lunar-calendar-1.0.pc
 
 if HAVE_VALA
 SUBDIRS += vapi

@@ -6,7 +6,7 @@
 AUTOMAKE_OPTIONS = 1.6
 
 # The name of the module, e.g. 'glib'.
-DOC_MODULE=lunar-gtk
+DOC_MODULE=lunar-calendar
 
 # The top-level SGML file. You can change this if you want to.
 DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
@@ -14,7 +14,7 @@ DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
 # The directory containing the source code. Relative to $(srcdir).
 # gtk-doc will search all .c & .h files beneath here for inline comments
 # documenting the functions and macros.
-DOC_SOURCE_DIR=../../lunar-gtk
+DOC_SOURCE_DIR=../../lunar-calendar
 
 # Extra options to pass to gtkdoc-scangobj. Not normally needed.
 SCANGOBJ_OPTIONS=
@@ -35,8 +35,8 @@ MKTMPL_OPTIONS=
 FIXXREF_OPTIONS=
 
 # Used for dependencies. The docs will be rebuilt if any of these change.
-HFILE_GLOB=$(top_srcdir)/lunar-gtk/*.h
-CFILE_GLOB=$(top_srcdir)/lunar-gtk/*.c
+HFILE_GLOB=$(top_srcdir)/lunar-calendar/*.h
+CFILE_GLOB=$(top_srcdir)/lunar-calendar/*.c
 
 # Header files to ignore when scanning (These are internal to gedit).
 IGNORE_HFILES= 
@@ -63,12 +63,12 @@ expand_content_files=
 #
 GTKDOC_CFLAGS =                                               \
         $(LIBLUNAR_CFLAGS)                                  \
-        -I$(top_srcdir)/lunar-gtk                           \
-        -I$(top_builddir)/lunar-gtk				\
+        -I$(top_srcdir)/lunar-calendar                           \
+        -I$(top_builddir)/lunar-calendar				\
         $(AM_CFLAGS)
 
 GTKDOC_LIBS=                                            \
-        $(top_builddir)/lunar-gtk/liblunar-gtk-1.0.la	\
+        $(top_builddir)/lunar-calendar/liblunar-calendar-1.0.la	\
         $(LIBLUNAR_LIBS)
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.
@@ -79,7 +79,7 @@ include $(top_srcdir)/gtk-doc.make
 EXTRA_DIST += 
 
 #regenerate-types:
-	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -r 's/^.*\.h$/#include "\0"/' > gtkchinesecalendar.types
-	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -re 'y/-/_/' -e 's/^(.*)\.h$/\1_get_type/' >> gtkchinesecalendar.types.new
+	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -r 's/^.*\.h$/#include "\0"/' > lunarcalendar.types
+	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -re 'y/-/_/' -e 's/^(.*)\.h$/\1_get_type/' >> lunarcalendar.types.new
 
 -include $(top_srcdir)/git.mk
