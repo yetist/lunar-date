@@ -151,7 +151,7 @@ AM_GLIB_GNU_GETTEXT
 AM_GLIB_DEFINE_LOCALEDIR(LIBLUNAR_LOCALEDIR)
 
 AC_CONFIG_FILES([
-liblunar-date-2.0.pc
+lunar-date-2.0.pc
 lunar-date/lunar-config.h
 lunar-date/Makefile
 tests/Makefile
