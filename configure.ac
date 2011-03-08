@@ -171,5 +171,5 @@ Configuration:
 
         Source code location:   ${srcdir}
 	Compiler:		${CC}
-	Python binding Support: $enable_python
+	vala binding Support:   ${have_vala}
 "
