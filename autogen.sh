@@ -59,4 +59,4 @@ conf_flags="--enable-maintainer-mode"
 
 printbold Running ./configure $conf_flags "$@" ...
 ./configure $conf_flags "$@" \
-&& echo Now type \`make\' to compile liblunar
+&& echo Now type \`make\' to compile lunar-date
