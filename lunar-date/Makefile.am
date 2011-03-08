@@ -58,10 +58,10 @@ LunarDate_2_0_gir_LIBS = $(builddir)/liblunar-date-2.0.la
 LunarDate_2_0_gir_FILES = $(source_h) $(source_c) $(BUILT_SOURCES)
 LunarDate_2_0_gir_INCLUDES = GObject-2.0
 
-girdir = $(datadir)/gir-2.0
+girdir = $(datadir)/gir-1.0
 dist_gir_DATA = $(INTROSPECTION_GIRS)
 
-typelibdir = $(libdir)/girepository-2.0
+typelibdir = $(libdir)/girepository-1.0
 typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 
 CLEANFILES += $(dist_gir_DATA) $(typelibs_DATA)

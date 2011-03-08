@@ -19,6 +19,6 @@ AM_CPPFLAGS =                		\
 
 LIBS =                       		\
         $(LIBLUNAR_LIBS)       		\
-        $(top_builddir)/lunar-date/liblunar-date-1.0.la
+        $(top_builddir)/lunar-date/liblunar-date-2.0.la
 
 -include $(top_srcdir)/git.mk
