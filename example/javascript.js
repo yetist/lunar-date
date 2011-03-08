@@ -1,5 +1,5 @@
-const Gtk = imports.gi.Gtk
-const LunarCalendar    = imports.gi.LunarCalendar
+const Gtk = imports.gi.Gtk;
+const LunarCalendar = imports.gi.LunarCalendar;
 
 function main_quit(o, name, time)
 {

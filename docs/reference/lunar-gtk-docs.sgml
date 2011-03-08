@@ -4,11 +4,11 @@
 
 <book id="index" xmlns:xi="http://www.w3.org/2003/XInclude">
   <bookinfo>
-    <title>LibLunar-gtk Reference Manual</title>
+    <title>LunarCalendar Reference Manual</title>
   </bookinfo>
 
   <chapter>
-    <title>LibLunar-gtk</title>
+    <title>LunarCalendar</title>
     <xi:include href="xml/lunar-calendar.xml"/>
     <para role="gallery">
 	    <link linkend="LunarCalendar">

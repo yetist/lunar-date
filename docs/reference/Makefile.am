@@ -62,14 +62,14 @@ expand_content_files=
 # signals and properties.
 #
 GTKDOC_CFLAGS =                                               \
-        $(LUNAR_CFLAGS)                                  \
+        $(LIBLUNAR_CFLAGS)                                  \
         -I$(top_srcdir)/lunar-gtk                           \
         -I$(top_builddir)/lunar-gtk				\
         $(AM_CFLAGS)
 
 GTKDOC_LIBS=                                            \
         $(top_builddir)/lunar-gtk/liblunar-gtk-1.0.la	\
-        $(LUNAR_LIBS)
+        $(LIBLUNAR_LIBS)
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.
 include $(top_srcdir)/gtk-doc.make

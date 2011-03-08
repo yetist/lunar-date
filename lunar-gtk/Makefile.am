@@ -16,7 +16,7 @@ source_c = lunar-calendar.c
 
 lib_LTLIBRARIES = liblunar-gtk-1.0.la liblunar-gtk-preload.la
 
-liblunar_gtk_1_0_includedir = $(includedir)/liblunar-1.0/lunar-gtk
+liblunar_gtk_1_0_includedir = $(includedir)/liblunar-1.0/lunar-calendar
 
 liblunar_gtk_1_0_la_SOURCES = $(source_c)
 
@@ -33,7 +33,7 @@ liblunar_gtk_1_0_la_LDFLAGS = \
 	-export-dynamic $(export_symbols)
 
 
-liblunar_gtk_preload_includedir = $(includedir)/liblunar-1.0/lunar-gtk
+liblunar_gtk_preload_includedir = $(includedir)/liblunar-1.0/lunar-calendar
 
 liblunar_gtk_preload_la_SOURCES = liblunar-gtk-preload.c
 
