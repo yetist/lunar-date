@@ -2,7 +2,7 @@ AC_PREREQ(2.62)
 
 m4_define([liblunar_major_version], [2])
 m4_define([liblunar_minor_version], [2])
-m4_define([liblunar_micro_version], [5])
+m4_define([liblunar_micro_version], [6])
 m4_define([liblunar_interface_age], [1])
 m4_define([liblunar_binary_age], [m4_eval(100 * liblunar_minor_version + liblunar_micro_version)])
 m4_define([liblunar_version], [liblunar_major_version.liblunar_minor_version.liblunar_micro_version])
@@ -151,7 +151,7 @@ AM_GLIB_GNU_GETTEXT
 AM_GLIB_DEFINE_LOCALEDIR(LIBLUNAR_LOCALEDIR)
 
 AC_CONFIG_FILES([
-liblunar-date-1.0.pc
+liblunar-date-2.0.pc
 lunar-date/lunar-config.h
 lunar-date/Makefile
 tests/Makefile

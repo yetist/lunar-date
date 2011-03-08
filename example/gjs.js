@@ -2,8 +2,8 @@
 const Gettext = imports.gettext;
 const LunarDate = imports.gi.LunarDate;
 
-Gettext.bindtextdomain("liblunar", "/usr/share/locale");
-Gettext.textdomain("liblunar");
+Gettext.bindtextdomain("lunar-date", "/usr/share/locale");
+Gettext.textdomain("lunar-date");
 
 LunarDate.init(0, null);
 let l = new LunarDate.Date();

@@ -2,8 +2,8 @@
 Gettext = imports.gettext;
 LunarDate = imports.gi.LunarDate;
 
-Gettext.bindtextdomain("liblunar", "/usr/share/locale");
-Gettext.textdomain("liblunar");
+Gettext.bindtextdomain("lunar-date", "/usr/share/locale");
+Gettext.textdomain("lunar-date");
 
 LunarDate.init(0, null);
 var l = new LunarDate.Date();

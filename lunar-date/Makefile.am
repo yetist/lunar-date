@@ -19,7 +19,7 @@ source_c =	\
 	$(srcdir)/lunar-date-private.c	\
 	$(srcdir)/lunar-main.c
 
-lunardatedir=$(includedir)/liblunar-1.0
+lunardatedir=$(includedir)/liblunar-2.0
 lunardate_HEADERS = date.h
 
 
@@ -27,13 +27,13 @@ BUILT_SOURCES =         	\
         lunar-date-enum-types.c        \
         lunar-date-enum-types.h
 
-lib_LTLIBRARIES = liblunar-date-1.0.la
+lib_LTLIBRARIES = liblunar-date-2.0.la
 
-liblunar_date_1_0_includedir = $(includedir)/liblunar-1.0/lunar-date
-liblunar_date_1_0_include_HEADERS = $(source_h)
-liblunar_date_1_0_la_SOURCES =	$(source_c) $(BUILT_SOURCES)
-liblunar_date_1_0_la_LIBADD = 	$(LIBLUNAR_LIBS)
-liblunar_date_1_0_la_LDFLAGS = \
+liblunar_date_2_0_includedir = $(includedir)/liblunar-2.0/lunar-date
+liblunar_date_2_0_include_HEADERS = $(source_h)
+liblunar_date_2_0_la_SOURCES =	$(source_c) $(BUILT_SOURCES)
+liblunar_date_2_0_la_LIBADD = 	$(LIBLUNAR_LIBS)
+liblunar_date_2_0_la_LDFLAGS = \
 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \
 	-export-dynamic $(export_symbols)
 
@@ -46,22 +46,22 @@ DISTCLEANFILES = lunar-date-enum-types.h lunar-date-enum-types.c
 
 if HAVE_INTROSPECTION
 -include $(INTROSPECTION_MAKEFILE)
-INTROSPECTION_GIRS = LunarDate-1.0.gir
+INTROSPECTION_GIRS = LunarDate-2.0.gir
 #INTROSPECTION_COMPILER_ARGS - Additional args to pass in to the compiler
 
 
-LunarDate-1.0.gir: liblunar-date-1.0.la
+LunarDate-2.0.gir: liblunar-date-2.0.la
 INTROSPECTION_SCANNER_ARGS = -I$(top_srcdir) -I$(srcdir) --warn-all --identifier-prefix=Lunar
-LunarDate_1_0_gir_NAMESPACE = LunarDate
-LunarDate_1_0_gir_VERSION = 1.0
-LunarDate_1_0_gir_LIBS = $(builddir)/liblunar-date-1.0.la
-LunarDate_1_0_gir_FILES = $(source_h) $(source_c) $(BUILT_SOURCES)
-LunarDate_1_0_gir_INCLUDES = GObject-2.0
+LunarDate_2_0_gir_NAMESPACE = LunarDate
+LunarDate_2_0_gir_VERSION = 2.0
+LunarDate_2_0_gir_LIBS = $(builddir)/liblunar-date-2.0.la
+LunarDate_2_0_gir_FILES = $(source_h) $(source_c) $(BUILT_SOURCES)
+LunarDate_2_0_gir_INCLUDES = GObject-2.0
 
-girdir = $(datadir)/gir-1.0
+girdir = $(datadir)/gir-2.0
 dist_gir_DATA = $(INTROSPECTION_GIRS)
 
-typelibdir = $(libdir)/girepository-1.0
+typelibdir = $(libdir)/girepository-2.0
 typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 
 CLEANFILES += $(dist_gir_DATA) $(typelibs_DATA)
