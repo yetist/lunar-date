@@ -18,7 +18,7 @@ AM_CPPFLAGS =                		\
 
 LIBS =                       		\
         $(LIBLUNAR_LIBS)       		\
-        $(top_builddir)/lunar-gtk/liblunar-gtk.la
+        $(top_builddir)/lunar-gtk/liblunar-gtk-1.0.la
 
 #BUILT_SOURCES = vala-calendar.vala.stamp
 
