@@ -19,7 +19,7 @@ lunar-date-2.0.vapi: $(top_builddir)/lunar-date/LunarDate-2.0.gir
                  's/LunarDate-2.0.h/date.h/' \
                  < lunar-date-2.0.vapi.tmp1 > lunar-date-2.0.vapi.tmp2
 	$(AM_V_GEN)sed -e \
-                 's/int argc, string argv/[CCode (array_length_pos = 0.9)] ref unowned string[] argv/' \
+		 's/ref string\[\]?/ref unowned string\[\]/' \
                  < lunar-date-2.0.vapi.tmp2 > $@
 	@rm lunar-date-2.0.vapi.tmp*
 
