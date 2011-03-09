@@ -76,10 +76,10 @@ include $(top_srcdir)/gtk-doc.make
 
 # Other files to distribute
 # e.g. EXTRA_DIST += version.xml.in
-EXTRA_DIST += 
+EXTRA_DIST += version.xml.in
 
 #regenerate-types:
-	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -r 's/^.*\.h$/#include "\0"/' > lunarcalendar.types
-	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -re 'y/-/_/' -e 's/^(.*)\.h$/\1_get_type/' >> lunarcalendar.types.new
+	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -r 's/^.*\.h$/#include "\0"/' > lunar-calendar.types
+	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -re 'y/-/_/' -e 's/^(.*)\.h$/\1_get_type/' >> lunar-calendar.types.new
 
 -include $(top_srcdir)/git.mk

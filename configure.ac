@@ -29,11 +29,11 @@ AC_SUBST(LT_CURRENT)
 AC_SUBST(LT_REVISION)
 AC_SUBST(LT_AGE)
 
-LIBTOOL_EXPORT_OPTIONS='-export-symbols-regex "^lunar.*"'
-AC_SUBST(LIBTOOL_EXPORT_OPTIONS)
-
 LIBLUNAR_GTK_VERSION=liblunar_gtk_version
 AC_SUBST(LIBLUNAR_GTK_VERSION)
+
+LIBTOOL_EXPORT_OPTIONS='-export-symbols-regex "^lunar.*"'
+AC_SUBST(LIBTOOL_EXPORT_OPTIONS)
 
 AM_MAINTAINER_MODE
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
@@ -112,6 +112,7 @@ lunar-calendar/Makefile
 tests/Makefile
 docs/Makefile
 docs/reference/Makefile
+docs/reference/version.xml
 Makefile
 vapi/Makefile
 ])
