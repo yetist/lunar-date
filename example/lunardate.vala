@@ -1,9 +1,9 @@
 /*
- * This is a vala example file.
- * use the follow command to enable vala support.
+ * compilation:
+ * valac --pkg lunar-date-2.0 lunardate.vala
+ *
+ * configure:
  * $ ./configure --enable-vala-bindings ...
- * build this file with:
- * $ valac --pkg lunar-date-2.0 lunardate.vala
  *
  */
 

@@ -80,7 +80,7 @@ include $(top_srcdir)/gtk-doc.make
 EXTRA_DIST += version.xml.in
 
 #regenerate-types:
-	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -r 's/^.*\.h$/#include "\0"/' > gtkchinesecalendar.types
-	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -re 'y/-/_/' -e 's/^(.*)\.h$/\1_get_type/' >> gtkchinesecalendar.types.new
+#	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -r 's/^.*\.h$/#include "\0"/' > gtkchinesecalendar.types
+#	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -re 'y/-/_/' -e 's/^(.*)\.h$/\1_get_type/' >> gtkchinesecalendar.types.new
 
 -include $(top_srcdir)/git.mk
