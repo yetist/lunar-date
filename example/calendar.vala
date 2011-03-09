@@ -1,5 +1,14 @@
+/*
+ * compilation:
+ * valac --pkg lunar-calendar-2.0 calendar.vala
+ *
+ * configure:
+ * $ ./configure --enable-vala-bindings ...
+ *
+ */
+
 using Gtk;
-using Lunar;
+using LunarCalendar;
 
 static int main (string[] args) {
 	Gtk.init (ref args);
@@ -9,7 +18,7 @@ static int main (string[] args) {
 	window.position = WindowPosition.CENTER;
 	window.destroy.connect (Gtk.main_quit);
 
-	var calendar = new Lunar.Calendar ();
+	var calendar = new LunarCalendar.Calendar ();
 	window.add (calendar);
 	window.show_all ();
 
