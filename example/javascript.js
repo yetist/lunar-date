@@ -7,9 +7,9 @@ function main_quit(o, name, time)
 }
 
 Gtk.init(0, null);
-let win = new Gtk.Window();
+var win = new Gtk.Window();
 win.connect("delete-event", main_quit);
-let cal = new LunarCalendar.Calendar();
+var cal = new LunarCalendar.Calendar();
 win.add(cal);
 win.show_all();
 Gtk.main();
