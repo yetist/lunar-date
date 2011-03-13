@@ -236,64 +236,8 @@ mymemcnt(const char *mem, int len, const char *pat, int pat_len)
 	return nfound;
 }
 
-GString* g_string_replace (GString *string, const gchar* old, const gchar* new, int count)
-{
-	int nfound, offset;
-	char* strp = string->str;
-	gsize strl = string->len;
-
-	int old_len = strlen(old);
-	int new_len = strlen(new);
-
-	if (string->len == 0 || (old_len == 0 && new_len == 0) || old_len > string->len)
-		goto return_same;
-
-	nfound = (old_len > 0) ? mymemcnt(string->str, string->len, old, old_len) : string->len + 1;
-	if (count < 0)
-		count = INT_MAX;
-	else if (nfound > count)
-		nfound = count;
-	if (nfound == 0)
-		goto return_same;
-
-	GString *new_str = g_string_new("");
-
-	if (old_len > 0) {
-		for (; nfound > 0; --nfound) {
-			offset = mymemfind(string->str, string->len, old, old_len);
-			if (offset == -1)
-				break;
-
-			new_str = g_string_append_len(new_str, string->str, offset);
-			string->str += offset + old_len;
-			string->len -= offset + old_len;
-
-			new_str = g_string_append(new_str, new);
-		}
-		if (string->len > 0)
-			new_str = g_string_append_len(new_str, string->str, string->len);
-	}
-	else {
-		for (;;++string->str, --string->len) {
-			g_string_append(new_str, new);
-			if (--nfound <= 0) {
-				g_string_append_len(new_str, string->str, string->len);
-				break;
-			}
-			g_string_append_c(new_str, *string->str);
-		}
-	}
-	string->str = strp;
-	string->len = strl;
-	string = g_string_assign(string, new_str->str);
-	g_string_free(new_str, TRUE);
-	return string;
-
-return_same:
-	return string;
-}
-
-char* num_2_hanzi(int n)
+/* 1982/34 -> 一九八二/三四 */
+void num_2_hanzi(int n, char* hanzi, gulong len)
 {
 	GString *str = g_string_new("");
 	int d;
@@ -305,12 +249,11 @@ char* num_2_hanzi(int n)
 	}
 	str = g_string_prepend(str, _(hanzi_num[n]));
 
-	gchar* ret = g_strdup(g_strstrip(str->str));
+	g_snprintf(hanzi, len, "%s", str->str);
 	g_string_free(str, TRUE);
-	return ret;
 }
 
-char* mday_2_hanzi(int n)
+void mday_2_hanzi(int n, char* hanzi, gulong len)
 {
 	GString *str = g_string_new("");
 	int d;
@@ -338,10 +281,24 @@ char* mday_2_hanzi(int n)
 	else
 		str = g_string_append(str, _(hanzi_num[n]));
 
-	gchar* ret = g_strdup(g_strstrip(str->str));
+	g_snprintf(hanzi, len, "%s", str->str);
 	g_string_free(str, TRUE);
-	return ret;
 }
+
+char* str_replace(const gchar* string, const gchar* old, const gchar* new)
+{
+	GRegex* regex;
+	char* str;
+
+	regex = g_regex_new (old, 0, 0, NULL);
+	str = g_regex_replace(regex, string, -1, 0, new, 0, NULL);
+	g_regex_unref (regex);
+	return str;
+}
+
+/*
+vi:ts=4:wrap:ai:
+*/
 
 /*
 vi:ts=4:wrap:ai:

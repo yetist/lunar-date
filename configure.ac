@@ -102,7 +102,7 @@ AC_ARG_ENABLE(run-in-source-tree,
 	no)  ENABLE_RUN_IN_SOURCE_TREE=no ;;
 	*) AC_MSG_ERROR(bad value ${enableval} for --disable-run-in-source-tree) ;;
 	esac],
-[ENABLE_RUN_IN_SOURCE_TREE=yes]) dnl Default value
+[ENABLE_RUN_IN_SOURCE_TREE=no]) dnl Default value
 if test x$ENABLE_RUN_IN_SOURCE_TREE = xyes; then
 	AC_DEFINE(RUN_IN_SOURCE_TREE, 1, [enable search for holiday.dat file in local directory])
 fi
@@ -173,6 +173,6 @@ Build options:
   Build static libs         ${enable_static}
   CFLAGS                    ${CFLAGS}
   Build introspection       ${found_introspection}
-  Build vala binding        ${hava_vala}
+  Build vala binding        ${have_vala}
   Build document            ${enable_gtk_doc}
 ])

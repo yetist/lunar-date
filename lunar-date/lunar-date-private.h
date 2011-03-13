@@ -310,9 +310,9 @@ glong _date_calc_days_since_reference_year (CLDate *d, GError **error);
 gint get_weekth_of_month (gint day);
 int mymemfind(const char *mem, int len, const char *pat, int pat_len);
 int mymemcnt(const char *mem, int len, const char *pat, int pat_len);
-GString* g_string_replace (GString *string, const gchar* old, const gchar* new, int count);
-char* num_2_hanzi(int n);
-char* mday_2_hanzi(int n);
+void num_2_hanzi(int n, char* hanzi, gulong len);
+void mday_2_hanzi(int n, char* hanzi, gulong len);
+char* str_replace(const gchar* string, const gchar* old, const gchar* new);
 
 G_END_DECLS
 
