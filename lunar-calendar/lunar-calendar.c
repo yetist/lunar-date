@@ -255,7 +255,7 @@ calendar_detail_cb (GtkCalendar *gcalendar,
 		const gchar* const * langs =  g_get_language_names();
 
 		if (langs[0] && langs[0][0] != '\0')
-			if (!g_str_has_prefix(langs[0], "zh_CN"))
+			if (!g_str_has_prefix(langs[0], "zh_"))
 			{
 				g_object_set (calendar, "show-details", FALSE, NULL);
 				return NULL;
@@ -267,17 +267,19 @@ calendar_detail_cb (GtkCalendar *gcalendar,
 
 	if (strlen(buf = lunar_date_strftime(priv->date, "%(jieri)")) > 0)
 	{
-		val=g_strdup_printf("<span foreground=\"%s\">%s</span>", gdk_color_to_string(priv->color), buf);
+		gchar* col = gdk_color_to_string(priv->color);
+		val = g_strconcat("<span foreground=\"", col, "\">", buf, "</span>", NULL);
+		g_free(col);
 		g_free(buf);
 		return val;
 	}
-	if (strcmp(lunar_date_strftime(priv->date, "%(ri)"), "1") == 0)
+	if (strcmp(buf = lunar_date_strftime(priv->date, "%(ri)"), "1") == 0)
+	{
+		g_free(buf);
 		return lunar_date_strftime(priv->date, "%(YUE)月");
-		//val = g_strdup(lunar_date_strftime(priv->date, "%(YUE)月"));
+	}
 	else
 		return  lunar_date_strftime(priv->date, "%(RI)");
-		//val = g_strdup(lunar_date_strftime(priv->date, "%(RI)"));
-	//return val;
 }
 
 /*
