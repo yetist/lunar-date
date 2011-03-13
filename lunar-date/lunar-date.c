@@ -60,11 +60,11 @@ struct _LunarDatePrivate
 	CLDate *zhi;
 	CLDate *gan2;
 	CLDate *zhi2;
-	GList *holidays;
 	glong	days;
 	guint	lunar_year_months[NUM_OF_YEARS];
 	guint	lunar_year_days[NUM_OF_YEARS];
 	guint	lunar_month_days[NUM_OF_MONTHS +1];
+	GKeyFile* keyfile;
 };
 
 static void lunar_date_set_property  (GObject		   *object,
@@ -93,36 +93,12 @@ lunar_date_class_init (LunarDateClass *class)
 static void
 lunar_date_init (LunarDate *date)
 {
+	gchar *cfgfile;
 	LunarDatePrivate *priv;
-	char * lc = NULL;
-	gchar* dup_lc = NULL;
-	gint i = 0;
-
+	
 	priv = LUNAR_DATE_GET_PRIVATE (date);
 
-	priv->holidays = NULL;
-
-	lc = setlocale(LC_CTYPE, NULL);
-	if(lc && *lc)
-		dup_lc = g_strdup(lc);
-
-	if(dup_lc){
-		gchar *hol = NULL;
-		for(i=0;dup_lc && dup_lc[i];i++)
-		{
-			if(dup_lc[i] == '.')
-			{
-				dup_lc[i] = 0;
-				break;
-			}
-		}
-		hol = g_strdup_printf("holiday.%s",dup_lc);
-		priv->holidays = g_list_append(priv->holidays,hol);
-		g_free(dup_lc);
-	}
-
-	priv->holidays = g_list_append(priv->holidays, g_strdup("holiday.dat"));
-
+	priv->keyfile = g_key_file_new();
 	priv->solar = g_new0 (CLDate, 1);
 	priv->lunar = g_new0 (CLDate, 1);
 	priv->lunar2 = g_new0 (CLDate, 1);
@@ -131,6 +107,48 @@ lunar_date_init (LunarDate *date)
 	priv->gan2	 = g_new0 (CLDate, 1);
 	priv->zhi2	 = g_new0 (CLDate, 1);
 	_cl_date_make_all_lunar_data(date);
+
+	cfgfile = g_build_filename(g_get_user_config_dir() , "liblunar", "holiday.dat", NULL);
+	if (!g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
+	{
+		const gchar* const * langs =  g_get_language_names();
+		int i = 0;
+		while(langs[i] && langs[i][0] != '\0')
+		{
+			if (g_str_has_prefix(langs[i], "zh_")&& (strlen(langs[i])>= 5))
+			{
+				gchar* lang = g_strndup(langs[i], 5);
+#ifdef RUN_IN_SOURCE_TREE
+				cfgfile = g_build_filename("data", lang, NULL);
+				if ( !g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
+				{
+					g_free(cfgfile);
+					cfgfile = g_build_filename(".", lang, NULL);
+					if ( !g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
+					{
+						g_free(cfgfile);
+						cfgfile = g_build_filename("..", lang, NULL);
+					}
+				}
+#else
+				cfgfile = g_build_filename(LUNAR_HOLIDAYDIR, lang, NULL);
+#endif
+				if (g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
+				{
+					break;
+				}
+				g_free(lang);
+				g_free(cfgfile);
+			}
+			i++;
+		}
+	}
+
+	if (!g_key_file_load_from_file(priv->keyfile, cfgfile, G_KEY_FILE_KEEP_COMMENTS, NULL))
+	{
+		g_critical("Format error \"%s\" !!!\n", cfgfile);
+	}
+	g_free(cfgfile);
 }
 
 /**
@@ -366,109 +384,78 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter)
 	LunarDatePrivate *priv;
 	GString* jieri;
 
-	gchar* cfgfile;
-	GKeyFile* keyfile;
 	gint weekday, weekth;
 	gchar* str_day;
 
 	jieri=g_string_new("");
 	priv = LUNAR_DATE_GET_PRIVATE (date);
-	keyfile = g_key_file_new();
 
-	cfgfile = g_build_filename( g_get_user_config_dir() , "liblunar", "holiday.dat", NULL);
-	GList *l = priv->holidays;
-	while (l && ! g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
+	if (priv->keyfile != NULL)
 	{
-		g_free(cfgfile);
-		cfgfile = g_build_filename(LUNAR_HOLIDAYDIR, l->data, NULL);
-#ifdef RUN_IN_SOURCE_TREE
-		if ( !g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
+
+		if (g_key_file_has_group(priv->keyfile, "LUNAR"))
 		{
-			cfgfile = g_build_filename("data", l->data, NULL);
-			if ( !g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
+			str_day = g_strdup_printf("%02d%02d", priv->lunar->month, priv->lunar->day);
+			if (g_key_file_has_key (priv->keyfile, "LUNAR", str_day, NULL))
 			{
-				g_free(cfgfile);
-				cfgfile = g_build_filename(".", l->data, NULL);
-				if ( !g_file_test(cfgfile, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
-				{
-					g_free(cfgfile);
-					cfgfile = g_build_filename("..", l->data, NULL);
-				}
+				jieri=g_string_append(jieri, delimiter);
+				jieri=g_string_append(jieri, g_key_file_get_value (priv->keyfile, "LUNAR", str_day, NULL));
+			}
+			g_free(str_day);
+		}
+
+		if (g_key_file_has_group(priv->keyfile, "SOLAR"))
+		{
+			str_day = g_strdup_printf("%02d%02d", priv->solar->month, priv->solar->day);
+			if (g_key_file_has_key (priv->keyfile, "SOLAR", str_day, NULL))
+			{
+				jieri=g_string_append(jieri, delimiter);
+				jieri=g_string_append(jieri, g_key_file_get_value (priv->keyfile, "SOLAR", str_day, NULL));
+			}
+			g_free(str_day);
+		}
+
+		weekday = get_day_of_week ( priv->solar->year, priv->solar->month, priv->solar->day);
+		weekth = get_weekth_of_month ( priv->solar->day);
+		if (g_key_file_has_group(priv->keyfile, "WEEK"))
+		{
+			str_day = g_strdup_printf("%02d%01d%01d", priv->solar->month, weekth, weekday);
+			if (g_key_file_has_key (priv->keyfile, "WEEK", str_day, NULL))
+			{
+				jieri=g_string_append(jieri, delimiter);
+				jieri=g_string_append(jieri, g_key_file_get_value (priv->keyfile, "WEEK", str_day, NULL));
+			}
+			g_free(str_day);
+		}
+
+		//jie2qi4
+		static char str_jq[24][20] = {'9'};
+		int i;
+		char yc[5] = {str_jq[0][0], str_jq[0][1], str_jq[0][2], str_jq[0][3], '\0'};
+		if(atoi(yc) != priv->solar->year)
+		{
+			for(i=0; i<24; i++)
+			{
+				year_jieqi(priv->solar->year, i, str_jq[i]);
 			}
 		}
-#endif
-		l = l->next;
-	}
-
-	if (!g_key_file_load_from_file(keyfile, cfgfile, G_KEY_FILE_KEEP_COMMENTS, NULL))
-	{
-		;
-	}
-	g_free(cfgfile);
-
-	if (g_key_file_has_group(keyfile, "LUNAR"))
-	{
-		str_day = g_strdup_printf("%02d%02d", priv->lunar->month, priv->lunar->day);
-		if (g_key_file_has_key (keyfile, "LUNAR", str_day, NULL))
+		str_day = g_strdup_printf("%04d%02d%02d", priv->solar->year, priv->solar->month, priv->solar->day);
+		gchar** jq_day;
+		for (i=0; i<24; i++)
 		{
-			jieri=g_string_append(jieri, delimiter);
-			jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "LUNAR", str_day, NULL));
+			jq_day = g_strsplit(str_jq[i], " ", 2);
+			if (g_ascii_strcasecmp(jq_day[0], str_day) == 0)
+			{
+				jieri=g_string_append(jieri, delimiter);
+				jieri=g_string_append(jieri, jq_day[1]);
+			}
 		}
 		g_free(str_day);
+		g_strfreev(jq_day);
 	}
-
-	if (g_key_file_has_group(keyfile, "SOLAR"))
-	{
-		str_day = g_strdup_printf("%02d%02d", priv->solar->month, priv->solar->day);
-		if (g_key_file_has_key (keyfile, "SOLAR", str_day, NULL))
-		{
-			jieri=g_string_append(jieri, delimiter);
-			jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "SOLAR", str_day, NULL));
-		}
-		g_free(str_day);
-	}
-
-	weekday = get_day_of_week ( priv->solar->year, priv->solar->month, priv->solar->day);
-	weekth = get_weekth_of_month ( priv->solar->day);
-	if (g_key_file_has_group(keyfile, "WEEK"))
-	{
-		str_day = g_strdup_printf("%02d%01d%01d", priv->solar->month, weekth, weekday);
-		if (g_key_file_has_key (keyfile, "WEEK", str_day, NULL))
-		{
-			jieri=g_string_append(jieri, delimiter);
-			jieri=g_string_append(jieri, g_key_file_get_value (keyfile, "WEEK", str_day, NULL));
-		}
-		g_free(str_day);
-	}
-
-	//jie2qi4
-	static char str_jq[24][20] = {'9'};
-	int i;
-	char yc[5] = {str_jq[0][0], str_jq[0][1], str_jq[0][2], str_jq[0][3], '\0'};
-	if(atoi(yc) != priv->solar->year)
-	{
-		for(i=0; i<24; i++)
-		{
-			year_jieqi(priv->solar->year, i, str_jq[i]);
-		}
-	}
-	str_day = g_strdup_printf("%04d%02d%02d", priv->solar->year, priv->solar->month, priv->solar->day);
-	gchar** jq_day;
-	for (i=0; i<24; i++)
-	{
-		jq_day = g_strsplit(str_jq[i], " ", 2);
-		if (g_ascii_strcasecmp(jq_day[0], str_day) == 0)
-		{
-			jieri=g_string_append(jieri, delimiter);
-			jieri=g_string_append(jieri, jq_day[1]);
-		}
-	}
-	g_free(str_day);
-	g_strfreev(jq_day);
 
 	gchar* oo = g_strdup(g_strstrip(jieri->str));
 	g_string_free(jieri, TRUE);
-	g_key_file_free(keyfile);
 	return oo;
 }
 
@@ -735,8 +722,7 @@ void			lunar_date_free					  (LunarDate *date)
 	g_free(priv->zhi);
 	g_free(priv->gan2);
 	g_free(priv->zhi2);
-	g_list_foreach(priv->holidays,(GFunc)g_free,NULL);
-	g_list_free(priv->holidays);
+	g_key_file_free(priv->keyfile);
 }
 
 static void _cl_date_calc_lunar(LunarDate *date, GError **error)

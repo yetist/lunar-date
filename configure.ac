@@ -115,7 +115,7 @@ AC_ARG_ENABLE(vala-bindings,
                  [build the EXPERIMENTAL Vala bindings]),
                   enable_vala_bindings=$enableval,
                   enable_vala_bindings=no )
-
+have_vala=no
 if test x$enable_vala_bindings = xyes; then
   if test "x$INTROSPECTION_SCANNER" = x; then
     AC_MSG_ERROR([GObject-Introspection must be enabled for Vala bindings])
@@ -165,11 +165,14 @@ vapi/Makefile
 ])
 
 AC_OUTPUT
-echo "
-
-Configuration:
-
-        Source code location:   ${srcdir}
-	Compiler:		${CC}
-	vala binding Support:   ${have_vala}
-"
+AC_MSG_RESULT([
+Build options:
+  Version                   ${VERSION}
+  Install prefix            ${prefix}
+  Build shared libs         ${enable_shared}
+  Build static libs         ${enable_static}
+  CFLAGS                    ${CFLAGS}
+  Build introspection       ${found_introspection}
+  Build vala binding        ${hava_vala}
+  Build document            ${enable_gtk_doc}
+])
