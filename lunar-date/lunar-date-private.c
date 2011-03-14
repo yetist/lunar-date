@@ -299,7 +299,3 @@ char* str_replace(const gchar* string, const gchar* old, const gchar* new)
 /*
 vi:ts=4:wrap:ai:
 */
-
-/*
-vi:ts=4:wrap:ai:
-*/

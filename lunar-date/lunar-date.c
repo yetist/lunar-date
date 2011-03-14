@@ -379,8 +379,11 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter)
 			str_day = g_strdup_printf("%02d%02d", priv->lunar->month, priv->lunar->day);
 			if (g_key_file_has_key (priv->keyfile, "LUNAR", str_day, NULL))
 			{
+				char* freeme;
 				jieri=g_string_append(jieri, delimiter);
-				jieri=g_string_append(jieri, g_key_file_get_value (priv->keyfile, "LUNAR", str_day, NULL));
+				freeme = g_key_file_get_value (priv->keyfile, "LUNAR", str_day, NULL);
+				jieri=g_string_append(jieri, freeme);
+				g_free(freeme);
 			}
 			g_free(str_day);
 		}
@@ -390,8 +393,11 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter)
 			str_day = g_strdup_printf("%02d%02d", priv->solar->month, priv->solar->day);
 			if (g_key_file_has_key (priv->keyfile, "SOLAR", str_day, NULL))
 			{
+				char *freeme;
 				jieri=g_string_append(jieri, delimiter);
-				jieri=g_string_append(jieri, g_key_file_get_value (priv->keyfile, "SOLAR", str_day, NULL));
+				freeme = g_key_file_get_value (priv->keyfile, "SOLAR", str_day, NULL);
+				jieri=g_string_append(jieri, freeme);
+				g_free(freeme);
 			}
 			g_free(str_day);
 		}
@@ -403,8 +409,11 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter)
 			str_day = g_strdup_printf("%02d%01d%01d", priv->solar->month, weekth, weekday);
 			if (g_key_file_has_key (priv->keyfile, "WEEK", str_day, NULL))
 			{
+				char *freeme;
 				jieri=g_string_append(jieri, delimiter);
-				jieri=g_string_append(jieri, g_key_file_get_value (priv->keyfile, "WEEK", str_day, NULL));
+				freeme = g_key_file_get_value (priv->keyfile, "WEEK", str_day, NULL);
+				jieri=g_string_append(jieri, freeme);
+				g_free(freeme);
 			}
 			g_free(str_day);
 		}
@@ -421,18 +430,18 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter)
 			}
 		}
 		str_day = g_strdup_printf("%04d%02d%02d", priv->solar->year, priv->solar->month, priv->solar->day);
-		gchar** jq_day;
 		for (i=0; i<24; i++)
 		{
+			gchar** jq_day;
 			jq_day = g_strsplit(str_jq[i], " ", 2);
 			if (g_ascii_strcasecmp(jq_day[0], str_day) == 0)
 			{
 				jieri=g_string_append(jieri, delimiter);
 				jieri=g_string_append(jieri, jq_day[1]);
 			}
+			g_strfreev(jq_day);
 		}
 		g_free(str_day);
-		g_strfreev(jq_day);
 	}
 
 	gchar* oo = g_strdup(g_strstrip(jieri->str));
