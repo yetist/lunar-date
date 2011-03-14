@@ -15,24 +15,6 @@
     </releaseinfo>
   </bookinfo>
 
-  <chapter id="overview">
-	  <title>LunarDate Overview</title>
-	  <para>
-GStreamer is a streaming media framework.
-It uses graphs of elements which operate on data.
-The functionality to process media is provided by plug-ins which provide
-features like elements, typefinding, and so on.
-This allows new functionality to be added simply by installing new plug-ins.
-	  </para>
-	  <para>
-GStreamer is cross-platform and works on most UNIX-like platforms as well as
-Windows.  It is released under the GNU Library General Public License
-(GNU LGPL).
-	  </para>
-	  <xi:include href="building.xml" />
-	  <xi:include href="running.xml" />
-  </chapter>
-
   <chapter>
     <title>LunarDate</title>
     <xi:include href="xml/lunar-misc.xml"/>
