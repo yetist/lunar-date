@@ -11,7 +11,7 @@
     <releaseinfo>
       for LunarDate &version;
       The latest version of this documentation can be found on-line at
-      <ulink role="online-location" url="http://[SERVER]/lunar-date/index.html">http://[SERVER]/lunar-date/</ulink>.
+      <ulink role="online-location" url="http://liblunar.googlecode.com/svn/docs/lunar-date/index.html">http://liblunar.googlecode.com/svn/docs/lunar-date/</ulink>.
     </releaseinfo>
   </bookinfo>
 
