@@ -1,18 +1,18 @@
 AC_PREREQ(2.62)
 
-m4_define([liblunar_major_version], [2])
-m4_define([liblunar_minor_version], [2])
-m4_define([liblunar_micro_version], [6])
-m4_define([liblunar_interface_age], [1])
-m4_define([liblunar_binary_age], [m4_eval(100 * liblunar_minor_version + liblunar_micro_version)])
-m4_define([liblunar_version], [liblunar_major_version.liblunar_minor_version.liblunar_micro_version])
+m4_define([lunar_date_major_version], [2])
+m4_define([lunar_date_minor_version], [2])
+m4_define([lunar_date_micro_version], [6])
+m4_define([lunar_date_interface_age], [1])
+m4_define([lunar_date_binary_age], [m4_eval(100 * lunar_date_minor_version + lunar_date_micro_version)])
+m4_define([lunar_date_version], [lunar_date_major_version.lunar_date_minor_version.lunar_date_micro_version])
 
-m4_define([liblunar_lt_current],
-	            [m4_eval(100 * liblunar_minor_version + liblunar_micro_version - liblunar_interface_age)])
-m4_define([liblunar_lt_revision], [liblunar_interface_age])
-m4_define([liblunar_lt_age], [m4_eval(liblunar_binary_age - liblunar_interface_age)])
+m4_define([lunar_date_lt_current],
+	            [m4_eval(100 * lunar_date_minor_version + lunar_date_micro_version - lunar_date_interface_age)])
+m4_define([lunar_date_lt_revision], [lunar_date_interface_age])
+m4_define([lunar_date_lt_age], [m4_eval(lunar_date_binary_age - lunar_date_interface_age)])
 
-AC_INIT(liblunar, liblunar_version, yetist@gmail.com)
+AC_INIT(lunar_date, lunar_date_version, yetist@gmail.com)
 AC_COPYRIGHT([Copyright (C) 2007-2011 yetist@gmail.com])
 
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 no-define -Wno-portability])
@@ -20,37 +20,37 @@ AC_CONFIG_SRCDIR(lunar-date/lunar-date.c)
 AM_CONFIG_HEADER(config.h)
 AC_CONFIG_MACRO_DIR([m4])
 
-LT_CURRENT=liblunar_lt_current
-LT_REVISION=liblunar_lt_revision
-LT_AGE=liblunar_lt_age
+LT_CURRENT=lunar_date_lt_current
+LT_REVISION=lunar_date_lt_revision
+LT_AGE=lunar_date_lt_age
 AC_SUBST(LT_CURRENT)
 AC_SUBST(LT_REVISION)
 AC_SUBST(LT_AGE)
 
-LIBLUNAR_VERSION=liblunar_version
-LIBLUNAR_BINARY_AGE=liblunar_binary_age
-AC_SUBST(LIBLUNAR_VERSION)
-AC_SUBST(LIBLUNAR_BINARY_AGE)
+LUNAR_VERSION=lunar_date_version
+LUNAR_BINARY_AGE=lunar_date_binary_age
+AC_SUBST(LUNAR_VERSION)
+AC_SUBST(LUNAR_BINARY_AGE)
 
 LIBTOOL_EXPORT_OPTIONS='-export-symbols-regex "^lunar.*"'
 AC_SUBST(LIBTOOL_EXPORT_OPTIONS)
 
-LIBLUNAR_MAJOR_VERSION=liblunar_major_version
-LIBLUNAR_MINOR_VERSION=liblunar_minor_version
-LIBLUNAR_MICRO_VERSION=liblunar_micro_version
+LUNAR_DATE_MAJOR_VERSION=lunar_date_major_version
+LUNAR_DATE_MINOR_VERSION=lunar_date_minor_version
+LUNAR_DATE_MICRO_VERSION=lunar_date_micro_version
 
-AC_SUBST(LIBLUNAR_MAJOR_VERSION)
-AC_SUBST(LIBLUNAR_MINOR_VERSION)
-AC_SUBST(LIBLUNAR_MICRO_VERSION)
+AC_SUBST(LUNAR_DATE_MAJOR_VERSION)
+AC_SUBST(LUNAR_DATE_MINOR_VERSION)
+AC_SUBST(LUNAR_DATE_MICRO_VERSION)
 
-AC_DEFINE(LIBLUNAR_MAJOR_VERSION, [liblunar_major_version],
-          [Define to the LIBLUNAR major version])
-AC_DEFINE(LIBLUNAR_MINOR_VERSION, [liblunar_minor_version],
-          [Define to the LIBLUNAR minor version])
-AC_DEFINE(LIBLUNAR_MICRO_VERSION, [liblunar_micro_version],
-          [Define to the LIBLUNAR micro version])
-AC_DEFINE(LIBLUNAR_BINARY_AGE, [liblunar_binary_age],
-	            [Define to the LIBLUNAR binary age])
+AC_DEFINE(LUNAR_DATE_MAJOR_VERSION, [lunar_date_major_version],
+          [Define to the LUNAR major version])
+AC_DEFINE(LUNAR_DATE_MINOR_VERSION, [lunar_date_minor_version],
+          [Define to the LUNAR minor version])
+AC_DEFINE(LUNAR_DATE_MICRO_VERSION, [lunar_date_micro_version],
+          [Define to the LUNAR micro version])
+AC_DEFINE(LUNAR_DATE_BINARY_AGE, [lunar_date_binary_age],
+	            [Define to the LUNAR binary age])
 
 AM_MAINTAINER_MODE
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
@@ -87,22 +87,22 @@ dnl ================================================================
 GLIB2_REQUIRED=2.4.0
 GOBJECT_REQUIRED=2.4.0
 
-PKG_CHECK_MODULES(LIBLUNAR, glib-2.0 >= $GLIB2_REQUIRED gobject-2.0 >= $GOBJECT_REQUIRED)
+PKG_CHECK_MODULES(LUNAR_DATE, glib-2.0 >= $GLIB2_REQUIRED gobject-2.0 >= $GOBJECT_REQUIRED)
 
-AC_SUBST(LIBLUNAR_CFLAGS)
-AC_SUBST(LIBLUNAR_LIBS)
+AC_SUBST(LUNAR_DATE_CFLAGS)
+AC_SUBST(LUNAR_DATE_LIBS)
 
 dnl ================================================================
 dnl run in source tree
 dnl ================================================================
 AC_ARG_ENABLE(run-in-source-tree,
-	      AC_HELP_STRING([--disable-run-in-source-tree],[disable search for holiday.dat file in local directory ]),
+	      AC_HELP_STRING([--enable-run-in-source-tree],[enable search for holiday.dat file in local directory ]),
 	[case "${enableval}" in
 	yes) ENABLE_RUN_IN_SOURCE_TREE=yes ;;
 	no)  ENABLE_RUN_IN_SOURCE_TREE=no ;;
 	*) AC_MSG_ERROR(bad value ${enableval} for --disable-run-in-source-tree) ;;
 	esac],
-[ENABLE_RUN_IN_SOURCE_TREE=no]) dnl Default value
+	[ENABLE_RUN_IN_SOURCE_TREE=no]) dnl Default value
 if test x$ENABLE_RUN_IN_SOURCE_TREE = xyes; then
 	AC_DEFINE(RUN_IN_SOURCE_TREE, 1, [enable search for holiday.dat file in local directory])
 fi
@@ -148,7 +148,7 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Define the gettext pack
 AC_SUBST(GETTEXT_PACKAGE)
 AM_GLIB_GNU_GETTEXT
 
-AM_GLIB_DEFINE_LOCALEDIR(LIBLUNAR_LOCALEDIR)
+AM_GLIB_DEFINE_LOCALEDIR(LUNAR_DATE_LOCALEDIR)
 
 AC_CONFIG_FILES([
 lunar-date-2.0.pc

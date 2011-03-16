@@ -30,17 +30,17 @@
 
 G_BEGIN_DECLS
 
-void	lunar_init				 (int	 *argc, char ***argv);
+void lunar_init (int *argc, char ***argv);
 
 const gchar * lunar_check_version (guint required_major,
 		guint required_minor,
 		guint required_micro);
 
-#define LIBLUNAR_CHECK_VERSION(major,minor,micro)    \
-    (LIBLUNAR_MAJOR_VERSION > (major) || \
-     (LIBLUNAR_MAJOR_VERSION == (major) && LIBLUNAR_MINOR_VERSION > (minor)) || \
-     (LIBLUNAR_MAJOR_VERSION == (major) && LIBLUNAR_MINOR_VERSION == (minor) && \
-      LIBLUNAR_MICRO_VERSION >= (micro)))
+#define LUNAR_CHECK_VERSION(major,minor,micro)    \
+	(LUNAR_MAJOR_VERSION > (major) || \
+	 (LUNAR_MAJOR_VERSION == (major) && LUNAR_MINOR_VERSION > (minor)) || \
+	 (LUNAR_MAJOR_VERSION == (major) && LUNAR_MINOR_VERSION == (minor) && \
+	  LUNAR_MICRO_VERSION >= (micro)))
 
 
 G_END_DECLS

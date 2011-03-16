@@ -5,7 +5,7 @@ CLEANFILES =
 INCLUDES =                                              \
 	-I$(top_srcdir)					\
         -I$(srcdir) 					\
-	$(LIBLUNAR_CFLAGS)				\
+	$(LUNAR_DATE_CFLAGS)				\
 	$(WARN_CFLAGS)					\
         -DLUNAR_HOLIDAYDIR=\""$(datadir)/liblunar/"\"
 
@@ -32,7 +32,7 @@ lib_LTLIBRARIES = liblunar-date-2.0.la
 liblunar_date_2_0_includedir = $(includedir)/liblunar-2.0/lunar-date
 liblunar_date_2_0_include_HEADERS = $(source_h)
 liblunar_date_2_0_la_SOURCES =	$(source_c) $(BUILT_SOURCES)
-liblunar_date_2_0_la_LIBADD = 	$(LIBLUNAR_LIBS)
+liblunar_date_2_0_la_LIBADD = 	$(LUNAR_DATE_LIBS)
 liblunar_date_2_0_la_LDFLAGS = \
 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \
 	-export-dynamic $(export_symbols)

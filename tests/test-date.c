@@ -128,7 +128,7 @@ void test(gchar* argv[])
 int main (int argc, char* argv[])
 {
 	setlocale (LC_ALL, "");
-	bindtextdomain (GETTEXT_PACKAGE, LIBLUNAR_LOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, LUNAR_DATE_LOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 	g_type_init();
