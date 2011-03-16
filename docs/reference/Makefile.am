@@ -62,14 +62,14 @@ expand_content_files=
 # signals and properties.
 #
 GTKDOC_CFLAGS =                                               \
-        $(LIBLUNAR_CFLAGS)                                  \
+        $(LUNAR_CALENDAR_CFLAGS)                                  \
         -I$(top_srcdir)/lunar-calendar                           \
         -I$(top_builddir)/lunar-calendar				\
         $(AM_CFLAGS)
 
 GTKDOC_LIBS=                                            \
         $(top_builddir)/lunar-calendar/liblunar-calendar-2.0.la	\
-        $(LIBLUNAR_LIBS)
+        $(LUNAR_CALENDAR_LIBS)
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.
 include $(top_srcdir)/gtk-doc.make

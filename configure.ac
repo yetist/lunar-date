@@ -1,19 +1,16 @@
 AC_PREREQ(2.62)
 
-m4_define([liblunar_gtk_major_version], [2])
-m4_define([liblunar_gtk_minor_version], [2])
-m4_define([liblunar_gtk_micro_version], [6])
-m4_define([liblunar_gtk_interface_age], [1])
-m4_define([liblunar_gtk_binary_age],
-	            [m4_eval(100 * liblunar_gtk_minor_version + liblunar_gtk_micro_version)])
-m4_define([liblunar_gtk_version],
-	            [liblunar_gtk_major_version.liblunar_gtk_minor_version.liblunar_gtk_micro_version])
-m4_define([liblunar_gtk_lt_current],
-	  [m4_eval(100 * liblunar_gtk_minor_version + liblunar_gtk_micro_version - liblunar_gtk_interface_age)])
-m4_define([liblunar_gtk_lt_revision], [liblunar_gtk_interface_age])
-m4_define([liblunar_gtk_lt_age], [m4_eval(liblunar_gtk_binary_age - liblunar_gtk_interface_age)])
+m4_define([lunar_calendar_major_version], [2])
+m4_define([lunar_calendar_minor_version], [2])
+m4_define([lunar_calendar_micro_version], [6])
+m4_define([lunar_calendar_interface_age], [1])
+m4_define([lunar_calendar_binary_age],    [m4_eval(100 * lunar_calendar_minor_version + lunar_calendar_micro_version)])
+m4_define([lunar_calendar_version],       [lunar_calendar_major_version.lunar_calendar_minor_version.lunar_calendar_micro_version])
+m4_define([lunar_calendar_lt_current],    [m4_eval(100 * lunar_calendar_minor_version + lunar_calendar_micro_version - lunar_calendar_interface_age)])
+m4_define([lunar_calendar_lt_revision],   [lunar_calendar_interface_age])
+m4_define([lunar_calendar_lt_age],        [m4_eval(lunar_calendar_binary_age - lunar_calendar_interface_age)])
 
-AC_INIT(liblunar-gtk, liblunar_gtk_version, yetist@gmail.com)
+AC_INIT(lunar-calendar, lunar_calendar_version, yetist@gmail.com)
 AC_COPYRIGHT([Copyright (C) 2007-2011 yetist@gmail.com])
 
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 no-define -Wno-portability])
@@ -22,15 +19,16 @@ AC_CONFIG_SRCDIR(lunar-calendar/lunar-calendar.c)
 AM_CONFIG_HEADER(config.h)
 AC_CONFIG_MACRO_DIR([m4])
 
-LT_CURRENT=liblunar_gtk_lt_current
-LT_REVISION=liblunar_gtk_lt_revision
-LT_AGE=liblunar_gtk_lt_age
+dnl for so version.
+LT_CURRENT=lunar_calendar_lt_current
+LT_REVISION=lunar_calendar_lt_revision
+LT_AGE=lunar_calendar_lt_age
 AC_SUBST(LT_CURRENT)
 AC_SUBST(LT_REVISION)
 AC_SUBST(LT_AGE)
 
-LIBLUNAR_GTK_VERSION=liblunar_gtk_version
-AC_SUBST(LIBLUNAR_GTK_VERSION)
+LUNAR_CALENDAR_VERSION=lunar_calendar_version
+AC_SUBST(LUNAR_CALENDAR_VERSION)
 
 LIBTOOL_EXPORT_OPTIONS='-export-symbols-regex "^lunar.*"'
 AC_SUBST(LIBTOOL_EXPORT_OPTIONS)
@@ -63,14 +61,14 @@ dnl ================================================================
 dnl check glib, gobject and liblunar
 dnl ================================================================
 
-LIBLUNAR_REQUIRED=2.2.1
+LUNAR_DATE_REQUIRED=2.2.1
 GTK2_REQUIRED=2.16
 GDK2_REQUIRED=2.16
 
-PKG_CHECK_MODULES(LIBLUNAR, lunar-date-2.0 >= $LIBLUNAR_REQUIRED gtk+-2.0 >= $GTK2_REQUIRED  gdk-2.0 >= $GDK2_REQUIRED )
+PKG_CHECK_MODULES(LUNAR_CALENDAR, lunar-date-2.0 >= $LUNAR_DATE_REQUIRED gtk+-2.0 >= $GTK2_REQUIRED  gdk-2.0 >= $GDK2_REQUIRED )
 
-AC_SUBST(LIBLUNAR_CFLAGS)
-AC_SUBST(LIBLUNAR_LIBS)
+AC_SUBST(LUNAR_CALENDAR_CFLAGS)
+AC_SUBST(LUNAR_CALENDAR_LIBS)
 
 dnl ================================================================
 dnl vala bindings support
