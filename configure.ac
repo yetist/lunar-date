@@ -45,7 +45,7 @@ AC_PROG_LIBTOOL
 
 AM_PATH_PYTHON
 
-dnl IT_PROG_INTLTOOL([0.35.0])
+IT_PROG_INTLTOOL([0.35.0])
 
 GTK_DOC_CHECK([1.0],[--flavour=no-tmpl])
 
@@ -55,6 +55,16 @@ AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
 GOBJECT_INTROSPECTION_CHECK([0.6.7])
 
 AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
+
+dnl ================================================================
+dnl  Language Support 
+dnl ================================================================
+GETTEXT_PACKAGE=lunar-calendar
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Define the gettext package to be used])
+AC_SUBST(GETTEXT_PACKAGE)
+AM_GLIB_GNU_GETTEXT
+
+AM_GLIB_DEFINE_LOCALEDIR(LUNAR_CALENDAR_LOCALEDIR)
 
 
 dnl ================================================================
@@ -109,6 +119,7 @@ AC_CONFIG_FILES([
 lunar-calendar-2.0.pc
 lunar-calendar/Makefile
 tests/Makefile
+po/Makefile.in
 docs/Makefile
 docs/reference/Makefile
 docs/reference/version.xml

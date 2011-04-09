@@ -19,6 +19,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
+#ifdef HAVE_CONFIG_H
+	#include <config.h>
+#endif
+
+#include <glib/gi18n-lib.h>
 #include <gdk/gdk.h>
 #include <date.h>
 #include <string.h>
@@ -91,6 +96,11 @@ lunar_calendar_init (LunarCalendar *calendar)
 	priv->color->red = 0x0;
 	priv->color->green = 0x0;
 	priv->color->blue = 0xffff;
+
+	/* FIXME: here we can setup the locale info, but it looks like not a good idea */
+	setlocale(LC_ALL, "");
+	bindtextdomain (GETTEXT_PACKAGE, LUNAR_CALENDAR_LOCALEDIR);
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
 	if (gtk_calendar_get_display_options(GTK_CALENDAR(calendar)) & GTK_CALENDAR_SHOW_DETAILS)
 		gtk_calendar_set_detail_func (GTK_CALENDAR (calendar), calendar_detail_cb, calendar, NULL);
@@ -216,12 +226,7 @@ void  lunar_calendar_day_selected(GtkCalendar *calendar)
 	gtk_calendar_get_date(calendar, &year, &month, &day);
 	lunar_date_set_solar_date(priv->date, year, month + 1, day, 0, &error);
 	char *jieri = lunar_date_get_jieri(priv->date, "\n");
-	char *format = g_strdup_printf("%(year)年%(month)月%(day)日\n"
-			"农历 %(YUE)月%(RI)日\n"
-			"干支：%(Y60)年 %(M60)月 %(D60)日\n"
-			"八字：%(Y8)年 %(M8)月 %(D8)日\n"
-			"生肖：%(shengxiao)\n"
-			"<span foreground=\"blue\">%s</span>\n", jieri);
+	char *format = g_strdup_printf(_("%(year)-%(month)-%(day)\nLunar:%(YUE)Month%(RI)Day\nGanzhi:%(Y60)Year%(M60)Month%(D60)Day\nBazi:%(Y8)Year%(M8)Month%(D8)Day\nShengxiao:%(shengxiao)\n<span foreground=\"blue\">%s</span>\n"), jieri);
 	char *strtime = lunar_date_strftime(priv->date, format);
 	gtk_widget_set_tooltip_markup(GTK_WIDGET(calendar), strtime);
 	g_free(format);

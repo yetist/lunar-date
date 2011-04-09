@@ -1,0 +1,37 @@
+# liblunar package simplified Chinese translation file.
+# Copyright (C) 2008  yetist <yetist@gmail.com>.
+# This file is distributed under the same license as the liblunar package.
+# yetist <yetist@gmail.com>, 2008.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: liblunar\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-04-10 00:02+0800\n"
+"PO-Revision-Date: 2011-04-10 00:08+0800\n"
+"Last-Translator: yetist <yetist@gmail.com>\n"
+"Language-Team: yetist@gmail.com <yetist@gmail.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+
+#: ../lunar-calendar/lunar-calendar.c:227
+msgid ""
+"%(year)-%(month)-%(day)\n"
+"Lunar:%(YUE)Month%(RI)Day\n"
+"Ganzhi:%(Y60)Year%(M60)Month%(D60)Day\n"
+"Bazi:%(Y8)Year%(M8)Month%(D8)Day\n"
+"Shengxiao:%(shengxiao)\n"
+"<span foreground=\"blue\">%s</span>\n"
+msgstr ""
+"%(year)年%(month)月%(day)日\n"
+"农历：%(YUE)月%(RI)日\n"
+"干支：%(Y60)年%(M60)月%(D60)日\n"
+"八字：%(Y8)年%(M8)月%(D8)日\n"
+"生肖：%(shengxiao)\n"
+"<span foreground=\"blue\">%s</span>\n"
