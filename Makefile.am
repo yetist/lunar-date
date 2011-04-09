@@ -3,12 +3,8 @@ SUBDIRS = lunar-calendar tests docs
 ACLOCAL_AMFLAGS = -I m4INTROSPECTION_GIRS
 EXTRA_DIST =                    \
 	lunar-calendar-2.0.pc.in	\
-	lunar-calendar-2.0.vapi	\
-	lunar-calendar-2.0.deps	\
 	sanity_check		\
 	xmldocs.make 		\
-  	m4/introspection.m4	\
-  	m4/python.m4	\
 	omf.make
 
 MAINTAINERCLEANFILES = 		\
