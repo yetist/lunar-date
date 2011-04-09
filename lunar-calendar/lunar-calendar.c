@@ -203,7 +203,7 @@ void  lunar_calendar_day_selected(GtkCalendar *calendar)
 	LunarDate *lunar;
 	GError *error = NULL;
 
-	if (getenv("LIBLUNAR_GTK_IGNORE_NON_CHINESE") != NULL)
+	if (getenv("LUNAR_CALENDAR_IGNORE_NON_CHINESE") != NULL)
 	{
 		const gchar* const * langs =  g_get_language_names();
 
@@ -250,7 +250,7 @@ calendar_detail_cb (GtkCalendar *gcalendar,
 		return NULL;
 	}
 
-	if (getenv("LIBLUNAR_GTK_IGNORE_NON_CHINESE") != NULL)
+	if (getenv("LUNAR_CALENDAR_IGNORE_NON_CHINESE") != NULL)
 	{
 		const gchar* const * langs =  g_get_language_names();
 
