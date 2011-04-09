@@ -1,8 +1,8 @@
 AC_PREREQ(2.62)
 
 m4_define([lunar_date_major_version], [2])
-m4_define([lunar_date_minor_version], [2])
-m4_define([lunar_date_micro_version], [6])
+m4_define([lunar_date_minor_version], [3])
+m4_define([lunar_date_micro_version], [0])
 m4_define([lunar_date_interface_age], [1])
 m4_define([lunar_date_binary_age], [m4_eval(100 * lunar_date_minor_version + lunar_date_micro_version)])
 m4_define([lunar_date_version], [lunar_date_major_version.lunar_date_minor_version.lunar_date_micro_version])
@@ -12,7 +12,7 @@ m4_define([lunar_date_lt_current],
 m4_define([lunar_date_lt_revision], [lunar_date_interface_age])
 m4_define([lunar_date_lt_age], [m4_eval(lunar_date_binary_age - lunar_date_interface_age)])
 
-AC_INIT(lunar_date, lunar_date_version, yetist@gmail.com)
+AC_INIT(lunar-date, lunar_date_version, yetist@gmail.com)
 AC_COPYRIGHT([Copyright (C) 2007-2011 yetist@gmail.com])
 
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 no-define -Wno-portability])

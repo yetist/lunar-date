@@ -5,10 +5,6 @@ EXTRA_DIST =                    \
 	lunar-date-2.0.pc.in	\
         ChangeLog.pre-2-2       \
 	sanity_check		\
-	xmldocs.make 		\
-	omf.make		\
-  	m4/introspection.m4	\
-  	m4/python.m4		\
         intltool-extract.in     \
         intltool-merge.in       \
         intltool-update.in
@@ -29,9 +25,7 @@ MAINTAINERCLEANFILES = 		\
 	ltmain.sh		\
 	missing			\
 	mkinstalldirs		\
-	omf.make		\
 	py-compile		\
-	xmldocs.make		\
 	m4/gtk-doc.m4		\
 	m4/intltool.m4		\
 	m4/libtool.m4		\
