@@ -93,4 +93,23 @@ distclean-local:
                 rm -f ChangeLog; \
         fi
 
+synchtml:
+	modname=lunar-date; \
+		svnroot="http://liblunar.googlecode.com/svn/docs/lunar-date"; \
+		tmpdir=tmp/svndocs; \
+		if [ -d $$tmpdir ];then \
+		svn update $$tmpdir/$$modname; \
+		else \
+		mkdir -p $$tmpdir; \
+		svn checkout $$svnroot $$tmpdir/$$modname; \
+		fi ; \
+		if [ -d docs/reference/html ];then \
+		cp docs/reference/html/* $$tmpdir/$$modname/; \
+		svn status $$tmpdir/$$modname |grep "?" |awk '{print $2}'|xargs svn add; \
+		find $$tmpdir/$$modname -maxdepth 1 -type f -name "*.htm*" -exec svn propset "svn:mime-type" "text/html" {} \; ; \
+		svn commit -m "update $$modname html docs" $$tmpdir/$$modname; \
+		else \
+		echo "please make docs first"; \
+		fi
+
 -include $(top_srcdir)/git.mk
