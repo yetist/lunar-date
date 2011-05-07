@@ -313,6 +313,7 @@ int mymemcnt(const char *mem, int len, const char *pat, int pat_len);
 void num_2_hanzi(int n, char* hanzi, gulong len);
 void mday_2_hanzi(int n, char* hanzi, gulong len);
 char* str_replace(const gchar* string, const gchar* old, const gchar* new);
+void lunar_date_init_i18n(void);
 
 G_END_DECLS
 

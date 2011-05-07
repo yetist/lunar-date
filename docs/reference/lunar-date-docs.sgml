@@ -16,8 +16,8 @@
   </bookinfo>
 
   <chapter>
-    <title>LunarDate</title>
-    <xi:include href="xml/lunar-misc.xml"/>
+    <title>API Reference</title>
+    <xi:include href="xml/lunar-version.xml"/>
     <xi:include href="xml/lunar-date.xml"/>
   </chapter>
 

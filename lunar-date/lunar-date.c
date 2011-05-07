@@ -37,9 +37,17 @@
 #endif
 #include <glib/gi18n-lib.h>
 #include <string.h>
-#include <lunar-date/lunar-main.h>
 #include <lunar-date/lunar-date.h>
+#include <lunar-date/lunar-version.h>
 #include "lunar-date-private.h"
+
+/**
+ * SECTION:lunar-date
+ * @Short_description: Chinese Lunar Date Library
+ * @Title: LunarDate
+ *
+ * The #LunarDate provide Chinese lunar date library.
+ */
 
 enum {
 	LAST_SIGNAL
@@ -97,6 +105,7 @@ lunar_date_init (LunarDate *date)
 	LunarDatePrivate *priv;
 	
 	priv = LUNAR_DATE_GET_PRIVATE (date);
+	lunar_date_init_i18n();
 
 	priv->keyfile = g_key_file_new();
 	priv->solar = g_new0 (CLDate, 1);

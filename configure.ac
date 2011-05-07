@@ -27,9 +27,9 @@ AC_SUBST(LT_CURRENT)
 AC_SUBST(LT_REVISION)
 AC_SUBST(LT_AGE)
 
-LUNAR_VERSION=lunar_date_version
-LUNAR_BINARY_AGE=lunar_date_binary_age
-AC_SUBST(LUNAR_VERSION)
+LUNAR_DATE_VERSION=lunar_date_version
+LUNAR_DATE_BINARY_AGE=lunar_date_binary_age
+AC_SUBST(LUNAR_DATE_VERSION)
 AC_SUBST(LUNAR_BINARY_AGE)
 
 LIBTOOL_EXPORT_OPTIONS='-export-symbols-regex "^lunar.*"'
@@ -152,7 +152,7 @@ AM_GLIB_DEFINE_LOCALEDIR(LUNAR_DATE_LOCALEDIR)
 
 AC_CONFIG_FILES([
 lunar-date-2.0.pc
-lunar-date/lunar-config.h
+lunar-date/lunar-version.h
 lunar-date/Makefile
 tests/Makefile
 data/Makefile

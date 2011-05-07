@@ -11,13 +11,11 @@ INCLUDES =                                              \
 
 source_h = 	\
 	$(srcdir)/lunar-date.h		\
-	$(srcdir)/lunar-config.h	\
-	$(srcdir)/lunar-main.h
+	$(srcdir)/lunar-version.h
 
 source_c =	\
 	$(srcdir)/lunar-date.c		\
-	$(srcdir)/lunar-date-private.c	\
-	$(srcdir)/lunar-main.c
+	$(srcdir)/lunar-date-private.c
 
 lunardatedir=$(includedir)/liblunar-2.0
 lunardate_HEADERS = date.h
@@ -67,6 +65,6 @@ typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 CLEANFILES += $(dist_gir_DATA) $(typelibs_DATA)
 endif
 
-EXTRA_DIST =  lunar-date-enum-types.h.template lunar-date-enum-types.c.template lunar-date-private.h lunar-config.h.in
+EXTRA_DIST =  lunar-date-enum-types.h.template lunar-date-enum-types.c.template lunar-date-private.h lunar-version.h.in
 
 -include $(top_srcdir)/git.mk
