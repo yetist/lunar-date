@@ -21,7 +21,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <gtk/gtk.h>
-#include <calendar.h>
+#include <lunar-calendar/lunar-calendar.h>
 
 #define DEF_PAD 12
 #define DEF_PAD_SMALL 6
@@ -168,11 +168,11 @@ calendar_day_selected_double_click (GtkWidget    *widget,
   gtk_calendar_get_date (GTK_CALENDAR (data->window),
 			 NULL, NULL, &day);
 
-  if (GTK_CALENDAR (data->window)->marked_date[day-1] == 0) {
-    gtk_calendar_mark_day (GTK_CALENDAR (data->window), day);
-  } else { 
-    gtk_calendar_unmark_day (GTK_CALENDAR (data->window), day);
-  }
+//  if (GTK_CALENDAR (data->window)->marked_date[day-1] == 0) {
+//    gtk_calendar_mark_day (GTK_CALENDAR (data->window), day);
+//  } else { 
+//    gtk_calendar_unmark_day (GTK_CALENDAR (data->window), day);
+//  }
 }
 
 static void
@@ -317,10 +317,10 @@ demonstrate_details (CalendarData *data)
         gint year, month, day;
         gchar *detail;
     
-        year = calendar->year;
-        month = calendar->month;
-        month += calendar->day_month[row][col];
-        day = calendar->day[row][col];
+//        year = calendar->year;
+//        month = calendar->month;
+//        month += calendar->day_month[row][col];
+//        day = calendar->day[row][col];
     
         if (month < 1)
           {
@@ -708,7 +708,7 @@ create_calendar(void)
 
   gtk_container_add (GTK_CONTAINER (window), vbox);
 
-  GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
+  //GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
   gtk_widget_grab_default (button);
 
   gtk_window_set_default_size (GTK_WINDOW (window), 600, 0);

@@ -1,6 +1,6 @@
 /*
  * compilation:
- * valac --pkg lunar-calendar-2.0 calendar.vala
+ * valac --pkg lunar-calendar-3.0 calendar.vala
  *
  * configure:
  * $ ./configure --enable-vala-bindings ...

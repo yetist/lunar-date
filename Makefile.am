@@ -2,7 +2,7 @@ ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = po lunar-calendar tests docs
 ACLOCAL_AMFLAGS = -I m4INTROSPECTION_GIRS
 EXTRA_DIST =                    \
-	lunar-calendar-2.0.pc.in	\
+	lunar-calendar-3.0.pc.in	\
 	sanity_check		\
 	xmldocs.make 		\
 	omf.make
@@ -31,7 +31,7 @@ MAINTAINERCLEANFILES = 		\
 	`find "$(srcdir)" -type f -name Makefile.in -print`
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = lunar-calendar-2.0.pc
+pkgconfig_DATA = lunar-calendar-3.0.pc
 
 if HAVE_VALA
 SUBDIRS += vapi
@@ -83,8 +83,8 @@ distclean-local:
         fi
 
 synchtml:
-	modname=lunar-calendar; \
-		svnroot="https://liblunar.googlecode.com/svn/docs/lunar-calendar"; \
+	modname=lunar-calendar3; \
+		svnroot="https://liblunar.googlecode.com/svn/docs/lunar-calendar3"; \
 		tmpdir=tmp/svndocs; \
 		if [ -d $$tmpdir ];then \
 		svn update $$tmpdir/$$modname; \

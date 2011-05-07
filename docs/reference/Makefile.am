@@ -6,7 +6,7 @@
 AUTOMAKE_OPTIONS = 1.6
 
 # The name of the module, e.g. 'glib'.
-DOC_MODULE=lunar-calendar
+DOC_MODULE=lunar-calendar3
 
 # The top-level SGML file. You can change this if you want to.
 DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
@@ -68,7 +68,7 @@ GTKDOC_CFLAGS =                                               \
         $(AM_CFLAGS)
 
 GTKDOC_LIBS=                                            \
-        $(top_builddir)/lunar-calendar/liblunar-calendar-2.0.la	\
+        $(top_builddir)/lunar-calendar/liblunar-calendar-3.0.la	\
         $(LUNAR_CALENDAR_LIBS)
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.

@@ -1,9 +1,9 @@
 AC_PREREQ(2.62)
 
-m4_define([lunar_calendar_major_version], [2])
-m4_define([lunar_calendar_minor_version], [4])
+m4_define([lunar_calendar_major_version], [3])
+m4_define([lunar_calendar_minor_version], [0])
 m4_define([lunar_calendar_micro_version], [0])
-m4_define([lunar_calendar_interface_age], [1])
+m4_define([lunar_calendar_interface_age], [0])
 m4_define([lunar_calendar_binary_age],    [m4_eval(100 * lunar_calendar_minor_version + lunar_calendar_micro_version)])
 m4_define([lunar_calendar_version],       [lunar_calendar_major_version.lunar_calendar_minor_version.lunar_calendar_micro_version])
 m4_define([lunar_calendar_lt_current],    [m4_eval(100 * lunar_calendar_minor_version + lunar_calendar_micro_version - lunar_calendar_interface_age)])
@@ -59,7 +59,7 @@ AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
 dnl ================================================================
 dnl  Language Support 
 dnl ================================================================
-GETTEXT_PACKAGE=lunar-calendar
+GETTEXT_PACKAGE=lunar-calendar-3.0
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Define the gettext package to be used])
 AC_SUBST(GETTEXT_PACKAGE)
 AM_GLIB_GNU_GETTEXT
@@ -72,10 +72,10 @@ dnl check glib, gobject and liblunar
 dnl ================================================================
 
 LUNAR_DATE_REQUIRED=2.4.0
-GTK2_REQUIRED=2.16
-GDK2_REQUIRED=2.16
+GTK2_REQUIRED=2.28.6
+GDK2_REQUIRED=3.0.9
 
-PKG_CHECK_MODULES(LUNAR_CALENDAR, lunar-date-2.0 >= $LUNAR_DATE_REQUIRED gtk+-2.0 >= $GTK2_REQUIRED  gdk-2.0 >= $GDK2_REQUIRED )
+PKG_CHECK_MODULES(LUNAR_CALENDAR, lunar-date-2.0 >= $LUNAR_DATE_REQUIRED gtk+-3.0 >= $GTK2_REQUIRED  gdk-3.0 >= $GDK2_REQUIRED )
 
 AC_SUBST(LUNAR_CALENDAR_CFLAGS)
 AC_SUBST(LUNAR_CALENDAR_LIBS)
@@ -116,7 +116,7 @@ AC_SUBST(HAVE_VALA)
 
 
 AC_CONFIG_FILES([
-lunar-calendar-2.0.pc
+lunar-calendar-3.0.pc
 lunar-calendar/Makefile
 tests/Makefile
 po/Makefile.in
