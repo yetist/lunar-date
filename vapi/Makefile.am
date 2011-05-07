@@ -16,7 +16,7 @@ lunar-date-2.0.vapi: $(top_builddir)/lunar-date/LunarDate-2.0.gir
 		$(NULL)
 	@mv $@ lunar-date-2.0.vapi.tmp1
 	$(AM_V_GEN)sed -e \
-                 's/LunarDate-2.0.h/date.h/' \
+                 's#LunarDate-2.0.h#lunar-date/lunar-date.h#' \
                  < lunar-date-2.0.vapi.tmp1 > lunar-date-2.0.vapi.tmp2
 	$(AM_V_GEN)sed -e \
 		 's/ref string\[\]?/ref unowned string\[\]/' \

@@ -22,10 +22,7 @@
  * Boston, MA 02111-1307, USA.
  * */
 
-#ifdef HAVE_CONFIG_H
-	#include <config.h>
-#endif
-#include <date.h>
+#include <lunar-date/lunar-date.h>
 #include <glib/gi18n.h>
 
 static void display (LunarDate *date)
@@ -128,9 +125,6 @@ void test(gchar* argv[])
 int main (int argc, char* argv[])
 {
 	setlocale (LC_ALL, "");
-	bindtextdomain (GETTEXT_PACKAGE, LUNAR_DATE_LOCALEDIR);
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-	textdomain (GETTEXT_PACKAGE);
 	g_type_init();
 	if (argc == 4)
 	{
