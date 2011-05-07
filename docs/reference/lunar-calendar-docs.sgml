@@ -16,7 +16,7 @@
   </bookinfo>
 
   <chapter>
-    <title>LunarCalendar</title>
+    <title>API Reference</title>
         <xi:include href="xml/lunar-calendar.xml"/>
         <para role="gallery">
             <link linkend="LunarCalendar">

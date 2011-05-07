@@ -15,7 +15,7 @@ lunar-calendar-2.0.vapi: $(top_builddir)/lunar-calendar/LunarCalendar-2.0.gir
 		$(NULL)
 	@mv $@ lunar-calendar-2.0.vapi.tmp1
 	$(AM_V_GEN)sed -e \
-                 's/LunarCalendar-2.0.h/calendar.h/' \
+                 's#LunarCalendar-2.0.h#lunar-calendar/lunar-calendar.h#' \
                  < lunar-calendar-2.0.vapi.tmp1 > $@
 	@rm lunar-calendar-2.0.vapi.tmp*
 

@@ -25,10 +25,18 @@
 
 #include <glib/gi18n-lib.h>
 #include <gdk/gdk.h>
-#include <date.h>
+#include <lunar-date/lunar-date.h>
 #include <string.h>
 #include <stdlib.h>
 #include "lunar-calendar.h"
+
+/**
+ * SECTION:lunar-calendar
+ * @Short_description: Chinese Lunar Calendar widget for GTK+
+ * @Title: LunarCalendar
+ *
+ * The #LunarDate provide Chinese lunar Calendar Wieget for GTK+ .
+ */
 
 enum {
 	LAST_SIGNAL
@@ -59,6 +67,7 @@ static void lunar_calendar_month_changed (GtkCalendar *calendar, gpointer     us
 void  lunar_calendar_day_selected(GtkCalendar *calendar);
 static void lunar_calendar_finalize (GObject *gobject);
 static void lunar_calendar_dispose (GObject *gobject);
+static void lunar_calendar_init_i18n(void);
 
 static gchar*
 calendar_detail_cb (GtkCalendar *gcalendar,
@@ -98,9 +107,7 @@ lunar_calendar_init (LunarCalendar *calendar)
 	priv->color->blue = 0xffff;
 
 	/* FIXME: here we can setup the locale info, but it looks like not a good idea */
-	setlocale(LC_ALL, "");
-	bindtextdomain (GETTEXT_PACKAGE, LUNAR_CALENDAR_LOCALEDIR);
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	lunar_calendar_init_i18n();
 
 	if (gtk_calendar_get_display_options(GTK_CALENDAR(calendar)) & GTK_CALENDAR_SHOW_DETAILS)
 		gtk_calendar_set_detail_func (GTK_CALENDAR (calendar), calendar_detail_cb, calendar, NULL);
@@ -281,11 +288,26 @@ calendar_detail_cb (GtkCalendar *gcalendar,
 	if (strcmp(buf = lunar_date_strftime(priv->date, "%(ri)"), "1") == 0)
 	{
 		g_free(buf);
-		return lunar_date_strftime(priv->date, "%(YUE)月");
+		return lunar_date_strftime(priv->date, _("%(YUE)Yue"));
 	}
 	else
 		return  lunar_date_strftime(priv->date, "%(RI)");
 }
+
+static void lunar_calendar_init_i18n(void)
+{
+  static gboolean _lunar_calendar_gettext_initialized = FALSE;
+
+  if (!_lunar_calendar_gettext_initialized)
+    {
+	  bindtextdomain (GETTEXT_PACKAGE, LUNAR_CALENDAR_LOCALEDIR);
+#ifdef HAVE_BIND_TEXTDOMAIN_CODESET
+      bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+#endif
+      _lunar_calendar_gettext_initialized = TRUE;
+    }
+}
+
 
 /*
 vi:ts=4:wrap:ai:

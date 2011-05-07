@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: liblunar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-10 00:02+0800\n"
-"PO-Revision-Date: 2011-04-10 00:08+0800\n"
+"POT-Creation-Date: 2011-05-07 20:27+0800\n"
+"PO-Revision-Date: 2011-05-07 20:28+0800\n"
 "Last-Translator: yetist <yetist@gmail.com>\n"
 "Language-Team: yetist@gmail.com <yetist@gmail.com>\n"
 "Language: \n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Poedit-Language: Chinese\n"
 "X-Poedit-Country: CHINA\n"
 
-#: ../lunar-calendar/lunar-calendar.c:227
+#: ../lunar-calendar/lunar-calendar.c:236
 msgid ""
 "%(year)-%(month)-%(day)\n"
 "Lunar:%(YUE)Month%(RI)Day\n"
@@ -35,3 +35,7 @@ msgstr ""
 "八字：%(Y8)年%(M8)月%(D8)日\n"
 "生肖：%(shengxiao)\n"
 "<span foreground=\"blue\">%s</span>\n"
+
+#: ../lunar-calendar/lunar-calendar.c:291
+msgid "%(YUE)Yue"
+msgstr "%(YUE)月"

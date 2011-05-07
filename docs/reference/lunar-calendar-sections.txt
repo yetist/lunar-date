@@ -1,4 +1,4 @@
-<INCLUDE>calendar.h</INCLUDE>
+<INCLUDE>lunar-calendar/lunar-calendar.h</INCLUDE>
 
 <SECTION>
 <FILE>lunar-calendar</FILE>

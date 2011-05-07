@@ -13,9 +13,6 @@ source_c = lunar-calendar.c
 
 lib_LTLIBRARIES = liblunar-calendar-2.0.la liblunar-calendar-preload.la
 
-lunarcalendardir=$(includedir)/liblunar-2.0
-lunarcalendar_HEADERS = calendar.h
-
 liblunar_calendar_2_0_includedir = $(includedir)/liblunar-2.0/lunar-calendar
 liblunar_calendar_2_0_include_HEADERS =	$(source_h)
 liblunar_calendar_2_0_la_SOURCES = $(source_c)
