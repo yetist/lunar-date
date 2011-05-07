@@ -7,11 +7,10 @@
  *
  */
 
-using LunarDate;
+using Lunar;
 
 static int main (string[] args) {
-	LunarDate.init (ref args);
-	var t = new LunarDate.Date();
+	var t = new Lunar.Date();
 	try {
 		t.set_solar_date(2009, DateMonth.JULY, 1, 8 );
 	} catch (Error e) {

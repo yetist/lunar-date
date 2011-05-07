@@ -5,7 +5,6 @@ import sys
 
 import locale
 locale.setlocale(locale.LC_ALL, "")
-LunarDate.init(sys.argv)
 
 def test_date():
     l = LunarDate.Date()

@@ -15,11 +15,8 @@ source_h = 	\
 
 source_c =	\
 	$(srcdir)/lunar-date.c		\
+	$(srcdir)/lunar-version.c	\
 	$(srcdir)/lunar-date-private.c
-
-lunardatedir=$(includedir)/liblunar-2.0
-lunardate_HEADERS = date.h
-
 
 BUILT_SOURCES =         	\
         lunar-date-enum-types.c        \
