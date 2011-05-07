@@ -115,6 +115,11 @@ const gchar * lunar_date_check_version (guint required_major,
 	 (LUNAR_MAJOR_VERSION == (major) && LUNAR_MINOR_VERSION == (minor) && \
 	  LUNAR_MICRO_VERSION >= (micro)))
 
+
+#ifndef LIBLUNAR_DISABLE_DEPRECATED
+void            lunar_init   (int *argc, char ***argv) G_GNUC_DEPRECATED;
+#endif
+
 G_END_DECLS
 
 #endif /* __LUNAR_VERSION_H__ */

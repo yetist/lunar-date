@@ -2,6 +2,8 @@ export_symbols = $(LIBTOOL_EXPORT_OPTIONS)
 
 CLEANFILES =
 
+AM_CPPFLAGS = -DLIBLUNAR_DISABLE_DEPRECATED
+
 INCLUDES =                                              \
 	-I$(top_srcdir)					\
         -I$(srcdir) 					\
