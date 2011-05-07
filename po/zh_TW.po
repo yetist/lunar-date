@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: liblunar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-09 22:34+0800\n"
+"POT-Creation-Date: 2011-05-07 19:36+0800\n"
 "PO-Revision-Date: 2007-09-03 19:05+0700\n"
 "Last-Translator: yetist <yetist@gmail.com>\n"
 "Language-Team: yetist@gmail.com <yetist@gmail.com>\n"
@@ -18,37 +18,37 @@ msgstr ""
 "X-Poedit-Language: Chinese\n"
 "X-Poedit-Country: CHINA\n"
 
-#: ../lunar-date/lunar-date.c:248 ../lunar-date/lunar-date.c:314
+#: ../lunar-date/lunar-date.c:257 ../lunar-date/lunar-date.c:323
 #, c-format
 msgid "Year out of range."
 msgstr "年超出範圍."
 
-#: ../lunar-date/lunar-date.c:256 ../lunar-date/lunar-date.c:322
+#: ../lunar-date/lunar-date.c:265 ../lunar-date/lunar-date.c:331
 #, c-format
 msgid "Month out of range."
 msgstr "月超出範圍."
 
-#: ../lunar-date/lunar-date.c:265 ../lunar-date/lunar-date.c:331
+#: ../lunar-date/lunar-date.c:274 ../lunar-date/lunar-date.c:340
 #, c-format
 msgid "Hour out of range."
 msgstr "時超出範圍."
 
-#: ../lunar-date/lunar-date.c:559
+#: ../lunar-date/lunar-date.c:568
 msgid "Rùn"
 msgstr "閏"
 
-#: ../lunar-date/lunar-date.c:863
+#: ../lunar-date/lunar-date.c:877
 #, c-format
 msgid "%d is not a leap month in year %d.\n"
 msgstr "%d 年的 %d 月不是閏月。\n"
 
-#: ../lunar-date/lunar-date.c:880 ../lunar-date/lunar-date-private.c:149
+#: ../lunar-date/lunar-date.c:894 ../lunar-date/lunar-date-private.c:149
 #: ../lunar-date/lunar-date-private.c:158
 #, c-format
 msgid "Day out of range: \"%d\""
 msgstr "日超出範圍：\"%d\""
 
-#: ../lunar-date/lunar-date.c:902 ../lunar-date/lunar-date.c:968
+#: ../lunar-date/lunar-date.c:916 ../lunar-date/lunar-date.c:984
 #, c-format
 msgid "Year out of range. \"%d\""
 msgstr "年超出範圍. \"%d\""

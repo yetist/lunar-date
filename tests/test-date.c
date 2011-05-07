@@ -47,7 +47,6 @@ void set_lunar_date(LunarDate *date, GDateYear year, GDateMonth month, GDateDay 
 	if (error != NULL)
 	{
 		g_printf("Error: %s \n", error->message);
-		g_error_free(error);
 		return;
 	}
 	display(date);
@@ -56,7 +55,6 @@ void set_lunar_date(LunarDate *date, GDateYear year, GDateMonth month, GDateDay 
 	if (error != NULL)
 	{
 		g_printf("Error: %s \n", error->message);
-		g_error_free(error);
 		return;
 	}
 	display(date);
@@ -100,7 +98,6 @@ void random_test(void)
 
 void test(gchar* argv[])
 {
-	GError *error = NULL;
 	GRand *rand = NULL;
 	LunarDate *date;
 

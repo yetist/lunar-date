@@ -281,10 +281,10 @@ void			lunar_date_set_solar_date	  (LunarDate *date,
 	priv->solar->hour = hour;
 	/* 计算农历 */
 	_cl_date_calc_lunar(date, &calc_error);
-	if (calc_error)
+	if (calc_error != NULL)
 	{
 		g_propagate_error (error, calc_error);
-		g_clear_error(&calc_error);
+		calc_error = NULL;
 		return;
 	}
 	_cl_date_calc_ganzhi(date);
@@ -348,10 +348,10 @@ void			lunar_date_set_lunar_date	  (LunarDate *date,
 	priv->lunar->isleap = isleap;
 	/* 计算公历 */
 	_cl_date_calc_solar(date, &calc_error);
-	if (calc_error)
+	if (calc_error != NULL)
 	{
 		g_propagate_error (error, calc_error);
-		g_clear_error(&calc_error);
+		calc_error = NULL;
 		return;
 	}
 	_cl_date_calc_ganzhi(date);
@@ -764,15 +764,17 @@ static void _cl_date_calc_lunar(LunarDate *date, GError **error)
 	priv = LUNAR_DATE_GET_PRIVATE (date);
 
 	priv->days = _date_calc_days_since_reference_year(priv->solar, &calc_error) ;
-	if (calc_error)
+	if (calc_error != NULL)
 	{
 		g_propagate_error (error, calc_error);
+		calc_error = NULL;
 		return;
 	}
 	priv->days -=  _date_calc_days_since_reference_year(&first_solar_date, &calc_error);
-	if (calc_error)
+	if (calc_error != NULL)
 	{
 		g_propagate_error (error, calc_error);
+		calc_error = NULL;
 		return;
 	}
 	/* A lunar day begins at 11 p.m. */
@@ -780,9 +782,10 @@ static void _cl_date_calc_lunar(LunarDate *date, GError **error)
 		priv->days ++;
 
 	_cl_date_days_to_lunar(date, &calc_error);
-	if (calc_error)
+	if (calc_error != NULL)
 	{
 		g_propagate_error (error, calc_error);
+		calc_error = NULL;
 		return;
 	}
 	priv->lunar->hour = priv->solar->hour;
@@ -795,15 +798,17 @@ static void _cl_date_calc_solar(LunarDate *date, GError **error)
 
 	priv = LUNAR_DATE_GET_PRIVATE (date);
 	_date_calc_days_since_lunar_year(date, &calc_error);
-	if (calc_error)
+	if (calc_error != NULL)
 	{
 		g_propagate_error (error, calc_error);
+		calc_error = NULL;
 		return;
 	}
 	_cl_date_days_to_solar(date, &calc_error);
-	if (calc_error)
+	if (calc_error != NULL)
 	{
 		g_propagate_error (error, calc_error);
+		calc_error = NULL;
 		return;
 	}
 	priv->solar->hour = priv->lunar->hour;
@@ -949,15 +954,17 @@ static void _cl_date_days_to_solar(LunarDate *date, GError **error)
 	offset = priv->days;
 	offset += adj;
 	offset -= _date_calc_days_since_reference_year(&first_lunar_date, &calc_error);
-	if (calc_error)
+	if (calc_error != NULL)
 	{
 		g_propagate_error (error, calc_error);
+		calc_error = NULL;
 		return;
 	}
 	offset += _date_calc_days_since_reference_year(&first_solar_date, &calc_error);
-	if (calc_error)
+	if (calc_error != NULL)
 	{
 		g_propagate_error (error, calc_error);
+		calc_error = NULL;
 		return;
 	}
 	/* offset is now the number of days from SolarFirstDate.year.1.1 */
