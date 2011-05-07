@@ -44,6 +44,11 @@ typedef struct _LunarDatePrivate	  LunarDatePrivate;
 
 //typedef guint8	GDateHour;
 
+/**
+ * LunarDate:
+ *
+ * All of these fields should be considered read-only.
+ */
 struct _LunarDate
 {
 	GObject		 object;

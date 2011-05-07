@@ -1,6 +1,8 @@
 ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = po lunar-date data tests docs
 
+AM_CPPFLAGS = -DLIBLUNAR_DISABLE_DEPRECATED
+
 EXTRA_DIST =                    \
 	lunar-date-2.0.pc.in	\
         ChangeLog.pre-2-2       \
