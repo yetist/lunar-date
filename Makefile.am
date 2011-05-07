@@ -95,7 +95,7 @@ distclean-local:
 
 synchtml:
 	modname=lunar-date; \
-		svnroot="http://liblunar.googlecode.com/svn/docs/lunar-date"; \
+		svnroot="https://liblunar.googlecode.com/svn/docs/lunar-date"; \
 		tmpdir=tmp/svndocs; \
 		if [ -d $$tmpdir ];then \
 		svn update $$tmpdir/$$modname; \
