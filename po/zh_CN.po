@@ -1,0 +1,531 @@
+# liblunar package simplified Chinese translation file.
+# Copyright (C) 2008  yetist <yetist@gmail.com>.
+# This file is distributed under the same license as the liblunar package.
+# yetist <yetist@gmail.com>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: liblunar\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-04-09 22:34+0800\n"
+"PO-Revision-Date: 2007-09-03 19:05+0700\n"
+"Last-Translator: yetist <yetist@gmail.com>\n"
+"Language-Team: yetist@gmail.com <yetist@gmail.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+
+#: ../lunar-date/lunar-date.c:248 ../lunar-date/lunar-date.c:314
+#, c-format
+msgid "Year out of range."
+msgstr "年超出范围."
+
+#: ../lunar-date/lunar-date.c:256 ../lunar-date/lunar-date.c:322
+#, c-format
+msgid "Month out of range."
+msgstr "月超出范围."
+
+#: ../lunar-date/lunar-date.c:265 ../lunar-date/lunar-date.c:331
+#, c-format
+msgid "Hour out of range."
+msgstr "时超出范围."
+
+#: ../lunar-date/lunar-date.c:559
+msgid "Rùn"
+msgstr "闰"
+
+#: ../lunar-date/lunar-date.c:863
+#, c-format
+msgid "%d is not a leap month in year %d.\n"
+msgstr "%d 年的 %d 月不是闰月。\n"
+
+#: ../lunar-date/lunar-date.c:880 ../lunar-date/lunar-date-private.c:149
+#: ../lunar-date/lunar-date-private.c:158
+#, c-format
+msgid "Day out of range: \"%d\""
+msgstr "日超出范围：\"%d\""
+
+#: ../lunar-date/lunar-date.c:902 ../lunar-date/lunar-date.c:968
+#, c-format
+msgid "Year out of range. \"%d\""
+msgstr "年超出范围. \"%d\""
+
+#: ../lunar-date/lunar-date-private.h:273
+msgid "Jiǎ"
+msgstr "甲"
+
+#: ../lunar-date/lunar-date-private.h:273
+msgid "Yǐ"
+msgstr "乙"
+
+#: ../lunar-date/lunar-date-private.h:273
+msgid "Bǐng"
+msgstr "丙"
+
+#: ../lunar-date/lunar-date-private.h:273
+msgid "Dīng"
+msgstr "丁"
+
+#: ../lunar-date/lunar-date-private.h:273
+msgid "Wù"
+msgstr "戊"
+
+#: ../lunar-date/lunar-date-private.h:274
+msgid "Jǐ"
+msgstr "己"
+
+#: ../lunar-date/lunar-date-private.h:274
+msgid "Gēng"
+msgstr "庚"
+
+#: ../lunar-date/lunar-date-private.h:274
+msgid "Xīn"
+msgstr "辛"
+
+#: ../lunar-date/lunar-date-private.h:274
+msgid "Rén"
+msgstr "壬"
+
+#: ../lunar-date/lunar-date-private.h:274
+msgid "Guǐ"
+msgstr "癸"
+
+#: ../lunar-date/lunar-date-private.h:278
+msgid "Zǐ"
+msgstr "子"
+
+#: ../lunar-date/lunar-date-private.h:278
+msgid "Chǒu"
+msgstr "丑"
+
+#: ../lunar-date/lunar-date-private.h:278
+msgid "Yín"
+msgstr "寅"
+
+#: ../lunar-date/lunar-date-private.h:278
+msgid "Mǎo"
+msgstr "卯"
+
+#: ../lunar-date/lunar-date-private.h:278
+msgid "Chén"
+msgstr "辰"
+
+#: ../lunar-date/lunar-date-private.h:278
+msgid "Sì"
+msgstr "巳"
+
+#: ../lunar-date/lunar-date-private.h:279
+msgid "Wǔ"
+msgstr "午"
+
+#: ../lunar-date/lunar-date-private.h:279
+msgid "Wèi"
+msgstr "未"
+
+#: ../lunar-date/lunar-date-private.h:279
+msgid "Shēn"
+msgstr "申"
+
+#: ../lunar-date/lunar-date-private.h:279
+msgid "Yǒu"
+msgstr "酉"
+
+#: ../lunar-date/lunar-date-private.h:279
+msgid "Xū"
+msgstr "戌"
+
+#: ../lunar-date/lunar-date-private.h:279
+msgid "Hài"
+msgstr "亥"
+
+#: ../lunar-date/lunar-date-private.h:283
+msgid "Mouse"
+msgstr "鼠"
+
+#: ../lunar-date/lunar-date-private.h:283
+msgid "Ox"
+msgstr "牛"
+
+#: ../lunar-date/lunar-date-private.h:283
+msgid "Tiger"
+msgstr "虎"
+
+#: ../lunar-date/lunar-date-private.h:283
+msgid "Rabbit"
+msgstr "兔"
+
+#: ../lunar-date/lunar-date-private.h:283
+msgid "Dragon"
+msgstr "龙"
+
+#: ../lunar-date/lunar-date-private.h:283
+msgid "Snake"
+msgstr "蛇"
+
+#: ../lunar-date/lunar-date-private.h:284
+msgid "Horse"
+msgstr "马"
+
+#: ../lunar-date/lunar-date-private.h:284
+msgid "Goat"
+msgstr "羊"
+
+#: ../lunar-date/lunar-date-private.h:284
+msgid "Monkey"
+msgstr "猴"
+
+#: ../lunar-date/lunar-date-private.h:284
+msgid "Rooster"
+msgstr "鸡"
+
+#: ../lunar-date/lunar-date-private.h:284
+msgid "Dog"
+msgstr "狗"
+
+#: ../lunar-date/lunar-date-private.h:284
+msgid "Pig"
+msgstr "猪"
+
+#: ../lunar-date/lunar-date-private.h:287
+msgid "Jan"
+msgstr "一"
+
+#: ../lunar-date/lunar-date-private.h:287
+msgid "Feb"
+msgstr "二"
+
+#: ../lunar-date/lunar-date-private.h:287
+msgid "Mar"
+msgstr "三"
+
+#: ../lunar-date/lunar-date-private.h:287
+msgid "Apr"
+msgstr "四"
+
+#: ../lunar-date/lunar-date-private.h:287
+msgid "May"
+msgstr "五"
+
+#: ../lunar-date/lunar-date-private.h:287
+msgid "Jun"
+msgstr "六"
+
+#: ../lunar-date/lunar-date-private.h:288
+msgid "Jul"
+msgstr "七"
+
+#: ../lunar-date/lunar-date-private.h:288
+msgid "Aug"
+msgstr "八"
+
+#: ../lunar-date/lunar-date-private.h:288
+msgid "Sep"
+msgstr "九"
+
+#: ../lunar-date/lunar-date-private.h:288
+msgid "Oct"
+msgstr "十"
+
+#: ../lunar-date/lunar-date-private.h:288
+msgid "Nov"
+msgstr "冬"
+
+#: ../lunar-date/lunar-date-private.h:288
+msgid "Dec"
+msgstr "腊"
+
+#: ../lunar-date/lunar-date-private.h:291
+msgid "Chūyī"
+msgstr "初一"
+
+#: ../lunar-date/lunar-date-private.h:291
+msgid "Chūèr"
+msgstr "初二"
+
+#: ../lunar-date/lunar-date-private.h:291
+msgid "Chūsān"
+msgstr "初三"
+
+#: ../lunar-date/lunar-date-private.h:291
+msgid "Chūsì"
+msgstr "初四"
+
+#: ../lunar-date/lunar-date-private.h:291
+msgid "Chūwǔ"
+msgstr "初五"
+
+#: ../lunar-date/lunar-date-private.h:292
+msgid "Chūliù"
+msgstr "初六"
+
+#: ../lunar-date/lunar-date-private.h:292
+msgid "Chūqī"
+msgstr "初七"
+
+#: ../lunar-date/lunar-date-private.h:292
+msgid "Chūbā"
+msgstr "初八"
+
+#: ../lunar-date/lunar-date-private.h:292
+msgid "Chūjiǔ"
+msgstr "初九"
+
+#: ../lunar-date/lunar-date-private.h:292
+msgid "Chūshí"
+msgstr "初十"
+
+#: ../lunar-date/lunar-date-private.h:293
+msgid "Shíyī"
+msgstr "十一"
+
+#: ../lunar-date/lunar-date-private.h:293
+msgid "Shíèr"
+msgstr "十二"
+
+#: ../lunar-date/lunar-date-private.h:293
+msgid "Shísān"
+msgstr "十三"
+
+#: ../lunar-date/lunar-date-private.h:293
+msgid "Shísì"
+msgstr "十四"
+
+#: ../lunar-date/lunar-date-private.h:293
+msgid "Shíwǔ"
+msgstr "十五"
+
+#: ../lunar-date/lunar-date-private.h:294
+msgid "Shíliù"
+msgstr "十六"
+
+#: ../lunar-date/lunar-date-private.h:294
+msgid "Shíqī"
+msgstr "十七"
+
+#: ../lunar-date/lunar-date-private.h:294
+msgid "Shíbā"
+msgstr "十八"
+
+#: ../lunar-date/lunar-date-private.h:294
+msgid "Shíjiǔ"
+msgstr "十九"
+
+#: ../lunar-date/lunar-date-private.h:294
+msgid "Èrshí"
+msgstr "二十"
+
+#: ../lunar-date/lunar-date-private.h:295
+msgid "Èryī"
+msgstr "廿一"
+
+#: ../lunar-date/lunar-date-private.h:295
+msgid "Èrèr"
+msgstr "廿二"
+
+#: ../lunar-date/lunar-date-private.h:295
+msgid "Èrsān"
+msgstr "廿三"
+
+#: ../lunar-date/lunar-date-private.h:295
+msgid "Èrsì"
+msgstr "廿四"
+
+#: ../lunar-date/lunar-date-private.h:295
+msgid "Èrwǔ"
+msgstr "廿五"
+
+#: ../lunar-date/lunar-date-private.h:296
+msgid "Èrliù"
+msgstr "廿六"
+
+#: ../lunar-date/lunar-date-private.h:296
+msgid "Èrqī"
+msgstr "廿七"
+
+#: ../lunar-date/lunar-date-private.h:296
+msgid "Èrbā"
+msgstr "廿八"
+
+#: ../lunar-date/lunar-date-private.h:296
+msgid "Èrjiǔ"
+msgstr "廿九"
+
+#: ../lunar-date/lunar-date-private.h:296
+msgid "Sānshí"
+msgstr "三十"
+
+#: ../lunar-date/lunar-date-private.h:300
+msgid "líng"
+msgstr "○"
+
+#: ../lunar-date/lunar-date-private.h:300
+msgid "yī"
+msgstr "一"
+
+#: ../lunar-date/lunar-date-private.h:300
+msgid "èr"
+msgstr "二"
+
+#: ../lunar-date/lunar-date-private.h:300
+msgid "sān"
+msgstr "三"
+
+#: ../lunar-date/lunar-date-private.h:300
+msgid "sì"
+msgstr "四"
+
+#: ../lunar-date/lunar-date-private.h:301
+msgid "wǔ"
+msgstr "五"
+
+#: ../lunar-date/lunar-date-private.h:301
+msgid "liù"
+msgstr "六"
+
+#: ../lunar-date/lunar-date-private.h:301
+msgid "qī"
+msgstr "七"
+
+#: ../lunar-date/lunar-date-private.h:301
+msgid "bā"
+msgstr "八"
+
+#: ../lunar-date/lunar-date-private.h:301
+msgid "jiǔ"
+msgstr "九"
+
+#: ../lunar-date/lunar-date-private.h:302
+msgid "shí"
+msgstr "十"
+
+#: ../lunar-date/lunar-date-private.c:56
+msgid "Xiǎohán"
+msgstr "小寒"
+
+#: ../lunar-date/lunar-date-private.c:56
+msgid "Dàhán"
+msgstr "大寒"
+
+#: ../lunar-date/lunar-date-private.c:56
+msgid "Lìchūn"
+msgstr "立春"
+
+#: ../lunar-date/lunar-date-private.c:56
+msgid "Yǔshuǐ"
+msgstr "雨水"
+
+#: ../lunar-date/lunar-date-private.c:57
+msgid "Jīngzhé"
+msgstr "惊蛰"
+
+#: ../lunar-date/lunar-date-private.c:57
+msgid "Chūnfēn"
+msgstr "春分"
+
+#: ../lunar-date/lunar-date-private.c:57
+msgid "Qīngmíng"
+msgstr "清明"
+
+#: ../lunar-date/lunar-date-private.c:57
+msgid "Gǔyǔ"
+msgstr "谷雨"
+
+#: ../lunar-date/lunar-date-private.c:58
+msgid "Lìxià"
+msgstr "立夏"
+
+#: ../lunar-date/lunar-date-private.c:58
+msgid "Xiǎomǎn"
+msgstr "小满"
+
+#: ../lunar-date/lunar-date-private.c:58
+msgid "Mángzhòng"
+msgstr "芒种"
+
+#: ../lunar-date/lunar-date-private.c:58
+msgid "Xiàzhì"
+msgstr "夏至"
+
+#: ../lunar-date/lunar-date-private.c:59
+msgid "Xiǎoshǔ"
+msgstr "小暑"
+
+#: ../lunar-date/lunar-date-private.c:59
+msgid "Dàshǔ"
+msgstr "大暑"
+
+#: ../lunar-date/lunar-date-private.c:59
+msgid "Lìqīu"
+msgstr "立秋"
+
+#: ../lunar-date/lunar-date-private.c:59
+msgid "Chùshǔ"
+msgstr "处暑"
+
+#: ../lunar-date/lunar-date-private.c:60
+msgid "Báilòu"
+msgstr "白露"
+
+#: ../lunar-date/lunar-date-private.c:60
+msgid "Qīufēn"
+msgstr "秋分"
+
+#: ../lunar-date/lunar-date-private.c:60
+msgid "Hánlòu"
+msgstr "寒露"
+
+#: ../lunar-date/lunar-date-private.c:60
+msgid "Shuāngjiàng"
+msgstr "霜降"
+
+#: ../lunar-date/lunar-date-private.c:61
+msgid "Lìdōng"
+msgstr "立冬"
+
+#: ../lunar-date/lunar-date-private.c:61
+msgid "Xiǎoxuě"
+msgstr "小雪"
+
+#: ../lunar-date/lunar-date-private.c:61
+msgid "Dàxuě"
+msgstr "大雪"
+
+#: ../lunar-date/lunar-date-private.c:61
+msgid "Dōngzhì"
+msgstr "冬至"
+
+#: ../lunar-date/lunar-date-private.c:133
+#, c-format
+msgid "Internal error: pick a larger constant for BYEAR."
+msgstr "内部错误：参考年的数值过小。"
+
+#~ msgid "calendar:MY"
+#~ msgstr "calendar:YM"
+
+#~ msgid "calendar:week_start:0"
+#~ msgstr "calendar:week_start:0"
+
+#~ msgid "year measurement template|2000"
+#~ msgstr "2000"
+
+#~ msgid "Shíèryuè"
+#~ msgstr "十二月"
+
+#~ msgid "calendar:day:digits|%d"
+#~ msgstr "%d"
+
+#~ msgid "%dzhōu"
+#~ msgstr "%d周"
+
+#~ msgid "calendar:week:digits|%d"
+#~ msgstr "%d"
+
+#~ msgid "calendar year format|%Y"
+#~ msgstr "%Y"
+
+#~ msgid "Nián %(shengxiao) %(Y60)%(M60)%(D60)"
+#~ msgstr "年 %(shengxiao) %(Y60)%(M60)%(D60)"

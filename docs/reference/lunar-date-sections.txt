@@ -1,0 +1,35 @@
+<INCLUDE>lunar-date/lunar-date.h</INCLUDE>
+
+<SECTION>
+<FILE>lunar-version</FILE>
+<TITLE>Version Information</TITLE>
+lunar_date_major_version
+lunar_date_micro_version
+lunar_date_minor_version
+LUNAR_DATE_MAJOR_VERSION
+LUNAR_DATE_MINOR_VERSION
+LUNAR_DATE_MICRO_VERSION
+lunar_date_check_version
+LUNAR_DATE_CHECK_VERSION
+</SECTION>
+
+<SECTION>
+<FILE>lunar-date</FILE>
+<TITLE>LunarDate</TITLE>
+LunarDate
+LunarDateError
+lunar_date_new
+lunar_date_set_solar_date
+lunar_date_set_lunar_date
+lunar_date_get_jieri
+lunar_date_strftime
+lunar_date_free
+<SUBSECTION Standard>
+LUNAR_DATE
+LUNAR_IS_DATE
+LUNAR_TYPE_DATE
+lunar_date_get_type
+LUNAR_DATE_CLASS
+LUNAR_IS_DATE_CLASS
+LUNAR_DATE_GET_CLASS
+</SECTION>

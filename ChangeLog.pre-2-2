@@ -1,0 +1,651 @@
+2009-09-10  yetist  <yetist@gmail.com>
+
+	*  lunar/Makefile.am: 
+	*  tests/Makefile.am: 
+	*  tests/test-date.c: 
+	*  configure.ac: 
+	*  Makefile.am: 
+	remove gtk support from liblunar.
+
+2009-09-10  yetist  <yetist@gmail.com>
+
+	*  pinyin.sh: 
+	*  m4: 
+	*  m4/python.m4: 
+	*  lunar: 
+	*  lunar/lunar-enum-types.c.template: 
+	*  lunar/lunar-date.h: 
+	*  lunar/update-calendar.sh: 
+	*  lunar/lunar-main.c: 
+	*  lunar/lunar-enum-types.h.template: 
+	*  lunar/calendar.patch: 
+	*  lunar/lunar-main.h: 
+	*  lunar/lunar-calendar.c: 
+	*  lunar/Makefile.am: 
+	*  lunar/lunar-date.c: 
+	*  lunar/lunar-calendar.h: 
+	*  debian: 
+	*  debian/liblunar-doc.install: 
+	*  debian/control: 
+	*  debian/dirs: 
+	*  debian/compat: 
+	*  debian/liblunar-dev.dirs: 
+	*  debian/docs: 
+	*  debian/copyright: 
+	*  debian/liblunar-dev.install: 
+	*  debian/rules: 
+	*  debian/changelog.in: 
+	*  debian/liblunar0.install: 
+	*  AUTHORS: 
+	*  ChangeLog: 
+	*  docs: 
+	*  docs/Makefile.am: 
+	*  docs/reference: 
+	*  docs/reference/lunar-overrides.txt: 
+	*  docs/reference/lunar.types: 
+	*  docs/reference/lunar-sections.txt: 
+	*  docs/reference/lunar-docs.sgml: 
+	*  docs/reference/version.xml.in: 
+	*  docs/reference/Makefile.am: 
+	*  docs/reference/tmpl: 
+	*  docs/reference/tmpl/lunardate.sgml: 
+	*  docs/reference/tmpl/lunar-unused.sgml: 
+	*  docs/reference/tmpl/lunarmain.sgml: 
+	*  docs/reference/tmpl/lunarcalendar.sgml: 
+	*  README: 
+	*  bindings: 
+	*  bindings/python: 
+	*  bindings/python/calendar.override: 
+	*  bindings/python/lunarmodule.c: 
+	*  bindings/python/Makefile.am: 
+	*  bindings/python/calendar.defs: 
+	*  bindings/python/lunar-demo.py: 
+	*  bindings/Makefile.am: 
+	*  tests: 
+	*  tests/test-calendar.c: 
+	*  tests/Makefile.am: 
+	*  tests/test-date.c: 
+	*  configure.ac: 
+	*  INSTALL: 
+	*  liblunar: 
+	*  liblunar/pinyin.sh: 
+	*  liblunar/m4: 
+	*  liblunar/m4/python.m4: 
+	*  liblunar/lunar: 
+	*  liblunar/lunar/lunar-enum-types.c.template: 
+	*  liblunar/lunar/update-calendar.sh: 
+	*  liblunar/lunar/lunar-date.h: 
+	*  liblunar/lunar/lunar-main.c: 
+	*  liblunar/lunar/lunar-enum-types.h.template: 
+	*  liblunar/lunar/calendar.patch: 
+	*  liblunar/lunar/lunar-main.h: 
+	*  liblunar/lunar/lunar-calendar.c: 
+	*  liblunar/lunar/Makefile.am: 
+	*  liblunar/lunar/lunar-date.c: 
+	*  liblunar/lunar/lunar-calendar.h: 
+	*  liblunar/debian: 
+	*  liblunar/debian/control: 
+	*  liblunar/debian/liblunar-doc.install: 
+	*  liblunar/debian/dirs: 
+	*  liblunar/debian/compat: 
+	*  liblunar/debian/liblunar-dev.dirs: 
+	*  liblunar/debian/docs: 
+	*  liblunar/debian/copyright: 
+	*  liblunar/debian/liblunar-dev.install: 
+	*  liblunar/debian/rules: 
+	*  liblunar/debian/changelog.in: 
+	*  liblunar/debian/liblunar0.install: 
+	*  liblunar/AUTHORS: 
+	*  liblunar/ChangeLog: 
+	*  liblunar/docs: 
+	*  liblunar/docs/Makefile.am: 
+	*  liblunar/docs/reference: 
+	*  liblunar/docs/reference/lunar-overrides.txt: 
+	*  liblunar/docs/reference/lunar-sections.txt: 
+	*  liblunar/docs/reference/lunar.types: 
+	*  liblunar/docs/reference/lunar-docs.sgml: 
+	*  liblunar/docs/reference/Makefile.am: 
+	*  liblunar/docs/reference/version.xml.in: 
+	*  liblunar/docs/reference/tmpl: 
+	*  liblunar/docs/reference/tmpl/lunardate.sgml: 
+	*  liblunar/docs/reference/tmpl/lunar-unused.sgml: 
+	*  liblunar/docs/reference/tmpl/lunarmain.sgml: 
+	*  liblunar/docs/reference/tmpl/lunarcalendar.sgml: 
+	*  liblunar/README: 
+	*  liblunar/bindings: 
+	*  liblunar/bindings/python: 
+	*  liblunar/bindings/python/calendar.override: 
+	*  liblunar/bindings/python/lunarmodule.c: 
+	*  liblunar/bindings/python/calendar.defs: 
+	*  liblunar/bindings/python/Makefile.am: 
+	*  liblunar/bindings/python/lunar-demo.py: 
+	*  liblunar/bindings/Makefile.am: 
+	*  liblunar/tests: 
+	*  liblunar/tests/test-calendar.c: 
+	*  liblunar/tests/Makefile.am: 
+	*  liblunar/tests/test-date.c: 
+	*  liblunar/configure.ac: 
+	*  liblunar/INSTALL: 
+	*  liblunar/COPYING: 
+	*  liblunar/data: 
+	*  liblunar/data/holiday.dat: 
+	*  liblunar/data/Makefile.am: 
+	*  liblunar/Makefile.am: 
+	*  liblunar/autogen.sh: 
+	*  liblunar/NEWS: 
+	*  liblunar/liblunar-1.pc.in: 
+	*  liblunar/po: 
+	*  liblunar/po/zh_HK.po: 
+	*  liblunar/po/LINGUAS: 
+	*  liblunar/po/ChangeLog: 
+	*  liblunar/po/zh_TW.po: 
+	*  liblunar/po/POTFILES.in: 
+	*  liblunar/po/zh_CN.po: 
+	*  COPYING: 
+	*  data: 
+	*  data/holiday.dat: 
+	*  data/Makefile.am: 
+	*  Makefile.am: 
+	*  autogen.sh: 
+	*  NEWS: 
+	*  liblunar-1.pc.in: 
+	*  po: 
+	*  po/zh_HK.po: 
+	*  po/LINGUAS: 
+	*  po/ChangeLog: 
+	*  po/zh_TW.po: 
+	*  po/POTFILES.in: 
+	*  po/zh_CN.po: 
+	move /trunk/*(all) to /trunk/liblunar subdir
+
+2009-03-26  yetist  <yetist@gmail.com>
+
+	* configure.ac: 
+	start 2.0.2 ...
+
+=== liblunar-2.0.1 released ===
+
+2009-03-26  yetist  <yetist@gmail.com>
+
+	* configure.ac: 
+	* NEWS: 
+
+	liblunar-2.0.1 released
+
+2009-03-26  yetist  <yetist@gmail.com>
+
+	* configure.ac: 
+	modify for python check.
+
+2009-03-25  yetist  <yetist@gmail.com>
+
+	* lunar/lunar.h: 
+	* lunar/Makefile.am: 
+	* docs/reference/Makefile.am: 
+	* bindings/python/Makefile.am: 
+	* tests/Makefile.am: 
+	* configure.ac: 
+	* Makefile.am: 
+	2.0.0 bug fixed.
+
+=== liblunar-2.0.0 released ===
+
+2009-03-25  yetist  <yetist@gmail.com>
+
+	* configure.ac: 
+	* NEWS: 
+
+	liblunar-2.0.0 released
+
+2009-03-25  yetist  <yetist@gmail.com>
+
+	* lunar/lunar.h: 
+	* lunar/Makefile.am: 
+	* ChangeLog: 
+	* docs/reference/tmpl/lunarcalendar.sgml: 
+	* bindings/python/Makefile.am: 
+	* tests/Makefile.am: 
+	* configure.ac: 
+	* INSTALL: 
+	* Makefile.am: 
+	* po/zh_HK.po: 
+	* po/LINGUAS: 
+	* po/zh_TW.po: 
+	--disable-gtk编译参数修改
+	zh_TW, zh_CN的翻译。
+
+2008-12-29  yetist  <wuxiaotian@redflag-linux.com>
+
+	* po/LINGUAS: 
+	* po/zh_TW.po: 
+	* po/zh_CN.po: 
+	add traditional Chinese translation.
+
+2008-12-29  yetist  <yetist@gmail.com>
+
+	* lunar/lunar-calendar.c: replace sprintf with strcat to avoid sprintf bug,
+	so we can get a year number on header.  patch by LI Daobing.
+
+=== liblunar-1.0.1 released ===
+
+2008-07-25  yetist  <yetist@gmail.com>
+
+	* configure.ac: 
+	* NEWS: 
+
+	liblunar-1.0.1 released
+
+2008-07-25  yetist  <yetist@gmail.com>
+
+	* Makefile.am: 
+	打包时增加pot文件，#4.
+
+2008-07-17  yetist  <yetist@gmail.com>
+
+	* lunar/lunar-main.c: 
+	* lunar/lunar.h: 
+	* lunar/Makefile.am: 
+	* ChangeLog: 
+	* configure.ac: 
+	完善了一下--disable-gtk编译参数。
+
+2008-06-17  yetist  <yetist@gmail.com>
+
+	* lunar/calendar.patch: 
+	* lunar/Makefile.am: 
+	* README: 
+	* tests/Makefile.am: 
+	* configure.ac: 
+	* INSTALL: 
+	做一些修改。增加--disable-gtk编译参数。
+
+2008-05-29  yetist  <yetist@gmail.com>
+
+	* lunar/lunar-date.h: 
+	* lunar/lunar-calendar.c: 
+	* lunar/lunar-date.c: 
+	* docs/reference/lunar-sections.txt: 
+	* docs/reference/tmpl/lunardate.sgml: 
+	* docs/reference/tmpl/lunar-unused.sgml: 
+	* docs/reference/tmpl/lunarcalendar.sgml: 
+	* tests/test-date.c: 
+	Change struct name from "LUNARDate" to "LunarDate";
+
+=== liblunar-1.0.0 released ===
+
+2008-04-17  yetist  <yetist@gmail.com>
+
+	* ChangeLog: 
+	* README: 
+	* configure.ac: 
+	* NEWS: 
+
+	liblunar-1.0.0 released
+
+2008-04-17  yetist  <yetist@gmail.com>
+
+	* lunar/calendar.patch: 
+	update patch file to gtk+-2.12.8.
+
+2008-04-17  yetist  <yetist@gmail.com>
+
+	* lunar/lunar-calendar.c: 
+	* lunar/lunar-date.c: 
+	show lunar automatic.
+	fixed: 
+		- when year less-than 1900 or greater than 2049, calendar will show error lunar.
+		- when we view 1900 Jan, the calendar will crash.
+
+2008-04-17  yetist  <yetist@gmail.com>
+
+	* lunar/update-calendar.sh:
+	* lunar/lunar-calendar.c: 
+	update GtkCalendar to 2.12.8
+
+2008-04-17  redwoods  <redwooods@gmail.com>
+
+	* lunar/lunar-date.c:
+	Change type of "year_jieqi()".
+	* po/zh_CN.po:
+	Keep Sunday as the first day of a week.
+
+2008-04-15  yetist  <yetist@gmail.com>
+
+	* lunar/lunar-date.c: 
+	* po/zh_CN.po: 
+	use C style unicode of solar term.
+	* AUTHORS: add author.
+	* tests/test-date.c: init random.
+
+2008-04-15  yetist  <yetist@gmail.com>
+
+	* lunar/lunar-date.c: add thank.
+	* data/holiday.dat: remove my birthday.
+
+2008-04-15  redwoods  <redwooods@gmail.com>
+
+	* lunar/lunar-date.c:
+	Add function of jie2qi4.
+	* data/holiday.dat:
+	Modify some festivals.
+
+2008-03-03  yetist  <yetist@gmail.com>
+
+	* pinyin.sh: 
+	* lunar/lunar-date.c: 
+	* po/zh_CN.po: 
+	revert to r33. add pinyin.sh.
+
+=== liblunar-0.2.6 released ===
+
+2008-03-03  yetist  <yetist@gmail.com>
+
+	* configure.ac: 
+	liblunar-0.2.6 released
+
+2008-03-03  yetist  <yetist@gmail.com>
+
+	* lunar/calendar.patch: 
+	* lunar/lunar-calendar.c: 
+	* lunar/lunar-date.c: 
+	* po/zh_CN.po: 
+	use pinyin on "C" locale.
+
+=== liblunar-0.2.5 released ===
+
+2008-02-25  yetist  <yetist@gmail.com>
+
+	* README: 
+	* configure.ac: 
+	* NEWS: 
+
+	liblunar-0.2.5 released
+
+2008-02-25  yetist  <yetist@gmail.com>
+
+	* docs/reference/lunar-docs.sgml: change document name. 
+	* po/zh_CN.po: filled in the header of po/zh_CN.po
+
+2008-02-19  yetist  <yetist@gmail.com>
+
+	* lunar/lunar-main.c: 
+	* lunar/lunar-date.c: 
+	* tests/test-date.c: 
+	* Makefile.am: 
+	* po/zh_CN.po: 
+	filled in "This file is part of ________."
+
+2008-02-19  yetist  <yetist@gmail.com>
+
+	* lunar/lunar-date.h: 
+	* lunar/update-calendar.sh: 
+	* lunar/lunar.h: 
+	* lunar/calendar.patch: 
+	* lunar/lunar-main.h: 
+	* lunar/lunar-calendar.c: 
+	* lunar/Makefile.am: 
+	fixed that if select day changed, the header doesn't change.
+	* bindings/python/calendar.override: 
+	* bindings/python/lunarmodule.c: 
+	* bindings/python/Makefile.am: 
+	* bindings/python/lunar-demo.py: 
+	* configure.ac: 
+	* Makefile.am: 
+	* liblunar-1.pc.in: 
+	change the python module to "lunar".
+
+2008-02-19  yetist  <yetist@gmail.com>
+
+	* AUTHORS: 
+	* Makefile.am: 
+	* README: 
+	* autogen.sh: 
+	* configure.ac: 
+	* liblunar-1.pc.in: 
+	* bindings/: 
+	* data/: 
+	* debian/: 
+	* docs/: 
+	* lunar/: 
+	* po/: 
+	* tests/: 
+	rename api from "gcl" to "lunar"
+
+2008-02-19  yetist  <yetist@gmail.com>
+
+	* lunar/*lunar*:
+	* gcl/*gcl*: 
+	* debian/*lunar*: 
+	* libgcl-1.pc.in: 
+	* liblunar-1.pc.in: 
+	rename that files from "gcl" to "lunar"
+
+=== libgcl-0.2.4 released ===
+
+2008-02-05  yetist  <yetist@gmail.com>
+
+	* configure.ac: 
+	* NEWS: 
+
+	libgcl-0.2.4 released
+
+2008-02-04  yetist  <yetist@gmail.com>
+
+	* bindings/python/gcl-demo.py: update
+
+2008-02-04  yetist  <yetist@gmail.com>
+
+	* bindings/python/gclmodule.c: 
+	* bindings/python/gcl-demo.py: 
+	add flags to modules.
+	
+2008-02-04  yetist  <yetist@gmail.com>
+
+	* bindings/python/Makefile.am: 
+	* bindings/python/date.override: 
+	* bindings/python/date.defs: 
+	remove date for python bindings.
+
+2008-02-04  yetist  <yetist@gmail.com>
+
+	* bindings/python/calendar.override: 
+	* bindings/python/Makefile.am: 
+	* bindings/python/gclmodule.c: 
+	* bindings/python/gcl-demo.py: 
+	python bindings of gclcalendar
+
+2008-02-03  yetist  <yetist@gmail.com>
+
+	* gcl/gcl-enum-types.c.template: 
+	* gcl/gcl-enum-types.h.template: 
+	add template of gcl-enum-types.[hc]
+
+2008-02-03  yetist  <yetist@gmail.com>
+
+	* m4: 
+	* m4/python.m4: 
+	add python.m4
+
+2008-02-03  yetist  <yetist@gmail.com>
+
+	* bindings: 
+	* bindings/python: 
+	* bindings/python/calendar.override: 
+	* bindings/python/calendar.defs: 
+	* bindings/python/Makefile.am: 
+	* bindings/python/date.override: 
+	* bindings/python/gclmodule.c: 
+	* bindings/python/date.defs: 
+	* bindings/Makefile.am: 
+	* configure.ac: 
+	* gcl/Makefile.am: 
+	* INSTALL: 
+	* Makefile.am: 
+	* autogen.sh: 
+	add python bindings for libgcl.
+
+=== libgcl-0.2.2 released ===
+
+2008-02-01  yetist  <yetist@gmail.com>
+
+	* README: 
+	* configure.ac: 
+	* NEWS: 
+	* po/ChangeLog: 
+	* po/zh_CN.po: 
+
+	libgcl-0.2.3 released.
+
+2008-02-01  yetist  <yetist@gmail.com>
+
+	* libgcl-1.pc.in: requires gtk+-2.0. 
+
+2008-02-01  yetist  <yetist@gmail.com>
+
+	* debian/control: update debian package description.
+
+2008-02-01  yetist  <yetist@gmail.com>
+
+	* gcl/gcl-calendar.h: 
+	* gcl/update-calendar.sh: 
+	* gcl/calendar.patch: 
+	* gcl/gcl-calendar.c: 
+	add update-calendar.sh to generate gcl-calendar.[hc] from gtk+.
+
+=== libgcl-0.2.2 released ===
+
+2008-01-24  yetist  <yetist@gmail.com>
+
+	* configure.ac: 
+
+	libgcl-0.2.2 released.
+
+2008-01-24  yetist  <yetist@gmail.com>
+
+	* debian/control: 
+	* debian/libgcl0.install: 
+	* debian/libgcl-bin.install: 
+	* debian/rules: 
+	* Makefile.am: 
+	some change.
+
+2008-01-24  yetist  <yetist@gmail.com>
+
+	* debian: 
+	* debian/control: 
+	* debian/dirs: 
+	* debian/compat: 
+	* debian/libgcl-doc.install: 
+	* debian/libgcl-bin.install: 
+	* debian/libgcl-dev.dirs: 
+	* debian/copyright: 
+	* debian/docs: 
+	* debian/rules: 
+	* debian/changelog.in: 
+	* debian/libgcl-dev.install: 
+	* configure.ac: 
+	* gcl/gcl-date.c: 
+	* gcl/Makefile.am: 
+	* data/Makefile.am: 
+	* Makefile.am: 
+	add debian directory.
+
+2008-01-21  yetist  <yetist@gmail.com>
+
+	* data/holiday.dat: 
+	add comment.
+
+2008-01-21  yetist  <yetist@gmail.com>
+
+	* NEWS: 
+	add news.
+	
+2008-01-21  yetist  <yetist@gmail.com>
+
+	* configure.ac: 
+	* po/ChangeLog: 
+	* po/zh_CN.po: 
+
+	update chinese translate.
+
+2008-01-21  yetist  <yetist@gmail.com>
+
+	* docs/reference/tmpl/gclcalendar.sgml: 
+	* gcl/gcl-calendar.c: fixed max header width problems.
+	* po/zh_CN.po: update chinese translate.
+
+2008-01-21  yetist  <yetist@gmail.com>
+
+	* docs/reference/gcl-sections.txt: 
+	* docs/reference/gcl-docs.sgml: 
+	* docs/reference/tmpl/gclcalendar.sgml: 
+	* docs/reference/tmpl/gcldate.sgml: 
+	* docs/reference/tmpl/gcl-unused.sgml: 
+	* gcl/gcl-date.c: 
+	* gcl/gcl-calendar.h: 
+	* gcl/gcl-calendar.c: 
+	modified to generate the development document.
+
+2008-01-21  yetist  <yetist@gmail.com>
+
+	* configure.ac: add enable arg: run-in-source-tree.
+	* gcl/gcl-date.h: 
+	* gcl/gcl-date.c: 
+	- remove gcl_date_get_solar_date() gcl_date_get_lunar_date() gcl_date_get_shengxiao() gcl_date_get_ganzhi() gcl_date_get_bazi() gcl_date_get_jieri()
+	-add gcl_date_strftime().
+	* gcl/gcl.h: 
+	* gcl/gcl-calendar.h: 
+	* gcl/gcl-calendar.c: 
+	add gcl_calendar widget.
+	* gcl/Makefile.am: add gcl_calendar.{h,c}
+	* tests/test-date.c: modify for new functions. 
+	* tests/test-calendar.c: added for test gcl_calendar.
+	* tests/Makefile.am: add gcl_calendar.{h,c}.
+	* docs/reference/tmpl/gcldate.sgml: 
+	* po/POTFILES.in: add gcl_calendar.{h,c}
+	* po/zh_CN.po: 
+
+2007-12-19  yetist  <yetist@gmail.com>
+
+	* docs/reference/gcl-sections.txt: 
+	* docs/reference/gcl.types: 
+	* docs/reference/tmpl/gcldate.sgml: 
+	* docs/reference/tmpl/gclmain.sgml: 
+	* tests/test-date.c: 
+	* configure.ac: 
+	* gcl/gcl-date.c: 
+	* gcl/gcl-date.h: 
+	* gcl/Makefile.am: 
+	* data/holiday.dat: 
+	* data/jieri.table: 
+	* data/Makefile.am: 
+	* Makefile.am: 
+	add holiday.
+
+2007-12-18  yetist  <yetist@gmail.com>
+
+	* tests/test-date.c: 
+	* configure.ac: 
+	* gcl/gcl-date.c: 
+	* gcl/gcl-date.h: 
+	* data: 
+	* data/jieri.table: 
+	add holiday
+
+2007-09-03  yetist  <yetist@gmail.com>
+
+    * configure.ac:
+    * docs/reference/yeti-docs.sgml:
+    * docs/reference/tmpl/gcldate.sgml:
+    * docs/reference/yeti-sections.txt:
+    * Makefile.am:
+    * yeti/gcl-date.c:
+    * yeti/Makefile.am:
+    * yeti-1.0.pc.in:
+    * po/zh_CN.po:
+    some change.
+
+2007-09-03  yetist  <yetist@gmail.com>
+
+    * all:
+    init svn version.
