@@ -21,7 +21,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <gtk/gtk.h>
-#include <calendar.h>
+#include <lunar-calendar/lunar-calendar.h>
 
 #define DEF_PAD 12
 #define DEF_PAD_SMALL 6

@@ -11,7 +11,7 @@ INCLUDES =                                              \
 source_h = lunar-calendar.h 
 source_c = lunar-calendar.c
 
-lib_LTLIBRARIES = liblunar-calendar-2.0.la liblunar-calendar-preload.la
+lib_LTLIBRARIES = liblunar-calendar-2.0.la liblunar-calendar-preload-2.0.la
 
 liblunar_calendar_2_0_includedir = $(includedir)/liblunar-2.0/lunar-calendar
 liblunar_calendar_2_0_include_HEADERS =	$(source_h)
@@ -21,11 +21,11 @@ liblunar_calendar_2_0_la_LDFLAGS = \
 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \
 	-export-dynamic $(export_symbols)
 
-liblunar_calendar_preload_includedir = $(includedir)/liblunar-2.0/lunar-calendar
-liblunar_calendar_preload_include_HEADERS = $(source_h)
-liblunar_calendar_preload_la_SOURCES = lunar-calendar-preload.c
-liblunar_calendar_preload_la_LDFLAGS =  -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) 
-liblunar_calendar_preload_la_LIBADD = 	\
+liblunar_calendar_preload_2_0_includedir = $(includedir)/liblunar-2.0/lunar-calendar
+liblunar_calendar_preload_2_0_include_HEADERS = $(source_h)
+liblunar_calendar_preload_2_0_la_SOURCES = lunar-calendar-preload.c
+liblunar_calendar_preload_2_0_la_LDFLAGS =  -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) 
+liblunar_calendar_preload_2_0_la_LIBADD = 	\
 	$(LUNAR_CALENDAR_LIBS)	\
 	liblunar-calendar-2.0.la		\
 	-ldl			\
