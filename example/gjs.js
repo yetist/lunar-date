@@ -17,8 +17,8 @@ TestCalendar.prototype = {
   }
 }
 
-Gettext.bindtextdomain("lunar-date", "/usr/share/locale");
-Gettext.textdomain("lunar-date");
+//Gettext.bindtextdomain("lunar-date", "/usr/share/locale");
+//Gettext.textdomain("lunar-date");
 
 Gtk.init (0, null);
 var tc = new TestCalendar();
