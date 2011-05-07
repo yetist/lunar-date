@@ -1,7 +1,7 @@
 AC_PREREQ(2.62)
 
 m4_define([lunar_calendar_major_version], [2])
-m4_define([lunar_calendar_minor_version], [3])
+m4_define([lunar_calendar_minor_version], [4])
 m4_define([lunar_calendar_micro_version], [0])
 m4_define([lunar_calendar_interface_age], [1])
 m4_define([lunar_calendar_binary_age],    [m4_eval(100 * lunar_calendar_minor_version + lunar_calendar_micro_version)])
@@ -71,7 +71,7 @@ dnl ================================================================
 dnl check glib, gobject and liblunar
 dnl ================================================================
 
-LUNAR_DATE_REQUIRED=2.2.1
+LUNAR_DATE_REQUIRED=2.4.0
 GTK2_REQUIRED=2.16
 GDK2_REQUIRED=2.16
 
