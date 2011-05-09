@@ -84,6 +84,7 @@ static void lunar_date_get_property  (GObject		   *object,
 										 GValue			  *value,
 										 GParamSpec		  *pspec);
 static void _cl_date_make_all_lunar_data(LunarDate *date);
+static void lunar_date_init_i18n(void);
 
 G_DEFINE_TYPE (LunarDate, lunar_date, G_TYPE_OBJECT);
 
@@ -1112,4 +1113,18 @@ static gint _cl_date_get_bazi_lunar (LunarDate *date)
 		priv->lunar2->month = 12;
 	}
 	return(flag==0);
+}
+
+static void lunar_date_init_i18n(void)
+{
+  static gboolean _lunar_calendar_gettext_initialized = FALSE;
+
+  if (!_lunar_calendar_gettext_initialized)
+    {
+	  bindtextdomain (GETTEXT_PACKAGE, LUNAR_DATE_LOCALEDIR);
+#ifdef HAVE_BIND_TEXTDOMAIN_CODESET
+      bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+#endif
+      _lunar_calendar_gettext_initialized = TRUE;
+    }
 }
