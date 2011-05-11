@@ -2,7 +2,7 @@ AC_PREREQ(2.62)
 
 m4_define([lunar_date_major_version], [2])
 m4_define([lunar_date_minor_version], [4])
-m4_define([lunar_date_micro_version], [0])
+m4_define([lunar_date_micro_version], [1])
 m4_define([lunar_date_interface_age], [1])
 m4_define([lunar_date_binary_age], [m4_eval(100 * lunar_date_minor_version + lunar_date_micro_version)])
 m4_define([lunar_date_version], [lunar_date_major_version.lunar_date_minor_version.lunar_date_micro_version])
@@ -20,12 +20,10 @@ AC_CONFIG_SRCDIR(lunar-date/lunar-date.c)
 AM_CONFIG_HEADER(config.h)
 AC_CONFIG_MACRO_DIR([m4])
 
-LT_CURRENT=lunar_date_lt_current
-LT_REVISION=lunar_date_lt_revision
-LT_AGE=lunar_date_lt_age
-AC_SUBST(LT_CURRENT)
-AC_SUBST(LT_REVISION)
-AC_SUBST(LT_AGE)
+LT_VERSION_INFO="lunar_date_lt_current:lunar_date_lt_revision:lunar_date_lt_age"
+LT_CURRENT_MINUS_AGE=m4_eval(lunar_date_lt_current - lunar_date_lt_age)
+AC_SUBST(LT_VERSION_INFO)
+AC_SUBST(LT_CURRENT_MINUS_AGE)
 
 LUNAR_DATE_VERSION=lunar_date_version
 LUNAR_DATE_BINARY_AGE=lunar_date_binary_age
@@ -79,6 +77,34 @@ AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
 cur_date=`date -R`
 CUR_DATE=${cur_date}
 AC_SUBST(CUR_DATE)
+
+dnl ================================================================
+dnl check for win32 build
+dnl ================================================================
+AC_MSG_CHECKING([for some Win32 platform])
+case "$host" in
+  *-*-mingw*|*-*-cygwin*)
+    platform_win32=yes
+    ;;
+  *)
+    platform_win32=no
+    ;;
+esac
+AC_MSG_RESULT([$platform_win32])
+AM_CONDITIONAL(PLATFORM_WIN32, test "$platform_win32" = "yes")
+
+AM_CONDITIONAL(OS_WIN32, test "$os_win32" = "yes")
+AM_CONDITIONAL(OS_UNIX, test "$os_win32" != "yes")
+AM_CONDITIONAL(OS_LINUX, test "$os_linux" = "yes")
+
+if test "$os_win32" = "yes"; then
+  AC_CHECK_TOOL(WINDRES, windres, no)
+  if test "$WINDRES" = no; then
+    AC_MSG_ERROR([*** Could not find an implementation of windres in your PATH.])
+  fi
+  AC_CHECK_PROG(ms_librarian, lib.exe, yes, no)
+fi
+AM_CONDITIONAL(MS_LIB_AVAILABLE, test x$ms_librarian = xyes)
 
 dnl ================================================================
 dnl check glib and gobject
@@ -152,6 +178,7 @@ AM_GLIB_DEFINE_LOCALEDIR(LUNAR_DATE_LOCALEDIR)
 
 AC_CONFIG_FILES([
 lunar-date-2.0.pc
+lunar-date/lunar-date.rc
 lunar-date/lunar-version.h
 lunar-date/Makefile
 tests/Makefile

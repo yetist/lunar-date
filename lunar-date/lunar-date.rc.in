@@ -1,0 +1,30 @@
+#include <winver.h>
+
+VS_VERSION_INFO VERSIONINFO
+  FILEVERSION @LUNAR_DATE_MAJOR_VERSION@,@LUNAR_DATE_MINOR_VERSION@,@LUNAR_DATE_MICRO_VERSION@,0
+  PRODUCTVERSION @LUNAR_DATE_MAJOR_VERSION@,@LUNAR_DATE_MINOR_VERSION@,@LUNAR_DATE_MICRO_VERSION@,0
+  FILEFLAGSMASK 0
+  FILEFLAGS 0
+  FILEOS VOS__WINDOWS32
+  FILETYPE VFT_DLL
+  FILESUBTYPE VFT2_UNKNOWN
+  BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+      BLOCK "040904B0"
+      BEGIN
+	VALUE "CompanyName", "The Liblunar developer community"
+	VALUE "FileDescription", "LunarDate"
+	VALUE "FileVersion", "@LUNAR_DATE_VERSION@.0"
+	VALUE "InternalName", "liblunar-date-2.0-@LT_CURRENT_MINUS_AGE@"
+	VALUE "LegalCopyright", "Copyright © 2007-2011 Xiaotian Wu."
+	VALUE "OriginalFilename", "liblunar-date-2.0-@LT_CURRENT_MINUS_AGE@.dll"
+	VALUE "ProductName", "LunarDate"
+	VALUE "ProductVersion", "@LUNAR_DATE_VERSION@"
+      END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+      VALUE "Translation", 0x409, 1200
+    END
+  END

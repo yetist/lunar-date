@@ -139,7 +139,7 @@ int main (int argc, char* argv[])
 		{
 			g_printf("--------------------------------------\n");
 			random_test();
-			sleep(2);
+			g_usleep(20000);
 		}
 	}
 	return 0;
