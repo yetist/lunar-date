@@ -1,6 +1,7 @@
 # Contributor: yetist <yetist@gmail.com>
 
-pkgname=lunar-date
+pkgname=mingw32-lunar-date
+_pkgname=lunar-date
 pkgver=2.4.1
 pkgrel=1
 pkgdesc="Chinese lunar date library."
@@ -9,10 +10,10 @@ url="http://code.google.com/p/liblunar/"
 license=('GPL2')
 depends=(mingw32-glib2)
 makedepends=(mingw32-gcc)
-source=("http://liblunar.googlecode.com/files/$pkgname-$pkgver.tar.gz")
+source=("http://liblunar.googlecode.com/files/$_pkgname-$pkgver.tar.gz")
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
 
   export CPPFLAGS="-D_REENTRANT"
   export PKG_CONFIG_LIBDIR=/usr/i486-mingw32/lib/pkgconfig
@@ -27,7 +28,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
 
   make DESTDIR="$pkgdir/" install || return 1
 

@@ -30,9 +30,6 @@ LUNAR_DATE_BINARY_AGE=lunar_date_binary_age
 AC_SUBST(LUNAR_DATE_VERSION)
 AC_SUBST(LUNAR_BINARY_AGE)
 
-LIBTOOL_EXPORT_OPTIONS='-export-symbols-regex "^lunar.*"'
-AC_SUBST(LIBTOOL_EXPORT_OPTIONS)
-
 LUNAR_DATE_MAJOR_VERSION=lunar_date_major_version
 LUNAR_DATE_MINOR_VERSION=lunar_date_minor_version
 LUNAR_DATE_MICRO_VERSION=lunar_date_micro_version
@@ -85,9 +82,11 @@ AC_MSG_CHECKING([for some Win32 platform])
 case "$host" in
   *-*-mingw*|*-*-cygwin*)
     platform_win32=yes
+    os_win32=yes
     ;;
   *)
     platform_win32=no
+    os_win32=no
     ;;
 esac
 AC_MSG_RESULT([$platform_win32])
@@ -95,7 +94,17 @@ AM_CONDITIONAL(PLATFORM_WIN32, test "$platform_win32" = "yes")
 
 AM_CONDITIONAL(OS_WIN32, test "$os_win32" = "yes")
 AM_CONDITIONAL(OS_UNIX, test "$os_win32" != "yes")
-AM_CONDITIONAL(OS_LINUX, test "$os_linux" = "yes")
+
+#LIBTOOL_EXPORT_OPTIONS='-export-symbols-regex "^lunar.*"'
+if test "$os_win32" != yes; then
+    # libtool option to control which symbols are exported
+    # right now, symbols starting with _ are not exported
+    LIBTOOL_EXPORT_OPTIONS='-export-symbols-regex "^[[^_]].*"'
+else
+    # We currently use .def files on Windows (for gdk and gtk)
+    LIBTOOL_EXPORT_OPTIONS=
+fi
+AC_SUBST(LIBTOOL_EXPORT_OPTIONS)
 
 if test "$os_win32" = "yes"; then
   AC_CHECK_TOOL(WINDRES, windres, no)
@@ -178,7 +187,7 @@ AM_GLIB_DEFINE_LOCALEDIR(LUNAR_DATE_LOCALEDIR)
 
 AC_CONFIG_FILES([
 lunar-date-2.0.pc
-lunar-date/lunar-date.rc
+lunar-date/lunar-date-win32.rc
 lunar-date/lunar-version.h
 lunar-date/Makefile
 tests/Makefile
