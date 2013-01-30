@@ -2,7 +2,7 @@ CLEANFILES =
 
 AM_CPPFLAGS = -DLIBLUNAR_DISABLE_DEPRECATED
 
-INCLUDES =                                              \
+AM_CPPFLAGS +=                                          \
 	-I$(top_srcdir)					\
         -I$(srcdir) 					\
 	$(LUNAR_DATE_CFLAGS)				\
