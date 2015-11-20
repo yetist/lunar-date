@@ -23,6 +23,8 @@
  * */
 
 #include <lunar-date/lunar-date.h>
+#include <stdlib.h>
+#include <glib/gprintf.h>
 #include <glib/gi18n.h>
 
 static void display (LunarDate *date)
@@ -122,7 +124,9 @@ void test(gchar* argv[])
 int main (int argc, char* argv[])
 {
 	setlocale (LC_ALL, "");
+#ifndef GLIB_VERSION_2_36
 	g_type_init();
+#endif
 	if (argc == 4)
 	{
 		test(argv);
