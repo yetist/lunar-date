@@ -29,22 +29,21 @@
 
 static void display (LunarDate *date)
 {
-	g_printf("\n");
-	g_printf("format:%%(YEAR)年%%(MONTH)月%%(DAY)日%%(HOUR)时->%s\n", lunar_date_strftime(date, "%(YEAR)年%(MONTH)月%(DAY)日%(HOUR)时"));
-	g_printf("format:%%(year)年%%(month)月%%(day)日%%(hour)时->%s\n", lunar_date_strftime(date, "%(year)年%(month)月%(day)日%(hour)时"));
-	g_printf("format:%%(NIAN)年%%(YUE)月%%(RI)日%%(SHI)时->%s\n", lunar_date_strftime(date, "%(NIAN)年%(YUE)月%(RI)日%(SHI)时"));
-	g_printf("format:%%(nian)年%%(yue)月%%(ri)日%%(shi)时->%s\n", lunar_date_strftime(date, "%(nian)年%(yue)月%(ri)日%(shi)时"));
-	g_printf("format:%%(Y60)年%%(M60)月%%(D60)日%%(H60)时->%s\n", lunar_date_strftime(date, "%(Y60)年%(M60)月%(D60)日%(H60)时"));
-	g_printf("format:%%(Y8)年%%(M8)月%%(D8)日%%(H8)时->%s\n", lunar_date_strftime(date, "%(Y8)年%(M8)月%(D8)日%(H8)时"));
-	g_printf("format:%%(shengxiao)->%s\n", lunar_date_strftime(date, "%(shengxiao)"));
-	g_printf("format:%%(jieri)->%s\n", lunar_date_strftime(date, "%(jieri)"));
+	g_printf("format:%%(YEAR)年%%(MONTH)月%%(DAY)日%%(HOUR)时 ->%s\n", lunar_date_strftime(date, "%(YEAR)年%(MONTH)月%(DAY)日%(HOUR)时"));
+	g_printf("format:%%(year)年%%(month)月%%(day)日%%(hour)时 ->%s\n", lunar_date_strftime(date, "%(year)年%(month)月%(day)日%(hour)时"));
+	g_printf("format:%%(NIAN)年%%(YUE)月%%(RI)日%%(SHI)时     ->%s\n", lunar_date_strftime(date, "%(NIAN)年%(YUE)月%(RI)日%(SHI)时"));
+	g_printf("format:%%(nian)年%%(yue)月%%(ri)日%%(shi)时     ->%s\n", lunar_date_strftime(date, "%(nian)年%(yue)月%(ri)日%(shi)时"));
+	g_printf("format:%%(Y60)年%%(M60)月%%(D60)日%%(H60)时     ->%s\n", lunar_date_strftime(date, "%(Y60)年%(M60)月%(D60)日%(H60)时"));
+	g_printf("format:%%(Y8)年%%(M8)月%%(D8)日%%(H8)时         ->%s\n", lunar_date_strftime(date, "%(Y8)年%(M8)月%(D8)日%(H8)时"));
+	g_printf("format:%%(shengxiao)                         ->%s\n", lunar_date_strftime(date, "%(shengxiao)"));
+	g_printf("format:%%(jieri)                             ->%s\n", lunar_date_strftime(date, "%(jieri)"));
 }
 
 void set_lunar_date(LunarDate *date, GDateYear year, GDateMonth month, GDateDay day , guint8 hour, gboolean isleap)
 {
 	GError *error = NULL;
 
-	g_printf("Test Date: <%u-%u-%u %u>\n", year, month, day, hour);
+	g_printf("\nTest Lunar Date: <%u-%u-%u %u>\n", year, month, day, hour);
 	lunar_date_set_lunar_date(date, year, month, day , hour, isleap, &error);
 	if (error != NULL)
 	{
@@ -53,6 +52,7 @@ void set_lunar_date(LunarDate *date, GDateYear year, GDateMonth month, GDateDay 
 	}
 	display(date);
 
+	g_printf("\nTest Solar Date: <%u-%u-%u %u>\n", year, month, day, hour);
 	lunar_date_set_solar_date(date, year, month, day , hour, &error);
 	if (error != NULL)
 	{
