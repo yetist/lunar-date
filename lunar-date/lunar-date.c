@@ -581,7 +581,7 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 	}
 	if (strstr(format, "%(SHI)") != NULL)
 	{
-		t1 = str_replace(str, "\%\\(SHI\\)", _(zhi_list[priv->lunar->hour/2]));
+		t1 = str_replace(str, "\%\\(SHI\\)", _(zhi_list[(priv->lunar->hour + 1) % 24 / 2]));
 		g_free(str); str=g_strdup(t1); g_free(t1);
 	}
 
