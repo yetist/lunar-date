@@ -122,7 +122,7 @@ void test(gchar* argv[])
 int main (int argc, char* argv[])
 {
 	setlocale (LC_ALL, "");
-	g_type_init();
+	//g_type_init();
 	if (argc == 4)
 	{
 		test(argv);

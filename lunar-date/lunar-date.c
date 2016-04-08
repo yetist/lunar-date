@@ -37,6 +37,7 @@
 #endif
 #include <glib/gi18n-lib.h>
 #include <string.h>
+#include <stdlib.h>
 #include <lunar-date/lunar-date.h>
 #include <lunar-date/lunar-version.h>
 #include "lunar-date-private.h"

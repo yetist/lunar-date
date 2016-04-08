@@ -53,6 +53,14 @@ void year_jieqi(int year, int n, char* result)
 			397447,419210,440795,462224,483532,504758
 	};
 	static const char* solar_term_name[] = {
+		/*
+		 * "Xiǎohán" "Dàhán" "Lìchūn" "Yǔshuǐ"
+		 * "Jīngzhé" "Chūnfēn" "Qīngmíng" "Gǔyǔ"
+		 * "Lìxià" "Xiǎomǎn" "Mángzhòng" "Xiàzhì"
+		 * "Xiǎoshǔ" "Dàshǔ" "Lìqīu" "Chùshǔ"
+		 * "Báilòu" "Qīufēn" "Hánlòu" "Shuāngjiàng"
+		 * "Lìdōng" "Xiǎoxuě" "Dàxuě" "Dōngzhì"
+		 */
 		N_("Xi\307\216oh\303\241n"), N_("D\303\240h\303\241n"), N_("L\303\254ch\305\253n"), N_("Y\307\224shu\307\220"),
 		N_("J\304\253ngzh\303\251"), N_("Ch\305\253nf\304\223n"), N_("Q\304\253ngm\303\255ng"), N_("G\307\224y\307\224"), 
 		N_("L\303\254xi\303\240"), N_("Xi\307\216om\307\216n"), N_("M\303\241ngzh\303\262ng"), N_("Xi\303\240zh\303\254"), 
