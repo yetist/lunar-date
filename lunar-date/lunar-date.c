@@ -291,6 +291,7 @@ void			lunar_date_set_solar_date	  (LunarDate *date,
 	}
 	_cl_date_calc_ganzhi(date);
 	_cl_date_calc_bazi(date);
+
 }
 
 /**
@@ -463,13 +464,13 @@ gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter)
 /**
  * lunar_date_strftime:
  * @date: a #LunarDate
- * @format: specify the output format. this
+ * @format: specify the output format.
  *
  * 使用给定的格式来输出字符串。类似于strftime的用法。可使用的格式及输出如下：
  *
- * %(YEAR)年%(MONTH)月%(DAY)%(HOUR)日		公历：大写->二OO八年一月二十一日
+ * %(YEAR)年%(MONTH)月%(DAY)日%(HOUR)时		公历：大写->二OO八年一月二十一日
  *
- * %(year)年%(month)月%(day)%(hour)日		公历：小写->2008年1月21日
+ * %(year)年%(month)月%(day)日%(hour)时		公历：小写->2008年1月21日
  *
  * %(NIAN)年%(YUE)月%(RI)日%(SHI)时			阴历：大写->丁亥年腊月十四日，(月份前带"闰"表示闰月)
  *
@@ -581,7 +582,7 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 	}
 	if (strstr(format, "%(SHI)") != NULL)
 	{
-		t1 = str_replace(str, "\%\\(SHI\\)", _(zhi_list[priv->lunar->hour/2]));
+		t1 = str_replace(str, "\%\\(SHI\\)", _(zhi_list[priv->zhi->hour]));
 		g_free(str); str=g_strdup(t1); g_free(t1);
 	}
 
@@ -612,7 +613,7 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 	}
 	if (strstr(format, "%(shi)") != NULL)
 	{
-		tmp = g_strdup_printf("%d", priv->lunar->hour);
+		tmp = g_strdup_printf("%d", priv->zhi->hour);
 		t1 = str_replace(str, "\%\\(shi\\)", tmp);
 		g_free(tmp);
 		g_free(str); str=g_strdup(t1); g_free(t1);
@@ -642,10 +643,7 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 	}
 	if (strstr(format, "%(H60)") != NULL)
 	{
-		int g=0, h=0;
-		h = (priv->lunar->hour+1) % 24 / 2;
-		g = (priv->gan2->day % 5 * 2 + h) % 10;
-		tmp = g_strdup_printf("%s%s", _(gan_list[g]), _(zhi_list[h]));
+		tmp = g_strdup_printf("%s%s", _(gan_list[priv->gan->hour]), _(zhi_list[priv->zhi->hour]));
 		t1 = str_replace(str, "\%\\(H60\\)", tmp);
 		g_free(tmp);
 		g_free(str); str=g_strdup(t1); g_free(t1);
@@ -676,10 +674,7 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 	/* 子时: 23点 --凌晨1 点前... */
 	if (strstr(format, "%(H8)") != NULL)
 	{
-		int g=0, h=0;
-		h = (priv->lunar->hour+1) % 24 / 2;
-		g = (priv->gan2->day % 5 * 2 + h) % 10;
-		tmp = g_strdup_printf("%s%s", _(gan_list[g]), _(zhi_list[h]));
+		tmp = g_strdup_printf("%s%s", _(gan_list[priv->gan2->hour]), _(zhi_list[priv->zhi2->hour]));
 		t1 = str_replace(str, "\%\\(H8\\)", tmp);
 		g_free(tmp);
 		g_free(str); str=g_strdup(t1); g_free(t1);

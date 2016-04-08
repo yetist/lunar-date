@@ -2,7 +2,7 @@ AC_PREREQ(2.62)
 
 m4_define([lunar_date_major_version], [2])
 m4_define([lunar_date_minor_version], [4])
-m4_define([lunar_date_micro_version], [1])
+m4_define([lunar_date_micro_version], [2])
 m4_define([lunar_date_interface_age], [1])
 m4_define([lunar_date_binary_age], [m4_eval(100 * lunar_date_minor_version + lunar_date_micro_version)])
 m4_define([lunar_date_version], [lunar_date_major_version.lunar_date_minor_version.lunar_date_micro_version])

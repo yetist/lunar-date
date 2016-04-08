@@ -21,6 +21,7 @@
 
 #include <lunar-date/lunar-date.h>
 #include "lunar-date-private.h"
+#include <glib/gprintf.h>
 #include <glib/gi18n-lib.h>
 
 gboolean leap (guint year)
