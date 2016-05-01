@@ -50,6 +50,7 @@
  * The #LunarDate provide Chinese lunar date library.
  */
 
+
 enum {
 	LAST_SIGNAL
 };
@@ -58,10 +59,9 @@ enum {
 	PROP_0,
 };
 
-#define LUNAR_DATE_GET_PRIVATE(obj)  (G_TYPE_INSTANCE_GET_PRIVATE((obj), LUNAR_TYPE_DATE, LunarDatePrivate))
-
-struct _LunarDatePrivate
+struct _LunarDate
 {
+	GObject		 object;
 	CLDate *solar;
 	CLDate *lunar;
 	CLDate *lunar2;

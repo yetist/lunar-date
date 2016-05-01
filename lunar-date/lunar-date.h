@@ -29,36 +29,15 @@
 
 G_BEGIN_DECLS
 
-#define LUNAR_TYPE_DATE				 (lunar_date_get_type ())
-#define LUNAR_DATE(obj)				 (G_TYPE_CHECK_INSTANCE_CAST ((obj), LUNAR_TYPE_DATE, LunarDate))
-#define LUNAR_DATE_CLASS(klass)		 (G_TYPE_CHECK_CLASS_CAST ((klass), LUNAR_TYPE_DATE, LunarDateClass))
-#define LUNAR_IS_DATE(obj)			 (G_TYPE_CHECK_INSTANCE_TYPE ((obj), LUNAR_TYPE_DATE))
-#define LUNAR_IS_DATE_CLASS(klass)	 (G_TYPE_CHECK_CLASS_TYPE ((klass), LUNAR_TYPE_DATE))
-#define LUNAR_DATE_GET_CLASS(obj)	 (G_TYPE_INSTANCE_GET_CLASS ((obj), LUNAR_TYPE_DATE, LunarDateClass))
 
+#define LUNAR_TYPE_DATE				 (lunar_date_get_type ())
 #define LUNAR_DATE_ERROR	(lunar_date_error_quark ())
 
-typedef struct _LunarDate			  LunarDate;
-typedef struct _LunarDateClass		  LunarDateClass;
-typedef struct _LunarDatePrivate	  LunarDatePrivate;
+G_DECLARE_FINAL_TYPE (LunarDate, lunar_date, LUNAR, DATE, GObject);
+
 
 //typedef guint8	GDateHour;
 
-/**
- * LunarDate:
- *
- * All of these fields should be considered read-only.
- */
-struct _LunarDate
-{
-	GObject		 object;
-	LunarDatePrivate   *priv;
-};
-
-struct _LunarDateClass
-{
-	GObjectClass	 parent_class;
-};
 
 /**
  * LunarDateError:
@@ -81,8 +60,7 @@ typedef enum
 
 GQuark lunar_date_error_quark (void);
 
-GType	   lunar_date_get_type			 (void) G_GNUC_CONST;
-LunarDate*	   lunar_date_new				 (void);
+LunarDate*	lunar_date_new				 (void);
 void		lunar_date_set_solar_date	  (LunarDate *date,
 											GDateYear year,
 											GDateMonth month,
