@@ -63,7 +63,7 @@ CHANGELOG_START = tags/v2.2.3
 
 ChangeLog:
 	@echo Creating $@
-	@if test -d "$(srcdir)/../.git"; then \
+	@if test -d "$(srcdir)/.git"; then \
           (./missing --run git log $(CHANGELOG_START)^^.. --stat $(srcdir) ) | fmt --split-only > $@.tmp \
           && mv -f $@.tmp $@ \
           || ($(RM) $@.tmp; \
