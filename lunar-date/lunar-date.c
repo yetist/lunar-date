@@ -2,9 +2,9 @@
 /*
  * lunar-date.c
  *
- * This file is part of liblunar.
+ * This file is part of lunar-date.
  *
- * Copyright (C) 2007-2011 yetist <yetist@gmail.com>.
+ * Copyright (C) 2007-2016 yetist <yetist@gmail.com>.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,9 +38,11 @@
 #include <glib/gi18n-lib.h>
 #include <string.h>
 #include <stdlib.h>
+#include <gio/gio.h>
 #include <lunar-date/lunar-date.h>
 #include <lunar-date/lunar-version.h>
 #include "lunar-date-private.h"
+#include "lunar-date-resources.h"
 
 /**
  * SECTION:lunar-date
@@ -103,26 +105,28 @@ lunar_date_class_init (LunarDateClass *class)
 
 static void lunar_date_init_holiday (LunarDate *date)
 {
-	gchar filename[32];
-	gchar *path;
 	date->holiday_solar = g_hash_table_new(g_str_hash, g_str_equal);
 	date->holiday_lunar = g_hash_table_new(g_str_hash, g_str_equal);
 	date->holiday_week = g_hash_table_new(g_str_hash, g_str_equal);
 
-#ifdef RUN_IN_SOURCE_TREE
-	path = g_build_filename("..", "data", "holiday.dat", NULL);
-#else
-	path = g_build_filename(LUNAR_HOLIDAYDIR, "holiday.dat", NULL);
-#endif
-	if (g_file_test(path, G_FILE_TEST_EXISTS |G_FILE_TEST_IS_REGULAR))
 	{
 		GKeyFile     *keyfile;
-		gchar **groups;
-		gsize i = 0, len;
+		gchar        **groups;
+		gsize        i = 0, len;
+
+		GResource *resource;
+		GBytes *bytes;
+		gsize size;
+
+	   	resource = lunar_date_get_resource();
+		bytes = g_resource_lookup_data (resource, "/org/moses/lunar/holiday.dat", G_RESOURCE_LOOKUP_FLAGS_NONE, NULL);
+
+		gconstpointer data = g_bytes_get_data (bytes, &size);
+
 		keyfile = g_key_file_new();
-		if (!g_key_file_load_from_file(keyfile, path, G_KEY_FILE_KEEP_COMMENTS, NULL))
+		if (!g_key_file_load_from_data (keyfile, data, size,  G_KEY_FILE_NONE, NULL))
 		{
-			g_debug("Format error \"%s\" !!!\n", path);
+			g_debug("Format error !!!\n");
 		}
 
 		groups = g_key_file_get_groups (keyfile, &len);
@@ -134,10 +138,10 @@ static void lunar_date_init_holiday (LunarDate *date)
 			while(j < m ) {
 				char *p;
 				value = g_key_file_get_locale_string (keyfile, groups[i], keys[j], NULL, NULL);
-				p = strchr(keys[j], '[');
-				p = '\0';
-				keys[4] = '\0';
-				g_print("j=%s   ", p);
+				//p = strchr(keys[j], '[');
+				//p = '\0';
+				//keys[4] = '\0';
+				//g_print("j=%s   ", p);
 				g_print("group:%s, key=%s, value=%s\n", groups[i], keys[j], value);
 				j++;
 			}

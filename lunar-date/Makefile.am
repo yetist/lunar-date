@@ -71,8 +71,10 @@ source_c =	\
 	$(srcdir)/lunar-date-private.c
 
 BUILT_SOURCES =         	\
-        lunar-date-enum-types.c        \
-        lunar-date-enum-types.h
+        lunar-date-enum-types.h		\
+        lunar-date-enum-types.c		\
+        lunar-date-resources.h		\
+        lunar-date-resources.c
 
 lib_LTLIBRARIES = liblunar-date-3.0.la
 
@@ -98,6 +100,12 @@ lunar-date-enum-types.c: lunar-date-enum-types.c.template $(source_h) $(GLIB_MKE
 	$(AM_V_GEN) (cd $(srcdir) && $(GLIB_MKENUMS) --template lunar-date-enum-types.c.template $(source_h)) > $@
 DISTCLEANFILES = lunar-date-enum-types.h lunar-date-enum-types.c
 
+lunar-date-resources.c: lunar-date.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/lunar-date.gresource.xml)
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --target=$@ --generate-source --c-name lunar_date $(srcdir)/lunar-date.gresource.xml
+
+lunar-date-resources.h: lunar-date.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/lunar-date.gresource.xml)
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --target=$@ --generate-header --c-name lunar_date $(srcdir)/lunar-date.gresource.xml
+
 if HAVE_INTROSPECTION
 -include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS = LunarDate-3.0.gir
@@ -120,6 +128,11 @@ typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 CLEANFILES += $(dist_gir_DATA) $(typelib_DATA)
 endif
 
-EXTRA_DIST =  lunar-date-enum-types.h.template lunar-date-enum-types.c.template lunar-date-private.h lunar-version.h.in lunar-date-win32.rc.in lunar-date.symbols
+EXTRA_DIST =  lunar-date-enum-types.h.template \
+	      lunar-date-enum-types.c.template \
+	      lunar-date-private.h \
+	      lunar-version.h.in \
+	      lunar-date-win32.rc.in \
+	      lunar-date.symbols
 
 -include $(top_srcdir)/git.mk

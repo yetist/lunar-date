@@ -69,7 +69,7 @@ GTKDOC_CFLAGS =                                               \
         $(AM_CFLAGS)
 
 GTKDOC_LIBS=                                            \
-        $(top_builddir)/lunar-date/liblunar-date-2.0.la		\
+        $(top_builddir)/lunar-date/liblunar-date-3.0.la		\
         $(LUNAR_DATE_LIBS)
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.

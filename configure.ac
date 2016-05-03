@@ -2,7 +2,7 @@ AC_PREREQ(2.62)
 
 m4_define([lunar_date_major_version], [2])
 m4_define([lunar_date_minor_version], [9])
-m4_define([lunar_date_micro_version], [9])
+m4_define([lunar_date_micro_version], [1])
 m4_define([lunar_date_interface_age], [1])
 m4_define([lunar_date_binary_age], [m4_eval(100 * lunar_date_minor_version + lunar_date_micro_version)])
 m4_define([lunar_date_version], [lunar_date_major_version.lunar_date_minor_version.lunar_date_micro_version])
@@ -68,6 +68,7 @@ AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
 
 GOBJECT_INTROSPECTION_CHECK([0.6.7])
 
+AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
 AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
 
 AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
@@ -119,10 +120,8 @@ dnl ================================================================
 dnl check glib and gobject
 dnl ================================================================
 
-GLIB2_REQUIRED=2.4.0
-GOBJECT_REQUIRED=2.4.0
-
-PKG_CHECK_MODULES(LUNAR_DATE, glib-2.0 >= $GLIB2_REQUIRED gobject-2.0 >= $GOBJECT_REQUIRED)
+GIO_REQUIRED=2.32
+PKG_CHECK_MODULES(LUNAR_DATE, gio-2.0 >= $GIO_REQUIRED)
 
 AC_SUBST(LUNAR_DATE_CFLAGS)
 AC_SUBST(LUNAR_DATE_LIBS)

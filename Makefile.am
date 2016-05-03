@@ -4,7 +4,7 @@ SUBDIRS = po lunar-date data tests docs
 AM_CPPFLAGS = -DLIBLUNAR_DISABLE_DEPRECATED
 
 EXTRA_DIST =                    \
-	lunar-date-2.0.pc.in	\
+	lunar-date-3.0.pc.in	\
         ChangeLog.pre-2-2       \
 	sanity_check		\
         intltool-extract.in     \
@@ -38,7 +38,7 @@ MAINTAINERCLEANFILES = 		\
 	`find "$(srcdir)" -type f -name Makefile.in -print`
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = lunar-date-2.0.pc
+pkgconfig_DATA = lunar-date-3.0.pc
 
 if HAVE_INTROSPECTION
 if HAVE_VALA
@@ -49,9 +49,6 @@ endif
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc --enable-introspection
 
 .PHONY: release sanity snapshot snapcheck ChangeLog
-
-release:
-	googlecode_upload.py -s $(distdir).tar.gz -p liblunar -u yetist@gmail.com -l Featured,Type-Source,OpSys-Linux $(distdir).tar.gz
 
 sanity:
 	./sanity_check $(VERSION)
