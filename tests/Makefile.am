@@ -16,6 +16,6 @@ test_date_SOURCES = test-date.c
 
 LIBS =                       		\
         $(LUNAR_DATE_LIBS)       		\
-        $(top_builddir)/lunar-date/liblunar-date-2.0.la
+        $(top_builddir)/lunar-date/liblunar-date-3.0.la
 
 -include $(top_srcdir)/git.mk

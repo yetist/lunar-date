@@ -2,7 +2,7 @@
 /*
  * lunar-date-private.c: This file is part of liblunar
  *
- * Copyright (C) 2009-2011 yetist <yetist@gmail.com>
+ * Copyright (C) 2009-2016 yetist <yetist@gmail.com>
  *
  * 
  * This program is free software: you can redistribute it and/or modify

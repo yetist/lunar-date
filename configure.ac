@@ -1,8 +1,8 @@
 AC_PREREQ(2.62)
 
 m4_define([lunar_date_major_version], [2])
-m4_define([lunar_date_minor_version], [4])
-m4_define([lunar_date_micro_version], [2])
+m4_define([lunar_date_minor_version], [9])
+m4_define([lunar_date_micro_version], [9])
 m4_define([lunar_date_interface_age], [1])
 m4_define([lunar_date_binary_age], [m4_eval(100 * lunar_date_minor_version + lunar_date_micro_version)])
 m4_define([lunar_date_version], [lunar_date_major_version.lunar_date_minor_version.lunar_date_micro_version])
@@ -186,7 +186,7 @@ AM_GLIB_GNU_GETTEXT
 AM_GLIB_DEFINE_LOCALEDIR(LUNAR_DATE_LOCALEDIR)
 
 AC_CONFIG_FILES([
-lunar-date-2.0.pc
+lunar-date-3.0.pc
 lunar-date/lunar-date-win32.rc
 lunar-date/lunar-version.h
 lunar-date/Makefile

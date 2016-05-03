@@ -7,7 +7,7 @@ AM_CPPFLAGS +=                                          \
         -I$(srcdir) 					\
 	$(LUNAR_DATE_CFLAGS)				\
 	$(WARN_CFLAGS)					\
-        -DLUNAR_HOLIDAYDIR=\""$(datadir)/liblunar/"\"
+        -DLUNAR_HOLIDAYDIR=\""$(datadir)/lunar-date/"\"
 
 if PLATFORM_WIN32
 no_undefined = -no-undefined
@@ -24,26 +24,26 @@ lunar-date-win32-res.o : lunar-date-win32.rc
 	$(WINDRES) lunar-date-win32.rc $@
 
 install-def-file: lunar-date.def
-	$(INSTALL) $(srcdir)/lunar-date.def $(DESTDIR)$(libdir)/lunar-date-win32-2.0.def
+	$(INSTALL) $(srcdir)/lunar-date.def $(DESTDIR)$(libdir)/lunar-date-win32-3.0.def
 
 uninstall-def-file:
-	-rm $(DESTDIR)$(libdir)/lunar-date-win32-2.0.def
+	-rm $(DESTDIR)$(libdir)/lunar-date-win32-3.0.def
 else
 install-def-file:
 uninstall-def-file:
 endif
 
 if MS_LIB_AVAILABLE
-noinst_DATA = lunar-date-2.0.lib
+noinst_DATA = lunar-date-3.0.lib
 
-lunar-date-2.0.lib: liblunar-date-2.0.la lunar-date.def
-	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:liblunar-date-2.0-$(LT_CURRENT_MINUS_AGE).dll -def:lunar-date.def -out:$@
+lunar-date-3.0.lib: liblunar-date-3.0.la lunar-date.def
+	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:liblunar-date-3.0-$(LT_CURRENT_MINUS_AGE).dll -def:lunar-date.def -out:$@
 
 install_ms_lib:
-	$(INSTALL) lunar-date-2.0.lib $(DESTDIR)$(libdir)
+	$(INSTALL) lunar-date-3.0.lib $(DESTDIR)$(libdir)
 
 uninstall_ms_lib:
-	-rm $(DESTDIR)$(libdir)/lunar-date-2.0.lib
+	-rm $(DESTDIR)$(libdir)/lunar-date-3.0.lib
 else
 install-ms-lib:
 uninstall-ms-lib:
@@ -74,19 +74,19 @@ BUILT_SOURCES =         	\
         lunar-date-enum-types.c        \
         lunar-date-enum-types.h
 
-lib_LTLIBRARIES = liblunar-date-2.0.la
+lib_LTLIBRARIES = liblunar-date-3.0.la
 
-liblunar_date_2_0_includedir = $(includedir)/liblunar-2.0/lunar-date
-liblunar_date_2_0_include_HEADERS = $(source_h)
+liblunar_date_3_0_includedir = $(includedir)/liblunar-3.0/lunar-date
+liblunar_date_3_0_include_HEADERS = $(source_h)
 
-liblunar_date_2_0_la_SOURCES =	$(source_c) $(BUILT_SOURCES)
-liblunar_date_2_0_la_LIBADD = 	$(LUNAR_DATE_LIBS)
-liblunar_date_2_0_la_LDFLAGS = $(libtool_opts)
-liblunar_date_2_0_la_DEPENDENCIES = $(deps)
+liblunar_date_3_0_la_SOURCES =	$(source_c) $(BUILT_SOURCES)
+liblunar_date_3_0_la_LIBADD = 	$(LUNAR_DATE_LIBS)
+liblunar_date_3_0_la_LDFLAGS = $(libtool_opts)
+liblunar_date_3_0_la_DEPENDENCIES = $(deps)
 
 if OS_WIN32
 liblunar_date_target_ldflags = $(lunar_date_win32_res_ldflag) $(lunar_date_win32_symbols)
-liblunar_date_2_0_la_DEPENDENCIES += $(lunar_date_def) $(lunar_date_win32_res)
+liblunar_date_3_0_la_DEPENDENCIES += $(lunar_date_def) $(lunar_date_win32_res)
 endif
 
 install-data-local: install-ms-lib install-def-file
@@ -100,16 +100,16 @@ DISTCLEANFILES = lunar-date-enum-types.h lunar-date-enum-types.c
 
 if HAVE_INTROSPECTION
 -include $(INTROSPECTION_MAKEFILE)
-INTROSPECTION_GIRS = LunarDate-2.0.gir
+INTROSPECTION_GIRS = LunarDate-3.0.gir
 #INTROSPECTION_COMPILER_ARGS - Additional args to pass in to the compiler
 
-LunarDate-2.0.gir: liblunar-date-2.0.la
+LunarDate-3.0.gir: liblunar-date-3.0.la
 INTROSPECTION_SCANNER_ARGS = -I$(top_srcdir) -I$(srcdir) --warn-all --identifier-prefix=Lunar
-LunarDate_2_0_gir_NAMESPACE = LunarDate
-LunarDate_2_0_gir_VERSION = 2.0
-LunarDate_2_0_gir_LIBS = $(builddir)/liblunar-date-2.0.la
-LunarDate_2_0_gir_FILES = $(source_h) $(source_c) $(BUILT_SOURCES)
-LunarDate_2_0_gir_INCLUDES = GObject-2.0
+LunarDate_3_0_gir_NAMESPACE = LunarDate
+LunarDate_3_0_gir_VERSION = 3.0
+LunarDate_3_0_gir_LIBS = $(builddir)/liblunar-date-3.0.la
+LunarDate_3_0_gir_FILES = $(source_h) $(source_c) $(BUILT_SOURCES)
+LunarDate_3_0_gir_INCLUDES = GObject-2.0
 
 girdir = $(datadir)/gir-1.0
 dist_gir_DATA = $(INTROSPECTION_GIRS)

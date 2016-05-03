@@ -33,8 +33,7 @@ G_BEGIN_DECLS
 #define LUNAR_TYPE_DATE				 (lunar_date_get_type ())
 #define LUNAR_DATE_ERROR	(lunar_date_error_quark ())
 
-G_DECLARE_FINAL_TYPE (LunarDate, lunar_date, LUNAR, DATE, GObject);
-
+G_DECLARE_FINAL_TYPE (LunarDate, lunar_date, LUNAR, DATE, GObject)
 
 //typedef guint8	GDateHour;
 
