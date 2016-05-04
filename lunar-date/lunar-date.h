@@ -74,6 +74,9 @@ void		lunar_date_set_lunar_date	  (LunarDate *date,
 											gboolean isleap,
 											GError **error);
 gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter);
+gchar*		lunar_date_add_solar_jieri	  (LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday);
+gchar*		lunar_date_add_lunar_jieri	  (LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday);
+gchar*		lunar_date_add_week_jieri	  (LunarDate *date, GDateMonth month, gint week, gint which, const gchar *holiday);
 gchar*		lunar_date_strftime			  (LunarDate *date, const char *format);
 void		lunar_date_free				  (LunarDate *date);
 
