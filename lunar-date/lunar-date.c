@@ -110,32 +110,29 @@ static void lunar_date_init_holiday (LunarDate *date)
 	date->holiday_week = g_hash_table_new(g_str_hash, g_str_equal);
 
 	{
-		GKeyFile     *keyfile;
-		gchar        **groups;
-		gsize        i = 0, len;
-
-		GResource *resource;
-		GBytes *bytes;
-		gsize size;
+		GResource     *resource;
+		GBytes        *bytes;
+		gconstpointer data;
+		GKeyFile      *keyfile;
+		gchar         **groups;
+		gsize         i = 0, size;
 
 	   	resource = lunar_date_get_resource();
 		bytes = g_resource_lookup_data (resource, "/org/moses/lunar/holiday.dat", G_RESOURCE_LOOKUP_FLAGS_NONE, NULL);
-
-		gconstpointer data = g_bytes_get_data (bytes, &size);
+		data = g_bytes_get_data (bytes, &size);
 
 		keyfile = g_key_file_new();
-		if (!g_key_file_load_from_data (keyfile, data, size,  G_KEY_FILE_NONE, NULL))
-		{
-			g_debug("Format error !!!\n");
-		}
+		g_key_file_load_from_data (keyfile, data, size,  G_KEY_FILE_NONE, NULL);
+		g_bytes_unref(bytes);
 
-		groups = g_key_file_get_groups (keyfile, &len);
-		while(i < len) {
+		groups = g_key_file_get_groups (keyfile, &size);
+		while(i < size) {
+			gchar        buf[127];
 			gchar **keys;
-			gsize j=0, m;
+			gsize j=0, len;
 			gchar *value;
-			keys = g_key_file_get_keys (keyfile, groups[i], &m, NULL);
-			while(j < m ) {
+			keys = g_key_file_get_keys (keyfile, groups[i], &len, NULL);
+			while(j < len) {
 				char *p;
 				value = g_key_file_get_locale_string (keyfile, groups[i], keys[j], NULL, NULL);
 				//p = strchr(keys[j], '[');
