@@ -175,6 +175,7 @@ lunar-date/lunar-date-win32.rc
 lunar-date/lunar-version.h
 lunar-date/Makefile
 tests/Makefile
+example/Makefile
 data/Makefile
 po/Makefile.in
 docs/Makefile
