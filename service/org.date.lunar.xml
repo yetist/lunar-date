@@ -1,0 +1,25 @@
+<node>
+	<interface name="org.moses.Lunar.Date">
+		<method name="GoldOne">
+			<arg name="fullname" type="s" direction="out"/>
+			<arg name="shortname" type="s" direction="out"/>
+			<arg name="chapter" type="i" direction="out"/>
+			<arg name="section" type="i" direction="out"/>
+			<arg name="content" type="s" direction="out"/>
+		</method>
+		<method name="SearchScripture">
+			<arg name="keyword" type="s" direction="in"/>
+			<arg name="count" type="i" direction="out"/>
+			<arg name="scripture" type="av" direction="out"/>
+		</method>
+		<method name="GetScripture">
+			<arg name="book" type="s" direction="in"/>
+			<arg name="chapter" type="i" direction="in"/>
+			<arg name="from" type="i" direction="in"/>
+			<arg name="to" type="i" direction="in"/>
+			<arg name="fullname" type="s" direction="out"/>
+			<arg name="shortname" type="s" direction="out"/>
+			<arg name="scripture" type="av" direction="out"/>
+		</method>
+	</interface>
+</node>
