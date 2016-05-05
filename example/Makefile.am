@@ -21,3 +21,5 @@ example_vala_LDADD = \
         $(top_builddir)/lunar-date/liblunar-date-3.0.la
 
 DISTCLEANFILES = example.c
+
+-include $(top_srcdir)/git.mk

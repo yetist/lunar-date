@@ -33,3 +33,5 @@ EXTRA_DIST = config.vapi
 VAPIGEN_V = $(VAPIGEN_V_$(V))
 VAPIGEN_V_ = $(VAPIGEN_V_$(AM_DEFAULT_VERBOSITY))
 VAPIGEN_V_0 = @echo "  VAPIG " $^;
+
+-include $(top_srcdir)/git.mk
