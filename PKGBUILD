@@ -2,11 +2,11 @@
 
 pkgname=mingw32-lunar-date
 _pkgname=lunar-date
-pkgver=2.4.1
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Chinese lunar date library."
 arch=("i686" "x86_64")
-url="http://code.google.com/p/liblunar/"
+url="https://github.com/yetist/lunar-date"
 license=('GPL2')
 depends=(mingw32-glib2)
 makedepends=(mingw32-gcc)
@@ -37,5 +37,3 @@ package() {
     | xargs -rtl1 i486-mingw32-strip -g
   rm -rf usr/i486-mingw32/share/gtk-doc
 }
-
-
