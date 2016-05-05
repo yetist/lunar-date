@@ -132,6 +132,7 @@ EXTRA_DIST =  lunar-date-enum-types.h.template \
 	      lunar-date-enum-types.c.template \
 	      lunar-date-private.h \
 	      lunar-version.h.in \
+	      lunar-date.gresource.xml \
 	      lunar-date-win32.rc.in \
 	      lunar-date.symbols
 

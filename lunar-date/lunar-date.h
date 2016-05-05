@@ -29,24 +29,11 @@
 
 G_BEGIN_DECLS
 
-
-#define LUNAR_TYPE_DATE				 (lunar_date_get_type ())
-#define LUNAR_DATE_ERROR	(lunar_date_error_quark ())
+#define LUNAR_TYPE_DATE          (lunar_date_get_type ())
+#define LUNAR_DATE_ERROR         (lunar_date_error_quark ())
 
 G_DECLARE_FINAL_TYPE (LunarDate, lunar_date, LUNAR, DATE, GObject)
 
-//typedef guint8	GDateHour;
-
-
-/**
- * LunarDateError:
- * @LUNAR_DATE_ERROR_INTERNAL: internal error.
- * @LUNAR_DATE_ERROR_YEAR: year setup error.
- * @LUNAR_DATE_ERROR_MONTH: month setup error.
- * @LUNAR_DATE_ERROR_DAY: day setup error.
- * @LUNAR_DATE_ERROR_HOUR: hour setup error.
- * @LUNAR_DATE_ERROR_LEAP: isleap setup error.
- */
 typedef enum
 {
 	LUNAR_DATE_ERROR_INTERNAL,
@@ -59,26 +46,18 @@ typedef enum
 
 GQuark lunar_date_error_quark (void);
 
-LunarDate*	lunar_date_new				 (void);
-void		lunar_date_set_solar_date	  (LunarDate *date,
-											GDateYear year,
-											GDateMonth month,
-											GDateDay day,
-											guint8 hour,
-											GError	**error);
-void		lunar_date_set_lunar_date	  (LunarDate *date,
-											GDateYear year,
-											GDateMonth month, 
-											GDateDay day,
-											guint8 hour,
-											gboolean isleap,
-											GError **error);
-gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter);
-gchar*		lunar_date_add_solar_jieri	  (LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday);
-gchar*		lunar_date_add_lunar_jieri	  (LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday);
-gchar*		lunar_date_add_week_jieri	  (LunarDate *date, GDateMonth month, gint week, gint which, const gchar *holiday);
-gchar*		lunar_date_strftime			  (LunarDate *date, const char *format);
+LunarDate*	lunar_date_new				  (void);
+void		lunar_date_set_solar_date	  (LunarDate *date, GDateYear year, GDateMonth month, GDateDay day, guint8 hour, GError	**error);
+void		lunar_date_set_lunar_date	  (LunarDate *date, GDateYear year, GDateMonth month, GDateDay day, guint8 hour, gboolean isleap, GError **error);
+void        lunar_date_add_solar_holiday  (LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday);
+void        lunar_date_add_lunar_holiday  (LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday);
+void        lunar_date_add_week_holiday   (LunarDate *date, GDateMonth month, gint week_of_month, gint day_of_week, const gchar *holiday);
+gchar*		lunar_date_get_holiday        (LunarDate *date, const gchar *delimiter);
+gchar*		lunar_date_strftime			  (LunarDate *date, const gchar *format);
 void		lunar_date_free				  (LunarDate *date);
+
+GLIB_DEPRECATED_FOR(lunar_date_get_jieri)
+gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter);
 
 G_END_DECLS
 

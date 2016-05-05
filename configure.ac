@@ -13,7 +13,7 @@ m4_define([lunar_date_lt_revision], [lunar_date_interface_age])
 m4_define([lunar_date_lt_age], [m4_eval(lunar_date_binary_age - lunar_date_interface_age)])
 
 AC_INIT(lunar-date, lunar_date_version, yetist@gmail.com)
-AC_COPYRIGHT([Copyright (C) 2007-2011 yetist@gmail.com])
+AC_COPYRIGHT([Copyright (C) 2007-2016 yetist@gmail.com])
 
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 no-define -Wno-portability])
 AC_CONFIG_SRCDIR(lunar-date/lunar-date.c)
@@ -125,21 +125,6 @@ PKG_CHECK_MODULES(LUNAR_DATE, gio-2.0 >= $GIO_REQUIRED)
 
 AC_SUBST(LUNAR_DATE_CFLAGS)
 AC_SUBST(LUNAR_DATE_LIBS)
-
-dnl ================================================================
-dnl run in source tree
-dnl ================================================================
-AC_ARG_ENABLE(run-in-source-tree,
-	      AC_HELP_STRING([--enable-run-in-source-tree],[enable search for holiday.dat file in local directory ]),
-	[case "${enableval}" in
-	yes) ENABLE_RUN_IN_SOURCE_TREE=yes ;;
-	no)  ENABLE_RUN_IN_SOURCE_TREE=no ;;
-	*) AC_MSG_ERROR(bad value ${enableval} for --disable-run-in-source-tree) ;;
-	esac],
-	[ENABLE_RUN_IN_SOURCE_TREE=no]) dnl Default value
-if test x$ENABLE_RUN_IN_SOURCE_TREE = xyes; then
-	AC_DEFINE(RUN_IN_SOURCE_TREE, 1, [enable search for holiday.dat file in local directory])
-fi
 
 dnl ================================================================
 dnl vala bindings support

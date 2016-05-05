@@ -52,6 +52,15 @@
  * The #LunarDate provide Chinese lunar date library.
  */
 
+/**
+ * LunarDateError:
+ * @LUNAR_DATE_ERROR_INTERNAL: internal error.
+ * @LUNAR_DATE_ERROR_YEAR: year setup error.
+ * @LUNAR_DATE_ERROR_MONTH: month setup error.
+ * @LUNAR_DATE_ERROR_DAY: day setup error.
+ * @LUNAR_DATE_ERROR_HOUR: hour setup error.
+ * @LUNAR_DATE_ERROR_LEAP: isleap setup error.
+ */
 
 enum {
 	LAST_SIGNAL
@@ -175,7 +184,7 @@ lunar_date_init (LunarDate *date)
  *
  * Allocates a #LunarDate and initializes it. Free the return value with lunar_date_free().
  *
- * Return value: a newly-allocated #LunarDate
+ * Returns: a newly-allocated #LunarDate
  **/
 LunarDate*
 lunar_date_new (void)
@@ -368,80 +377,169 @@ void			lunar_date_set_lunar_date	  (LunarDate *date,
 }
 
 /**
+ * lunar_date_add_solar_holiday:
+ * @date: a #LunarDate
+ * @month: Solar month of the holiday.
+ * @day: Solar day of the holiday.
+ * @holiday: custom holiday string.
+ *
+ * Add new holiday by solar.
+ *
+ * Since: 3.0.0
+ **/
+void lunar_date_add_solar_holiday(LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday)
+{
+	gchar key[10];
+
+	g_return_if_fail( date != NULL);
+	g_return_if_fail( holiday != NULL);
+
+	g_snprintf(key, sizeof(key), "%02d%02d", month, day);
+	if (g_hash_table_lookup(date->holiday_solar, key) != NULL) {
+		g_hash_table_remove(date->holiday_solar, key);
+	}
+	g_hash_table_insert(date->holiday_solar, g_strdup(key), g_strdup(holiday));
+}
+
+/**
+ * lunar_date_add_lunar_holiday:
+ * @date: a #LunarDate
+ * @month: Lunar month of the holiday.
+ * @day: Lunar day of the holiday.
+ * @holiday: custom holiday string.
+ *
+ * Add new holiday by lunar.
+ *
+ * Since: 3.0.0
+ **/
+void lunar_date_add_lunar_holiday(LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday)
+{
+	gchar key[10];
+	g_return_if_fail( date != NULL);
+	g_return_if_fail( holiday != NULL);
+
+	g_snprintf(key, sizeof(key), "%02d%02d", month, day);
+	if (g_hash_table_lookup(date->holiday_lunar, key) != NULL) {
+		g_hash_table_remove(date->holiday_lunar, key);
+	}
+	g_hash_table_insert(date->holiday_lunar, g_strdup(key), g_strdup(holiday));
+}
+
+/**
+ * lunar_date_add_week_holiday:
+ * @date: a #LunarDate
+ * @month: Month of the holiday.
+ * @week_of_month: which week of the month, the first week is 1, range is 1-5.
+ * @day_of_week: day of the week, 0 for Sunday, 6 for Saturday, range is 0-6.
+ * @holiday: custom holiday string.
+ *
+ * Add new holiday by week.
+ *
+ * Since: 3.0.0
+ **/
+void lunar_date_add_week_holiday(LunarDate *date, GDateMonth month, gint week_of_month, gint day_of_week, const gchar *holiday)
+{
+	gint  i, weekday, weekth;
+	gchar key[10];
+
+	g_return_if_fail( date != NULL);
+	g_return_if_fail( week_of_month >= 1 && week_of_month <= 5);
+	g_return_if_fail( day_of_week >= 0 && day_of_week <= 6);
+	g_return_if_fail( holiday != NULL);
+
+	g_snprintf(key, sizeof(key), "%02d%01d%01d", date->solar->month, week_of_month, day_of_week);
+	if (g_hash_table_lookup(date->holiday_week, key) != NULL) {
+		g_hash_table_remove(date->holiday_week, key);
+	}
+	g_hash_table_insert(date->holiday_week, g_strdup(key), g_strdup(holiday));
+}
+
+/**
+ * lunar_date_get_holiday:
+ * @date: a #LunarDate
+ * @delimiter: used to join the holidays.
+ *
+ * Returns the all holiday of the date, joined with the delimiter. The date must be valid.
+ *
+ * Returns:  a newly-allocated holiday string of the date.
+ *
+ * Since: 3.0.0
+ **/
+gchar* lunar_date_get_holiday (LunarDate *date, const gchar *delimiter)
+{
+	g_return_val_if_fail(date != NULL, NULL);
+	g_return_val_if_fail(delimiter != NULL, NULL);
+	GString*      jieri;
+	gint          i, weekday, weekth;
+	gchar         buf[10];
+	gpointer      value;
+	static gchar  str_jq[24][20] = {'9'};
+	gchar         yc[5] = {str_jq[0][0], str_jq[0][1], str_jq[0][2], str_jq[0][3], '\0'};
+
+	jieri=g_string_new(NULL);
+
+	//append Lunar holiday.
+	g_snprintf(buf, sizeof(buf), "%02d%02d", date->lunar->month, date->lunar->day);
+	if (g_hash_table_lookup_extended(date->holiday_lunar, buf, NULL, &value)) {
+		jieri=g_string_append(jieri, value);
+	}
+
+	//append solar holiday.
+	g_snprintf(buf, sizeof(buf), "%02d%02d", date->solar->month, date->solar->day);
+	if (g_hash_table_lookup_extended(date->holiday_solar, buf, NULL, &value)) {
+		if (jieri->len > 0) jieri=g_string_append(jieri, delimiter);
+		jieri=g_string_append(jieri, value);
+	}
+
+	//append week holiday.
+	weekday = get_day_of_week ( date->solar->year, date->solar->month, date->solar->day);
+	weekth = get_weekth_of_month ( date->solar->day);
+	g_snprintf(buf, sizeof(buf), "%02d%01d%01d", date->solar->month, weekth, weekday);
+	if (g_hash_table_lookup_extended(date->holiday_week, buf, NULL, &value)) {
+		if (jieri->len > 0) jieri=g_string_append(jieri, delimiter);
+		jieri=g_string_append(jieri, value);
+	}
+
+	//jie2qi4
+	if(atoi(yc) != date->solar->year)
+	{
+		for(i=0; i<24; i++)
+		{
+			year_jieqi(date->solar->year, i, str_jq[i]);
+		}
+	}
+	g_snprintf(buf, sizeof(buf), "%04d%02d%02d", date->solar->year, date->solar->month, date->solar->day);
+	for (i=0; i<24; i++)
+	{
+		gchar** jq_day;
+		jq_day = g_strsplit(str_jq[i], " ", 2);
+		if (g_ascii_strcasecmp(jq_day[0], buf) == 0)
+		{
+			if (jieri->len > 0) jieri=g_string_append(jieri, delimiter);
+			jieri=g_string_append(jieri, jq_day[1]);
+		}
+		g_strfreev(jq_day);
+	}
+	return g_string_free(jieri, FALSE);
+}
+
+#ifndef G_DISABLE_DEPRECATED
+/**
  * lunar_date_get_jieri:
  * @date: a #LunarDate
  * @delimiter: used to join the holidays.
  *
  * Returns the all holiday of the date, joined with the delimiter. The date must be valid.
  *
- * Return value:  a newly-allocated holiday string of the date.
+ * Returns:  a newly-allocated holiday string of the date.
  *
+ * Deprecated:3.0.0: Use lunar_date_get_holiday() instead.
  **/
-gchar* lunar_date_get_jieri	(LunarDate *date, const gchar *delimiter)
+gchar* lunar_date_get_jieri(LunarDate *date, const gchar *delimiter)
 {
-	GString* jieri;
-	gint  weekday, weekth;
-	gchar *freeme;
-	gchar buf[10];
-
-	jieri=g_string_new(NULL);
-
-	gchar *key, *value;
-	g_hash_table_lookup_extended (date->holiday_lunar, "0101", &key, &value);
-	g_print("1 k, v =%s, %s\n", (gpointer)key, (gpointer)value);
-	//g_print("2 k, v =%s, %s\n", g_hash_table_lookup(date->holiday_lunar, "0101"));
-
-	//append Lunar holiday.
-	g_snprintf(buf, sizeof(buf), "%02d%02d", date->lunar->month, date->lunar->day);
-	if ((freeme = g_hash_table_lookup(date->holiday_lunar, buf)) != NULL) {
-		jieri=g_string_append(jieri, freeme);
-		g_free(freeme);
-	}
-//
-//	//append solar holiday.
-//	g_snprintf(buf, sizeof(buf), "%02d%02d", date->solar->month, date->solar->day);
-//	if ((freeme = g_hash_table_lookup(date->holiday_solar, buf)) != NULL) {
-//		if (jieri->len > 0) jieri=g_string_append(jieri, delimiter);
-//		jieri=g_string_append(jieri, freeme);
-//		g_free(freeme);
-//	}
-//
-//	//append week holiday.
-//	weekday = get_day_of_week ( date->solar->year, date->solar->month, date->solar->day);
-//	weekth = get_weekth_of_month ( date->solar->day);
-//	g_snprintf(buf, sizeof(buf), "%02d%01d%01d", date->solar->month, weekth, weekday);
-//	if ((freeme = g_hash_table_lookup(date->holiday_week, buf)) != NULL) {
-//		if (jieri->len > 0) jieri=g_string_append(jieri, delimiter);
-//		jieri=g_string_append(jieri, freeme);
-//		g_free(freeme);
-//	}
-
-	//jie2qi4
-	  static char str_jq[24][20] = {'9'};
-	  int i;
-	  char yc[5] = {str_jq[0][0], str_jq[0][1], str_jq[0][2], str_jq[0][3], '\0'};
-	  if(atoi(yc) != date->solar->year)
-	  {
-	  	for(i=0; i<24; i++)
-	  	{
-	  		year_jieqi(date->solar->year, i, str_jq[i]);
-	  	}
-	  }
-	  g_snprintf(buf, sizeof(buf), "%04d%02d%02d", date->solar->year, date->solar->month, date->solar->day);
-	  for (i=0; i<24; i++)
-	  {
-	  	gchar** jq_day;
-	  	jq_day = g_strsplit(str_jq[i], " ", 2);
-	  	if (g_ascii_strcasecmp(jq_day[0], buf) == 0)
-	  	{
-	  		if (jieri->len > 0) jieri=g_string_append(jieri, delimiter);
-	  		jieri=g_string_append(jieri, jq_day[1]);
-	  	}
-	  	g_strfreev(jq_day);
-	  }
-	g_print("jieri is:%s\n", jieri->str);
-	return g_string_free(jieri, FALSE);
+	return lunar_date_get_holiday(date, delimiter);
 }
+#endif
 
 /**
  * lunar_date_strftime:
@@ -463,12 +561,12 @@ gchar* lunar_date_get_jieri	(LunarDate *date, const gchar *delimiter)
  * %(Y8)年%(M8)月%(D8)日%(H8)时				八字：大写->丁亥年癸丑月庚申日
  *
  * %(shengxiao)								生肖：猪
- * %(jieri)									节日(节日、纪念日、节气等)：立春
  *
- * 使用%(jieri)时，如果此日没有节日或节气，那么将为空。
- * 支持自定义节日，只要按照格式修改 <ulink url="http://www.freedesktop.org/wiki/Specifications/basedir-spec">$XDG_CONFIG_HOME</ulink>/liblunar/hodiday.dat 文件即可。
+ * %(holiday)								节日(节日、纪念日、节气等)：立春
  *
- * Return value: a newly-allocated output string, nul-terminated
+ * 使用%(holiday)时，输出会自动截断为3个utf8字符或4个ascii字符，如果需要全部的节日信息，请使用 lunar_date_get_holiday() 得到输出。
+ *
+ * Returns: a newly-allocated output string, nul-terminated
  **/
 gchar* lunar_date_strftime (LunarDate *date, const char *format)
 {
@@ -665,17 +763,15 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 		g_free(str); str=g_strdup(t1); g_free(t1);
 	}
 
-	//jieri
-	if (strstr(format, "%(jieri)") != NULL)
+	//holiday
+	if (strstr(format, "%(holiday)") != NULL)
 	{
 		gchar bufs[128];
 		gchar *tmp;
-		g_print("%s %s():%d\n", __FILE__, __FUNCTION__, __LINE__);
-		if ((tmp = lunar_date_get_jieri(date, " ")) != NULL) {
-			g_print("%s %s():%d\n", __FILE__, __FUNCTION__, __LINE__);
+		if ((tmp = lunar_date_get_holiday(date, " ")) != NULL) {
 			/* 将格式化后的输出限制为3个汉字或4个ascii字符
 			 * 以限制日历的示宽度
-			 * 如果不是用在日历上，请使用lunar_date_get_jieri()得到输出
+			 * 如果不是用在日历上，请使用lunar_date_get_holiday()得到输出
 			 * */
 			if (strstr(tmp, " ") != NULL)
 			{
@@ -696,10 +792,10 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 				}
 			}
 			g_free(tmp);
-			t1 = str_replace(str, "\%\\(jieri\\)", bufs);
+			t1 = str_replace(str, "\%\\(holiday\\)", bufs);
 			g_free(str); str=g_strdup(t1); g_free(t1);
 		} else {
-			t1 = str_replace(str, "\%\\(jieri\\)", " ");
+			t1 = str_replace(str, "\%\\(holiday\\)", "");
 			g_free(str); str=g_strdup(t1); g_free(t1);
 		}
 	}
@@ -1062,14 +1158,14 @@ static gint _cl_date_get_bazi_lunar (LunarDate *date)
 
 static void lunar_date_init_i18n(void)
 {
-  static gboolean _lunar_calendar_gettext_initialized = FALSE;
+	static gboolean _lunar_calendar_gettext_initialized = FALSE;
 
-  if (!_lunar_calendar_gettext_initialized)
-    {
-	  bindtextdomain (GETTEXT_PACKAGE, LUNAR_DATE_LOCALEDIR);
+	if (!_lunar_calendar_gettext_initialized)
+	{
+		bindtextdomain (GETTEXT_PACKAGE, LUNAR_DATE_LOCALEDIR);
 #ifdef HAVE_BIND_TEXTDOMAIN_CODESET
-      bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+		bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 #endif
-      _lunar_calendar_gettext_initialized = TRUE;
-    }
+		_lunar_calendar_gettext_initialized = TRUE;
+	}
 }

@@ -1,9 +1,8 @@
 /* vi: set sw=4 ts=4: */
 /*
- * lunar-version.c: This file is part of ____
+ * lunar-version.c: This file is part of lunar-date.
  *
- * Copyright (C) 2011 yetist <wuxiaotian@redflag-linux.com>
- *
+ * Copyright (C) 2009-2016 yetist <yetist@gmail.com>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +20,7 @@
  * */
 
 #if HAVE_CONFIG_H
-	#include <config.h>
+#include <config.h>
 #endif
 #include <lunar-date/lunar-version.h>
 
@@ -67,39 +66,23 @@ const guint lunar_date_micro_version = LUNAR_DATE_MICRO_VERSION;
  *
  * Since: 2.4.0
  **/
-const gchar *
-lunar_date_check_version (guint required_major,
-                    guint required_minor,
-                    guint required_micro)
+const gchar * lunar_date_check_version (guint required_major,
+        guint required_minor,
+        guint required_micro)
 {
-  gint lunar_effective_micro = 100 * LUNAR_DATE_MINOR_VERSION + LUNAR_DATE_MICRO_VERSION;
-  gint required_effective_micro = 100 * required_minor + required_micro;
+    gint lunar_effective_micro = 100 * LUNAR_DATE_MINOR_VERSION + LUNAR_DATE_MICRO_VERSION;
+    gint required_effective_micro = 100 * required_minor + required_micro;
 
-  if (required_major > LUNAR_DATE_MAJOR_VERSION)
-    return "LunarDate version too old (major mismatch)";
-  if (required_major < LUNAR_DATE_MAJOR_VERSION)
-    return "LunarDate version too new (major mismatch)";
-  if (required_effective_micro < lunar_effective_micro - LUNAR_DATE_BINARY_AGE)
-    return "LunarDate version too new (micro mismatch)";
-  if (required_effective_micro > lunar_effective_micro)
-    return "LunarDate version too old (micro mismatch)";
-  return NULL;
+    if (required_major > LUNAR_DATE_MAJOR_VERSION)
+        return "LunarDate version too old (major mismatch)";
+    if (required_major < LUNAR_DATE_MAJOR_VERSION)
+        return "LunarDate version too new (major mismatch)";
+    if (required_effective_micro < lunar_effective_micro - LUNAR_DATE_BINARY_AGE)
+        return "LunarDate version too new (micro mismatch)";
+    if (required_effective_micro > lunar_effective_micro)
+        return "LunarDate version too old (micro mismatch)";
+    return NULL;
 }
-
-#ifndef LIBLUNAR_DISABLE_DEPRECATED
-/**
- * lunar_init:
- * @argc: The number of arguments in argv.
- * @argv: A pointer to an array of arguments.
- *
- * Call this function before using any other lunar functions in your applications. It will initialize lunar.
- *
- * Deprecated: 2.4.0
- */
-void            lunar_init   (int *argc, char ***argv)
-{
-}
-#endif
 
 /*
 vi:ts=4:wrap:ai:expandtab

@@ -11,7 +11,6 @@ LUNAR_DATE_MINOR_VERSION
 LUNAR_DATE_MICRO_VERSION
 lunar_date_check_version
 LUNAR_DATE_CHECK_VERSION
-lunar_init
 </SECTION>
 
 <SECTION>
@@ -22,6 +21,10 @@ LunarDateError
 lunar_date_new
 lunar_date_set_solar_date
 lunar_date_set_lunar_date
+lunar_date_add_solar_holiday
+lunar_date_add_lunar_holiday
+lunar_date_add_week_holiday
+lunar_date_get_holiday
 lunar_date_get_jieri
 lunar_date_strftime
 lunar_date_free
