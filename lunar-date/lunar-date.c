@@ -1166,6 +1166,7 @@ static void lunar_date_init_i18n(void)
 #ifdef HAVE_BIND_TEXTDOMAIN_CODESET
 		bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 #endif
+		//setlocale(LC_ALL, "");
 		_lunar_calendar_gettext_initialized = TRUE;
 	}
 }
