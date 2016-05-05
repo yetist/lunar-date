@@ -1,7 +1,4 @@
-bin_PROGRAMS = sampala
-
-sampala_SOURCES = \
-	lunardate.vala
+bin_PROGRAMS = example-vala
 
 INCLUDES = \
         -I.                  		\
@@ -16,7 +13,10 @@ VALAFLAGS = \
 	--pkg glib-2.0 \
 	--pkg lunar-date-3.0
 
-sampala_LDADD = \
+example_vala_SOURCES = \
+	example.vala
+
+example_vala_LDADD = \
 	$(LUNAR_DATE_LIBS) \
         $(top_builddir)/lunar-date/liblunar-date-3.0.la
 
