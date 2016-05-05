@@ -1,6 +1,6 @@
 /* vi: set sw=4 ts=4: */
 /*
- * lunar-date-private.c: This file is part of liblunar
+ * lunar-date-private.c: This file is part of lunar-date.
  *
  * Copyright (C) 2009-2016 yetist <yetist@gmail.com>
  *

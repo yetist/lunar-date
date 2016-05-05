@@ -4,8 +4,6 @@ if HAVE_VALA
 SUBDIRS += example
 endif
 
-AM_CPPFLAGS = -DLIBLUNAR_DISABLE_DEPRECATED
-
 EXTRA_DIST =                    \
 	lunar-date-3.0.pc.in	\
         ChangeLog.pre-2-2       \
@@ -62,7 +60,7 @@ snapshot:
 snapcheck:
 	$(MAKE) distcheck distdir=$(PACKAGE)-snap`date +"%Y%m%d"`
 
-CHANGELOG_START = tags/v2.2.3
+CHANGELOG_START = tags/v2.4.2
 
 ChangeLog:
 	@echo Creating $@

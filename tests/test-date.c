@@ -29,21 +29,17 @@
 
 static void display (LunarDate *date)
 {
-	gchar *jieri;
-	lunar_date_add_week_holiday (date, 5, 2, 0, "中国未来时间");
+	gchar *holiday;
 	g_print("format:%%(YEAR)年%%(MONTH)月%%(DAY)日%%(HOUR)时 ->%s\n", lunar_date_strftime(date, "%(YEAR)年%(MONTH)月%(DAY)日%(HOUR)时"));
 	g_print("format:%%(year)年%%(month)月%%(day)日%%(hour)时 ->%s\n", lunar_date_strftime(date, "%(year)年%(month)月%(day)日%(hour)时"));
 	g_print("format:%%(NIAN)年%%(YUE)月%%(RI)日%%(SHI)时     ->%s\n", lunar_date_strftime(date, "%(NIAN)年%(YUE)月%(RI)日%(SHI)时"));
 	g_print("format:%%(nian)年%%(yue)月%%(ri)日%%(shi)时     ->%s\n", lunar_date_strftime(date, "%(nian)年%(yue)月%(ri)日%(shi)时"));
 	g_print("format:%%(Y60)年%%(M60)月%%(D60)日%%(H60)时     ->%s\n", lunar_date_strftime(date, "%(Y60)年%(M60)月%(D60)日%(H60)时"));
 	g_print("format:%%(Y8)年%%(M8)月%%(D8)日%%(H8)时         ->%s\n", lunar_date_strftime(date, "%(Y8)年%(M8)月%(D8)日%(H8)时"));
-	g_print("%s %s():%d\n", __FILE__, __FUNCTION__, __LINE__);
 	g_print("format:%%(shengxiao)                         ->%s\n", lunar_date_strftime(date, "%(shengxiao)"));
-	g_print("%s %s():%d\n", __FILE__, __FUNCTION__, __LINE__);
-	g_print("format:%%(holiday)                             ->%s\n", lunar_date_strftime(date, "%(holiday)"));
-	g_print("%s %s():%d\n", __FILE__, __FUNCTION__, __LINE__);
-	if ((jieri = lunar_date_get_holiday(date, "  ")) != NULL) {
-		g_print("holiday:                                      ->%s\n", lunar_date_get_holiday(date, "  "));
+	if ((holiday = lunar_date_get_holiday(date, "  ")) != NULL) {
+		g_print("format:%%(holiday)                           ->%s[%s]\n", lunar_date_strftime(date, "%(holiday)"), holiday);
+		g_free(holiday);
 	}
 }
 
@@ -58,6 +54,7 @@ void set_lunar_date(LunarDate *date, GDateYear year, GDateMonth month, GDateDay 
 		g_printf("Error: %s \n", error->message);
 		return;
 	}
+	lunar_date_add_week_holiday (date, 5, 2, 0, "中国未来时间");
 	display(date);
 
 	g_printf("\nTest Solar Date: <%u-%u-%u %u>\n", year, month, day, hour);

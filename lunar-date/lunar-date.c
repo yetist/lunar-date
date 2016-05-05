@@ -912,7 +912,7 @@ static void _cl_date_calc_bazi(LunarDate *date)
 	date->zhi2->month = (first_zhi_date.month + month) % 12;
 	date->gan2->day = (first_gan_date.day + date->days) % 10;
 	date->zhi2->day = (first_zhi_date.day + date->days) % 12;
-	date->zhi2->hour = ((date->lunar2->hour + 1) / 2) % 12;
+	date->zhi2->hour = ((date->lunar->hour + 1) / 2) % 12;
 	date->gan2->hour = (date->gan2->day * 12 + date->zhi2->hour) % 10;
 }
 
@@ -1166,7 +1166,6 @@ static void lunar_date_init_i18n(void)
 #ifdef HAVE_BIND_TEXTDOMAIN_CODESET
 		bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 #endif
-		//setlocale(LC_ALL, "");
 		_lunar_calendar_gettext_initialized = TRUE;
 	}
 }
