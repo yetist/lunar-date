@@ -1,7 +1,7 @@
 ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = po lunar-date data tests docs
 if HAVE_VALA
-SUBDIRS += example
+SUBDIRS += example vapi
 endif
 
 EXTRA_DIST =                    \

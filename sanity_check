@@ -2,21 +2,21 @@
 
 VERSION=$1
 
-if [ ! -f liblunar-$VERSION.tar.gz ]; then
-	echo "ERROR: liblunar-$VERSION.tar.gz does not exist..."
+if [ ! -f lunar-date-$VERSION.tar.gz ]; then
+	echo "ERROR: lunar-date-$VERSION.tar.gz does not exist..."
 	exit 1
 fi
 
 echo ""
 
-echo "Checking liblunar-$VERSION.tar.gz..."
-tar xfz liblunar-$VERSION.tar.gz
+echo "Checking lunar-date-$VERSION.tar.gz..."
+tar xfz lunar-date-$VERSION.tar.gz
 
 
 for file in INSTALL NEWS README 
 do
 	echo -n "$file... "
-	if [ "x`grep $VERSION liblunar-$VERSION/$file | wc -l | awk -F' ' '{print $1}'`" = "x0" ]; then
+	if [ "x`grep $VERSION lunar-date-$VERSION/$file | wc -l | awk -F' ' '{print $1}'`" = "x0" ]; then
 		echo "failed."
 		#exit 1
 	else
@@ -25,7 +25,7 @@ do
 done
 
 echo -n "INSTALL..."
-if [ "x`grep $VERSION liblunar-$VERSION/INSTALL | wc -l | awk -F' ' '{print $1}'`" = "x2" ]; then 
+if [ "x`grep $VERSION lunar-date-$VERSION/INSTALL | wc -l | awk -F' ' '{print $1}'`" = "x2" ]; then 
 	echo "ok" 
 else
 	echo "failed."
@@ -35,6 +35,6 @@ fi
 echo ""
 echo "Number of lines in created documentation files:"
 
-LC_ALL=C wc -l liblunar-$VERSION/docs/reference/html/*.html | grep total 
+LC_ALL=C wc -l lunar-date-$VERSION/docs/reference/html/*.html | grep total 
 
-rm -rf liblunar-$VERSION
+rm -rf lunar-date-$VERSION
