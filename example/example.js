@@ -1,4 +1,4 @@
-#!/usr/bin/env seed
+#!/usr/bin/env gjs-console
 const Gettext = imports.gettext;
 const LunarDate = imports.gi.LunarDate;
 Gettext.setlocale(Gettext.LocaleCategory.ALL, null);

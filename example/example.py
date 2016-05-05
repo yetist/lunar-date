@@ -1,8 +1,10 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 # coding=utf-8
+
+import gi
+gi.require_version('LunarDate', '3.0')
 from gi.repository import LunarDate
 import sys
-
 import locale
 locale.setlocale(locale.LC_ALL, "")
 
@@ -17,7 +19,7 @@ def test_date():
             "%(Y8)年%(M8)月%(D8)日%(H8)时": "%(Y8)年%(M8)月%(D8)日%(H8)时",
             "生肖属%(shengxiao)": "生肖属%(shengxiao)"}
     for i in format.keys():
-        print i,"\t"*2, l.strftime(format[i])
+        print(i,"\t"*2, l.strftime(format[i]))
     l.free()
 
 test_date()
