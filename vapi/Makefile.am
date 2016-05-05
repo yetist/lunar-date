@@ -27,6 +27,7 @@ CLEANFILES = \
         $(BUILT_SOURCES) \
         $(NULL)
 
+EXTRA_DIST = config.vapi
 
 # set up the verbosity rules to avoid some build noise
 VAPIGEN_V = $(VAPIGEN_V_$(V))

@@ -17,7 +17,10 @@ lunar_date_get_type G_GNUC_CONST
 lunar_date_new
 lunar_date_set_lunar_date
 lunar_date_set_solar_date
-lunar_date_get_jieri G_GNUC_MALLOC
+lunar_date_add_solar_holiday
+lunar_date_add_lunar_holiday
+lunar_date_add_week_holiday
+lunar_date_get_holiday G_GNUC_MALLOC
 lunar_date_strftime G_GNUC_MALLOC
 lunar_date_free
 #endif
@@ -32,4 +35,3 @@ lunar_date_major_version
 lunar_date_micro_version
 lunar_date_minor_version
 #endif
-

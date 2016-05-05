@@ -1,5 +1,8 @@
 ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = po lunar-date data tests docs
+if HAVE_VALA
+SUBDIRS += example
+endif
 
 AM_CPPFLAGS = -DLIBLUNAR_DISABLE_DEPRECATED
 

@@ -13,12 +13,12 @@ VS_VERSION_INFO VERSIONINFO
     BEGIN
       BLOCK "040904B0"
       BEGIN
-	VALUE "CompanyName", "The Liblunar developer community"
+	VALUE "CompanyName", "The LunarDate developer community"
 	VALUE "FileDescription", "LunarDate"
 	VALUE "FileVersion", "@LUNAR_DATE_VERSION@.0"
-	VALUE "InternalName", "liblunar-date-2.0-@LT_CURRENT_MINUS_AGE@"
-	VALUE "LegalCopyright", "Copyright © 2007-2011 Xiaotian Wu."
-	VALUE "OriginalFilename", "liblunar-date-2.0-@LT_CURRENT_MINUS_AGE@.dll"
+	VALUE "InternalName", "liblunar-date-3.0-@LT_CURRENT_MINUS_AGE@"
+	VALUE "LegalCopyright", "Copyright © 2007-2016 Xiaotian Wu."
+	VALUE "OriginalFilename", "liblunar-date-3.0-@LT_CURRENT_MINUS_AGE@.dll"
 	VALUE "ProductName", "LunarDate"
 	VALUE "ProductVersion", "@LUNAR_DATE_VERSION@"
       END

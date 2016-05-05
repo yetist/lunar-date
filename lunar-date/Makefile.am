@@ -1,8 +1,6 @@
 CLEANFILES =
 
-AM_CPPFLAGS = -DLIBLUNAR_DISABLE_DEPRECATED
-
-AM_CPPFLAGS +=                                          \
+AM_CPPFLAGS =                                          \
 	-I$(top_srcdir)					\
         -I$(srcdir) 					\
 	$(LUNAR_DATE_CFLAGS)				\
@@ -98,13 +96,14 @@ lunar-date-enum-types.h: lunar-date-enum-types.h.template $(source_h) $(GLIB_MKE
         
 lunar-date-enum-types.c: lunar-date-enum-types.c.template $(source_h) $(GLIB_MKENUMS)
 	$(AM_V_GEN) (cd $(srcdir) && $(GLIB_MKENUMS) --template lunar-date-enum-types.c.template $(source_h)) > $@
-DISTCLEANFILES = lunar-date-enum-types.h lunar-date-enum-types.c
 
 lunar-date-resources.c: lunar-date.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/lunar-date.gresource.xml)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --target=$@ --generate-source --c-name lunar_date $(srcdir)/lunar-date.gresource.xml
 
 lunar-date-resources.h: lunar-date.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/lunar-date.gresource.xml)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --target=$@ --generate-header --c-name lunar_date $(srcdir)/lunar-date.gresource.xml
+
+DISTCLEANFILES = lunar-date-enum-types.h lunar-date-enum-types.c lunar-date-resources.h lunar-date-resources.c
 
 if HAVE_INTROSPECTION
 -include $(INTROSPECTION_MAKEFILE)
