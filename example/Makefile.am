@@ -1,0 +1,22 @@
+bin_PROGRAMS = sampala
+
+sampala_SOURCES = \
+	lunardate.vala
+
+INCLUDES = \
+        -I.                  		\
+	-I$(top_srcdir)					\
+	-I$(top_srcdir)/lunar-date				\
+        -I$(srcdir) 					\
+	-include config.h \
+	$(LUNAR_DATE_CFLAGS)
+
+VALAFLAGS = \
+	--vapidir=$(srcdir) --pkg config \
+	--pkg glib-2.0 \
+	--pkg lunar-date-3.0
+
+sampala_LDADD = \
+	$(LUNAR_DATE_LIBS) \
+        $(top_builddir)/lunar-date/liblunar-date-3.0.la
+
