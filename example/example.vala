@@ -1,6 +1,7 @@
 /*
  * compilation:
- * valac --pkg lunar-date-3.0 lunardate.vala
+ * valac  --vapidir=. --pkg config --pkg glib-2.0 --pkg lunar-date-3.0 -C example.vala
+ * gcc -DHAVE_CONFIG_H -I.. -include config.h -o example  example.c `pkg-config --cflags --libs gio-2.0 lunar-date-3.0`
  *
  * configure:
  * $ ./configure --enable-vala-bindings ...
