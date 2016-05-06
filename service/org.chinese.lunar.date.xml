@@ -1,0 +1,19 @@
+<node>
+	<interface name="org.chinese.Lunar.Date">
+		<method name="strftime">
+			<arg name="year" type="i" direction="in"/>
+			<arg name="month" type="i" direction="in"/>
+			<arg name="day" type="i" direction="in"/>
+			<arg name="hour" type="i" direction="in"/>
+			<arg name="string" type="s" direction="out"/>
+		</method>
+		<method name="holiday">
+			<arg name="year" type="i" direction="in"/>
+			<arg name="month" type="i" direction="in"/>
+			<arg name="day" type="i" direction="in"/>
+			<arg name="hour" type="i" direction="in"/>
+			<arg name="delimiter" type="s" direction="in"/>
+			<arg name="holiday" type="s" direction="out"/>
+		</method>
+	</interface>
+</node>
