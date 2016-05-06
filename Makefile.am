@@ -80,7 +80,7 @@ dist-hook:
 	$(MAKE) -C "$(srcdir)/po" "$(GETTEXT_PACKAGE).pot"
 	cp "$(srcdir)/po/$(GETTEXT_PACKAGE).pot" "$(distdir)/po/"
 	if test -f $(srcdir)/INSTALL.in && test -f $(srcdir)/README.md ; then \
-		CONFIG_FILES="INSTALL:$(srcdir)/INSTALL.md README:$(srcdir)/README.in" \
+		CONFIG_FILES="INSTALL:$(srcdir)/INSTALL.in README:$(srcdir)/README.md" \
 		CONFIG_HEADERS= \
 		$(SHELL) config.status \
 		&& cp INSTALL README $(distdir) ; \
