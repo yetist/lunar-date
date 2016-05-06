@@ -1,7 +1,7 @@
 NULL =
 
-bin_PROGRAMS = holybible
-pkglibexec_PROGRAMS = holybible-daemon
+#bin_PROGRAMS = holybible
+pkglibexec_PROGRAMS = lunar-date-daemon
 
 common_CFLAGS = 	\
 	-Wall		\
@@ -9,14 +9,14 @@ common_CFLAGS = 	\
 	-DPKG_DATA_DIR=\""$(pkgdatadir)"\"
 
 lunar_date_daemon_CFLAGS =	\
-	$(common_CFLAGS)	\
-	$(GIO_CFLAGS)
-	$(SQLITE_CFLAGS)
+	$(GIO_CFLAGS)				\
+	$(GIO_UNIX_CFLAGS)
 
-lunar_date_daemon_LDADD = $(GIO_LIBS)  $(SQLITE_LIBS)
+lunar_date_daemon_LDADD = $(GIO_LIBS)  $(GIO_UNIX_LIBS)
 
 lunar_date_daemon_SOURCES =	\
 	$(lunar_date_built_sources)	\
+	date-daemon.c		\
 	lunar-date-daemon.c		\
 	$(NULL)
 
@@ -31,15 +31,15 @@ lunar_date_daemon_SOURCES =	\
 #	$(NULL)
 
 lunar_date_built_sources =	\
-	lunar-date-dbus-generated.h	\
-	lunar-date-dbus-generated.c	\
+	date-dbus-generated.h	\
+	date-dbus-generated.c	\
 	$(NULL)
 
 $(lunar_date_built_sources) : Makefile.am $(srcdir)/org.chinese.lunar.date.xml
 	$(AM_V_GEN) gdbus-codegen \
 	 	--interface-prefix org.chinese. \
-		--c-namespace Lunar \
-		--generate-c-code lunar-date-dbus-generated \
+		--c-namespace Bus \
+		--generate-c-code date-dbus-generated \
 		$(srcdir)/org.chinese.lunar.date.xml
 
 EXTRA_DIST = 			\

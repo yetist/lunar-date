@@ -1,11 +1,10 @@
 CLEANFILES =
 
-AM_CPPFLAGS =                                          \
-	-I$(top_srcdir)					\
-        -I$(srcdir) 					\
-	$(LUNAR_DATE_CFLAGS)				\
-	$(WARN_CFLAGS)					\
-        -DLUNAR_HOLIDAYDIR=\""$(datadir)/lunar-date/"\"
+AM_CPPFLAGS =			\
+	-I$(top_srcdir)		\
+        -I$(srcdir) 		\
+	$(GIO_CFLAGS)	\
+	$(WARN_CFLAGS)
 
 if PLATFORM_WIN32
 no_undefined = -no-undefined
@@ -80,7 +79,7 @@ liblunar_date_3_0_includedir = $(includedir)/liblunar-3.0/lunar-date
 liblunar_date_3_0_include_HEADERS = $(source_h)
 
 liblunar_date_3_0_la_SOURCES =	$(source_c) $(BUILT_SOURCES)
-liblunar_date_3_0_la_LIBADD = 	$(LUNAR_DATE_LIBS)
+liblunar_date_3_0_la_LIBADD = 	$(GIO_LIBS)
 liblunar_date_3_0_la_LDFLAGS = $(libtool_opts)
 liblunar_date_3_0_la_DEPENDENCIES = $(deps)
 

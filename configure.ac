@@ -121,10 +121,14 @@ dnl check glib and gobject
 dnl ================================================================
 
 GIO_REQUIRED=2.32
-PKG_CHECK_MODULES(LUNAR_DATE, gio-2.0 >= $GIO_REQUIRED)
+GIO_UNIX_REQUIRED=2.32
+PKG_CHECK_MODULES(GIO, gio-2.0 >= $GIO_REQUIRED)
+AC_SUBST(GIO_CFLAGS)
+AC_SUBST(GIO_LIBS)
 
-AC_SUBST(LUNAR_DATE_CFLAGS)
-AC_SUBST(LUNAR_DATE_LIBS)
+PKG_CHECK_MODULES(GIO_UNIX, gio-unix-2.0 >= $GIO_REQUIRED)
+AC_SUBST(GIO_UNIX_CFLAGS)
+AC_SUBST(GIO_UNIX_LIBS)
 
 dnl ================================================================
 dnl vala bindings support
@@ -183,6 +187,7 @@ docs/reference/Makefile
 docs/reference/version.xml
 Makefile
 vapi/Makefile
+service/Makefile
 ])
 
 AC_OUTPUT

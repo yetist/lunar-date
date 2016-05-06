@@ -1,5 +1,5 @@
 <node>
-	<interface name="org.chinese.Lunar.Date">
+	<interface name="org.chinese.lunar.date">
 		<method name="strftime">
 			<arg name="year" type="i" direction="in"/>
 			<arg name="month" type="i" direction="in"/>
