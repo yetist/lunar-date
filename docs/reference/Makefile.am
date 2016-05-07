@@ -2,29 +2,26 @@
 
 # see /gtk-doc/examples/Makefile.am
 
-# We require automake 1.6 at least.
-AUTOMAKE_OPTIONS = 1.6
-
 # The name of the module, e.g. 'glib'.
 DOC_MODULE=lunar-date
 
 # The top-level SGML file. You can change this if you want to.
-DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
+DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.xml
 
 # The directory containing the source code. Relative to $(srcdir).
 # gtk-doc will search all .c & .h files beneath here for inline comments
 # documenting the functions and macros.
-DOC_SOURCE_DIR=../../lunar-date
+DOC_SOURCE_DIR=$(top_srcdir)/lunar-date
 
 # Extra options to pass to gtkdoc-scangobj. Not normally needed.
 SCANGOBJ_OPTIONS=
 
 # Extra options to supply to gtkdoc-scan.
 # e.g. SCAN_OPTIONS=--deprecated-guards="GTK_DISABLE_DEPRECATED" 
-SCAN_OPTIONS=--deprecated-guards="LIBLUNAR_DISABLE_DEPRECATED"
+SCAN_OPTIONS=--deprecated-guards="GLIB_DEPRECATED"
 
 # Extra options to supply to gtkdoc-mkdb.
-MKDB_OPTIONS=--sgml-mode --output-format=xml
+MKDB_OPTIONS=--xml-mode --output-format=xml
 
 # Extra options to supply to gtkdoc-mktmpl
 # e.g. MKTMPL_OPTIONS=--only-section-tmpl
@@ -38,6 +35,10 @@ FIXXREF_OPTIONS=
 HFILE_GLOB=$(top_srcdir)/lunar-date/*.h
 CFILE_GLOB=$(top_srcdir)/lunar-date/*.c
 
+# Extra header to include when scanning, which are not under DOC_SOURCE_DIR
+# # e.g. EXTRA_HFILES=$(top_srcdir}/contrib/extra.h
+EXTRA_HFILES=
+
 # Header files to ignore when scanning (These are internal to gedit).
 IGNORE_HFILES= 
 
@@ -48,13 +49,12 @@ IGNORE_HFILES=
 # Images to copy into HTML directory.
 HTML_IMAGES=
 
-# Extra SGML files that are included by $(DOC_MAIN_SGML_FILE).
-# e.g. content_files=running.sgml building.sgml changes-2.0.sgml
-content_files=version.xml
+# Extra files that are included by $(DOC_MAIN_SGML_FILE).
+# e.g. content_files=running.xml building.xml changes-2.0.xml
+content_files=
 
-# SGML files where gtk-doc abbrevations (#GtkWidget) are expanded
-# These files must be listed here *and* in content_files
-# e.g. expand_content_files=running.sgml
+# Files where gtk-doc abbrevations (#GtkWidget) are expanded
+# e.g. expand_content_files=running.xml
 expand_content_files=
 
 # CFLAGS and LDFLAGS for compiling gtkdoc-scangobj with your library.
@@ -65,12 +65,12 @@ GTKDOC_CFLAGS =                                               \
         $(LUNAR_CFLAGS)                                  \
         -I$(top_srcdir)/lunar-date                        \
         -I$(top_builddir)/lunar-date			\
-	$(LUNAR_DATE_CFLAGS)				\
+	$(GIO_CFLAGS)				\
         $(AM_CFLAGS)
 
 GTKDOC_LIBS=                                            \
         $(top_builddir)/lunar-date/liblunar-date-3.0.la		\
-        $(LUNAR_DATE_LIBS)
+        $(GIO_LIBS)
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.
 include $(top_srcdir)/gtk-doc.make
@@ -79,8 +79,13 @@ include $(top_srcdir)/gtk-doc.make
 # e.g. EXTRA_DIST += version.xml.in
 EXTRA_DIST += version.xml.in
 
-#regenerate-types:
-#	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -r 's/^.*\.h$/#include "\0"/' > gtkchinesecalendar.types
-#	grep _get_type $(DOC_SOURCE_DIR)/lunar*.h | grep -oR '^.*\.h' | sort | uniq - | sed -re 'y/-/_/' -e 's/^(.*)\.h$/\1_get_type/' >> gtkchinesecalendar.types.new
+# Comment this out if you want 'make check' to test you doc status
+# and run some sanity checks
+if ENABLE_GTK_DOC
+TESTS_ENVIRONMENT = \
+  DOC_MODULE=$(DOC_MODULE) DOC_MAIN_SGML_FILE=$(DOC_MAIN_SGML_FILE) \
+  SRCDIR=$(abs_srcdir) BUILDDIR=$(abs_builddir)
+TESTS = $(GTKDOC_CHECK)
+endif
 
 -include $(top_srcdir)/git.mk

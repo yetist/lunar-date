@@ -36,4 +36,25 @@ lunar_date_get_type
 LUNAR_DATE_CLASS
 LUNAR_IS_DATE_CLASS
 LUNAR_DATE_GET_CLASS
+<SUBSECTION Private>
+BEGIN_YEAR
+CLDate
+LUNAR_DATE_ERROR
+LUNAR_TYPE_DATE_ERROR
+NUM_OF_MONTHS
+NUM_OF_YEARS
+REFERENCE_YEAR
+get_day_of_week
+get_weekth_of_month
+leap
+lunar_date_error_get_type
+lunar_date_error_quark
+lunar_date_get_resource
+lunar_init
+mday_2_hanzi
+mymemcnt
+mymemfind
+num_2_hanzi
+str_replace
+year_jieqi
 </SECTION>

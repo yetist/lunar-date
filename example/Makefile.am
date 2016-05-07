@@ -10,8 +10,9 @@ AM_CPPFLAGS =	\
 	$(GIO_CFLAGS)
 
 AM_VALAFLAGS = \
-	--vapidir=$(top_srcdir)/vapi --pkg config \
-	--pkg glib-2.0 \
+	--vapidir=$(top_srcdir)/vapi \
+	$(GLIB_VALAFLAGS)	\
+       	--pkg config		\
 	--pkg lunar-date-3.0
 
 example_vala_SOURCES = \

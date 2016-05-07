@@ -15,7 +15,7 @@ m4_define([lunar_date_lt_age], [m4_eval(lunar_date_binary_age - lunar_date_inter
 AC_INIT(lunar-date, lunar_date_version, yetist@gmail.com)
 AC_COPYRIGHT([Copyright (C) 2007-2016 yetist@gmail.com])
 
-AM_INIT_AUTOMAKE([1.8 dist-bzip2 no-define -Wno-portability])
+AM_INIT_AUTOMAKE([1.10 no-dist-gzip dist-xz tar-ustar])
 AC_CONFIG_SRCDIR(lunar-date/lunar-date.c)
 AM_CONFIG_HEADER(config.h)
 AC_CONFIG_MACRO_DIR([m4])
@@ -56,8 +56,6 @@ AC_HEADER_STDC
 
 AC_PROG_INSTALL
 AC_PROG_LIBTOOL
-
-AM_PATH_PYTHON
 
 IT_PROG_INTLTOOL([0.35.0])
 
@@ -130,36 +128,8 @@ PKG_CHECK_MODULES(GIO_UNIX, gio-unix-2.0 >= $GIO_REQUIRED)
 AC_SUBST(GIO_UNIX_CFLAGS)
 AC_SUBST(GIO_UNIX_LIBS)
 
-dnl ================================================================
-dnl vala bindings support
-dnl ================================================================
-AC_ARG_ENABLE(vala-bindings,
-  AC_HELP_STRING([--enable-vala-bindings],
-                 [build the EXPERIMENTAL Vala bindings]),
-                  enable_vala_bindings=$enableval,
-                  enable_vala_bindings=no )
-have_vala=no
-if test x$enable_vala_bindings = xyes; then
-  if test "x$INTROSPECTION_SCANNER" = x; then
-    AC_MSG_ERROR([GObject-Introspection must be enabled for Vala bindings])
-  fi
-
-  AM_PROG_VALAC([0.10.0])
-  have_vala=yes
-
-  AC_PATH_PROG(VALAC, valac, valac)
-  AC_SUBST(VALAC)
-  AC_SUBST(VALAFLAGS)
-
-  AC_PATH_PROG([VAPIGEN], [vapigen], [false])
-
-  if test "x$VAPIGEN" = "xfalse"; then
-    AC_MSG_ERROR([vapigen not found. Was vala compiled with --enable-vapigen?])
-  fi
-
-  AC_SUBST(VAPIGEN)
-fi
-
+VALA_PROG_VAPIGEN([0.32])
+VALA_CHECK_MODULES(GLIB, glib-2.0, [have_vala=yes], [have_vala=no])
 AM_CONDITIONAL([HAVE_VALA], [test "x$have_vala" = "xyes"])
 AC_SUBST(HAVE_VALA)
 
