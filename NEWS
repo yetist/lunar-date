@@ -11,8 +11,9 @@ NEWS:
     lunar_date_add_week_holiday
     - 使用新的获取节日函数: lunar_date_get_holiday，同时lunar_date_get_jieri被标记为放弃．
     - 删除已经过时的函数: lunar_init．
-    - 修复examples中的vala示例代码:
-      子时的计算问题．
+    - 修复examples中的vala示例代码.
+    - 修复干支和八字中的子时的计算问题．
+    - 增加dbus service服务。
 
 ======================
 lunar-date-2.4.0

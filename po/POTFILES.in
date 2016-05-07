@@ -3,3 +3,4 @@
 lunar-date/lunar-date.c
 lunar-date/lunar-date-private.h
 lunar-date/lunar-date-private.c
+service/lunar-date-daemon.c

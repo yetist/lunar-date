@@ -5,6 +5,10 @@ pkglibexec_PROGRAMS = lunar-date-daemon
 common_CFLAGS = -Wall
 
 lunar_date_daemon_CFLAGS =	\
+	-I.                  		\
+	-I$(top_srcdir)			\
+	-I$(top_srcdir)/lunar-date	\
+	-I$(top_srcdir)/service		\
 	$(GIO_CFLAGS)		\
 	$(GIO_UNIX_CFLAGS)
 
@@ -13,6 +17,7 @@ lunar_date_daemon_LDADD = $(GIO_LIBS)  $(GIO_UNIX_LIBS) \
 
 lunar_date_daemon_SOURCES =	\
 	$(lunar_date_built_sources)	\
+	date-daemon.h		\
 	date-daemon.c		\
 	lunar-date-daemon.c	\
 	$(NULL)

@@ -169,8 +169,8 @@ dnl ================================================================
 GETTEXT_PACKAGE=lunar-date
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Define the gettext package to be used])
 AC_SUBST(GETTEXT_PACKAGE)
-AM_GLIB_GNU_GETTEXT
 
+AM_GLIB_GNU_GETTEXT
 AM_GLIB_DEFINE_LOCALEDIR(LUNAR_DATE_LOCALEDIR)
 
 AC_CONFIG_FILES([

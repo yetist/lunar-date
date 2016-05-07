@@ -55,7 +55,7 @@ if [ -f INSTALL.autogen_bak ]; then
 	rm -f INSTALL.autogen_bak
 fi
 
-conf_flags="--enable-maintainer-mode"
+conf_flags="--prefix=/usr --enable-maintainer-mode --enable-gtk-doc --enable-vala-bindings"
 
 printbold Running ./configure $conf_flags "$@" ...
 ./configure $conf_flags "$@" \

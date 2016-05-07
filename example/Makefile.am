@@ -7,7 +7,7 @@ AM_CPPFLAGS =	\
 	-I$(top_srcdir)/lunar-date	\
 	-I$(top_srcdir)/example 	\
 	-include config.h	\
-	$(LUNAR_DATE_CFLAGS)
+	$(GIO_CFLAGS)
 
 AM_VALAFLAGS = \
 	--vapidir=$(top_srcdir)/vapi --pkg config \
@@ -18,9 +18,14 @@ example_vala_SOURCES = \
 	example.vala
 
 example_vala_LDADD = \
-	$(LUNAR_DATE_LIBS) \
+	$(GIO_LIBS) \
         $(top_builddir)/lunar-date/liblunar-date-3.0.la
 endif
+
+EXTRA_DIST 	=  \
+	example.js	\
+	example.py	\
+	example.vala
 
 DISTCLEANFILES = example.c
 
