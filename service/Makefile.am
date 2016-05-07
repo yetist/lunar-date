@@ -1,34 +1,21 @@
 NULL =
 
-#bin_PROGRAMS = holybible
 pkglibexec_PROGRAMS = lunar-date-daemon
 
-common_CFLAGS = 	\
-	-Wall		\
-	-DLOCALE_DIR=\""$(localedir)"\" \
-	-DPKG_DATA_DIR=\""$(pkgdatadir)"\"
+common_CFLAGS = -Wall
 
 lunar_date_daemon_CFLAGS =	\
-	$(GIO_CFLAGS)				\
+	$(GIO_CFLAGS)		\
 	$(GIO_UNIX_CFLAGS)
 
-lunar_date_daemon_LDADD = $(GIO_LIBS)  $(GIO_UNIX_LIBS)
+lunar_date_daemon_LDADD = $(GIO_LIBS)  $(GIO_UNIX_LIBS) \
+        $(top_builddir)/lunar-date/liblunar-date-3.0.la
 
 lunar_date_daemon_SOURCES =	\
 	$(lunar_date_built_sources)	\
 	date-daemon.c		\
-	lunar-date-daemon.c		\
+	lunar-date-daemon.c	\
 	$(NULL)
-
-#lunar_date_CFLAGS = $(common_CFLAGS)	\
-#		   $(GIO_CFLAGS)
-#
-#lunar_date_LDADD = $(GIO_LIBS) 
-#
-#lunar_date_SOURCES =	\
-#	$(lunar_date_built_sources)	\
-#	lunar-date.c	\
-#	$(NULL)
 
 lunar_date_built_sources =	\
 	date-dbus-generated.h	\

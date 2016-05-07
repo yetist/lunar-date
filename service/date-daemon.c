@@ -2,7 +2,7 @@
 /*
  * date-daemon.c: This file is part of ____
  *
- * Copyright (C) 2016 yetist <yetist@yetibook>
+ * Copyright (C) 2016 yetist <yetist@gmail.com>
  *
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -25,6 +25,7 @@
 
 #include <gio/gio.h>
 #include <glib/gi18n.h>
+#include <lunar-date/lunar-date.h>
 #include "date-dbus-generated.h"
 #include "date-daemon.h"
 
@@ -34,9 +35,10 @@
 struct _DateDaemon
 {
 	GObject            parent;
-	GMainLoop          *loop;
+	LunarDate          *date;
 	BusLunarDate       *skeleton;
 	guint              bus_name_id;
+	GMainLoop          *loop;
 	gboolean           replace;
 };
 
@@ -52,25 +54,54 @@ static GParamSpec *properties[LAST_PROP] = { NULL };
 G_DEFINE_TYPE (DateDaemon, date_daemon, G_TYPE_OBJECT)
 
 gboolean date_get_holiday (BusLunarDate *object,
-    GDBusMethodInvocation *invocation,
-    gint arg_year,
-    gint arg_month,
-    gint arg_day,
-    gint arg_hour,
-    const gchar *arg_delimiter,
-	gpointer user_data)
+		GDBusMethodInvocation *invocation,
+		gint year,
+		gint month,
+		gint day,
+		gint hour,
+		const gchar *delimiter,
+		gpointer user_data)
 {
+	DateDaemon *daemon;
+	gchar *holiday;
+	GError *error = NULL;
+
+	daemon = DATE_DAEMON (user_data);
+	lunar_date_set_solar_date(daemon->date, year, month, day , hour, &error);
+	if (error != NULL ) {
+		g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), 1, error->message);
+		return FALSE;
+	}
+	holiday = lunar_date_get_holiday(daemon->date, delimiter);
+	bus_lunar_date_complete_holiday (object, invocation, holiday);
+	g_free(holiday);
+	return TRUE;
 }
 
 gboolean date_get_strftime (
-    BusLunarDate *object,
-    GDBusMethodInvocation *invocation,
-    gint arg_year,
-    gint arg_month,
-    gint arg_day,
-    gint arg_hour,
-	gpointer user_data)
+		BusLunarDate *object,
+		GDBusMethodInvocation *invocation,
+		gint year,
+		gint month,
+		gint day,
+		gint hour,
+		const gchar *format,
+		gpointer user_data)
 {
+	DateDaemon *daemon;
+	gchar* result;
+	GError *error = NULL;
+
+	daemon = DATE_DAEMON (user_data);
+	lunar_date_set_solar_date(daemon->date, year, month, day , hour, &error);
+	if (error != NULL ) {
+		g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), 1, error->message);
+		return FALSE;
+	}
+	result = lunar_date_strftime(daemon->date, format);
+	bus_lunar_date_complete_strftime (object, invocation, result);
+	g_free(result);
+	return TRUE;
 }
 
 static void bus_acquired_handler_cb (GDBusConnection *connection,
@@ -138,6 +169,10 @@ static void date_daemon_dispose (GObject *object)
 
 	daemon = DATE_DAEMON (object);
 
+	if (daemon->date != NULL){
+		lunar_date_free(daemon->date);
+	}
+
 	if (daemon->skeleton != NULL)
 	{
 		GDBusInterfaceSkeleton *skeleton;
@@ -202,8 +237,8 @@ static void date_daemon_class_init (DateDaemonClass *class)
 
 static void date_daemon_init (DateDaemon *daemon)
 {
-	g_random_set_seed(time(NULL));
 	daemon->skeleton = bus_lunar_date_skeleton_new();
+	daemon->date = lunar_date_new();
 }
 
 DateDaemon* date_daemon_new (GMainLoop *loop, gboolean replace)

@@ -5,6 +5,7 @@
 			<arg name="month" type="i" direction="in"/>
 			<arg name="day" type="i" direction="in"/>
 			<arg name="hour" type="i" direction="in"/>
+			<arg name="format" type="s" direction="in"/>
 			<arg name="string" type="s" direction="out"/>
 		</method>
 		<method name="holiday">

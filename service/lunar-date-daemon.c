@@ -85,6 +85,7 @@ int main (int argc, char *argv[])
 	bindtextdomain (GETTEXT_PACKAGE, LUNAR_DATE_LOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
+	setlocale(LC_ALL, "");
 
 #if !GLIB_CHECK_VERSION(2, 36, 0)
 	g_type_init();

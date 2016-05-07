@@ -6,7 +6,6 @@ AM_CPPFLAGS =                                           \
 	-I$(top_srcdir)/lunar-date				\
         -I$(srcdir) 					\
 	$(LUNAR_DATE_CFLAGS)				\
-        -DLUNAR_HOLIDAYDIR=\""$(datadir)/liblunar/"\"     \
 	$(NULL)
 
 noinst_PROGRAMS =test-date
