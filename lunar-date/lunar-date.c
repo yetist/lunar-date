@@ -1212,7 +1212,18 @@ static void lunar_date_init_i18n(void)
 
 	if (!_lunar_calendar_gettext_initialized)
 	{
+#ifdef G_OS_WIN32
+		gchar *prgdir;
+		prgdir =  g_win32_get_package_installation_directory_of_module(NULL);
+		gchar *localedir;
+		localedir = g_build_filename (prgdir, "locale", NULL);
+		bindtextdomain (GETTEXT_PACKAGE, localedir);
+		g_free(prgdir);
+		g_free(localedir);
+#else
 		bindtextdomain (GETTEXT_PACKAGE, LUNAR_DATE_LOCALEDIR);
+#endif
+
 #ifdef HAVE_BIND_TEXTDOMAIN_CODESET
 		bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 #endif
