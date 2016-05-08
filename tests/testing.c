@@ -177,9 +177,11 @@ void test_custom_holiday(void) {
 
 int main (int argc, char* argv[])
 {
+	/* Test in chinese locale env */
+	g_setenv("LC_ALL", "zh_CN.utf8", TRUE);
+
 	setlocale (LC_ALL, "");
 	g_test_init (&argc, &argv, NULL);
-	g_test_bug_base ("http://bugzilla.gnome.org/");
 
 	g_test_add_func ("/date/solar", test_solar_date);
 	g_test_add_func ("/date/lunar", test_lunar_date);
