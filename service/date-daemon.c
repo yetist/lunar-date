@@ -72,7 +72,7 @@ gboolean date_get_holiday (BusLunarDate *object,
 		g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), 1, error->message);
 		return FALSE;
 	}
-	holiday = lunar_date_get_holiday(daemon->date, delimiter, TRUE);
+	holiday = lunar_date_get_holiday(daemon->date, delimiter);
 	bus_lunar_date_complete_holiday (object, invocation, holiday);
 	g_free(holiday);
 	return TRUE;

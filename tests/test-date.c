@@ -37,7 +37,7 @@ static void display (LunarDate *date)
 	g_print("format:%%(Y60)年%%(M60)月%%(D60)日%%(H60)时     ->%s\n", lunar_date_strftime(date, "%(Y60)年%(M60)月%(D60)日%(H60)时"));
 	g_print("format:%%(Y8)年%%(M8)月%%(D8)日%%(H8)时         ->%s\n", lunar_date_strftime(date, "%(Y8)年%(M8)月%(D8)日%(H8)时"));
 	g_print("format:%%(shengxiao)                         ->%s\n", lunar_date_strftime(date, "%(shengxiao)"));
-	if ((holiday = lunar_date_get_holiday(date, "  ", TRUE)) != NULL) {
+	if ((holiday = lunar_date_get_holiday(date, "  ")) != NULL) {
 		g_print("format:%%(holiday)                           ->%s[%s]\n", lunar_date_strftime(date, "%(holiday)"), holiday);
 		g_free(holiday);
 	}

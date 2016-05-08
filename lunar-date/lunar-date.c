@@ -456,7 +456,7 @@ void lunar_date_add_week_holiday(LunarDate *date, GDateMonth month, gint week_of
 
 
 /**
- * lunar_date_get_holiday:
+ * lunar_date_get_real_holiday:
  * @date: a #LunarDate
  * @delimiter: used to join the holidays.
  * @full: Whether to display the full name of the holiday, the short name just used for calendar.
@@ -467,7 +467,7 @@ void lunar_date_add_week_holiday(LunarDate *date, GDateMonth month, gint week_of
  *
  * Since: 3.0.0
  **/
-gchar* lunar_date_get_holiday (LunarDate *date, const gchar *delimiter, gboolean full)
+static gchar* lunar_date_get_real_holiday (LunarDate *date, const gchar *delimiter, gboolean full)
 {
 	g_return_val_if_fail(date != NULL, NULL);
 	g_return_val_if_fail(delimiter != NULL, NULL);
@@ -571,7 +571,7 @@ gchar* lunar_date_get_cal_holiday (LunarDate *date, const gchar *delimiter)
 	gchar buf[128];
 	gchar *tmp;
 
-	tmp = lunar_date_get_holiday (date, " ", FALSE);
+	tmp = lunar_date_get_real_holiday (date, " ", FALSE);
 
 	memset(buf, '\0', sizeof(buf));
 	memset(holiday, '\0', sizeof(holiday));
@@ -596,6 +596,22 @@ gchar* lunar_date_get_cal_holiday (LunarDate *date, const gchar *delimiter)
 	}
 }
 
+/**
+ * lunar_date_get_holiday:
+ * @date: a #LunarDate
+ * @delimiter: used to join the holidays.
+ *
+ * Returns the all holiday of the date, joined with the delimiter. The date must be valid.
+ *
+ * Returns:  a newly-allocated holiday string of the date or NULL.
+ *
+ * Since: 3.0.0
+ **/
+gchar* lunar_date_get_holiday (LunarDate *date, const gchar *delimiter)
+{
+	return lunar_date_get_real_holiday (date, " ", TRUE);
+}
+
 #ifndef G_DISABLE_DEPRECATED
 /**
  * lunar_date_get_jieri:
@@ -610,7 +626,7 @@ gchar* lunar_date_get_cal_holiday (LunarDate *date, const gchar *delimiter)
  **/
 gchar* lunar_date_get_jieri(LunarDate *date, const gchar *delimiter)
 {
-	return lunar_date_get_holiday(date, delimiter, TRUE);
+	return lunar_date_get_holiday(date, delimiter);
 }
 #endif
 
