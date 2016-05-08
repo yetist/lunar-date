@@ -609,7 +609,7 @@ gchar* lunar_date_get_cal_holiday (LunarDate *date, const gchar *delimiter)
  **/
 gchar* lunar_date_get_holiday (LunarDate *date, const gchar *delimiter)
 {
-	return lunar_date_get_real_holiday (date, " ", TRUE);
+	return lunar_date_get_real_holiday (date, delimiter, TRUE);
 }
 
 #ifndef G_DISABLE_DEPRECATED
