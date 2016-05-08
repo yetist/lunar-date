@@ -156,18 +156,20 @@ void test_custom_holiday(void) {
 	if (error != NULL)
 		g_error_free(error);
 
-	//
-	lunar_date_add_solar_holiday  (date, 5, 8, "自定义|自定义节日");
+	// 设置公历5月8日为"自定义节目", 简称“自定义”，
+	lunar_date_set_solar_holiday  (date, 5, 8, "自定义|自定义节日");
 	holiday = lunar_date_get_holiday(date, ";");
 	g_assert_cmpstr (holiday, ==, "自定义节日;母亲节");
 	g_free (holiday);
-	//
-	lunar_date_add_lunar_holiday  (date, 4, 2, "这一天|这是一个自定义农历节日");
+	
+	// 设置农历5月8日为"这是一个自定义农历节日", 简称“这一天”，
+	lunar_date_set_lunar_holiday  (date, 4, 2, "这一天|这是一个自定义农历节日");
 	holiday = lunar_date_get_holiday(date, "\n");
 	g_assert_cmpstr (holiday, ==, "这是一个自定义农历节日\n自定义节日\n母亲节");
 	g_free (holiday);
-	//
-	lunar_date_add_week_holiday  (date, 5, 2, 0, "星期日|它是第二个星期日");
+	
+	// 设置5月第2个星期日为"它是第二个星期日", 简称“星期日”，注意“母亲节"被覆盖了。
+	lunar_date_set_week_holiday  (date, 5, 2, 0, "星期日|它是第二个星期日");
 	holiday = lunar_date_get_holiday(date, "@");
 	g_assert_cmpstr (holiday, ==, "这是一个自定义农历节日@自定义节日@它是第二个星期日");
 	g_free (holiday);

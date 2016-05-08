@@ -21,9 +21,9 @@ LunarDateError
 lunar_date_new
 lunar_date_set_solar_date
 lunar_date_set_lunar_date
-lunar_date_add_solar_holiday
-lunar_date_add_lunar_holiday
-lunar_date_add_week_holiday
+lunar_date_set_solar_holiday
+lunar_date_set_lunar_holiday
+lunar_date_set_week_holiday
 lunar_date_get_holiday
 lunar_date_get_jieri
 lunar_date_strftime

@@ -377,7 +377,7 @@ void			lunar_date_set_lunar_date	  (LunarDate *date,
 }
 
 /**
- * lunar_date_add_solar_holiday:
+ * lunar_date_set_solar_holiday:
  * @date: a #LunarDate
  * @month: Solar month of the holiday.
  * @day: Solar day of the holiday.
@@ -387,7 +387,7 @@ void			lunar_date_set_lunar_date	  (LunarDate *date,
  *
  * Since: 3.0.0
  **/
-void lunar_date_add_solar_holiday(LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday)
+void lunar_date_set_solar_holiday(LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday)
 {
 	gchar key[10];
 
@@ -402,7 +402,7 @@ void lunar_date_add_solar_holiday(LunarDate *date, GDateMonth month, GDateDay da
 }
 
 /**
- * lunar_date_add_lunar_holiday:
+ * lunar_date_set_lunar_holiday:
  * @date: a #LunarDate
  * @month: Lunar month of the holiday.
  * @day: Lunar day of the holiday.
@@ -412,7 +412,7 @@ void lunar_date_add_solar_holiday(LunarDate *date, GDateMonth month, GDateDay da
  *
  * Since: 3.0.0
  **/
-void lunar_date_add_lunar_holiday(LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday)
+void lunar_date_set_lunar_holiday(LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday)
 {
 	gchar key[10];
 	g_return_if_fail( date != NULL);
@@ -426,7 +426,7 @@ void lunar_date_add_lunar_holiday(LunarDate *date, GDateMonth month, GDateDay da
 }
 
 /**
- * lunar_date_add_week_holiday:
+ * lunar_date_set_week_holiday:
  * @date: a #LunarDate
  * @month: Month of the holiday.
  * @week_of_month: which week of the month, the first week is 1, range is 1-5.
@@ -437,7 +437,7 @@ void lunar_date_add_lunar_holiday(LunarDate *date, GDateMonth month, GDateDay da
  *
  * Since: 3.0.0
  **/
-void lunar_date_add_week_holiday(LunarDate *date, GDateMonth month, gint week_of_month, gint day_of_week, const gchar *holiday)
+void lunar_date_set_week_holiday(LunarDate *date, GDateMonth month, gint week_of_month, gint day_of_week, const gchar *holiday)
 {
 	gint  i, weekday, weekth;
 	gchar key[10];
