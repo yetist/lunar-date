@@ -1,6 +1,13 @@
 NULL =
 
+bin_PROGRAMS = lunar-date
 pkglibexec_PROGRAMS = lunar-date-daemon
+
+data_servicedir = $(datadir)/dbus-1/services
+data_service_in_files = org.chinese.Lunar.Date.service.in
+data_service_DATA = $(data_service_in_files:.service.in=.service)
+$(data_service_DATA): $(data_service_in_files) Makefile
+	@sed -e "s|\@pkglibexecdir\@|$(pkglibexecdir)|" $<> $@
 
 common_CFLAGS = -Wall
 
@@ -20,6 +27,15 @@ lunar_date_daemon_SOURCES =	\
 	date-daemon.h		\
 	date-daemon.c		\
 	lunar-date-daemon.c	\
+	$(NULL)
+
+lunar_date_CFLAGS = $(common_CFLAGS) $(GIO_CFLAGS) $(GIO_UNIX_CFLAGS)
+
+lunar_date_LDADD = $(GIO_LIBS)
+
+lunar_date_SOURCES =	\
+	$(lunar_date_built_sources)	\
+	lunar-date.c	\
 	$(NULL)
 
 lunar_date_built_sources =	\

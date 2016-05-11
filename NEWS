@@ -14,6 +14,9 @@ NEWS:
     - 修复examples中的vala示例代码.
     - 修复干支和八字中的子时的计算问题．
     - 增加dbus service服务。
+    - 完善测试工具，使用gtest．
+    - lunar_date_strftime()中的%(jieri)改变为%(holiday)。
+
 
 ======================
 lunar-date-2.4.0
