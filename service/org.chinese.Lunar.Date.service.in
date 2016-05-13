@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=org.chinese.Lunar.Date
+Exec=@pkglibexecdir@/lunar-date-daemon
