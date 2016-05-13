@@ -598,7 +598,7 @@ gchar* lunar_date_get_cal_holiday (LunarDate *date, gint max_len)
 }
 
 /**
- * lunar_date_get_cal_string:
+ * lunar_date_get_calendar:
  * @date: a #LunarDate
  * @max:  max length of the returned string.
  *
@@ -608,7 +608,7 @@ gchar* lunar_date_get_cal_holiday (LunarDate *date, gint max_len)
  *
  * Since: 3.0.0
  **/
-gchar* lunar_date_get_cal_string(LunarDate *date, gint max)
+gchar* lunar_date_get_calendar(LunarDate *date, gint max)
 {
 	gchar* holiday;
 	holiday = lunar_date_get_cal_holiday (date, max);

@@ -124,7 +124,7 @@ gboolean date_get_calendar(
 		g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), 1, error->message);
 		return FALSE;
 	}
-	result = lunar_date_get_cal_string(daemon->date, max);
+	result = lunar_date_get_calendar(daemon->date, max);
 	bus_lunar_date_complete_calendar(object, invocation, result);
 	g_free(result);
 	return TRUE;
