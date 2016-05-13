@@ -17,6 +17,7 @@ build() {
 
 	./configure \
 		--prefix=/usr \
+		--libexecdir=/lib \
 		--enable-vala-bindings \
 		--enable-gtk-doc
 	make V=1 || return 1

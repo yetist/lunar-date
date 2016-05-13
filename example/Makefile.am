@@ -1,5 +1,5 @@
 if HAVE_VALA
-bin_PROGRAMS = example-vala
+noinst_PROGRAMS = example-vala
 
 AM_CPPFLAGS =	\
 	-I.                  		\

@@ -52,6 +52,7 @@ $(lunar_date_built_sources) : Makefile.am $(srcdir)/org.chinese.lunar.date.xml
 
 EXTRA_DIST = 			\
 	org.chinese.lunar.date.xml 	\
+	org.chinese.Lunar.Date.service.in	\
 	$(NULL)
 
 -include $(top_srcdir)/git.mk
