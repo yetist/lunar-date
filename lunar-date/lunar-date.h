@@ -53,6 +53,7 @@ void        lunar_date_set_solar_holiday  (LunarDate *date, GDateMonth month, GD
 void        lunar_date_set_lunar_holiday  (LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday);
 void        lunar_date_set_week_holiday   (LunarDate *date, GDateMonth month, gint week_of_month, gint day_of_week, const gchar *holiday);
 gchar*      lunar_date_get_holiday        (LunarDate *date, const gchar *delimiter);
+gchar*      lunar_date_get_cal_string     (LunarDate *date, gint max);
 gchar*		lunar_date_strftime			  (LunarDate *date, const gchar *format);
 void		lunar_date_free				  (LunarDate *date);
 

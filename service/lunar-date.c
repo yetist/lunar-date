@@ -46,7 +46,7 @@ void show_year_month_cal(BusLunarDate *date, gint year, gint month)
 {
 	guint i;
 	guint8 days;
-	gchar *string, *holiday;
+	gchar *string;
 	GError *error = NULL;
 
 	gchar* lunar[32];
@@ -59,41 +59,13 @@ void show_year_month_cal(BusLunarDate *date, gint year, gint month)
 	days = g_date_get_days_in_month (month, year);
 
 	for (i=1; i<= days; i++) {
-		bus_lunar_date_call_strftime_sync (date, year, month, i, 3, "%(holiday)", &holiday, NULL, &error);
+		bus_lunar_date_call_calendar_sync (date, year, month, i, 1, 3, &string, NULL, &error);
 		if (error != NULL) {
-			g_printerr ("Unable to get cal: %s\n", error->message);
+			g_printerr ("Unable to get calendar string: %s\n", error->message);
 			g_error_free(error);
 			return;
 		}
-		bus_lunar_date_call_strftime_sync (date, year, month, i, 3, "%(ri)", &string, NULL, &error);
-		if (error != NULL) {
-			g_printerr ("Unable to get cal: %s\n", error->message);
-			g_error_free(error);
-			return;
-		}
-		if (atoi(string) == 1) {
-			g_free(string);
-			bus_lunar_date_call_strftime_sync (date, year, month, i, 3, "%(YUE)月", &string, NULL, &error);
-			if (error != NULL) {
-				g_printerr ("Unable to get cal: %s\n", error->message);
-				g_error_free(error);
-				return;
-			}
-		}else{
-			g_free(string);
-			bus_lunar_date_call_strftime_sync (date, year, month, i, 3, "%(RI)", &string, NULL, &error);
-			if (error != NULL) {
-				g_printerr ("Unable to get cal: %s\n", error->message);
-				g_error_free(error);
-				return;
-			}
-		}
-		if (strlen(holiday) > 0) {
-			lunar[i] = holiday;
-			g_free(string);
-		} else {
-			lunar[i] = string;
-		}
+		lunar[i] = string;
 	}
 
 	GDate *gd;
@@ -151,6 +123,10 @@ void show_year_month_cal(BusLunarDate *date, gint year, gint month)
 			g_print("%s\t", lunar[i]);
 		}
 		g_print("\n");
+	}
+
+	for (i=1; i<= days; i++) {
+		g_free(lunar[i]);
 	}
 }
 

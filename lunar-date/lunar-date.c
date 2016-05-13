@@ -272,9 +272,7 @@ void			lunar_date_set_solar_date	  (LunarDate *date,
 
 	if (year < BEGIN_YEAR || year > BEGIN_YEAR+NUM_OF_YEARS || (year == BEGIN_YEAR && month == 1))
 	{
-		g_set_error(error, LUNAR_DATE_ERROR,
-				LUNAR_DATE_ERROR_YEAR,
-				_("Year out of range."));
+		g_set_error(error, LUNAR_DATE_ERROR, LUNAR_DATE_ERROR_YEAR, _("Year out of range.(from 1900 to 2049)."));
 		return;
 	}
 
@@ -562,9 +560,9 @@ static gchar* lunar_date_get_real_holiday (LunarDate *date, const gchar *delimit
 }
 
 /* 返回用在日历上的节假日，3个UTF8或4个Ascii码长度 */
-gchar* lunar_date_get_cal_holiday (LunarDate *date, const gchar *delimiter)
+gchar* lunar_date_get_cal_holiday (LunarDate *date, gint max_len)
 {
-	const gint utf8_len = 3; /* 在日历上，使用3个UTF8字符 */
+	const gint utf8_len = max_len; /* 在日历上，使用3个UTF8字符 */
 	const gint ascii_len =4; /* 使用4个Ascii字符 */
 
 	gchar holiday[128];
@@ -580,8 +578,7 @@ gchar* lunar_date_get_cal_holiday (LunarDate *date, const gchar *delimiter)
 		strncpy(buf, tmp, sizeof(buf));
 		g_free(tmp);
 
-		if ((p = strchr(buf, ' ')) != NULL)
-		{
+		if ((p = strchr(buf, ' ')) != NULL) {
 			*p = '\0';
 		}
 
@@ -590,10 +587,42 @@ gchar* lunar_date_get_cal_holiday (LunarDate *date, const gchar *delimiter)
 		} else {
 			strncpy(holiday, buf, ascii_len);
 		}
-		return g_strdup(holiday);
+		if (strlen(holiday) > 0) {
+			return g_strdup(holiday);
+		}else{
+			return NULL;
+		}
 	} else {
 		return NULL;
 	}
+}
+
+/**
+ * lunar_date_get_cal_string:
+ * @date: a #LunarDate
+ * @max:  max length of the returned string.
+ *
+ * Returns the string about the date, used to show in calendar.
+ *
+ * Returns:  a newly-allocated string of the date or NULL.
+ *
+ * Since: 3.0.0
+ **/
+gchar* lunar_date_get_cal_string(LunarDate *date, gint max)
+{
+	gchar* holiday;
+	holiday = lunar_date_get_cal_holiday (date, max);
+	if (holiday != NULL)
+		return holiday;
+	if (date->lunar->day == 1) {
+		if (date->lunar->isleap)
+			return g_strdup_printf("%s%s", _("R\303\271n"), _(lunar_month_list[date->lunar->month-1]));
+		else
+			return g_strdup_printf("%s", _(lunar_month_list[date->lunar->month-1]));
+	} else {
+		return g_strdup(_(lunar_day_list[date->lunar->day-1]));
+	}
+	return NULL;
 }
 
 /**
@@ -856,7 +885,7 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 	if (strstr(format, "%(holiday)") != NULL)
 	{
 		gchar *tmp;
-		if ((tmp = lunar_date_get_cal_holiday(date, " ")) != NULL) {
+		if ((tmp = lunar_date_get_cal_holiday(date, 3)) != NULL) {
 			t1 = str_replace(str, "\%\\(holiday\\)", tmp);
 			g_free(tmp);
 			g_free(str); str=g_strdup(t1); g_free(t1);

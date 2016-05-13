@@ -104,6 +104,32 @@ gboolean date_get_strftime (
 	return TRUE;
 }
 
+gboolean date_get_calendar(
+		BusLunarDate *object,
+		GDBusMethodInvocation *invocation,
+		gint year,
+		gint month,
+		gint day,
+		gint hour,
+		gint max,
+		gpointer user_data)
+{
+	DateDaemon *daemon;
+	gchar* result;
+	GError *error = NULL;
+
+	daemon = DATE_DAEMON (user_data);
+	lunar_date_set_solar_date(daemon->date, year, month, day , hour, &error);
+	if (error != NULL ) {
+		g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), 1, error->message);
+		return FALSE;
+	}
+	result = lunar_date_get_cal_string(daemon->date, max);
+	bus_lunar_date_complete_calendar(object, invocation, result);
+	g_free(result);
+	return TRUE;
+}
+
 static void bus_acquired_handler_cb (GDBusConnection *connection,
 		const gchar     *name,
 		gpointer         user_data)
@@ -117,6 +143,7 @@ static void bus_acquired_handler_cb (GDBusConnection *connection,
 
 	g_signal_connect (daemon->skeleton, "handle-holiday", G_CALLBACK (date_get_holiday), daemon);
 	g_signal_connect (daemon->skeleton, "handle-strftime", G_CALLBACK (date_get_strftime), daemon);
+	g_signal_connect (daemon->skeleton, "handle-calendar", G_CALLBACK (date_get_calendar), daemon);
 
 	exported = g_dbus_interface_skeleton_export (G_DBUS_INTERFACE_SKELETON (daemon->skeleton),
 			connection, DATE_DBUS_PATH, &error);
