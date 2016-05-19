@@ -8,8 +8,9 @@ AM_CPPFLAGS =                             \
 	$(GIO_CFLAGS)
 
 
-TEST_PROGS += $(noinst_PROGRAMS)
-noinst_PROGRAMS = testing
+TEST_PROGS += testing
+TESTS = testing
+check_PROGRAMS = testing
 testing_SOURCES  = testing.c
 testing_LDADD    = $(GIO_LIBS)       		\
 		    $(top_builddir)/lunar-date/liblunar-date-3.0.la

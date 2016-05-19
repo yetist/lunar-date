@@ -75,7 +75,7 @@ BUILT_SOURCES =         	\
 
 lib_LTLIBRARIES = liblunar-date-3.0.la
 
-liblunar_date_3_0_includedir = $(includedir)/liblunar-3.0/lunar-date
+liblunar_date_3_0_includedir = $(includedir)/lunar-date-3.0
 liblunar_date_3_0_include_HEADERS = $(source_h)
 
 liblunar_date_3_0_la_SOURCES =	$(source_c) $(BUILT_SOURCES)

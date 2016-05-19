@@ -1,7 +1,11 @@
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = po lunar-date data tests docs service
+SUBDIRS = po lunar-date data docs service
 if HAVE_VALA
 SUBDIRS += example vapi
+endif
+
+if ENABLE_TESTS
+SUBDIRS += tests
 endif
 
 EXTRA_DIST =                    \

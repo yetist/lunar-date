@@ -133,6 +133,12 @@ VALA_CHECK_MODULES(GLIB, glib-2.0, [have_vala=yes], [have_vala=no])
 AM_CONDITIONAL([HAVE_VALA], [test "x$have_vala" = "xyes"])
 AC_SUBST(HAVE_VALA)
 
+AC_ARG_ENABLE(tests,
+              AS_HELP_STRING([--enable-tests],
+                             [Enable test programs (default: no)]),,
+              [enable_tests=no])
+AM_CONDITIONAL(ENABLE_TESTS, test x$enable_tests = xyes)
+
 dnl ================================================================
 dnl  Language Support 
 dnl ================================================================
