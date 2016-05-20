@@ -196,51 +196,51 @@ msgstr "豬"
 
 #: ../lunar-date/lunar-date-private.h:293
 msgid "Jan"
-msgstr "一"
+msgstr "一月"
 
 #: ../lunar-date/lunar-date-private.h:293
 msgid "Feb"
-msgstr "二"
+msgstr "二月"
 
 #: ../lunar-date/lunar-date-private.h:293
 msgid "Mar"
-msgstr "三"
+msgstr "三月"
 
 #: ../lunar-date/lunar-date-private.h:293
 msgid "Apr"
-msgstr "四"
+msgstr "四月"
 
 #: ../lunar-date/lunar-date-private.h:293
 msgid "May"
-msgstr "五"
+msgstr "五月"
 
 #: ../lunar-date/lunar-date-private.h:293
 msgid "Jun"
-msgstr "六"
+msgstr "六月"
 
 #: ../lunar-date/lunar-date-private.h:294
 msgid "Jul"
-msgstr "七"
+msgstr "七月"
 
 #: ../lunar-date/lunar-date-private.h:294
 msgid "Aug"
-msgstr "八"
+msgstr "八月"
 
 #: ../lunar-date/lunar-date-private.h:294
 msgid "Sep"
-msgstr "九"
+msgstr "九月"
 
 #: ../lunar-date/lunar-date-private.h:294
 msgid "Oct"
-msgstr "十"
+msgstr "十月"
 
 #: ../lunar-date/lunar-date-private.h:294
 msgid "Nov"
-msgstr "冬"
+msgstr "冬月"
 
 #: ../lunar-date/lunar-date-private.h:294
 msgid "Dec"
-msgstr "臘"
+msgstr "臘月"
 
 #.
 #. * 从 "初一" 到 "三十"

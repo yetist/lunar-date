@@ -8,4 +8,4 @@ Description: Chinese Lunar Library
 Requires.private: glib-2.0 gobject-2.0
 Version: @VERSION@
 Libs: -L${libdir} -llunar-date-3.0
-Cflags: -I${includedir}/liblunar-3.0
+Cflags: -I${includedir}/lunar-date-3.0

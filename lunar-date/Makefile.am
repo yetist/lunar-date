@@ -3,7 +3,7 @@ CLEANFILES =
 AM_CPPFLAGS =			\
 	-I$(top_srcdir)		\
         -I$(srcdir) 		\
-	$(GIO_CFLAGS)	\
+	$(GIO_CFLAGS)		\
 	$(WARN_CFLAGS)
 
 if PLATFORM_WIN32
@@ -58,16 +58,16 @@ libtool_opts =							\
   -export-dynamic $(no_undefined) $(LIBTOOL_EXPORT_OPTIONS)	\
   -rpath $(libdir) $(liblunar_date_target_ldflags)
 
-source_h = 	\
+source_h = 				\
 	$(srcdir)/lunar-date.h		\
 	$(srcdir)/lunar-version.h
 
-source_c =	\
+source_c =				\
 	$(srcdir)/lunar-date.c		\
 	$(srcdir)/lunar-version.c	\
 	$(srcdir)/lunar-date-private.c
 
-BUILT_SOURCES =         	\
+BUILT_SOURCES =         		\
         lunar-date-enum-types.h		\
         lunar-date-enum-types.c		\
         lunar-date-resources.h		\
@@ -75,7 +75,7 @@ BUILT_SOURCES =         	\
 
 lib_LTLIBRARIES = liblunar-date-3.0.la
 
-liblunar_date_3_0_includedir = $(includedir)/lunar-date-3.0
+liblunar_date_3_0_includedir = $(includedir)/lunar-date-3.0/lunar-date
 liblunar_date_3_0_include_HEADERS = $(source_h)
 
 liblunar_date_3_0_la_SOURCES =	$(source_c) $(BUILT_SOURCES)
