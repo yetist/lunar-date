@@ -19,6 +19,6 @@ static int main (string[] args) {
 	} catch (Error e) {
 		return 1;
 	}
-	stdout.printf("%s\n", t.strftime(_("%(YEAR)年%(YUE)月")));
+	stdout.printf("%s\n", t.strftime(_("%(YEAR)年%(YUE)%(RI)")));
 	return 0;
 }
