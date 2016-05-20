@@ -147,12 +147,12 @@ void show_day_hour_info(BusLunarDate *date, gint year, gint month, gint day, gin
 
 	g_print("公历：%d年%d月%d日\n", year, month, day);
 	if (hour > 0) {
-		format = "农历：%(NIAN)年%(YUE)月%(RI)\n"
+		format = "农历：%(NIAN)年%(YUE)%(RI)\n"
 			"干支：%(Y60)年%(M60)月%(D60)日%(D60)时\n"
 			"生肖：%(shengxiao)";
 	} else {
 		hour = 3;
-		format = "农历：%(NIAN)年%(YUE)月%(RI)\n"
+		format = "农历：%(NIAN)年%(YUE)%(RI)\n"
 			"干支：%(Y60)年%(M60)月%(D60)日\n"
 			"生肖：%(shengxiao)";
 	}
