@@ -1,5 +1,5 @@
 project('lunar-date', 'c',
-  version : '2.9.3',
+  version : '2.9.2',
   license : 'LGPLv2.1+',
   default_options : [
 	  'warning_level=1',
@@ -9,34 +9,37 @@ project('lunar-date', 'c',
 )
 
 # Versionning
-ld_version = meson.project_version()
-version_arr = ld_version.split('.')
-ld_version_major = version_arr[0].to_int()
-ld_version_minor = version_arr[1].to_int()
-ld_version_micro = version_arr[2].to_int()
+lunar_date_version = meson.project_version()
+version_arr = lunar_date_version.split('.')
+lunar_date_major_version = version_arr[0].to_int()
+lunar_date_minor_version = version_arr[1].to_int()
+lunar_date_micro_version = version_arr[2].to_int()
 
 apiversion = '1.0'
 soversion = 0
 
-if ld_version_minor.is_odd()
-  ld_interface_age = 0
+if lunar_date_minor_version.is_odd()
+  lunar_date_interface_age = 0
 else
-  ld_interface_age = ld_version_micro
+  lunar_date_interface_age = lunar_date_version_micro
 endif
+
+lunar_date_binary_age = lunar_date_minor_version * 100 + lunar_date_micro_version
+lunar_date_lt_current = lunar_date_minor_version * 100 + lunar_date_micro_version - lunar_date_interface_age
+lunar_date_lt_revision = lunar_date_interface_age
+lunar_date_lt_age = lunar_date_binary_age - lunar_date_interface_age
 
 # maintaining compatibility with the previous libtool versioning
 # current = minor * 100 + micro - interface
 # revision = interface
-soversion = 0
-current = ld_version_minor * 100 + ld_version_micro - ld_interface_age
-revision = ld_interface_age
-libversion = '@0@.@1@.@2@'.format(soversion, current, revision)
 
 # Dependencies
 glib_req_version = '>= 2.32.0'
 glib_dep = dependency('glib-2.0', version: glib_req_version)
 gio_dep = dependency('gio-2.0', version: glib_req_version)
 gio_unix_dep = dependency('gio-unix-2.0', version: glib_req_version)
+
+root_dir = include_directories('.')
 
 conf = configuration_data()
 conf.set_quoted('VERSION', meson.project_version())
@@ -90,6 +93,7 @@ test_args = [
   '-Wunused-but-set-variable',
   '-Wwrite-strings'
 ]
+
 cc = meson.get_compiler('c')
 foreach arg: test_args
   if cc.has_argument(arg)
@@ -117,6 +121,7 @@ add_global_link_arguments(
 gnome = import('gnome')
 i18n = import('i18n')
 
+conf.set('LUNAR_DATE_BINARY_AGE', lunar_date_binary_age)
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('LUNAR_DATE_LOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
 conf.set_quoted('DATADIR', join_paths(get_option('prefix'), get_option('datadir')))

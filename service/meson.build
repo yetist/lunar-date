@@ -24,6 +24,7 @@ executable(
   include_directories : [
     include_directories('..'),
   ],
+  link_with : liblunar_date,
   dependencies : [gio_dep, gio_unix_dep, glib_dep],
   install : true,
   install_dir : get_option('bindir')

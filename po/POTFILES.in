@@ -1,5 +1,4 @@
 # List of source files which contain translatable strings.
-[encoding: UTF-8]
 lunar-date/lunar-date.c
 lunar-date/lunar-date-private.h
 lunar-date/lunar-date-private.c
