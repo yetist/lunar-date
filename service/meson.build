@@ -6,7 +6,7 @@ gdbus_src = gnome.gdbus_codegen(
 )
 
 executable(
-  'lunar_date',
+  'lunar-date',
   gdbus_src,
   sources : 'lunar-date.c',
   include_directories : [
@@ -18,7 +18,7 @@ executable(
 )
 
 executable(
-  'lunar_date_daemon',
+  'lunar-date-daemon',
   gdbus_src,
   sources : ['date-daemon.h', 'date-daemon.c', 'lunar-date-daemon.c'],
   include_directories : [
@@ -27,7 +27,7 @@ executable(
   link_with : liblunar_date,
   dependencies : [gio_dep, gio_unix_dep, glib_dep],
   install : true,
-  install_dir : get_option('bindir')
+  install_dir : join_paths(get_option('prefix'), get_option('libexecdir'))
 )
 
 # no quoting

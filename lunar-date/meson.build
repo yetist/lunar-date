@@ -39,4 +39,6 @@ liblunar_date = shared_library('lunar-date-3.0',
     source_c, source_enum, source_resources,
     dependencies: [glib_dep, gio_dep, gio_unix_dep],
     include_directories: root_dir,
+    install : true,
+    install_dir : get_option('libdir')
 )
