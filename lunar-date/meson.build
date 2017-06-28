@@ -1,16 +1,3 @@
-#wxtiso_sources = [
-#  'main.c',
-#]
-#
-#wxtiso_deps = [
-#  dependency('glib-2.0'),
-#]
-#
-#executable('wxtiso', wxtiso_sources,
-#  dependencies: wxtiso_deps,
-#  install: true,
-#)
-
 source_h = [
   'lunar-date.h',
   'lunar-version.h',
