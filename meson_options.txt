@@ -1,3 +1,4 @@
-option('enable-tests', type : 'boolean', value : false, description : 'Enable test programs (default: no)')
+option('enable-dbus-service', type : 'boolean', value : true, description : 'Enable dbus service (default: yes)')
 option('enable-gtk-doc', type : 'boolean', value : false, description : 'use gtk-doc to build documentation [[default=no]]')
 option('enable-introspection', type : 'combo', choices : ['auto', 'yes', 'no'], value : 'auto')
+option('enable-tests', type : 'boolean', value : false, description : 'Enable test programs (default: no)')

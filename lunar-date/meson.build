@@ -1,7 +1,12 @@
 source_h = [
   'lunar-date.h',
-  'lunar-version.h',
 ]
+
+configure_file(
+  input: 'lunar-version.h.in',
+  output : 'lunar-version.h',
+  configuration : conf
+)
 
 source_c = [
   'lunar-date.c',
@@ -21,6 +26,8 @@ source_resources = gnome.compile_resources(
   source_dir : '.',
   c_name : 'lunar_date'
 )
+
+source_h += ['lunar-version.h']
 
 liblunar_date = shared_library('lunar-date-3.0',
     source_c, source_enum, source_resources,
