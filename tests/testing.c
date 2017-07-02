@@ -44,29 +44,7 @@ static const struct {
 	{1910, 2, 19, 2, "%(shengxiao)", "狗"},
 	{1910, 2, 19, 2, "%(holiday)", "雨水"},
 };
-
 static const gint num_solar_array = G_N_ELEMENTS (solar_array);
-
-void test_solar_date(void) {
-	gint i;
-	gchar *ascii;
-	LunarDate *date;
-	GError *error = NULL;
-	gchar *value;
-
-	date = lunar_date_new();
-	for (i = 0; i < num_solar_array; i++)
-	{
-		lunar_date_set_solar_date(date, solar_array[i].year, solar_array[i].month,
-			   	solar_array[i].day, solar_array[i].hour, &error);
-		if (error != NULL)
-			g_error_free(error);
-		value = lunar_date_strftime(date, solar_array[i].format);
-		g_assert_cmpstr (solar_array[i].value, ==, value);
-		g_free (value);
-	}
-	lunar_date_free(date);
-}
 
 static const struct {
 	GDateYear year;
@@ -89,9 +67,49 @@ static const struct {
 
 static const gint num_lunar_array = G_N_ELEMENTS (lunar_array);
 
-void test_lunar_date(void) {
+static const struct {
+	GDateYear year;
+	GDateMonth month;
+	GDateDay day;
+	guint8 hour;
+	const gchar *delimiter;
+	const gchar *holiday;
+} holiday_array[] = {
+	{1942, 11, 26, 8, " ", "感恩节"},
+	{2016, 5, 8, 8, ";", "母亲节"},
+};
+static const gint num_holiday_array = G_N_ELEMENTS (holiday_array);
+
+static void test_solar_date(void);
+static void test_lunar_date(void);
+static void test_holiday_date(void);
+static void test_custom_holiday(void);
+
+static void test_solar_date(void)
+{
 	gint i;
-	gchar *ascii;
+	LunarDate *date;
+	GError *error = NULL;
+	gchar *value;
+
+	date = lunar_date_new();
+	for (i = 0; i < num_solar_array; i++)
+	{
+		lunar_date_set_solar_date(date, solar_array[i].year, solar_array[i].month,
+			   	solar_array[i].day, solar_array[i].hour, &error);
+		if (error != NULL)
+			g_error_free(error);
+		value = lunar_date_strftime(date, solar_array[i].format);
+		g_assert_cmpstr (solar_array[i].value, ==, value);
+		g_free (value);
+	}
+	lunar_date_free(date);
+}
+
+
+void test_lunar_date(void)
+{
+	gint i;
 	LunarDate *date;
 	GError *error = NULL;
 	gchar *value;
@@ -110,22 +128,9 @@ void test_lunar_date(void) {
 	lunar_date_free(date);
 }
 
-static const struct {
-	GDateYear year;
-	GDateMonth month;
-	GDateDay day;
-	guint8 hour;
-	const gchar *delimiter;
-	const gchar *holiday;
-} holiday_array[] = {
-	{1942, 11, 26, 8, " ", "感恩节"},
-	{2016, 5, 8, 8, ";", "母亲节"},
-};
-static const gint num_holiday_array = G_N_ELEMENTS (holiday_array);
-
-void test_holiday_date(void) {
+static void test_holiday_date(void)
+{
 	gint i;
-	gchar *ascii;
 	LunarDate *date;
 	GError *error = NULL;
 	gchar *holiday;
@@ -144,9 +149,8 @@ void test_holiday_date(void) {
 	lunar_date_free(date);
 }
 
-void test_custom_holiday(void) {
-	gint i;
-	gchar *ascii;
+static void test_custom_holiday(void)
+{
 	LunarDate *date;
 	GError *error = NULL;
 	gchar *holiday;
@@ -181,7 +185,6 @@ int main (int argc, char* argv[])
 {
 	/* Test in chinese locale env */
 	g_setenv("LC_ALL", "zh_CN.utf8", TRUE);
-
 	setlocale (LC_ALL, "");
 	g_test_init (&argc, &argv, NULL);
 

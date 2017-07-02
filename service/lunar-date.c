@@ -44,7 +44,7 @@ static GOptionEntry entries[] =
 
 void show_year_month_cal(BusLunarDate *date, gint year, gint month)
 {
-	guint i;
+	gint i;
 	guint8 days;
 	gchar *string;
 	GError *error = NULL;
@@ -147,12 +147,12 @@ void show_day_hour_info(BusLunarDate *date, gint year, gint month, gint day, gin
 
 	g_print("公历：%d年%d月%d日\n", year, month, day);
 	if (hour > 0) {
-		format = "农历：%(NIAN)年%(YUE)%(RI)\n"
+		format = "农历：%(NIAN)年%(YUE)月%(RI)\n"
 			"干支：%(Y60)年%(M60)月%(D60)日%(D60)时\n"
 			"生肖：%(shengxiao)";
 	} else {
 		hour = 3;
-		format = "农历：%(NIAN)年%(YUE)%(RI)\n"
+		format = "农历：%(NIAN)年%(YUE)月%(RI)\n"
 			"干支：%(Y60)年%(M60)月%(D60)日\n"
 			"生肖：%(shengxiao)";
 	}

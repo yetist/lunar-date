@@ -78,7 +78,6 @@ static gboolean parse_arguments (int    *argc, char ***argv)
 
 int main (int argc, char *argv[])
 {
-	gchar *datapath;
 	GMainLoop *loop;
 	DateDaemon *daemon;
 

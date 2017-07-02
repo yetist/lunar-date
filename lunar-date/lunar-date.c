@@ -99,6 +99,7 @@ static void lunar_date_get_property  (GObject		   *object,
 										 GParamSpec		  *pspec);
 static void _cl_date_make_all_lunar_data(LunarDate *date);
 static void lunar_date_init_i18n(void);
+static gchar* lunar_date_get_cal_holiday (LunarDate *date, gint max_len);
 
 G_DEFINE_TYPE (LunarDate, lunar_date, G_TYPE_OBJECT);
 
@@ -162,8 +163,6 @@ static void lunar_date_init_holiday (LunarDate *date)
 static void
 lunar_date_init (LunarDate *date)
 {
-	gchar *cfgfile;
-	
 	lunar_date_init_i18n();
 
 	date->solar = g_new0 (CLDate, 1);
@@ -198,10 +197,6 @@ lunar_date_set_property (GObject	  *object,
 							const GValue *value,
 							GParamSpec	 *pspec)
 {
-	LunarDate *date;
-
-	date = LUNAR_DATE (object);
-
 	switch (prop_id)
 	{
 
@@ -217,10 +212,6 @@ lunar_date_get_property (GObject	  *object,
 							GValue		 *value,
 							GParamSpec	 *pspec)
 {
-	LunarDate *date;
-
-	date = LUNAR_DATE (object);
-
 	switch (prop_id)
 	{
 
@@ -285,7 +276,7 @@ void			lunar_date_set_solar_date	  (LunarDate *date,
 	}
 
 	if (hour == 24) hour = 0;
-	if (hour < 0 || hour > 23)
+	if (hour > 23)
 	{
 		g_set_error(error, LUNAR_DATE_ERROR,
 				LUNAR_DATE_ERROR_HOUR,
@@ -349,7 +340,7 @@ void			lunar_date_set_lunar_date	  (LunarDate *date,
 	}
 
 	if (hour == 24) hour = 0;
-	if (hour < 0 || hour > 23)
+	if (hour > 23)
 	{
 		g_set_error(error, LUNAR_DATE_ERROR,
 				LUNAR_DATE_ERROR_HOUR,
@@ -392,7 +383,7 @@ void lunar_date_set_solar_holiday(LunarDate *date, GDateMonth month, GDateDay da
 	g_return_if_fail( date != NULL);
 	g_return_if_fail( holiday != NULL);
 
-	g_snprintf(key, sizeof(key), "%02d%02d", month, day);
+	g_snprintf(key, sizeof(key), "%02u%02d", month, day);
 	if (g_hash_table_lookup(date->holiday_solar, key) != NULL) {
 		g_hash_table_remove(date->holiday_solar, key);
 	}
@@ -416,7 +407,7 @@ void lunar_date_set_lunar_holiday(LunarDate *date, GDateMonth month, GDateDay da
 	g_return_if_fail( date != NULL);
 	g_return_if_fail( holiday != NULL);
 
-	g_snprintf(key, sizeof(key), "%02d%02d", month, day);
+	g_snprintf(key, sizeof(key), "%02u%02d", month, day);
 	if (g_hash_table_lookup(date->holiday_lunar, key) != NULL) {
 		g_hash_table_remove(date->holiday_lunar, key);
 	}
@@ -437,7 +428,6 @@ void lunar_date_set_lunar_holiday(LunarDate *date, GDateMonth month, GDateDay da
  **/
 void lunar_date_set_week_holiday(LunarDate *date, GDateMonth month, gint week_of_month, gint day_of_week, const gchar *holiday)
 {
-	gint  i, weekday, weekth;
 	gchar key[10];
 
 	g_return_if_fail( date != NULL);
@@ -467,14 +457,15 @@ void lunar_date_set_week_holiday(LunarDate *date, GDateMonth month, gint week_of
  **/
 static gchar* lunar_date_get_real_holiday (LunarDate *date, const gchar *delimiter, gboolean full)
 {
-	g_return_val_if_fail(date != NULL, NULL);
-	g_return_val_if_fail(delimiter != NULL, NULL);
 	GString*      jieri;
 	gint          i, weekday, weekth;
 	gchar         buf[256];
 	gpointer      value;
-	static gchar  str_jq[24][20] = {'9'};
+	static gchar  str_jq[24][20];
 	gchar         yc[5] = {str_jq[0][0], str_jq[0][1], str_jq[0][2], str_jq[0][3], '\0'};
+
+	g_return_val_if_fail(date != NULL, NULL);
+	g_return_val_if_fail(delimiter != NULL, NULL);
 
 	jieri=g_string_new(NULL);
 
@@ -483,7 +474,7 @@ static gchar* lunar_date_get_real_holiday (LunarDate *date, const gchar *delimit
 	if (g_hash_table_lookup_extended(date->holiday_lunar, buf, NULL, &value)) {
 		gchar *p;
 		strcpy(buf, value);
-		buf[sizeof(buf)] = '\0';
+		buf[strlen(buf)] = '\0';
 		if ((p = strchr(buf, '|')) != NULL) {
 			*p = '\0';
 			if (full) {
@@ -501,7 +492,7 @@ static gchar* lunar_date_get_real_holiday (LunarDate *date, const gchar *delimit
 	if (g_hash_table_lookup_extended(date->holiday_solar, buf, NULL, &value)) {
 		gchar *p;
 		strcpy(buf, value);
-		buf[sizeof(buf)] = '\0';
+		buf[strlen(buf)] = '\0';
 		if (jieri->len > 0) jieri=g_string_append(jieri, delimiter);
 		if ((p = strchr(buf, '|')) != NULL) {
 			*p = '\0';
@@ -522,7 +513,7 @@ static gchar* lunar_date_get_real_holiday (LunarDate *date, const gchar *delimit
 	if (g_hash_table_lookup_extended(date->holiday_week, buf, NULL, &value)) {
 		gchar *p;
 		strcpy(buf, value);
-		buf[sizeof(buf)] = '\0';
+		buf[strlen(buf)] = '\0';
 		if (jieri->len > 0) jieri=g_string_append(jieri, delimiter);
 		if ((p = strchr(buf, '|')) != NULL) {
 			*p = '\0';
@@ -560,7 +551,7 @@ static gchar* lunar_date_get_real_holiday (LunarDate *date, const gchar *delimit
 }
 
 /* 返回用在日历上的节假日，3个UTF8或4个Ascii码长度 */
-gchar* lunar_date_get_cal_holiday (LunarDate *date, gint max_len)
+static gchar* lunar_date_get_cal_holiday (LunarDate *date, gint max_len)
 {
 	const gint utf8_len = max_len; /* 在日历上，使用3个UTF8字符 */
 	const gint ascii_len =4; /* 使用4个Ascii字符 */
@@ -616,9 +607,9 @@ gchar* lunar_date_get_calendar(LunarDate *date, gint max)
 		return holiday;
 	if (date->lunar->day == 1) {
 		if (date->lunar->isleap)
-			return g_strdup_printf("%s%s", _("R\303\271n"), _(lunar_month_list[date->lunar->month-1]));
+			return g_strdup_printf("%s%s%s", _("R\303\271n"), _(lunar_month_list[date->lunar->month-1]), _("Yu\303\250"));
 		else
-			return g_strdup_printf("%s", _(lunar_month_list[date->lunar->month-1]));
+			return g_strdup_printf("%s%s", _(lunar_month_list[date->lunar->month-1]), _("Yu\303\250"));
 	} else {
 		return g_strdup(_(lunar_day_list[date->lunar->day-1]));
 	}
@@ -670,7 +661,7 @@ gchar* lunar_date_get_jieri(LunarDate *date, const gchar *delimiter)
  *
  * %(year)年%(month)月%(day)日%(hour)时     公历：小写->2008年1月21日
  *
- * %(NIAN)年%(YUE)%(RI)%(SHI)时             农历：大写->丁亥年腊月十四己酉时，(月份前带"闰"表示闰月)
+ * %(NIAN)年%(YUE)月%(RI)%(SHI)时             农历：大写->丁亥年腊月十四己酉时，(月份前带"闰"表示闰月)
  *
  * %(nian)年%(yue)月%(ri)日%(shi)时			农历：小写->2007年12月14日，(月份前带"*"表示闰月)
  *
@@ -688,7 +679,7 @@ gchar* lunar_date_get_jieri(LunarDate *date, const gchar *delimiter)
  **/
 gchar* lunar_date_strftime (LunarDate *date, const char *format)
 {
-	gchar *s, *tmp;
+	gchar *tmp;
 	gchar* t1;
 	gchar tmpbuf[32];
 
@@ -884,10 +875,10 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
 	//holiday
 	if (strstr(format, "%(holiday)") != NULL)
 	{
-		gchar *tmp;
-		if ((tmp = lunar_date_get_cal_holiday(date, 3)) != NULL) {
-			t1 = str_replace(str, "\%\\(holiday\\)", tmp);
-			g_free(tmp);
+		gchar *tmp2;
+		if ((tmp2 = lunar_date_get_cal_holiday(date, 3)) != NULL) {
+			t1 = str_replace(str, "\%\\(holiday\\)", tmp2);
+			g_free(tmp2);
 			g_free(str); str=g_strdup(t1); g_free(t1);
 		} else {
 			t1 = str_replace(str, "\%\\(holiday\\)", "");
@@ -921,9 +912,7 @@ void			lunar_date_free					  (LunarDate *date)
 
 static void _cl_date_calc_lunar(LunarDate *date, GError **error)
 {
-	glong days;
 	GError *calc_error = NULL;
-	CLDate *d;
 
 	date->days = _date_calc_days_since_reference_year(date->solar, &calc_error) ;
 	if (calc_error != NULL)
@@ -1051,7 +1040,7 @@ static void _date_calc_days_since_lunar_year (LunarDate *date, GError **error)
 
 static void _cl_date_days_to_lunar (LunarDate *date, GError **error)
 {
-	int i, m, nYear, leap_month;
+	int i, m, leap_month;
 
 	glong offset = date->days;
 	for (i=0; i<NUM_OF_YEARS && offset > 0; i++)
