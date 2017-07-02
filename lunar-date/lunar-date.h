@@ -47,6 +47,8 @@ typedef enum
 GQuark lunar_date_error_quark (void);
 
 LunarDate*	lunar_date_new				  (void);
+LunarDate*	lunar_date_new_with_solar	  (void);
+LunarDate*	lunar_date_new_with_lunar	  (void);
 void		lunar_date_set_solar_date	  (LunarDate *date, GDateYear year, GDateMonth month, GDateDay day, guint8 hour, GError	**error);
 void		lunar_date_set_lunar_date	  (LunarDate *date, GDateYear year, GDateMonth month, GDateDay day, guint8 hour, gboolean isleap, GError **error);
 void        lunar_date_set_solar_holiday  (LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday);

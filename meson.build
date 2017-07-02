@@ -45,6 +45,10 @@ conf = configuration_data()
 conf.set_quoted('VERSION', meson.project_version())
 conf.set_quoted('PACKAGE_NAME', meson.project_name())
 conf.set_quoted('PACKAGE_VERSION', meson.project_version())
+conf.set('LUNAR_DATE_MAJOR_VERSION', lunar_date_major_version)
+conf.set('LUNAR_DATE_MINOR_VERSION', lunar_date_minor_version)
+conf.set('LUNAR_DATE_MICRO_VERSION', lunar_date_micro_version)
+
 
 # get suported warning flags
 test_args = [
@@ -144,10 +148,9 @@ add_global_arguments([
 subdir('po')
 subdir('lunar-date')
 
-#subdir('example')
-#subdir('tools')
-#subdir('utils')
-#subdir('vapi')
+if get_option('enable-dbus-service')
+  subdir('service')
+endif
 
 if get_option('enable-dbus-service')
   subdir('service')
@@ -160,3 +163,9 @@ endif
 if get_option('enable-tests')
   subdir('tests')
 endif
+
+#subdir('data')
+#subdir('example')
+#subdir('tools')
+#subdir('utils')
+#subdir('vapi')
