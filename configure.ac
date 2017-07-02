@@ -160,7 +160,6 @@ data/Makefile
 po/Makefile.in
 docs/Makefile
 docs/reference/Makefile
-docs/reference/version.xml
 Makefile
 vapi/Makefile
 service/Makefile

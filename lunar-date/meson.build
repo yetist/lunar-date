@@ -1,20 +1,19 @@
-source_h = [
-  'lunar-date.h',
-]
-
-configure_file(
+version_h = configure_file(
   input: 'lunar-date-version.h.in',
   output : 'lunar-date-version.h',
   configuration : conf
 )
+
+source_h = [
+  'lunar-date.h',
+  version_h,
+]
 
 source_c = [
   'lunar-date.c',
   'lunar-date-version.c',
   'lunar-date-private.c',
 ]
-
-install_headers(source_h, subdir : 'lunar-date')
 
 source_enum = gnome.mkenums('lunar-date-enum-types',
     sources: source_h,
@@ -29,7 +28,7 @@ source_resources = gnome.compile_resources(
   c_name : 'lunar_date'
 )
 
-source_h += ['lunar-date-version.h']
+install_headers(source_h, subdir : 'lunar-date')
 
 liblunar_date = shared_library('lunar-date-3.0',
     source_c, source_enum, source_resources,

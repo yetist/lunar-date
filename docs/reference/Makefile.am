@@ -77,7 +77,6 @@ include $(top_srcdir)/gtk-doc.make
 
 # Other files to distribute
 # e.g. EXTRA_DIST += version.xml.in
-EXTRA_DIST += version.xml.in
 
 # Comment this out if you want 'make check' to test you doc status
 # and run some sanity checks
