@@ -1,7 +1,8 @@
 <INCLUDE>lunar-date/lunar-date.h</INCLUDE>
+<INCLUDE>lunar-date/lunar-date-version.h</INCLUDE>
 
 <SECTION>
-<FILE>lunar-version</FILE>
+<FILE>lunar-date-version</FILE>
 <TITLE>Version Information</TITLE>
 lunar_date_major_version
 lunar_date_minor_version
@@ -9,8 +10,8 @@ lunar_date_micro_version
 LUNAR_DATE_MAJOR_VERSION
 LUNAR_DATE_MINOR_VERSION
 LUNAR_DATE_MICRO_VERSION
-lunar_date_check_version
 LUNAR_DATE_CHECK_VERSION
+lunar_date_check_version
 </SECTION>
 
 <SECTION>

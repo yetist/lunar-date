@@ -152,10 +152,6 @@ if get_option('enable-dbus-service')
   subdir('service')
 endif
 
-if get_option('enable-dbus-service')
-  subdir('service')
-endif
-
 if get_option('enable-gtk-doc')
   subdir('docs')
 endif

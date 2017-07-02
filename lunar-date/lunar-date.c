@@ -40,14 +40,14 @@
 #include <stdlib.h>
 #include <gio/gio.h>
 #include <lunar-date/lunar-date.h>
-#include <lunar-date/lunar-version.h>
+#include <lunar-date/lunar-date-version.h>
 #include "lunar-date-private.h"
 #include "lunar-date-resources.h"
 
 /**
  * SECTION:lunar-date
  * @Short_description: Chinese Lunar Date Library
- * @include: lunar-date.h
+ * @include: lunar-date/lunar-date.h
  * @Title: LunarDate
  * @stability: Stable
  *

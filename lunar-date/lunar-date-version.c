@@ -22,13 +22,13 @@
 #if HAVE_CONFIG_H
 #include <config.h>
 #endif
-#include <lunar-date/lunar-version.h>
+#include <lunar-date/lunar-date-version.h>
 
 /**
  * SECTION:lunar-date-version
  * @Short_description: Variables and functions to check the LunarDate version
  * @Title: Version Information
- * @include: lunar-date.h
+ * @include: lunar-date/lunar-date-version.h
  * @stability: Stable
  *
  * LunarDate provides version information, primarily useful in 
