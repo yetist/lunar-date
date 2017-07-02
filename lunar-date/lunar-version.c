@@ -25,9 +25,11 @@
 #include <lunar-date/lunar-version.h>
 
 /**
- * SECTION:lunar-version
+ * SECTION:lunar-date-version
  * @Short_description: Variables and functions to check the LunarDate version
  * @Title: Version Information
+ * @include: lunar-date.h
+ * @stability: Stable
  *
  * LunarDate provides version information, primarily useful in 
  * configure checks for builds that have a configure script. 

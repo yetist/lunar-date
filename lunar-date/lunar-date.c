@@ -47,7 +47,9 @@
 /**
  * SECTION:lunar-date
  * @Short_description: Chinese Lunar Date Library
+ * @include: lunar-date.h
  * @Title: LunarDate
+ * @stability: Stable
  *
  * The #LunarDate provide Chinese lunar date library.
  */
@@ -184,6 +186,8 @@ lunar_date_init (LunarDate *date)
  * Allocates a #LunarDate and initializes it. Free the return value with lunar_date_free().
  *
  * Returns: a newly-allocated #LunarDate
+ *
+ * Since: 2.4.0
  **/
 LunarDate*
 lunar_date_new (void)
@@ -251,6 +255,8 @@ GQuark lunar_date_error_quark (void)
  * @error: location to store the error occuring, or NULL to ignore errors.
  *
  * Sets the solar year, month, day and the hour for a #LunarDate.
+ *
+ * Since: 2.4.0
  **/
 void			lunar_date_set_solar_date	  (LunarDate *date,
 		GDateYear year,
@@ -312,6 +318,8 @@ void			lunar_date_set_solar_date	  (LunarDate *date,
  * @error: location to store the error occuring, or #NULL to ignore errors.
  *
  * Sets the lunar year, month, day and the hour for a #LunarDate. If the month is a leap month, you should set the isleap to TRUE.
+ *
+ * Since: 2.4.0
  **/
 void			lunar_date_set_lunar_date	  (LunarDate *date,
 		GDateYear year,
@@ -676,6 +684,8 @@ gchar* lunar_date_get_jieri(LunarDate *date, const gchar *delimiter)
  * 使用%(holiday)时，输出会自动截断为3个utf8字符或4个ascii字符，如果需要全部的节日信息，请使用 lunar_date_get_holiday() 得到输出。
  *
  * Returns: a newly-allocated output string, nul-terminated
+ *
+ * Since: 2.4.0
  **/
 gchar* lunar_date_strftime (LunarDate *date, const char *format)
 {
@@ -894,6 +904,8 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
  * @date: a #LunarDate
  *
  * Frees a #LunarDate returned from lunar_date_new().
+ *
+ * Since: 2.4.0
  **/
 void			lunar_date_free					  (LunarDate *date)
 {
