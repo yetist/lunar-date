@@ -39,7 +39,7 @@ glib_dep = dependency('glib-2.0', version: glib_req_version)
 gio_dep = dependency('gio-2.0', version: glib_req_version)
 gio_unix_dep = dependency('gio-unix-2.0', version: glib_req_version)
 
-root_dir = include_directories('.')
+top_srcdir = include_directories('.')
 
 conf = configuration_data()
 conf.set_quoted('VERSION', meson.project_version())
@@ -144,12 +144,14 @@ add_global_arguments([
 subdir('po')
 subdir('lunar-date')
 
-#subdir('data')
 #subdir('example')
-subdir('service')
 #subdir('tools')
 #subdir('utils')
 #subdir('vapi')
+
+if get_option('enable-dbus-service')
+  subdir('service')
+endif
 
 if get_option('enable-gtk-doc')
   subdir('docs')

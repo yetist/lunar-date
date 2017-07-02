@@ -9,6 +9,8 @@ source_c = [
   'lunar-date-private.c',
 ]
 
+install_headers(source_h, subdir : 'lunar-date')
+
 source_enum = gnome.mkenums('lunar-date-enum-types',
     sources: source_h,
     h_template: 'lunar-date-enum-types.h.template',
@@ -25,7 +27,7 @@ source_resources = gnome.compile_resources(
 liblunar_date = shared_library('lunar-date-3.0',
     source_c, source_enum, source_resources,
     dependencies: [glib_dep, gio_dep, gio_unix_dep],
-    include_directories: root_dir,
+    include_directories: top_srcdir,
     install : true,
     install_dir : get_option('libdir')
 )
