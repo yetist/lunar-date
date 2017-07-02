@@ -60,11 +60,11 @@ libtool_opts =							\
 
 source_h = 				\
 	$(srcdir)/lunar-date.h		\
-	$(srcdir)/lunar-version.h
+	$(srcdir)/lunar-date-version.h
 
 source_c =				\
 	$(srcdir)/lunar-date.c		\
-	$(srcdir)/lunar-version.c	\
+	$(srcdir)/lunar-date-version.c	\
 	$(srcdir)/lunar-date-private.c
 
 BUILT_SOURCES =         		\
@@ -129,7 +129,7 @@ endif
 EXTRA_DIST =  lunar-date-enum-types.h.template \
 	      lunar-date-enum-types.c.template \
 	      lunar-date-private.h \
-	      lunar-version.h.in \
+	      lunar-date-version.h.in \
 	      lunar-date.gresource.xml \
 	      lunar-date-win32.rc.in \
 	      lunar-date.symbols

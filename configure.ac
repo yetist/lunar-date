@@ -152,7 +152,7 @@ AM_GLIB_DEFINE_LOCALEDIR(LUNAR_DATE_LOCALEDIR)
 AC_CONFIG_FILES([
 lunar-date-3.0.pc
 lunar-date/lunar-date-win32.rc
-lunar-date/lunar-version.h
+lunar-date/lunar-date-version.h
 lunar-date/Makefile
 tests/Makefile
 example/Makefile
