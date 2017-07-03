@@ -12,11 +12,13 @@ https://github.com/yetist/lunar-date/releases
 
 # Installation
 
+```
 $ mkdir build
 $ cd build
 $ meson -Denable-gtk-doc=true -Denable-dbus-service=true -Dprefix=/usr #see mesconconf
 $ ninja
 $ sudo ninja install
+```
 
 # How to report bugs
 
