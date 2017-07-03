@@ -42,7 +42,6 @@ conf.set('LUNAR_DATE_MAJOR_VERSION', lunar_date_major_version)
 conf.set('LUNAR_DATE_MINOR_VERSION', lunar_date_minor_version)
 conf.set('LUNAR_DATE_MICRO_VERSION', lunar_date_micro_version)
 
-
 # get suported warning flags
 test_args = [
   '-fstack-protector-strong',
@@ -116,7 +115,6 @@ add_global_link_arguments(
 )
 
 gnome = import('gnome')
-i18n = import('i18n')
 
 conf.set('LUNAR_DATE_BINARY_AGE', lunar_date_binary_age)
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
@@ -156,6 +154,6 @@ endif
 ##subdir('data')
 ##subdir('tools')
 ##subdir('utils')
-
 ##subdir('example')
+
 #subdir('vapi')
