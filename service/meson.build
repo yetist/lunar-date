@@ -27,12 +27,12 @@ executable(
   link_with : liblunar_date,
   dependencies : [gio_dep, gio_unix_dep, glib_dep],
   install : true,
-  install_dir : join_paths(get_option('prefix'), get_option('libexecdir'))
+  install_dir : join_paths(get_option('prefix'), get_option('libexecdir'), 'lunar-date')
 )
 
 # no quoting
 cdata = configuration_data()
-cdata.set('pkglibexecdir', join_paths(get_option('prefix'), get_option('libexecdir')))
+cdata.set('pkglibexecdir', join_paths(get_option('prefix'), get_option('libexecdir'), 'lunar-date'))
 
 # replace @pkglibexecdir@
 configure_file(

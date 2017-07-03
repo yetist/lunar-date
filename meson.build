@@ -15,23 +15,16 @@ lunar_date_major_version = version_arr[0].to_int()
 lunar_date_minor_version = version_arr[1].to_int()
 lunar_date_micro_version = version_arr[2].to_int()
 
-apiversion = '1.0'
-soversion = 0
-
 if lunar_date_minor_version.is_odd()
   lunar_date_interface_age = 0
 else
-  lunar_date_interface_age = lunar_date_version_micro
+  lunar_date_interface_age = lunar_date_micro_version
 endif
 
 lunar_date_binary_age = lunar_date_minor_version * 100 + lunar_date_micro_version
-lunar_date_lt_current = lunar_date_minor_version * 100 + lunar_date_micro_version - lunar_date_interface_age
-lunar_date_lt_revision = lunar_date_interface_age
-lunar_date_lt_age = lunar_date_binary_age - lunar_date_interface_age
-
-# maintaining compatibility with the previous libtool versioning
-# current = minor * 100 + micro - interface
-# revision = interface
+soversion = '0.@0@.@1@'.format(lunar_date_binary_age - lunar_date_interface_age, lunar_date_interface_age)
+api_version = '3.0'
+name_api_version = '@0@-@1@'.format(meson.project_name(), api_version)
 
 # Dependencies
 glib_req_version = '>= 2.32.0'
@@ -160,8 +153,9 @@ if get_option('enable-tests')
   subdir('tests')
 endif
 
-#subdir('data')
-#subdir('example')
-#subdir('tools')
-#subdir('utils')
+##subdir('data')
+##subdir('tools')
+##subdir('utils')
+
+##subdir('example')
 #subdir('vapi')

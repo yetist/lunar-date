@@ -114,7 +114,7 @@ INTROSPECTION_SCANNER_ARGS = -I$(top_srcdir) -I$(srcdir) --warn-all --identifier
 LunarDate_3_0_gir_NAMESPACE = LunarDate
 LunarDate_3_0_gir_VERSION = 3.0
 LunarDate_3_0_gir_LIBS = $(builddir)/liblunar-date-3.0.la
-LunarDate_3_0_gir_FILES = $(source_h) $(source_c) $(BUILT_SOURCES)
+LunarDate_3_0_gir_FILES = $(source_h) $(source_c) lunar-date-enum-types.h
 LunarDate_3_0_gir_INCLUDES = GObject-2.0
 
 girdir = $(datadir)/gir-1.0

@@ -28,12 +28,43 @@ source_resources = gnome.compile_resources(
   c_name : 'lunar_date'
 )
 
-install_headers(source_h, subdir : 'lunar-date')
+install_headers(source_h, subdir : join_paths('lunar-date-3.0', 'lunar-date'))
 
 liblunar_date = shared_library('lunar-date-3.0',
     source_c, source_enum, source_resources,
-    dependencies: [glib_dep, gio_dep, gio_unix_dep],
+    version: soversion,
+    dependencies: [gio_dep],
     include_directories: top_srcdir,
     install : true,
     install_dir : get_option('libdir')
+)
+
+pkg=import('pkgconfig')
+pkg.generate(
+    name: 'lunar-date-3.0',
+    version: meson.project_version(),
+    description: 'Chinese Lunar Library',
+    requires_private: 'gio-2.0',
+    filebase: 'lunar-date-3.0',
+    libraries: '-llunar-date-3.0',
+    subdirs: 'lunar-date-3.0',
+)
+
+#if introspection_available
+  gir = gnome.generate_gir(liblunar_date,
+      sources: [source_h, source_c, source_enum.get(1)],
+      namespace : 'LunarDate',
+      nsversion : '3.0',
+      symbol_prefix : 'lunar',
+      identifier_prefix : 'Lunar',
+      export_packages : 'lunar-date-3.0',
+      includes : ['GObject-2.0'],
+      install : true)
+#endif
+
+gnome.generate_vapi('lunar-date-3.0',
+    sources: gir.get(0),
+    metadata_dirs: '.',
+    packages: 'gio-2.0',
+    install : true,
 )
