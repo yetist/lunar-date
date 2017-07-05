@@ -136,6 +136,11 @@ add_global_arguments([
   '-I' + meson.build_root(),
 ], language: 'c')
 
+girscan = find_program('g-ir-scanner', required: false)
+vapigen = find_program('vapigen', required: false)
+introspection_available = girscan.found() and not get_option('disable-introspection')
+vapi_available = introspection_available and vapigen.found() and not get_option('disable-vala')
+
 subdir('po')
 subdir('lunar-date')
 
@@ -151,9 +156,6 @@ if get_option('enable-tests')
   subdir('tests')
 endif
 
-##subdir('data')
-##subdir('tools')
-##subdir('utils')
-##subdir('example')
-
-#subdir('vapi')
+if vapi_available
+  subdir('vapi')
+endif

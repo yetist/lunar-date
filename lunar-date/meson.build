@@ -50,7 +50,7 @@ pkg.generate(
     subdirs: 'lunar-date-3.0',
 )
 
-#if introspection_available
+if introspection_available
   gir = gnome.generate_gir(liblunar_date,
       sources: [source_h, source_c, source_enum.get(1)],
       namespace : 'LunarDate',
@@ -60,11 +60,4 @@ pkg.generate(
       export_packages : 'lunar-date-3.0',
       includes : ['GObject-2.0'],
       install : true)
-#endif
-
-gnome.generate_vapi('lunar-date-3.0',
-    sources: gir.get(0),
-    metadata_dirs: '.',
-    packages: 'gio-2.0',
-    install : true,
-)
+endif
