@@ -3,4 +3,3 @@ option('disable-vala', type: 'boolean', value: false, description: 'Disable gene
 option('enable-dbus-service', type : 'boolean', value : true, description : 'Enable dbus service (default: yes)')
 option('enable-gtk-doc', type : 'boolean', value : false, description: 'Enable generating the API reference (depends on GTK-Doc)')
 option('enable-tests', type : 'boolean', value : false, description : 'Enable test programs (default: no)')
-
