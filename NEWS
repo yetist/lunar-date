@@ -25,7 +25,6 @@ NEWS:
     - 完善测试工具，使用gtest．
     - lunar_date_strftime()中的%(jieri)改变为%(holiday)。
 
-
 ======================
 lunar-date-2.4.0
 ======================

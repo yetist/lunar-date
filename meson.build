@@ -26,21 +26,11 @@ soversion = '0.@0@.@1@'.format(lunar_date_binary_age - lunar_date_interface_age,
 api_version = '3.0'
 name_api_version = '@0@-@1@'.format(meson.project_name(), api_version)
 
-# Dependencies
-glib_req_version = '>= 2.32.0'
-glib_dep = dependency('glib-2.0', version: glib_req_version)
-gio_dep = dependency('gio-2.0', version: glib_req_version)
-gio_unix_dep = dependency('gio-unix-2.0', version: glib_req_version)
-
-top_srcdir = include_directories('.')
-
-conf = configuration_data()
-conf.set_quoted('VERSION', meson.project_version())
-conf.set_quoted('PACKAGE_NAME', meson.project_name())
-conf.set_quoted('PACKAGE_VERSION', meson.project_version())
-conf.set('LUNAR_DATE_MAJOR_VERSION', lunar_date_major_version)
-conf.set('LUNAR_DATE_MINOR_VERSION', lunar_date_minor_version)
-conf.set('LUNAR_DATE_MICRO_VERSION', lunar_date_micro_version)
+# Compiler & Project arguments
+add_global_arguments([
+  '-DHAVE_CONFIG_H',
+  '-I' + meson.build_root(),
+  ], language: 'c')
 
 # get suported warning flags
 test_args = [
@@ -114,9 +104,21 @@ add_global_link_arguments(
     language: 'c'
     )
 
-gnome = import('gnome')
+# Dependencies
+glib_req_version = '>= 2.32.0'
+gio_dep = dependency('gio-2.0', version: glib_req_version)
+gio_unix_dep = dependency('gio-unix-2.0', version: glib_req_version)
 
+# Configure data
+conf = configuration_data()
+conf.set('LUNAR_DATE_MAJOR_VERSION', lunar_date_major_version)
+conf.set('LUNAR_DATE_MINOR_VERSION', lunar_date_minor_version)
+conf.set('LUNAR_DATE_MICRO_VERSION', lunar_date_micro_version)
 conf.set('LUNAR_DATE_BINARY_AGE', lunar_date_binary_age)
+
+conf.set_quoted('VERSION', meson.project_version())
+conf.set_quoted('PACKAGE_NAME', meson.project_name())
+conf.set_quoted('PACKAGE_VERSION', meson.project_version())
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('LUNAR_DATE_LOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
 conf.set_quoted('DATADIR', join_paths(get_option('prefix'), get_option('datadir')))
@@ -131,15 +133,13 @@ configure_file(
     configuration : conf
     )
 
-add_global_arguments([
-  '-DHAVE_CONFIG_H',
-  '-I' + meson.build_root(),
-  ], language: 'c')
-
+# Builder
 girscan = find_program('g-ir-scanner', required: false)
 vapigen = find_program('vapigen', required: false)
 introspection_available = girscan.found() and not get_option('disable-introspection')
 vapi_available = introspection_available and vapigen.found() and not get_option('disable-vala')
+
+top_srcdir = include_directories('.')
 
 subdir('po')
 subdir('lunar-date')
