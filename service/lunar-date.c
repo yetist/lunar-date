@@ -142,18 +142,19 @@ void show_year_cal(BusLunarDate *date, gint year)
 void show_day_hour_info(BusLunarDate *date, gint year, gint month, gint day, gint hour)
 {
 	GError *error = NULL;
-	gchar *format;
 	gchar *string, *holiday;
 
 	g_print("公历：%d年%d月%d日\n", year, month, day);
-	if (hour > 0) {
+	if (hour < 0) {
+		GDateTime *datetime;
+		datetime = g_date_time_new_now_local ();
+		hour = g_date_time_get_hour (datetime);
+		g_date_time_unref(datetime);
+	}
+
+	if (strlen(format) < 1) {
 		format = "农历：%(NIAN)年%(YUE)月%(RI)\n"
 			"干支：%(Y60)年%(M60)月%(D60)日%(D60)时\n"
-			"生肖：%(shengxiao)";
-	} else {
-		hour = 3;
-		format = "农历：%(NIAN)年%(YUE)月%(RI)\n"
-			"干支：%(Y60)年%(M60)月%(D60)日\n"
 			"生肖：%(shengxiao)";
 	}
 
