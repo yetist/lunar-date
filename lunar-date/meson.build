@@ -31,7 +31,7 @@ source_resources = gnome.compile_resources(
   c_name : 'lunar_date'
   )
 
-install_headers(source_h, subdir : 'lunar-date-3.0')
+install_headers(source_h, subdir : join_paths('lunar-date-3.0', 'lunar-date'))
 
 liblunar_date = shared_library('lunar-date-3.0',
   source_c, source_enum, source_resources,
@@ -69,7 +69,7 @@ if get_option('with_introspection')
     install : true,
     install_dir_gir: girdir,
     install_dir_typelib: typelibdir,
-    extra_args: [ '--c-include=lunar-date.h' ],
+    extra_args: [ '--c-include=lunar-date/lunar-date.h' ],
     )
   if get_option('with_vala')
     lunar_date_vapi = gnome.generate_vapi('lunar-date-' + api_version,
