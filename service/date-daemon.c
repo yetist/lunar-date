@@ -98,8 +98,12 @@ gboolean date_get_holiday (BusLunarDate *object,
 		return FALSE;
 	}
 	holiday = lunar_date_get_holiday(daemon->date, delimiter);
-	bus_lunar_date_complete_holiday (object, invocation, holiday);
-	g_free(holiday);
+	if (holiday == NULL) {
+		bus_lunar_date_complete_holiday (object, invocation, delimiter);
+	} else {
+		bus_lunar_date_complete_holiday (object, invocation, holiday);
+		g_free(holiday);
+	}
 	return TRUE;
 }
 

@@ -191,7 +191,9 @@ void show_day_hour_info(BusLunarDate *date, gint year, gint month, gint day, gin
 		return;
 	}
 	g_print("%s\n", string);
-	g_print("节日：%s\n", holiday);
+	if (g_strcmp0(holiday, " ") != 0) {
+		g_print("节日：%s\n", holiday);
+	}
 	g_free(string);
 	g_free(holiday);
 }
