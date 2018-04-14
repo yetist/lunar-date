@@ -42,6 +42,7 @@
 #include <lunar-date/lunar-date.h>
 #include <lunar-date/lunar-date-version.h>
 #include "lunar-date-private.h"
+#include "lunar-date-utils.h"
 #include "lunar-date-resources.h"
 
 /**
@@ -558,7 +559,7 @@ static gchar* lunar_date_get_real_holiday (LunarDate *date, const gchar *delimit
 	return g_string_free(jieri, FALSE);
 }
 
-/* 返回用在日历上的节假日，3个UTF8或4个Ascii码长度 */
+/* 返回用在日历上的节假日，max_len 指定返回的最长字符数 */
 static gchar* lunar_date_get_cal_holiday (LunarDate *date, gint max_len)
 {
 	const gint utf8_len = max_len; /* 在日历上，使用3个UTF8字符 */

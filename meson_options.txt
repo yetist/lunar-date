@@ -1,5 +1,10 @@
-option('disable-introspection', type: 'boolean', value : false, description: 'Disable GObject Introspection')
-option('disable-vala', type: 'boolean', value: false, description: 'Disable generation of vala vapi file')
-option('enable-dbus-service', type : 'boolean', value : true, description : 'Enable dbus service (default: yes)')
-option('enable-gtk-doc', type : 'boolean', value : false, description: 'Enable generating the API reference (depends on GTK-Doc)')
-option('enable-tests', type : 'boolean', value : false, description : 'Enable test programs (default: no)')
+option('with_introspection', type: 'boolean', value : false, description: 'Build with GObject Introspection support')
+option('with_vala', type: 'boolean', value: false, description: 'Build to generation vala vapi file')
+option('enable_dbus_service', type : 'boolean', value : true, description : 'Enable dbus service (default: yes)')
+option('enable_gtk_doc', type : 'boolean', value : false, description: 'Enable generating the API reference (depends on GTK-Doc)')
+option('enable_tests', type : 'boolean', value : false, description : 'Enable test programs (default: no)')
+
+# For subproject usage
+option('package_subdir', type: 'string',
+  description: 'Private sub-directory used when built as a subproject'
+)

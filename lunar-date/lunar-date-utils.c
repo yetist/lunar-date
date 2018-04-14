@@ -20,9 +20,21 @@
  * */
 
 #include <lunar-date/lunar-date.h>
-#include "lunar-date-private.h"
+#include "lunar-date-utils.h"
 #include <glib/gprintf.h>
 #include <glib/gi18n-lib.h>
+
+//gint _cmp_date (gint month1, gint day1, gint month2, gint day2);
+//static int days_in_solar_month[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+typedef struct	_CLDate				 CLDate;
+
+static char *hanzi_num[] = {
+	/* 从○ 到十: "líng" "yī" "èr" "sān" "sì" "wǔ" "liù" "qī" "bā" "jiǔ" "shí" */
+	N_("l\303\255ng"), N_("y\304\253"), N_("\303\250r"), N_("s\304\201n"), N_("s\303\254"),
+	N_("w\307\224"), N_("li\303\271"), N_("q\304\253"), N_("b\304\201"), N_("ji\307\224"),
+	N_("sh\303\255")
+};
 
 gboolean leap (guint year)
 {
@@ -211,38 +223,6 @@ gint get_weekth_of_month (gint day)
 		a++;
 	}
 	return a;
-}
-
-int mymemfind(const char *mem, int len, const char *pat, int pat_len)
-{
-	register int ii;
-
-	len -= pat_len;
-
-	for (ii = 0; ii <= len; ii++) {
-		if (mem[ii] == pat[0] && memcmp(&mem[ii], pat, pat_len) == 0) {
-			return ii;
-		}
-	}
-	return -1;
-}
-
-
-int
-mymemcnt(const char *mem, int len, const char *pat, int pat_len)
-{
-	register int offset = 0;
-	int nfound = 0;
-
-	while (len >= 0) {
-		offset = mymemfind(mem, len, pat, pat_len);
-		if (offset == -1)
-			break;
-		mem += offset + pat_len;
-		len -= offset + pat_len;
-		nfound++;
-	}
-	return nfound;
 }
 
 /* 1982/34 -> 一九八二/三四 */

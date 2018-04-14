@@ -27,30 +27,15 @@
 #endif
 #include <glib.h>
 #include <glib/gi18n-lib.h>
+#include "lunar-date-utils.h"
+
 G_BEGIN_DECLS
 
-#define REFERENCE_YEAR	1201
 #define BEGIN_YEAR	1900	/* Note that LC1900.1.1 is SC1900.1.31 */
 #define NUM_OF_YEARS 150
 #define NUM_OF_MONTHS 13
 
-typedef struct	_CLDate				 CLDate;
-
-struct _CLDate
-{
-	guint year	 : 16;
-	guint month  : 4;
-	guint day	 : 6;
-	guint hour	 : 5;
-	gboolean	isleap; /* the lunar month is a leap month */
-};
-
-static CLDate first_solar_date	= {1900, 1, 31, 0, FALSE }; /* 1900年1月31日 */
-static CLDate first_lunar_date	= {1900, 1, 1, 0, FALSE };	/* 1900年元月初一 */
-static CLDate first_gan_date	= {6, 4, 0, 0, FALSE };		/* 庚年午月甲日甲时 */
-static CLDate first_zhi_date	= {0, 2, 4, 0, FALSE};	   /* 子年寅月辰日子时 */
-
-static long years_info[NUM_OF_YEARS] = {
+long years_info[NUM_OF_YEARS] = {
 	/* encoding:
 	 *
 	 * b      bbbbbbbbbbbb bbbb
@@ -266,8 +251,6 @@ static gchar fest[NUM_OF_YEARS][12] = {
 {3, 5, 4, 5, 5, 6, 7, 7, 8, 7, 7, 5}	/* 2049 */
 };
 
-
-static int days_in_solar_month[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 static int days_in_lunar_month[2]  = {29,30}; 
 
 static	char	*gan_list[] = {
@@ -309,24 +292,10 @@ static	char   *lunar_day_list[] = {
 	N_("\303\210rli\303\271"), N_("\303\210rq\304\253"), N_("\303\210rb\304\201"), N_("\303\210rji\307\224"), N_("S\304\201nsh\303\255")
 };
 
-static char *hanzi_num[] = {
-	/* 从○ 到十: "líng" "yī" "èr" "sān" "sì" "wǔ" "liù" "qī" "bā" "jiǔ" "shí" */
-	N_("l\303\255ng"), N_("y\304\253"), N_("\303\250r"), N_("s\304\201n"), N_("s\303\254"),
-	N_("w\307\224"), N_("li\303\271"), N_("q\304\253"), N_("b\304\201"), N_("ji\307\224"),
-	N_("sh\303\255")
-};
-
-gboolean leap (guint year);
-gint	_cmp_date (gint month1, gint day1, gint month2, gint day2);
-void	year_jieqi(int year, int n, char* result);
-gint	get_day_of_week (gint year, gint month, gint day);
-glong _date_calc_days_since_reference_year (CLDate *d, GError **error);
-gint get_weekth_of_month (gint day);
-int mymemfind(const char *mem, int len, const char *pat, int pat_len);
-int mymemcnt(const char *mem, int len, const char *pat, int pat_len);
-void num_2_hanzi(int n, char* hanzi, gulong len);
-void mday_2_hanzi(int n, char* hanzi, gulong len);
-char* str_replace(const gchar* string, const gchar* old, const gchar* new);
+static CLDate first_solar_date	= {1900, 1, 31, 0, FALSE }; /* 1900年1月31日 */
+static CLDate first_lunar_date	= {1900, 1, 1, 0, FALSE };	/* 1900年元月初一 */
+static CLDate first_gan_date	= {6, 4, 0, 0, FALSE };		/* 庚年午月甲日甲时 */
+static CLDate first_zhi_date	= {0, 2, 4, 0, FALSE};	   /* 子年寅月辰日子时 */
 
 G_END_DECLS
 

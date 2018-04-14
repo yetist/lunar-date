@@ -1,86 +1,88 @@
 project('lunar-date', 'c',
-    version : '2.9.2',
-    license : 'LGPLv2.1+',
-    default_options : [
-      'warning_level=1',
-      'buildtype=debugoptimized',
-      ],
-    meson_version : '>=0.40.1'
-    )
+  version : '2.9.2',
+  license : 'LGPLv2.1+',
+  meson_version : '>=0.40.1',
+  default_options : [ 'warning_level=1', 'buildtype=debugoptimized', 'c_std=gnu11'],
+  )
 
 # Versionning
-lunar_date_version = meson.project_version()
-version_arr = lunar_date_version.split('.')
-lunar_date_major_version = version_arr[0].to_int()
-lunar_date_minor_version = version_arr[1].to_int()
-lunar_date_micro_version = version_arr[2].to_int()
+version_arr = meson.project_version().split('.')
+lunar_date_version_major = version_arr[0].to_int()
+lunar_date_version_minor = version_arr[1].to_int()
+lunar_date_version_micro = version_arr[2].to_int()
 
-if lunar_date_minor_version.is_odd()
+api_version = '3.0'
+soversion = 1
+
+if lunar_date_version_minor.is_odd()
   lunar_date_interface_age = 0
 else
-  lunar_date_interface_age = lunar_date_micro_version
+  lunar_date_interface_age = lunar_date_version_micro
 endif
 
-lunar_date_binary_age = lunar_date_minor_version * 100 + lunar_date_micro_version
-soversion = '0.@0@.@1@'.format(lunar_date_binary_age - lunar_date_interface_age, lunar_date_interface_age)
-api_version = '3.0'
-name_api_version = '@0@-@1@'.format(meson.project_name(), api_version)
+# maintaining compatibility with the previous libtool versioning
+# current = minor * 100 + micro - interface
+# revision = interface
+current = lunar_date_version_minor * 100 + lunar_date_version_micro - lunar_date_interface_age
+revision = lunar_date_interface_age
+libversion = '@0@.@1@.@2@'.format(soversion, current, revision)
 
 # Compiler & Project arguments
-add_global_arguments([
+add_project_arguments([
   '-DHAVE_CONFIG_H',
   '-I' + meson.build_root(),
   ], language: 'c')
 
 # get suported warning flags
 test_args = [
-    '-fstack-protector-strong',
-    '-Waggregate-return',
-    '-Warray-bounds',
-    '-Wcast-align',
-    '-Wclobbered',
-    '-Wdeclaration-after-statement',
-    '-Wempty-body',
-    '-Wextra',
-    '-Wformat=2',
-    '-Wformat-nonliteral',
-    '-Wformat-security',
-    '-Wformat-signedness',
-    '-Wignored-qualifiers',
-    '-Wimplicit-function-declaration',
-    '-Winit-self',
-    '-Winline',
-    '-Wmissing-declarations',
-    '-Wmissing-format-attribute',
-    '-Wmissing-include-dirs',
-    '-Wmissing-noreturn',
-    '-Wmissing-parameter-type',
-    '-Wmissing-prototypes',
-    '-Wnested-externs',
-    '-Wno-discarded-qualifiers',
-    '-Wno-missing-field-initializers',
-    '-Wno-strict-aliasing',
-    '-Wno-suggest-attribute=format',
-    '-Wno-unused-parameter',
-    '-Wold-style-definition',
-    '-Woverride-init',
-    '-Wpacked',
-    '-Wpointer-arith',
-    '-Wredundant-decls',
-    '-Wreturn-type',
-    '-Wshadow',
-    '-Wsign-compare',
-    '-Wstrict-aliasing',
-    '-Wstrict-prototypes',
-    '-Wswitch-default',
-    '-Wtype-limits',
-    '-Wundef',
-    '-Wuninitialized',
-    '-Wunused-but-set-variable',
-    '-Wwrite-strings'
-    ]
+  '-fstack-protector-strong',
+  '-Waggregate-return',
+  '-Warray-bounds',
+  '-Wcast-align',
+  '-Wclobbered',
+  '-Wdeclaration-after-statement',
+  '-Wempty-body',
+  '-Wextra',
+  '-Wformat=2',
+  '-Wformat-nonliteral',
+  '-Wformat-security',
+  '-Wformat-signedness',
+  '-Wignored-qualifiers',
+  '-Wimplicit-function-declaration',
+  '-Winit-self',
+  '-Winline',
+  '-Wmissing-declarations',
+  '-Wmissing-format-attribute',
+  '-Wmissing-include-dirs',
+  '-Wmissing-noreturn',
+  '-Wmissing-parameter-type',
+  '-Wmissing-prototypes',
+  '-Wnested-externs',
+  '-Wno-discarded-qualifiers',
+  '-Wno-missing-field-initializers',
+  '-Wno-strict-aliasing',
+  '-Wno-suggest-attribute=format',
+  '-Wno-unused-parameter',
+  '-Wold-style-definition',
+  '-Woverride-init',
+  '-Wpacked',
+  '-Wpointer-arith',
+  '-Wredundant-decls',
+  '-Wreturn-type',
+  '-Wshadow',
+  '-Wsign-compare',
+  '-Wstrict-aliasing',
+  '-Wstrict-prototypes',
+  '-Wswitch-default',
+  '-Wtype-limits',
+  '-Wundef',
+  '-Wuninitialized',
+  '-Wunused-but-set-variable',
+  '-Wwrite-strings'
+  ]
 
 cc = meson.get_compiler('c')
+
 foreach arg: test_args
   if cc.has_argument(arg)
     add_project_arguments(arg, language : 'c')
@@ -91,18 +93,18 @@ endforeach
 # FIXME: until https://github.com/mesonbuild/meson/issues/1140 is fixed
 global_link_args = []
 test_link_args = [
-    '-Wl,-z,relro',
-    '-Wl,-z,now',
-    ]
+  '-Wl,-z,relro',
+  '-Wl,-z,now',
+  ]
 foreach arg: test_link_args
   if cc.has_argument(arg)
     global_link_args += arg
   endif
 endforeach
 add_global_link_arguments(
-    global_link_args,
-    language: 'c'
-    )
+  global_link_args,
+  language: 'c'
+  )
 
 # Dependencies
 glib_req_version = '>= 2.32.0'
@@ -111,10 +113,10 @@ gio_unix_dep = dependency('gio-unix-2.0', version: glib_req_version)
 
 # Configure data
 conf = configuration_data()
-conf.set('LUNAR_DATE_MAJOR_VERSION', lunar_date_major_version)
-conf.set('LUNAR_DATE_MINOR_VERSION', lunar_date_minor_version)
-conf.set('LUNAR_DATE_MICRO_VERSION', lunar_date_micro_version)
-conf.set('LUNAR_DATE_BINARY_AGE', lunar_date_binary_age)
+conf.set('LUNAR_DATE_MAJOR_VERSION', lunar_date_version_major)
+conf.set('LUNAR_DATE_MINOR_VERSION', lunar_date_version_minor)
+conf.set('LUNAR_DATE_MICRO_VERSION', lunar_date_version_micro)
+conf.set('LUNAR_DATE_BINARY_AGE', lunar_date_interface_age)
 
 conf.set_quoted('VERSION', meson.project_version())
 conf.set_quoted('PACKAGE_NAME', meson.project_name())
@@ -129,33 +131,34 @@ conf.set_quoted('LOCALSTATEDIR', join_paths(get_option('prefix'), get_option('lo
 conf.set_quoted('LIBEXECDIR', join_paths(get_option('prefix'), get_option('libexecdir')))
 
 configure_file(
-    output : 'config.h',
-    configuration : conf
-    )
+  output : 'config.h',
+  configuration : conf
+  )
 
-# Builder
-girscan = find_program('g-ir-scanner', required: false)
-vapigen = find_program('vapigen', required: false)
-introspection_available = girscan.found() and not get_option('disable-introspection')
-vapi_available = introspection_available and vapigen.found() and not get_option('disable-vala')
+# Setup various paths that subdirectory meson.build files need
+package_subdir = get_option('package_subdir')
+girdir = join_paths(get_option('datadir'), package_subdir, 'gir-1.0')
+typelibdir = join_paths(get_option('libdir'), package_subdir, 'girepository-1.0')
+libdir = join_paths(get_option('libdir'), package_subdir)
+if package_subdir != ''
+  vapidir = join_paths(get_option('datadir'), package_subdir, 'vapi')
+else
+  vapidir = join_paths(get_option('datadir'), 'vala', 'vapi')
+endif
 
 top_srcdir = include_directories('.')
 
 subdir('po')
 subdir('lunar-date')
 
-if get_option('enable-dbus-service')
+if get_option('enable_dbus_service')
   subdir('service')
 endif
 
-if get_option('enable-gtk-doc')
+if get_option('enable_gtk_doc')
   subdir('docs')
 endif
 
-if get_option('enable-tests')
+if get_option('enable_tests')
   subdir('tests')
-endif
-
-if vapi_available
-  subdir('vapi')
 endif

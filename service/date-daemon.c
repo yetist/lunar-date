@@ -49,6 +49,31 @@ enum {
 	LAST_PROP
 };
 
+gboolean date_get_holiday (BusLunarDate *object,
+		GDBusMethodInvocation *invocation,
+		gint year,
+		gint month,
+		gint day,
+		gint hour,
+		const gchar *delimiter,
+		gpointer user_data);
+gboolean date_get_strftime (BusLunarDate *object,
+		GDBusMethodInvocation *invocation,
+		gint year,
+		gint month,
+		gint day,
+		gint hour,
+		const gchar *format,
+		gpointer user_data);
+gboolean date_get_calendar(
+		BusLunarDate *object,
+		GDBusMethodInvocation *invocation,
+		gint year,
+		gint month,
+		gint day,
+		gint hour,
+		gint max,
+		gpointer user_data);
 static GParamSpec *properties[LAST_PROP] = { NULL };
 
 G_DEFINE_TYPE (DateDaemon, date_daemon, G_TYPE_OBJECT)
@@ -69,7 +94,7 @@ gboolean date_get_holiday (BusLunarDate *object,
 	daemon = DATE_DAEMON (user_data);
 	lunar_date_set_solar_date(daemon->date, year, month, day , hour, &error);
 	if (error != NULL ) {
-		g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), 1, error->message);
+		g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), 1, "%s", error->message);
 		return FALSE;
 	}
 	holiday = lunar_date_get_holiday(daemon->date, delimiter);
@@ -95,7 +120,7 @@ gboolean date_get_strftime (
 	daemon = DATE_DAEMON (user_data);
 	lunar_date_set_solar_date(daemon->date, year, month, day , hour, &error);
 	if (error != NULL ) {
-		g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), 1, error->message);
+		g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), 1, "%s", error->message);
 		return FALSE;
 	}
 	result = lunar_date_strftime(daemon->date, format);
@@ -121,7 +146,7 @@ gboolean date_get_calendar(
 	daemon = DATE_DAEMON (user_data);
 	lunar_date_set_solar_date(daemon->date, year, month, day , hour, &error);
 	if (error != NULL ) {
-		g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), 1, error->message);
+		g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), 1, "%s", error->message);
 		return FALSE;
 	}
 	result = lunar_date_get_calendar(daemon->date, max);

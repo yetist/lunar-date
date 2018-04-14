@@ -35,6 +35,9 @@
 #define MOSES_DBUS_PATH "/org/chinese/Lunar/Date"
 
 static gchar *format= "";
+void show_year_month_cal(BusLunarDate *date, gint year, gint month);
+void show_year_cal(BusLunarDate *date, gint year);
+void show_day_hour_info(BusLunarDate *date, gint year, gint month, gint day, gint hour);
 
 static GOptionEntry entries[] =
 {
@@ -44,12 +47,15 @@ static GOptionEntry entries[] =
 
 void show_year_month_cal(BusLunarDate *date, gint year, gint month)
 {
-	gint i;
+	guint i;
 	guint8 days;
 	gchar *string;
 	GError *error = NULL;
-
+	GDate *gd;
 	gchar* lunar[32];
+	GDateWeekday weekday;
+	gint day;
+	gboolean num;
 	
 	if (!g_date_valid_year(year)|| !g_date_valid_month(month)) {
 		g_print("Date is not valid\n");
@@ -68,15 +74,13 @@ void show_year_month_cal(BusLunarDate *date, gint year, gint month)
 		lunar[i] = string;
 	}
 
-	GDate *gd;
 	gd = g_date_new_dmy (1, month, year);
-	GDateWeekday weekday;
 	weekday = g_date_get_weekday(gd);
 	g_date_free(gd);
 
-	gint day = 0;
+	day = 0;
 	g_print("====================== %d年%d月 =====================\n", year, month);
-	gboolean num = TRUE;
+	num = TRUE;
 
 	//每月的表头
 	g_print("周日\t周一\t周二\t周三\t周四\t周五\t周六\n");
@@ -84,7 +88,7 @@ void show_year_month_cal(BusLunarDate *date, gint year, gint month)
 	//打印第一行公历
 	for(i=0; i<weekday%7; i++) printf("\t");
 	for(i=1; i <= (7 - weekday); i++){
-		g_print("%d\t", i);
+		g_print("%u\t", i);
 	}
 	if (weekday % 7 != 0) g_print("\n");
 
@@ -99,13 +103,13 @@ void show_year_month_cal(BusLunarDate *date, gint year, gint month)
 	for(i=8-weekday; i<= days; i++) {
 		if ((weekday + i) % 7 != 0 ) {
 			if (num){
-				g_print("%d\t", i);
+				g_print("%u\t", i);
 			}else{
 				g_print("%s\t", lunar[i]);
 			}
 		}else{
 			if (num) {
-				g_print("%d\n", i);
+				g_print("%u\n", i);
 				num = FALSE;
 				i -= 7;
 			}else{
