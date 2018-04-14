@@ -556,7 +556,12 @@ static gchar* lunar_date_get_real_holiday (LunarDate *date, const gchar *delimit
 		}
 		g_strfreev(jq_day);
 	}
-	return g_string_free(jieri, FALSE);
+	if (jieri->len > 0 ) {
+		return g_string_free(jieri, FALSE);
+	}else{
+		g_string_free(jieri, TRUE);
+		return NULL;
+	}
 }
 
 /* 返回用在日历上的节假日，max_len 指定返回的最长字符数 */
