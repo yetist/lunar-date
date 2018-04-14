@@ -21,11 +21,7 @@ executable(
     'lunar-date-daemon',
     gdbus_src,
     sources : ['date-daemon.h', 'date-daemon.c', 'lunar-date-daemon.c'],
-    include_directories : [
-      include_directories('..'),
-      ],
-    link_with : liblunar_date,
-    dependencies : [gio_dep, gio_unix_dep],
+    dependencies : liblunar_date_deps,
     install : true,
     install_dir : join_paths(get_option('prefix'), get_option('libexecdir'), 'lunar-date')
     )

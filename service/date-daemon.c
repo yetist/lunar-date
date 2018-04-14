@@ -25,7 +25,7 @@
 
 #include <gio/gio.h>
 #include <glib/gi18n.h>
-#include <lunar-date/lunar-date.h>
+#include <lunar-date.h>
 #include "date-dbus-generated.h"
 #include "date-daemon.h"
 

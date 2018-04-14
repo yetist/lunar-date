@@ -22,7 +22,7 @@
  * Boston, MA 02111-1307, USA.
  * */
 
-#include <lunar-date/lunar-date.h>
+#include <lunar-date.h>
 #include <stdlib.h>
 #include <glib/gprintf.h>
 #include <glib/gi18n.h>

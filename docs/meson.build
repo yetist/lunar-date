@@ -1,5 +1,3 @@
-subdir('xml')
-
 conf = configuration_data()
 conf.set('PACKAGE_VERSION', meson.project_version())
 version_xml = configure_file(input: 'version.xml.in',
@@ -23,11 +21,11 @@ gnome.gtkdoc(
 		join_paths(meson.source_root(), 'lunar-date'),
 		join_paths(meson.build_root(), 'lunar-date'),
 		],
-	scan_args: '--deprecated-guards="GLIB_DEPRECATED"',
-	dependencies: [gio_dep, liblunar_date],
+	dependencies: liblunar_date_deps,
 	gobject_typesfile: 'lunar-date.types',
 	scan_args: [
 		'--rebuild-types',
+		'--deprecated-guards="GLIB_DEPRECATED"',
 		'--ignore-headers=' + ' '.join(private_headers),
 		],
 	fixxref_args: [

@@ -43,10 +43,14 @@ liblunar_date = shared_library('lunar-date-3.0',
   install_dir : get_option('libdir')
   )
 
+liblunar_date_deps = declare_dependency(sources: source_h,
+                                include_directories: [top_srcdir, include_directories('.')],
+                                dependencies: [gio_dep, gio_unix_dep],
+                                link_with: liblunar_date)
 pkg.generate(
   name: 'lunar-date-3.0',
   version: meson.project_version(),
-  description: 'Chinese Lunar Library',
+  description: 'Chinese Lunar Date Library',
   requires_private: 'gio-2.0',
   filebase: 'lunar-date-3.0',
   libraries: '-llunar-date-3.0',

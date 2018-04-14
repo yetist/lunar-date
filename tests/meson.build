@@ -1,11 +1,6 @@
-t=executable(
-  'testing',
+t=executable('testing',
   sources : 'testing.c',
-  include_directories : [
-    include_directories('..'),
-  ],
-  dependencies : [gio_dep],
-  link_with : liblunar_date,
+  dependencies : liblunar_date_deps,
   install : false,
 )
 
