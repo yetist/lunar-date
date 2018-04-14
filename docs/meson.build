@@ -25,7 +25,6 @@ gnome.gtkdoc(
 	gobject_typesfile: 'lunar-date.types',
 	scan_args: [
 		'--rebuild-types',
-		'--deprecated-guards="GLIB_DEPRECATED"',
 		'--ignore-headers=' + ' '.join(private_headers),
 		],
 	fixxref_args: [
