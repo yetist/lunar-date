@@ -1,0 +1,19 @@
+distcheck: true
+requires:
+  ubuntu:
+    - git
+    - gobject-introspection
+    - gtk-doc-tools
+    - intltool
+    - libgirepository1.0-dev
+    - libglib2.0-dev
+    - libx11-dev
+    - meson
+    - valac
+configure:
+  meson:
+    - --prefix /usr
+    - -Denable_gtk_doc=true
+    - -Dwith_introspection=true
+    - -Dwith_vala=true
+    - -Denable_tests=true
