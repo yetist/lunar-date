@@ -1,0 +1,96 @@
+# vim: set ts=2 sts=2 sw=2 expandtab :
+dist: xenial
+sudo: required
+language: bash
+services:
+  - docker
+
+before_install:
+  - sudo apt-get install -y python3-pip python3-setuptools
+  - sudo pip3 install --upgrade pip
+  - sudo pip install PyGithub
+  - curl -Ls -o docker-build https://github.com/mate-desktop/mate-dev-scripts/raw/travis/travis/docker-build
+  - chmod +x docker-build
+
+install:
+  - ./docker-build --name ${DISTRO} --config .travis.yml --install
+script:
+  - ./docker-build --name ${DISTRO} --verbose --config .travis.yml --build meson
+env:
+  - DISTRO="archlinux/base"
+  - DISTRO="debian:sid"
+  - DISTRO="fedora:rawhide"
+  - DISTRO="ubuntu:19.04"
+
+deploy:
+  provider: script
+  script: ./docker-build --name ${DISTRO} --verbose --config .travis.yml --release
+  skip_cleanup: true
+  on:
+    tags: true
+    condition: "$TRAVIS_TAG =~ ^v.*$ && $DISTRO == fedora:rawhide"
+
+##########################################################
+# THE FOLLOWING LINES IS USED BY docker-build
+##########################################################
+requires:
+  archlinux:
+    - gettext
+    - git
+    - glib2
+    - gobject-introspection
+    - meson
+    - vala
+  debian:
+    - git
+    - gobject-introspection
+    - gtk-doc-tools
+    - intltool
+    - libgirepository1.0-dev
+    - libglib2.0-dev
+    - libx11-dev
+    - meson
+    - valac
+  fedora:
+    - gcc
+    - git
+    - vala-devel
+    - gobject-introspection-devel
+    - meson
+    - ninja-build
+    - gettext
+    - redhat-rpm-config
+    - vala
+  ubuntu:
+    - git
+    - gobject-introspection
+    - gtk-doc-tools
+    - intltool
+    - libgirepository1.0-dev
+    - libglib2.0-dev
+    - libx11-dev
+    - meson
+    - valac
+
+variables:
+  - CFLAGS="-Wall"
+
+configures:
+  meson:
+    - --prefix /usr
+    - -Denable_gtk_doc=true
+    - -Dwith_introspection=true
+    - -Dwith_vala=true
+    - -Denable_tests=true
+
+after_scripts:
+  - cd ${BUILD_DIR}
+  - ninja dist
+
+releases:
+  draft: False
+  prerelease: False
+  checksum: False
+  base_version: 2.4.0
+  file_glob: True
+  files: _build/meson-dist/lunar-date-*.tar.xz*
