@@ -21,7 +21,9 @@ env:
     #  - DISTRO="debian:sid"
     #  - DISTRO="fedora:29"
 
-# The follow is add for docker-build
+##########################################################3
+# The follow lines is added for docker-build
+##########################################################3
 requires:
   ubuntu:
     - git
@@ -35,12 +37,12 @@ requires:
     - valac
 variables:
     - CFLAGS="-Wall"
-configure:
+configures:
   meson:
     - --prefix /usr
     - -Denable_gtk_doc=true
     - -Dwith_introspection=true
     - -Dwith_vala=true
     - -Denable_tests=true
-after_script:
+after_scripts:
     - if [ "$BUILD_TYPE" = "meson" ]; then ninja dist; else make distcheck; fi
