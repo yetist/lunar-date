@@ -1,4 +1,3 @@
-distcheck: true
 requires:
   ubuntu:
     - git
@@ -17,3 +16,14 @@ configure:
     - -Dwith_introspection=true
     - -Dwith_vala=true
     - -Denable_tests=true
+before_script:
+    - pwd
+    - cat /etc/issue
+after_script:
+    - pwd
+      #- make test
+      #- make distcheck
+    - ninja test
+    - ninja dist
+variables:
+    - CFLAGS="-Wall"
