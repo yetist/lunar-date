@@ -18,13 +18,5 @@ configure:
     - -Dwith_introspection=true
     - -Dwith_vala=true
     - -Denable_tests=true
-before_script:
-    - pwd
-    - env
-    - cat /etc/issue
 after_script:
-    - pwd
-    - env
-    - export LC_ALL=zh_CN.UTF-8
-    - if [ "$BUILD_TYPE" = "meson" ]; then ninja test; else make test; fi
     - if [ "$BUILD_TYPE" = "meson" ]; then ninja dist; else make distcheck; fi

@@ -10,13 +10,37 @@ before_install:
   - chmod +x docker-build
  
 install:
-  - ./docker-build --name ${DISTRO} --verbose --install
+  - ./docker-build --name ${DISTRO} --verbose --config .travis.yml --install
 
 script:
-  - ./docker-build --name ${DISTRO} --verbose --build meson
+  - ./docker-build --name ${DISTRO} --verbose --config .travis.yml --build meson
 
 env:
   - DISTRO="ubuntu:18.10"
     #- DISTRO="base/archlinux"
     #  - DISTRO="debian:sid"
     #  - DISTRO="fedora:29"
+
+# The follow is add for docker-build
+requires:
+  ubuntu:
+    - git
+    - gobject-introspection
+    - gtk-doc-tools
+    - intltool
+    - libgirepository1.0-dev
+    - libglib2.0-dev
+    - libx11-dev
+    - meson
+    - valac
+variables:
+    - CFLAGS="-Wall"
+configure:
+  meson:
+    - --prefix /usr
+    - -Denable_gtk_doc=true
+    - -Dwith_introspection=true
+    - -Dwith_vala=true
+    - -Denable_tests=true
+after_script:
+    - if [ "$BUILD_TYPE" = "meson" ]; then ninja dist; else make distcheck; fi
