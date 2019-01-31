@@ -18,9 +18,11 @@ configure:
     - -Denable_tests=true
 before_script:
     - pwd
+    - env
     - cat /etc/issue
 after_script:
     - pwd
+    - env
       #- make test
       #- make distcheck
     - ninja test
