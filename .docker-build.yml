@@ -23,9 +23,7 @@ before_script:
 after_script:
     - pwd
     - env
-      #- make test
-      #- make distcheck
-    - ninja test
-    - ninja dist
+      #- if [ "$BUILD_TYPE" = "meson" ]; then ninja test; else make test; fi
+    - if [ "$BUILD_TYPE" = "meson" ]; then ninja dist; else make distcheck; fi
 variables:
     - CFLAGS="-Wall"
