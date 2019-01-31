@@ -9,6 +9,8 @@ requires:
     - libx11-dev
     - meson
     - valac
+variables:
+    - CFLAGS="-Wall"
 configure:
   meson:
     - --prefix /usr
@@ -23,7 +25,6 @@ before_script:
 after_script:
     - pwd
     - env
-      #- if [ "$BUILD_TYPE" = "meson" ]; then ninja test; else make test; fi
+    - export LC_ALL=zh_CN.UTF-8
+    - if [ "$BUILD_TYPE" = "meson" ]; then ninja test; else make test; fi
     - if [ "$BUILD_TYPE" = "meson" ]; then ninja dist; else make distcheck; fi
-variables:
-    - CFLAGS="-Wall"
