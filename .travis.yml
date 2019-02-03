@@ -26,9 +26,11 @@ env:
 ##########################################################3
 requires:
   archlinux:
+    - git
+    - glib2
     - gobject-introspection
-    - vala
     - meson
+    - vala
   debian:
     - git
     - gobject-introspection
