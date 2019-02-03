@@ -1,3 +1,4 @@
+# vim: set ts=2 sts=2 sw=2 expandtab :
 dist: xenial
 sudo: required
 language: bash
@@ -5,26 +6,50 @@ services:
   - docker
 
 before_install:
-    #- curl -L -o docker-build https://github.com/mate-desktop/mate-dev-scripts/raw/master/travis/docker-build
-  - curl -L -o docker-build https://github.com/yetist/mate-dev-scripts/raw/travis/travis/docker-build
+  - curl -Ls -o docker-build https://github.com/mate-desktop/mate-dev-scripts/raw/travis/travis/docker-build
   - chmod +x docker-build
  
 install:
-  - ./docker-build --name ${DISTRO} --verbose --config .travis.yml --install
+  - ./docker-build --name ${DISTRO} --config .travis.yml --install
 
 script:
   - ./docker-build --name ${DISTRO} --verbose --config .travis.yml --build meson
 
 env:
+  - DISTRO="base/archlinux"
+  - DISTRO="debian:sid"
+  - DISTRO="fedora:29"
   - DISTRO="ubuntu:18.10"
-    #- DISTRO="base/archlinux"
-    #  - DISTRO="debian:sid"
-    #  - DISTRO="fedora:29"
 
 ##########################################################3
-# The follow lines is added for docker-build
+# THE FOLLOWING LINES IS USED BY docker-build
 ##########################################################3
 requires:
+  archlinux:
+    - gobject-introspection
+    - vala
+    - meson
+  debian:
+    - git
+    - gobject-introspection
+    - gtk-doc-tools
+    - intltool
+    - libgirepository1.0-dev
+    - libglib2.0-dev
+    - libx11-dev
+    - meson
+    - valac
+  fedora:
+    # Useful URL: https://src.fedoraproject.org/cgit/rpms/caja.git/
+    # The above packages is installed by 'dnf groupinstall build'
+    - gcc
+    - git
+    - vala-devel
+    - gobject-introspection-devel
+    - meson
+    - ninja-build
+    - gettext
+    - redhat-rpm-config
   ubuntu:
     - git
     - gobject-introspection
@@ -45,4 +70,5 @@ configures:
     - -Dwith_vala=true
     - -Denable_tests=true
 after_scripts:
-    - if [ "$BUILD_TYPE" = "meson" ]; then ninja dist; else make distcheck; fi
+  - cd ${BUILD_DIR}
+  - ninja dist
