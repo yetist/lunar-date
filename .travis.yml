@@ -6,7 +6,7 @@ services:
   - docker
 
 before_install:
-  - curl -Ls -o docker-build https://github.com/mate-desktop/mate-dev-scripts/raw/travis/travis/docker-build
+  - curl -Ls -o docker-build https://github.com/mate-desktop/mate-dev-scripts/raw/master/travis/docker-build
   - chmod +x docker-build
  
 install:
@@ -43,9 +43,8 @@ requires:
     - libx11-dev
     - meson
     - valac
+
   fedora:
-    # Useful URL: https://src.fedoraproject.org/cgit/rpms/caja.git/
-    # The above packages is installed by 'dnf groupinstall build'
     - gcc
     - git
     - vala-devel
@@ -54,6 +53,7 @@ requires:
     - ninja-build
     - gettext
     - redhat-rpm-config
+
   ubuntu:
     - git
     - gobject-introspection
@@ -64,8 +64,10 @@ requires:
     - libx11-dev
     - meson
     - valac
+
 variables:
     - CFLAGS="-Wall"
+
 configures:
   meson:
     - --prefix /usr
@@ -73,6 +75,7 @@ configures:
     - -Dwith_introspection=true
     - -Dwith_vala=true
     - -Denable_tests=true
+
 after_scripts:
   - cd ${BUILD_DIR}
   - ninja dist
