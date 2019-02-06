@@ -26,11 +26,13 @@ env:
 ##########################################################3
 requires:
   archlinux:
+    - gettext
     - git
     - glib2
     - gobject-introspection
     - meson
     - vala
+
   debian:
     - git
     - gobject-introspection
