@@ -4,17 +4,13 @@ sudo: required
 language: bash
 services:
   - docker
-
 before_install:
   - curl -Ls -o docker-build https://github.com/mate-desktop/mate-dev-scripts/raw/master/travis/docker-build
   - chmod +x docker-build
- 
 install:
   - ./docker-build --name ${DISTRO} --config .travis.yml --install
-
 script:
   - ./docker-build --name ${DISTRO} --verbose --config .travis.yml --build meson
-
 env:
   - DISTRO="archlinux/base"
   - DISTRO="debian:buster"
@@ -24,9 +20,23 @@ env:
   - DISTRO="ubuntu:18.04"
   - DISTRO="ubuntu:18.10"
 
-##########################################################3
+deploy:
+  provider: releases
+  api_key:
+    secure: MtZC/rp0c8W5EaUuP1kesk4HUmiUi6JimGYgSYDSp2Jo2AGehD78RUkPWWAmXeNGQ5vruA/z+IjgF+bhAA2V7wLdG2gyweQLHfOQvnuHbyKFjSbVkp4X0mZ/2N/phoNf9JsDyq6DjGyggPPy8WmVDJ7dzeGrlhn1x3zaCau9NN1+QY7dNhtRoD0ngadSo2G5cIPojy6DSs50AFsxJAyrOfzGihbT8fC/yb0/m4/O84PZNmfHQh+zZV7WCapiTKhW7cKhuCzWtEYDUD9ZZT93/i4/SS2ROkaHhcWR5kQKR58nrDlrSHF0+CaGgL/3tHtUrWPhRCZFiqEOzsJDgKjt8QpQka8FrPmZfio7U/1ptG7rg4kuMxzrPCvEntGlVXoxec5LqEPTdo2jD3jgiCz7AzOpP6qjyEZpMqREh/aZ3C4WhUqW1pVycvSB+OnX0lTcghN4WOyWg1K2E1xQzoFeUi6qh6RwxqpUv64wlKuGkzJZjmeBx2ej3vfEBfU2jRyZ3clOU1nv6kgt8VpaShTJVI9h7OnzxOuYnmPcA2/MXiJcqxOlbdeMwFebkJxENqjOVYzNFivX2zohzoLREfUc960Uoc3KmItNZrcentwsloaQFFqHmWkPc2fQf8/CX2p06kdhW03dg9FdCYhS5yUnTPKvlACX72yKe+oDyy7zrtw=
+    file_glob: true
+    file: _build/meson-dist/lunar-date-*.tar.xz
+    skip_cleanup: true
+    on:
+      repo: yetist/lunar-date
+      all_branches: true
+      tags: true
+      condition: ${DISTRO} == "fedora:29"
+      #condition: "$TRAVIS_TAG =~ ^v.*$ && $DISTRO == 'fedora:29'"
+
+##########################################################
 # THE FOLLOWING LINES IS USED BY docker-build
-##########################################################3
+##########################################################
 requires:
   archlinux:
     - gettext
@@ -35,7 +45,6 @@ requires:
     - gobject-introspection
     - meson
     - vala
-
   debian:
     - git
     - gobject-introspection
@@ -46,7 +55,6 @@ requires:
     - libx11-dev
     - meson
     - valac
-
   fedora:
     - gcc
     - git
@@ -57,7 +65,6 @@ requires:
     - gettext
     - redhat-rpm-config
     - vala
-
   ubuntu:
     - git
     - gobject-introspection
@@ -70,7 +77,7 @@ requires:
     - valac
 
 variables:
-    - CFLAGS="-Wall"
+  - CFLAGS="-Wall"
 
 configures:
   meson:
