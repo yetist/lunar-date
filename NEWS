@@ -1,36 +1,36 @@
-==========================
-lunar-date-3.0.0(devel)
-==========================
+### lunar-date 3.0.0
 
-[ ] rewrite code use g_autofree
-[x] gir正常工作
-[x] 使用meson构建系统
+* [ ] rewrite code use g_autofree
+* [x] gir正常工作
+* [x] 使用meson构建系统
 
-==========================
-lunar-date-2.9.1(devel)
-==========================
-NEWS:
-    - 依赖于gio-2.32+
-    - api版本升级为3.0
-    - 使用gresource来保存自带的节日信息。
-    - 增加新的自定义节日函数:
-    lunar_date_add_solar_holiday
-    lunar_date_add_lunar_holiday
-    lunar_date_add_week_holiday
-    - 使用新的获取节日函数: lunar_date_get_holiday，同时lunar_date_get_jieri被标记为放弃．
-    - 删除已经过时的函数: lunar_init．
-    - 修复examples中的vala示例代码.
-    - 修复干支和八字中的子时的计算问题．
-    - 增加dbus service服务。
-    - 完善测试工具，使用gtest．
-    - lunar_date_strftime()中的%(jieri)改变为%(holiday)。
+### lunar-date 2.9.2
 
-======================
-lunar-date-2.4.0
-======================
-NEWS:
-    - 修改名称为lunar-date，和lunar-calendar分离。
-    - 一些小bug的修复。
+* 不再支持 autotools 构建系统
+* 迁移到 meson 构建系统
+
+### lunar-date 2.9.1
+
+* 依赖于gio-2.32+
+* api版本升级为3.0
+* 使用gresource来保存自带的节日信息。
+* 增加新的自定义节日函数:
+  + lunar_date_add_solar_holiday
+  + lunar_date_add_lunar_holiday
+  + lunar_date_add_week_holiday
+* 使用新的获取节日函数: lunar_date_get_holiday，同时lunar_date_get_jieri被
+标记为放弃．
+* 删除已经过时的函数: lunar_init．
+* 修复examples中的vala示例代码.
+* 修复干支和八字中的子时的计算问题．
+* 增加dbus service服务。
+* 完善测试工具，使用gtest．
+* lunar_date_strftime()中的%(jieri)改变为%(holiday)。
+
+### lunar-date 2.4.0
+
+* 修改名称为lunar-date，和lunar-calendar分离。
+* 一些小bug的修复。
 
 ==============
 liblunar-2.2.5
