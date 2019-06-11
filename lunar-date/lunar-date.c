@@ -580,7 +580,7 @@ static gchar* lunar_date_get_cal_holiday (LunarDate *date, gint max_len)
 	memset(holiday, '\0', sizeof(holiday));
 	if (tmp != NULL) {
 		gchar *p;
-		strncpy(buf, tmp, sizeof(buf));
+		g_strlcpy(buf, tmp, sizeof(buf));
 		g_free(tmp);
 
 		if ((p = strchr(buf, ' ')) != NULL) {
@@ -590,7 +590,7 @@ static gchar* lunar_date_get_cal_holiday (LunarDate *date, gint max_len)
 		if (g_utf8_validate(buf, -1, NULL)) {
 			g_utf8_strncpy(holiday, buf, utf8_len);
 		} else {
-			strncpy(holiday, buf, ascii_len);
+			g_strlcpy(holiday, buf, ascii_len);
 		}
 		if (strlen(holiday) > 0) {
 			return g_strdup(holiday);
