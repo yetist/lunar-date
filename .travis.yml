@@ -18,9 +18,9 @@ script:
   - ./docker-build --name ${DISTRO} --verbose --config .travis.yml --build meson
 env:
   - DISTRO="archlinux/base"
-  - DISTRO="debian:sid"
+    #- DISTRO="debian:sid"
   - DISTRO="fedora:rawhide"
-  - DISTRO="ubuntu:19.04"
+    #- DISTRO="ubuntu:19.04"
 
 deploy:
   provider: script
