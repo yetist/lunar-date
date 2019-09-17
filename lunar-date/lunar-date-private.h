@@ -32,7 +32,7 @@
 G_BEGIN_DECLS
 
 #define BEGIN_YEAR	1900	/* Note that LC1900.1.1 is SC1900.1.31 */
-#define NUM_OF_YEARS 150
+#define NUM_OF_YEARS 151
 #define NUM_OF_MONTHS 13
 
 long years_info[NUM_OF_YEARS] = {
@@ -79,7 +79,7 @@ long years_info[NUM_OF_YEARS] = {
 	0x076a3, 0x096d0, 0x04afb, 0x04ad0, 0x0a4d0,	/* 2035 */
 	0x1d0b6, 0x0d250, 0x0d520, 0x0dd45, 0x0b5a0,	/* 2040 */
 	0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0,	/* 2045 */
-	0x0aa50, 0x1b255, 0x06d20, 0x0ada0			/* 2049 */
+	0x0aa50, 0x1b255, 0x06d20, 0x0ada0, 0x14b63		/* 2050 */
 };
 
 /*
@@ -248,10 +248,11 @@ static gchar fest[NUM_OF_YEARS][12] = {
 {4, 5, 4, 5, 5, 7, 7, 7, 8, 7, 7, 5},	/* 2046 */
 {4, 6, 5, 5, 6, 7, 7, 8, 8, 7, 7, 6},	/* 2047 */
 {4, 5, 4, 5, 5, 6, 7, 7, 7, 7, 6, 5},	/* 2048 */
-{3, 5, 4, 5, 5, 6, 7, 7, 8, 7, 7, 5}	/* 2049 */
+{3, 5, 4, 5, 5, 6, 7, 7, 8, 7, 7, 5},	/* 2049 */
+{3, 5, 4, 5, 6, 7, 7, 7, 8, 7, 7, 5}    /* 2050 */
 };
 
-static int days_in_lunar_month[2]  = {29,30}; 
+static int days_in_lunar_month[2]  = {29,30};
 
 static	char	*gan_list[] = {
 	/*
