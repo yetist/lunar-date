@@ -52,11 +52,11 @@ void show_year_month_cal(BusLunarDate *date, gint year, gint month)
 	gchar *string;
 	GError *error = NULL;
 	GDate *gd;
-	gchar* lunar[32];
+	gchar* lunar[32] = {0};
 	GDateWeekday weekday;
 	gint day;
 	gboolean num;
-	
+
 	if (!g_date_valid_year(year)|| !g_date_valid_month(month)) {
 		g_print("Date is not valid\n");
 		return;

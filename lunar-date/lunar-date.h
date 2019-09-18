@@ -75,7 +75,7 @@ gchar*      lunar_date_get_calendar       (LunarDate *date, gint max);
 gchar*		lunar_date_strftime			  (LunarDate *date, const gchar *format);
 void		lunar_date_free				  (LunarDate *date);
 
-GLIB_DEPRECATED_FOR(lunar_date_get_jieri)
+GLIB_DEPRECATED_FOR(lunar_date_get_holiday)
 gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter);
 
 G_END_DECLS

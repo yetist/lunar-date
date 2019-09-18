@@ -6,7 +6,7 @@
 # 全称可通过lunar_date_get_holiday()函数，设置full为true获取。
 
 #公历节假日
-[SOLAR] 
+[SOLAR]
 0101[zh_CN]=元旦
 0101[zh_HK]=元旦
 0101[zh_TW]=開國日
