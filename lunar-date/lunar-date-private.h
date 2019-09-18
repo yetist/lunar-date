@@ -88,7 +88,7 @@ long years_info[NUM_OF_YEARS] = {
   the Lunar Calendar; it is instead governed by "jie2" (festival).
   Interestingly, in the Solar calendar, a jie always comes around certain
   day. For example, the jie "li4chun1" (beginning of spring) always comes
-  near Feburary 4 of the Solar Calendar. 
+  near Feburary 4 of the Solar Calendar.
 
   Meaning of array fest:
   Each element, fest[i][j] stores the jie day (in term of the following Solar
