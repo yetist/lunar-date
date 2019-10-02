@@ -1033,20 +1033,20 @@ static void _date_calc_days_since_lunar_year (LunarDate *date, GError **error)
 	{
 		g_set_error(error, LUNAR_DATE_ERROR,
 				LUNAR_DATE_ERROR_LEAP,
-				_("%d is not a leap month in year %d.\n"), 
+				_("%d is not a leap month in year %d.\n"),
 				date->lunar->month, date->lunar->year);
 		return;
 	}
 	for (m=1; m<date->lunar->month; m++)
 		date->days+= date->lunar_month_days[m];
-	if (leap_month 
-			&& ((date->lunar->month>leap_month) 
+	if (leap_month
+			&& ((date->lunar->month>leap_month)
 				|| (date->lunar->isleap && (date->lunar->month==leap_month))
 			   ))
 		date->days += date->lunar_month_days[m++];
 	date->days += date->lunar->day - 1;
 
-	if (date->lunar->day > date->lunar_month_days[m]) 
+	if (date->lunar->day > date->lunar_month_days[m])
 	{
 		g_set_error(error, LUNAR_DATE_ERROR,
 				LUNAR_DATE_ERROR_DAY,
@@ -1065,7 +1065,7 @@ static void _cl_date_days_to_lunar (LunarDate *date, GError **error)
 		offset -= date->lunar_year_days[i];
 	if (offset <0)
 		offset += date->lunar_year_days[--i];
-	if (i==NUM_OF_YEARS) 
+	if (i==NUM_OF_YEARS)
 	{
 		g_set_error(error, LUNAR_DATE_ERROR,
 				LUNAR_DATE_ERROR_DAY,
@@ -1123,14 +1123,14 @@ static void _cl_date_days_to_solar(LunarDate *date, GError **error)
 	/* offset is now the number of days from SolarFirstDate.year.1.1 */
 
 	for (i=first_solar_date.year;
-			(i<first_solar_date.year+NUM_OF_YEARS) && (offset > 0);	 i++) 
+			(i<first_solar_date.year+NUM_OF_YEARS) && (offset > 0);	 i++)
 		offset -= 365 + leap(i);
 	if (offset<0)
 	{
 		--i;	/* LeapYear is a macro */
 		offset += 365 + leap(i);
 	}
-	if (i==(first_solar_date.year + NUM_OF_YEARS)) 
+	if (i==(first_solar_date.year + NUM_OF_YEARS))
 	{
 		g_set_error(error, LUNAR_DATE_ERROR,
 				LUNAR_DATE_ERROR_DAY,
@@ -1178,7 +1178,7 @@ static void _cl_date_make_all_lunar_data(LunarDate *date)
 			code >>= 1;
 		}
 		date->lunar_year_months[year] = 12;
-		if (leap != 0) 
+		if (leap != 0)
 			date->lunar_year_months[year]++;
 	}
 }
@@ -1203,7 +1203,7 @@ static gint _cl_date_make_lunar_month_days(LunarDate *date, gint year)
 	}
 	else
 	{
-		/* 
+		/*
 		   There is a leap month (run4 yue4) L in this year.
 		   mday[1] contains the number of days in the 1-st month;
 		   mday[L] contains the number of days in the L-th month;
@@ -1216,7 +1216,7 @@ static gint _cl_date_make_lunar_month_days(LunarDate *date, gint year)
 		date->lunar_month_days[leap_month+1] = days_in_lunar_month[i];
 		for (i = NUM_OF_MONTHS; i >= 1; i--)
 		{
-			if (i == leap_month+1) 
+			if (i == leap_month+1)
 				i--;
 			date->lunar_month_days[i] = days_in_lunar_month[code&0x1];
 			code >>= 1;
