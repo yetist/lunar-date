@@ -1,5 +1,5 @@
 project('lunar-date', 'c',
-  version : '2.9.3',
+  version : '3.0.0',
   license : 'LGPLv2.1+',
   meson_version : '>=0.50.0',
   default_options : [ 'warning_level=1', 'buildtype=debugoptimized', 'c_std=gnu11'],
