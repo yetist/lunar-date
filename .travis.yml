@@ -24,7 +24,7 @@ env:
 
 deploy:
   provider: script
-  script: ./docker-build --name ${DISTRO} --verbose --config .travis.yml --release
+  script: ./docker-build --name ${DISTRO} --verbose --config .travis.yml --release github
   skip_cleanup: true
   on:
     tags: true
