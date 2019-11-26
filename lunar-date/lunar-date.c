@@ -124,7 +124,7 @@ static void lunar_date_init_holiday (LunarDate *date)
     gchar         **groups, **keys;
     gsize         i=0, j=0;
     gsize         size, len;
-    gchar         *value, *p;
+    gchar         *p;
 
     date->holiday_solar = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
     date->holiday_lunar = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
@@ -142,6 +142,8 @@ static void lunar_date_init_holiday (LunarDate *date)
         j = 0;
         keys = g_key_file_get_keys (keyfile, groups[i], &len, NULL);
         while(j < len) {
+            g_autofree gchar *value;
+
             value = g_key_file_get_locale_string (keyfile, groups[i], keys[j], NULL, NULL);
             p = strchr(keys[j], '[');
             *p = '\0';
@@ -152,7 +154,6 @@ static void lunar_date_init_holiday (LunarDate *date)
             }else if (g_ascii_strcasecmp(groups[i], "WEEK") == 0 ) {
                 g_hash_table_insert(date->holiday_week, g_strdup(keys[j]), g_strdup(value));
             }
-            g_free(value);
             j++;
         }
         i++;
@@ -657,9 +658,9 @@ gchar* lunar_date_get_holiday (LunarDate *date, const gchar *delimiter)
  *
  * Returns the all holiday of the date, joined with the delimiter. The date must be valid.
  *
- * Returns:  a newly-allocated holiday string of the date or NULL.
+ * Returns: a newly-allocated holiday string of the date or NULL.
  *
- * Deprecated:3.0.0: Use lunar_date_get_holiday() instead.
+ * Deprecated: 3.0.0: Use lunar_date_get_holiday() instead.
  **/
 gchar* lunar_date_get_jieri(LunarDate *date, const gchar *delimiter)
 {
@@ -1271,13 +1272,12 @@ static void lunar_date_init_i18n(void)
     if (!_lunar_calendar_gettext_initialized)
     {
 #ifdef G_OS_WIN32
-        gchar *prgdir;
+        g_autofree gchar *prgdir = NULL;
+        g_autofree gchar *localedir = NULL;
+
         prgdir =  g_win32_get_package_installation_directory_of_module(NULL);
-        gchar *localedir;
         localedir = g_build_filename (prgdir, "locale", NULL);
         bindtextdomain (GETTEXT_PACKAGE, localedir);
-        g_free(prgdir);
-        g_free(localedir);
 #else
         bindtextdomain (GETTEXT_PACKAGE, LUNAR_DATE_LOCALEDIR);
 #endif
