@@ -85,7 +85,7 @@ configures:
 
 after_scripts:
   - cd ${BUILD_DIR}
-  - ninja dist
+  - LC_ALL=zh_CN.utf8 ninja dist
 
 releases:
   draft: False
