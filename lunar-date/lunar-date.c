@@ -4,7 +4,7 @@
  *
  * This file is part of lunar-date.
  *
- * Copyright (C) 2007-2016 yetist <yetist@gmail.com>.
+ * Copyright (C) 2007-2019 yetist <yetist@gmail.com>.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -273,7 +273,8 @@ void lunar_date_set_solar_date (LunarDate *date,
 
     if (!g_date_valid_month(month))
     {
-        g_set_error(error, LUNAR_DATE_ERROR,
+        g_set_error(error,
+                    LUNAR_DATE_ERROR,
                     LUNAR_DATE_ERROR_MONTH,
                     _("Month out of range."));
         return;
@@ -282,7 +283,8 @@ void lunar_date_set_solar_date (LunarDate *date,
     if (hour == 24) hour = 0;
     if (hour > 23)
     {
-        g_set_error(error, LUNAR_DATE_ERROR,
+        g_set_error(error,
+                    LUNAR_DATE_ERROR,
                     LUNAR_DATE_ERROR_HOUR,
                     _("Hour out of range."));
         return;
@@ -292,7 +294,7 @@ void lunar_date_set_solar_date (LunarDate *date,
     date->solar->month = month;
     date->solar->day = day;
     date->solar->hour = hour;
-    /* 计算农历 */
+    /* Calculate Lunar Calendar */
     _cl_date_calc_lunar(date, &calc_error);
     if (calc_error != NULL)
     {
@@ -331,26 +333,29 @@ void lunar_date_set_lunar_date (LunarDate *date,
 
     if (!(year>=BEGIN_YEAR && year< BEGIN_YEAR+NUM_OF_YEARS))
     {
-        g_set_error(error, LUNAR_DATE_ERROR,
-                LUNAR_DATE_ERROR_YEAR,
-                _("Year out of range."));
+        g_set_error(error,
+                    LUNAR_DATE_ERROR,
+                    LUNAR_DATE_ERROR_YEAR,
+                    _("Year out of range."));
         return;
     }
 
     if (!g_date_valid_month(month))
     {
-        g_set_error(error, LUNAR_DATE_ERROR,
-                LUNAR_DATE_ERROR_MONTH,
-                _("Month out of range."));
+        g_set_error(error,
+                    LUNAR_DATE_ERROR,
+                    LUNAR_DATE_ERROR_MONTH,
+                    _("Month out of range."));
         return;
     }
 
     if (hour == 24) hour = 0;
     if (hour > 23)
     {
-        g_set_error(error, LUNAR_DATE_ERROR,
-                LUNAR_DATE_ERROR_HOUR,
-                _("Hour out of range."));
+        g_set_error(error,
+                    LUNAR_DATE_ERROR,
+                    LUNAR_DATE_ERROR_HOUR,
+                    _("Hour out of range."));
         return;
     }
 
@@ -359,7 +364,7 @@ void lunar_date_set_lunar_date (LunarDate *date,
     date->lunar->day = day;
     date->lunar->hour = hour;
     date->lunar->isleap = isleap;
-    /* 计算公历 */
+    /* Calculate the Gregorian calendar */
     _cl_date_calc_solar(date, &calc_error);
     if (calc_error != NULL)
     {
@@ -561,11 +566,12 @@ static gchar* lunar_date_get_real_holiday (LunarDate *date, const gchar *delimit
     }
 }
 
-/* 返回用在日历上的节假日，max_len 指定返回的最长字符数 */
+/* Returns the holidays used on the calendar,
+ * max_len specifies the longest number of characters returned */
 static gchar* lunar_date_get_cal_holiday (LunarDate *date, gint max_len)
 {
-    const gint utf8_len = max_len; /* 在日历上，使用3个UTF8字符 */
-    const gint ascii_len =4; /* 使用4个Ascii字符 */
+    const gint utf8_len = max_len; /* On the calendar, use 3 UTF8 characters */
+    const gint ascii_len =4; /* Use 4 Ascii characters */
 
     gchar holiday[128];
     gchar buf[128];
@@ -666,25 +672,21 @@ gchar* lunar_date_get_jieri(LunarDate *date, const gchar *delimiter)
  * @date: a #LunarDate
  * @format: specify the output format.
  *
- * 使用给定的格式来输出字符串。类似于strftime的用法。可使用的格式及输出如下：
+ * Use the given format to output a string, similar to strftime usage.
+ * The available formats and outputs are as follows:
  *
- * %(YEAR)年%(MONTH)月%(DAY)日%(HOUR)时     公历：大写->二OO八年一月二十一日
- *
- * %(year)年%(month)月%(day)日%(hour)时     公历：小写->2008年1月21日
- *
- * %(NIAN)年%(YUE)月%(RI)%(SHI)时             农历：大写->丁亥年腊月十四己酉时，(月份前带"闰"表示闰月)
- *
- * %(nian)年%(yue)月%(ri)日%(shi)时         农历：小写->2007年12月14日，(月份前带"*"表示闰月)
- *
- * %(Y60)年%(M60)月%(D60)日%(H60)时         干支：大写->丁亥年癸丑月庚申日
- *
- * %(Y8)年%(M8)月%(D8)日%(H8)时             八字：大写->丁亥年癸丑月庚申日
- *
- * %(shengxiao)                             生肖：猪
- *
- * %(holiday)                               节日(节日、纪念日、节气等)：立春
- *
- * 使用%(holiday)时，输出会自动截断为3个utf8字符或4个ascii字符，如果需要全部的节日信息，请使用 lunar_date_get_holiday() 得到输出。
+ * |[<!-- language="C" -->
+ * format="%(YEAR)年%(MONTH)月%(DAY)日%(HOUR)时", output="一九一○年二月十九日二时"   //大写公历
+ * format="%(year)年%(month)月%(day)日%(hour)时", output="1910年2月19日2时"          //小写公历
+ * format="%(NIAN)年%(YUE)月%(RI)日%(SHI)时",     output="庚戌年一月初十日丑时"      //大写农历(月份前带"闰"表示闰月)
+ * format="%(nian)年%(yue)月%(ri)日%(shi)时",     output="1910年1月10日2时"          //小写农历(月份前带"*"表示闰月)
+ * format="%(Y60)年%(M60)月%(D60)日%(H60)时",     output="庚戌年戊寅月乙卯日丁丑时"  //干支
+ * format="%(Y8)年%(M8)月%(D8)日%(H8)时",         output="庚戌年戊寅月乙卯日丁丑时"  //八字
+ * format="%(shengxiao)",                        output="狗"                         //生肖
+ * format="%(holiday)",                          output="雨水"                       //节日(节日、纪念日、节气等)
+ * ]|
+ * When using %(holiday), the output is automatically truncated to 3 utf8 characters or 4 ascii characters.
+ * If you need all the holiday information, please use lunar_date_get_holiday () to get the output.
  *
  * Returns: a newly-allocated output string, nul-terminated
  *
@@ -869,7 +871,7 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
         g_free(tmp);
         g_free(str); str=g_strdup(t1); g_free(t1);
     }
-    /* 子时: 23点 --凌晨1 点前... */
+    /* 子时: 从23点到凌晨1点前 */
     if (strstr(format, "%(H8)") != NULL)
     {
         tmp = g_strdup_printf("%s%s", _(gan_list[date->gan2->hour]), _(zhi_list[date->zhi2->hour]));
@@ -1028,10 +1030,11 @@ static void _date_calc_days_since_lunar_year (LunarDate *date, GError **error)
     leap_month = _cl_date_make_lunar_month_days(date, year);
     if ((date->lunar->isleap) && (leap_month!=date->lunar->month))
     {
-        g_set_error(error, LUNAR_DATE_ERROR,
-                LUNAR_DATE_ERROR_LEAP,
-                _("%d is not a leap month in year %d.\n"),
-                date->lunar->month, date->lunar->year);
+        g_set_error(error,
+                    LUNAR_DATE_ERROR,
+                    LUNAR_DATE_ERROR_LEAP,
+                    _("%d is not a leap month in year %d.\n"),
+                    date->lunar->month, date->lunar->year);
         return;
     }
     for (m=1; m<date->lunar->month; m++)
@@ -1045,10 +1048,11 @@ static void _date_calc_days_since_lunar_year (LunarDate *date, GError **error)
 
     if (date->lunar->day > date->lunar_month_days[m])
     {
-        g_set_error(error, LUNAR_DATE_ERROR,
-                LUNAR_DATE_ERROR_DAY,
-                _("Day out of range: \"%d\""),
-                date->lunar->day);
+        g_set_error(error,
+                    LUNAR_DATE_ERROR,
+                    LUNAR_DATE_ERROR_DAY,
+                    _("Day out of range: \"%d\""),
+                    date->lunar->day);
         return;
     }
 }
@@ -1064,10 +1068,11 @@ static void _cl_date_days_to_lunar (LunarDate *date, GError **error)
         offset += date->lunar_year_days[--i];
     if (i==NUM_OF_YEARS)
     {
-        g_set_error(error, LUNAR_DATE_ERROR,
-                LUNAR_DATE_ERROR_DAY,
-                _("Year out of range. \"%d\""),
-                date->solar->year);
+        g_set_error(error,
+                    LUNAR_DATE_ERROR,
+                    LUNAR_DATE_ERROR_DAY,
+                    _("Year out of range. \"%d\""),
+                    date->solar->year);
         return;
     }
     date->lunar->year = i + first_lunar_date.year;
@@ -1229,19 +1234,23 @@ static gint _cl_date_get_bazi_lunar (LunarDate *date)
 
     if (date->solar->month==1)
     {
-        flag = _cmp_date(date->solar->month, date->solar->day,
-                1, fest[date->solar->year - first_solar_date.year - 1][11]);
-        if (flag<0) 
+        flag = _cmp_date(date->solar->month,
+                         date->solar->day,
+                         1,
+                         fest[date->solar->year - first_solar_date.year - 1][11]);
+        if (flag<0)
             date->lunar2->month = 11;
-        else if (flag>0) 
+        else if (flag>0)
             date->lunar2->month = 12;
         date->lunar2->year = date->solar->year - 1;
         return(flag==0);
     }
     for (m=2; m<=12; m++)
     {
-        flag = _cmp_date(date->solar->month, date->solar->day,
-                m, fest[date->solar->year - first_solar_date.year][m-2]);
+        flag = _cmp_date(date->solar->month,
+                         date->solar->day,
+                         m,
+                         fest[date->solar->year - first_solar_date.year][m-2]);
         if (flag==0) m++;
         if (flag<=0) break;
     }
