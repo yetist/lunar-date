@@ -905,6 +905,29 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
     return str;
 }
 
+gchar* lunar_date_get_constellation  (LunarDate *date)
+{
+    GDate *gdate;
+    gint days;
+    gint n;
+
+    gdate = g_date_new_dmy (date->solar->day, date->solar->month, date->solar->year);
+    days = g_date_get_day_of_year (gdate);
+
+    /* 28 February is the 59th days. */
+    if (g_date_is_leap_year (date->solar->year) && days > 59) {
+        days -= 1;
+    }
+
+    for (n=0; n<14; n++) {
+        if (days < days_of_constellations[n]) {
+            break;
+        }
+    }
+
+    return g_strdup (twelve_constellations[n]);
+}
+
 /**
  * lunar_date_free:
  * @date: a #LunarDate
