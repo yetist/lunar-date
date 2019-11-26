@@ -24,11 +24,11 @@ env:
 
 deploy:
   provider: script
-  script: ./docker-build --name ${DISTRO} --verbose --config .travis.yml --release github
+  script: ./docker-build --verbose --config .travis.yml --release github
   skip_cleanup: true
   on:
     tags: true
-    condition: "$TRAVIS_TAG =~ ^v.*$ && $DISTRO == fedora:rawhide"
+    condition: "${TRAVIS_TAG} =~ ^v.*$ && ${DISTRO} =~ ^fedora.*$"
 
 ##########################################################
 # THE FOLLOWING LINES IS USED BY docker-build
@@ -92,9 +92,12 @@ configures:
 #  - LC_ALL=zh_CN.utf8 ninja dist
 
 releases:
-  draft: False
-  prerelease: False
-  checksum: False
-  base_version: 2.4.0
-  file_glob: True
+  draft: false
+  prerelease: false
+  checksum: false
+  file_glob: true
   files: _build/meson-dist/lunar-date-*.tar.xz*
+  github_release:
+    tags: true
+    overwrite: true
+    base_version: 2.4.0
