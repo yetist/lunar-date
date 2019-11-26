@@ -1,4 +1,4 @@
-/* vi: set sw=4 ts=4: */
+/* vi: set sw=4 ts=4 expandtab: */
 /*
  * lunar-date.h
  *
@@ -47,19 +47,19 @@ typedef struct _LunarDatePrivate         LunarDatePrivate;
 
 struct _LunarDateClass
 {
-       GObjectClass     parent_class;
+    GObjectClass     parent_class;
 };
 GType     lunar_date_get_type                   (void) G_GNUC_CONST;
 #endif
 
 typedef enum
 {
-	LUNAR_DATE_ERROR_INTERNAL,
-	LUNAR_DATE_ERROR_YEAR,
-	LUNAR_DATE_ERROR_MONTH,
-	LUNAR_DATE_ERROR_DAY,
-	LUNAR_DATE_ERROR_HOUR,
-	LUNAR_DATE_ERROR_LEAP
+    LUNAR_DATE_ERROR_INTERNAL,
+    LUNAR_DATE_ERROR_YEAR,
+    LUNAR_DATE_ERROR_MONTH,
+    LUNAR_DATE_ERROR_DAY,
+    LUNAR_DATE_ERROR_HOUR,
+    LUNAR_DATE_ERROR_LEAP
 } LunarDateError;
 
 GQuark lunar_date_error_quark (void);
