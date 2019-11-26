@@ -41,6 +41,7 @@ requires:
     - gobject-introspection
     - meson
     - vala
+
   debian:
     - git
     - gobject-introspection
@@ -51,6 +52,7 @@ requires:
     - libx11-dev
     - meson
     - valac
+
   fedora:
     - gcc
     - git
@@ -59,8 +61,10 @@ requires:
     - meson
     - ninja-build
     - gettext
+    - gtk-doc
     - redhat-rpm-config
     - vala
+
   ubuntu:
     - git
     - gobject-introspection
