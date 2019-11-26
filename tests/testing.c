@@ -1,6 +1,6 @@
 /* vi: set sw=4 ts=4: */
 /*
- * test.c
+ * testing.c
  *
  * This file is part of liblunar.
  *
@@ -165,13 +165,13 @@ static void test_custom_holiday(void)
 	holiday = lunar_date_get_holiday(date, ";");
 	g_assert_cmpstr (holiday, ==, "自定义节日;母亲节");
 	g_free (holiday);
-	
+
 	// 设置农历5月8日为"这是一个自定义农历节日", 简称“这一天”，
 	lunar_date_set_lunar_holiday  (date, 4, 2, "这一天|这是一个自定义农历节日");
 	holiday = lunar_date_get_holiday(date, "\n");
 	g_assert_cmpstr (holiday, ==, "这是一个自定义农历节日\n自定义节日\n母亲节");
 	g_free (holiday);
-	
+
 	// 设置5月第2个星期日为"它是第二个星期日", 简称“星期日”，注意“母亲节"被覆盖了。
 	lunar_date_set_week_holiday  (date, 5, 2, 0, "星期日|它是第二个星期日");
 	holiday = lunar_date_get_holiday(date, "@");
