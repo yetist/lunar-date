@@ -353,6 +353,16 @@ static	char   *lunar_day_list[] = {
     N_("\303\210rli\303\271"), N_("\303\210rq\304\253"), N_("\303\210rb\304\201"), N_("\303\210rji\307\224"), N_("S\304\201nsh\303\255")
 };
 
+static gchar *twelve_constellations[] = {
+    N_("Capricornus"), N_("Aquarius"), N_("Pisces"), N_("Aries"), N_("Taurus"), N_("Gemini"),
+    N_("Cancer"), N_("Leo"), N_("Virgo"), N_("Libra"), N_("Scorpius"), N_("Sagittarius")
+};
+
+static int days_of_constellations[]  = {
+    20, 50, 80, 110, 141, 172, 204,
+    235, 266, 296, 326, 356, 366
+};
+
 static CLDate first_solar_date	= {1900, 1, 31, 0, FALSE }; /* 1900年1月31日 */
 static CLDate first_lunar_date	= {1900, 1, 1, 0, FALSE };	/* 1900年元月初一 */
 static CLDate first_gan_date	= {6, 4, 0, 0, FALSE };		/* 庚年午月甲日甲时 */

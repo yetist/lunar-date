@@ -25,7 +25,7 @@
 #ifndef __LUNAR_DATE_H__
 #define __LUNAR_DATE_H__  1
 
-#include	<glib-object.h>
+#include    <glib-object.h>
 
 G_BEGIN_DECLS
 
@@ -64,19 +64,20 @@ typedef enum
 
 GQuark lunar_date_error_quark (void);
 
-LunarDate*	lunar_date_new				  (void);
-void		lunar_date_set_solar_date	  (LunarDate *date, GDateYear year, GDateMonth month, GDateDay day, guint8 hour, GError	**error);
-void		lunar_date_set_lunar_date	  (LunarDate *date, GDateYear year, GDateMonth month, GDateDay day, guint8 hour, gboolean isleap, GError **error);
+LunarDate*  lunar_date_new                (void);
+void        lunar_date_set_solar_date     (LunarDate *date, GDateYear year, GDateMonth month, GDateDay day, guint8 hour, GError **error);
+void        lunar_date_set_lunar_date     (LunarDate *date, GDateYear year, GDateMonth month, GDateDay day, guint8 hour, gboolean isleap, GError **error);
 void        lunar_date_set_solar_holiday  (LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday);
 void        lunar_date_set_lunar_holiday  (LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday);
 void        lunar_date_set_week_holiday   (LunarDate *date, GDateMonth month, gint week_of_month, gint day_of_week, const gchar *holiday);
 gchar*      lunar_date_get_holiday        (LunarDate *date, const gchar *delimiter);
 gchar*      lunar_date_get_calendar       (LunarDate *date, gint max);
-gchar*		lunar_date_strftime			  (LunarDate *date, const gchar *format);
-void		lunar_date_free				  (LunarDate *date);
+gchar*      lunar_date_strftime           (LunarDate *date, const gchar *format);
+gchar*      lunar_date_get_constellation  (LunarDate *date);
+void        lunar_date_free               (LunarDate *date);
 
 GLIB_DEPRECATED_FOR(lunar_date_get_holiday)
-gchar*		lunar_date_get_jieri		  (LunarDate *date, const gchar *delimiter);
+gchar*      lunar_date_get_jieri          (LunarDate *date, const gchar *delimiter);
 
 G_END_DECLS
 
