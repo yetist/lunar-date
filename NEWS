@@ -1,9 +1,8 @@
-### lunar-date 3.0.0
+### lunar-date 2.9.3
 
-* [ ] rewrite code use g_autofree
-* [x] gir正常工作
-* [x] 使用meson构建系统
-* [x] 更新农历日期到2100年
+* gir正常工作
+* 使用meson构建系统
+* 更新农历日期到2100年
 
 ### lunar-date 2.9.2
 
