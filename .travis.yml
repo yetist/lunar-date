@@ -83,9 +83,9 @@ configures:
     - -Dwith_vala=true
     - -Denable_tests=true
 
-after_scripts:
-  - cd ${BUILD_DIR}
-  - LC_ALL=zh_CN.utf8 ninja dist
+#after_scripts:
+#  - cd ${BUILD_DIR}
+#  - LC_ALL=zh_CN.utf8 ninja dist
 
 releases:
   draft: False
