@@ -1,0 +1,724 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LunarDate: LunarDate Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="LunarDate Reference Manual">
+<link rel="up" href="ch01.html" title="API Reference">
+<link rel="prev" href="ch01.html" title="API Reference">
+<link rel="next" href="lunar-date-Version-Information.html" title="Version Information">
+<meta name="generator" content="GTK-Doc V1.32 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#LunarDate.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#LunarDate.object-hierarchy" class="shortcut">Object Hierarchy</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="ch01.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="lunar-date-Version-Information.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="LunarDate"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="LunarDate.top_of_page"></a>LunarDate</span></h2>
+<p>LunarDate — Chinese Lunar Date Library</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="LunarDate.stability-level"></a><h2>Stability Level</h2>
+<acronym title="The intention of a Stable interface is to enable arbitrary third parties to
+develop applications to these interfaces, release them, and have confidence that
+they will run on all minor releases of the product (after the one in which the
+interface was introduced, and within the same major release). Even at a major
+release, incompatible changes are expected to be rare, and to have strong
+justifications.
+"><span class="acronym">Stable</span></acronym>, unless otherwise indicated
+</div>
+<div class="refsect1">
+<a name="LunarDate.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a href="../glib/glib-Quarks.html#GQuark"><span class="returnvalue">GQuark</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-error-quark" title="lunar_date_error_quark ()">lunar_date_error_quark</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="LunarDate.html" title="LunarDate"><span class="returnvalue">LunarDate</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-new" title="lunar_date_new ()">lunar_date_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-set-solar-date" title="lunar_date_set_solar_date ()">lunar_date_set_solar_date</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-set-lunar-date" title="lunar_date_set_lunar_date ()">lunar_date_set_lunar_date</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-set-solar-holiday" title="lunar_date_set_solar_holiday ()">lunar_date_set_solar_holiday</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-set-lunar-holiday" title="lunar_date_set_lunar_holiday ()">lunar_date_set_lunar_holiday</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-set-week-holiday" title="lunar_date_set_week_holiday ()">lunar_date_set_week_holiday</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-get-holiday" title="lunar_date_get_holiday ()">lunar_date_get_holiday</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-get-calendar" title="lunar_date_get_calendar ()">lunar_date_get_calendar</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-strftime" title="lunar_date_strftime ()">lunar_date_strftime</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-free" title="lunar_date_free ()">lunar_date_free</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="LunarDate.html#lunar-date-get-jieri" title="lunar_date_get_jieri ()">lunar_date_get_jieri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="LunarDate.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="LunarDate.html#LUNAR-DATE-ERROR:CAPS" title="LUNAR_DATE_ERROR">LUNAR_DATE_ERROR</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="LunarDate.html#LunarDateError" title="enum LunarDateError">LunarDateError</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="LunarDate.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="/usr/share/gtk-doc/html/gobject/gobject-Enumeration-and-Flag-Types.html">GEnum</a>
+    <span class="lineart">╰──</span> LunarDateError
+    <a href="../gobject/gobject-The-Base-Object-Type.html#GObject-struct">GObject</a>
+    <span class="lineart">╰──</span> LunarDate
+</pre>
+</div>
+<div class="refsect1">
+<a name="LunarDate.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;lunar-date/lunar-date.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="LunarDate.description"></a><h2>Description</h2>
+<p>The <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> provide Chinese lunar date library.</p>
+</div>
+<div class="refsect1">
+<a name="LunarDate.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="lunar-date-error-quark"></a><h3>lunar_date_error_quark ()</h3>
+<pre class="programlisting"><a href="../glib/glib-Quarks.html#GQuark"><span class="returnvalue">GQuark</span></a>
+lunar_date_error_quark (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-new"></a><h3>lunar_date_new ()</h3>
+<pre class="programlisting"><a class="link" href="LunarDate.html" title="LunarDate"><span class="returnvalue">LunarDate</span></a> *
+lunar_date_new (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Allocates a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> and initializes it. Free the return value with <a class="link" href="LunarDate.html#lunar-date-free" title="lunar_date_free ()"><code class="function">lunar_date_free()</code></a>.</p>
+<div class="refsect3">
+<a name="lunar-date-new.returns"></a><h4>Returns</h4>
+<p> a newly-allocated <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2.4.0.html" title="Index of new symbols in 2.4.0">2.4.0</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-set-solar-date"></a><h3>lunar_date_set_solar_date ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_date_set_solar_date (<em class="parameter"><code><a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> *date</code></em>,
+                           <em class="parameter"><code><a href="../glib/glib-Date-and-Time-Functions.html#GDateYear"><span class="type">GDateYear</span></a> year</code></em>,
+                           <em class="parameter"><code><a href="../glib/glib-Date-and-Time-Functions.html#GDateMonth"><span class="type">GDateMonth</span></a> month</code></em>,
+                           <em class="parameter"><code><a href="../glib/glib-Date-and-Time-Functions.html#GDateDay"><span class="type">GDateDay</span></a> day</code></em>,
+                           <em class="parameter"><code><a href="../glib/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> hour</code></em>,
+                           <em class="parameter"><code><a href="../glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Sets the solar year, month, day and the hour for a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a>.</p>
+<div class="refsect3">
+<a name="lunar-date-set-solar-date.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>date</p></td>
+<td class="parameter_description"><p>a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>year</p></td>
+<td class="parameter_description"><p>year to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>month</p></td>
+<td class="parameter_description"><p>month to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>day</p></td>
+<td class="parameter_description"><p>day to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>hour</p></td>
+<td class="parameter_description"><p>hour to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>location to store the error occuring, or NULL to ignore errors.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2.4.0.html" title="Index of new symbols in 2.4.0">2.4.0</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-set-lunar-date"></a><h3>lunar_date_set_lunar_date ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_date_set_lunar_date (<em class="parameter"><code><a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> *date</code></em>,
+                           <em class="parameter"><code><a href="../glib/glib-Date-and-Time-Functions.html#GDateYear"><span class="type">GDateYear</span></a> year</code></em>,
+                           <em class="parameter"><code><a href="../glib/glib-Date-and-Time-Functions.html#GDateMonth"><span class="type">GDateMonth</span></a> month</code></em>,
+                           <em class="parameter"><code><a href="../glib/glib-Date-and-Time-Functions.html#GDateDay"><span class="type">GDateDay</span></a> day</code></em>,
+                           <em class="parameter"><code><a href="../glib/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> hour</code></em>,
+                           <em class="parameter"><code><a href="../glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> isleap</code></em>,
+                           <em class="parameter"><code><a href="../glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Sets the lunar year, month, day and the hour for a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a>. If the month is a leap month, you should set the isleap to TRUE.</p>
+<div class="refsect3">
+<a name="lunar-date-set-lunar-date.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>date</p></td>
+<td class="parameter_description"><p>a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>year</p></td>
+<td class="parameter_description"><p>year to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>month</p></td>
+<td class="parameter_description"><p>month to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>day</p></td>
+<td class="parameter_description"><p>day to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>hour</p></td>
+<td class="parameter_description"><p>hour to set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>isleap</p></td>
+<td class="parameter_description"><p>indicate whether the month is a leap month.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>location to store the error occuring, or <a href="../glib/glib-Standard-Macros.html#NULL:CAPS"><span class="type">NULL</span></a> to ignore errors.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2.4.0.html" title="Index of new symbols in 2.4.0">2.4.0</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-set-solar-holiday"></a><h3>lunar_date_set_solar_holiday ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_date_set_solar_holiday (<em class="parameter"><code><a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> *date</code></em>,
+                              <em class="parameter"><code><a href="../glib/glib-Date-and-Time-Functions.html#GDateMonth"><span class="type">GDateMonth</span></a> month</code></em>,
+                              <em class="parameter"><code><a href="../glib/glib-Date-and-Time-Functions.html#GDateDay"><span class="type">GDateDay</span></a> day</code></em>,
+                              <em class="parameter"><code>const <a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *holiday</code></em>);</pre>
+<p>Add new holiday by solar.</p>
+<div class="refsect3">
+<a name="lunar-date-set-solar-holiday.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>date</p></td>
+<td class="parameter_description"><p>a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>month</p></td>
+<td class="parameter_description"><p>Solar month of the holiday.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>day</p></td>
+<td class="parameter_description"><p>Solar day of the holiday.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>holiday</p></td>
+<td class="parameter_description"><p>custom holiday string.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-3.0.0.html" title="Index of new symbols in 3.0.0">3.0.0</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-set-lunar-holiday"></a><h3>lunar_date_set_lunar_holiday ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_date_set_lunar_holiday (<em class="parameter"><code><a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> *date</code></em>,
+                              <em class="parameter"><code><a href="../glib/glib-Date-and-Time-Functions.html#GDateMonth"><span class="type">GDateMonth</span></a> month</code></em>,
+                              <em class="parameter"><code><a href="../glib/glib-Date-and-Time-Functions.html#GDateDay"><span class="type">GDateDay</span></a> day</code></em>,
+                              <em class="parameter"><code>const <a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *holiday</code></em>);</pre>
+<p>Add new holiday by lunar.</p>
+<div class="refsect3">
+<a name="lunar-date-set-lunar-holiday.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>date</p></td>
+<td class="parameter_description"><p>a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>month</p></td>
+<td class="parameter_description"><p>Lunar month of the holiday.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>day</p></td>
+<td class="parameter_description"><p>Lunar day of the holiday.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>holiday</p></td>
+<td class="parameter_description"><p>custom holiday string.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-3.0.0.html" title="Index of new symbols in 3.0.0">3.0.0</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-set-week-holiday"></a><h3>lunar_date_set_week_holiday ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_date_set_week_holiday (<em class="parameter"><code><a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> *date</code></em>,
+                             <em class="parameter"><code><a href="../glib/glib-Date-and-Time-Functions.html#GDateMonth"><span class="type">GDateMonth</span></a> month</code></em>,
+                             <em class="parameter"><code><a href="../glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> week_of_month</code></em>,
+                             <em class="parameter"><code><a href="../glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> day_of_week</code></em>,
+                             <em class="parameter"><code>const <a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *holiday</code></em>);</pre>
+<p>Add new holiday by week.</p>
+<div class="refsect3">
+<a name="lunar-date-set-week-holiday.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>date</p></td>
+<td class="parameter_description"><p>a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>month</p></td>
+<td class="parameter_description"><p>Month of the holiday.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>week_of_month</p></td>
+<td class="parameter_description"><p>which week of the month, the first week is 1, range is 1-5.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>day_of_week</p></td>
+<td class="parameter_description"><p>day of the week, 0 for Sunday, 6 for Saturday, range is 0-6.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>holiday</p></td>
+<td class="parameter_description"><p>custom holiday string.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-3.0.0.html" title="Index of new symbols in 3.0.0">3.0.0</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-get-holiday"></a><h3>lunar_date_get_holiday ()</h3>
+<pre class="programlisting"><a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+lunar_date_get_holiday (<em class="parameter"><code><a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> *date</code></em>,
+                        <em class="parameter"><code>const <a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *delimiter</code></em>);</pre>
+<p>Returns the all holiday of the date, joined with the delimiter. The date must be valid.</p>
+<div class="refsect3">
+<a name="lunar-date-get-holiday.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>date</p></td>
+<td class="parameter_description"><p>a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>delimiter</p></td>
+<td class="parameter_description"><p>used to join the holidays.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="lunar-date-get-holiday.returns"></a><h4>Returns</h4>
+<p>  a newly-allocated holiday string of the date or NULL.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-3.0.0.html" title="Index of new symbols in 3.0.0">3.0.0</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-get-calendar"></a><h3>lunar_date_get_calendar ()</h3>
+<pre class="programlisting"><a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+lunar_date_get_calendar (<em class="parameter"><code><a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> *date</code></em>,
+                         <em class="parameter"><code><a href="../glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> max</code></em>);</pre>
+<p>Returns the string about the date, used to show in calendar.</p>
+<div class="refsect3">
+<a name="lunar-date-get-calendar.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>date</p></td>
+<td class="parameter_description"><p>a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>max</p></td>
+<td class="parameter_description"><p>max length of the returned string.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="lunar-date-get-calendar.returns"></a><h4>Returns</h4>
+<p>  a newly-allocated string of the date or NULL.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-3.0.0.html" title="Index of new symbols in 3.0.0">3.0.0</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-strftime"></a><h3>lunar_date_strftime ()</h3>
+<pre class="programlisting"><a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+lunar_date_strftime (<em class="parameter"><code><a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> *date</code></em>,
+                     <em class="parameter"><code>const <a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *format</code></em>);</pre>
+<p>Use the given format to output a string, similar to strftime usage.
+The available formats and outputs are as follows:</p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="n">format</span><span class="o">=</span><span class="s">&quot;%(YEAR)年%(MONTH)月%(DAY)日%(HOUR)时&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s">&quot;一九一○年二月十九日二时&quot;</span>   <span class="c1">//大写公历</span>
+<span class="n">format</span><span class="o">=</span><span class="s">&quot;%(year)年%(month)月%(day)日%(hour)时&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s">&quot;1910年2月19日2时&quot;</span>          <span class="c1">//小写公历</span>
+<span class="n">format</span><span class="o">=</span><span class="s">&quot;%(NIAN)年%(YUE)月%(RI)日%(SHI)时&quot;</span><span class="p">,</span>     <span class="n">output</span><span class="o">=</span><span class="s">&quot;庚戌年一月初十日丑时&quot;</span>      <span class="c1">//大写农历(月份前带&quot;闰&quot;表示闰月)</span>
+<span class="n">format</span><span class="o">=</span><span class="s">&quot;%(nian)年%(yue)月%(ri)日%(shi)时&quot;</span><span class="p">,</span>     <span class="n">output</span><span class="o">=</span><span class="s">&quot;1910年1月10日2时&quot;</span>          <span class="c1">//小写农历(月份前带&quot;*&quot;表示闰月)</span>
+<span class="n">format</span><span class="o">=</span><span class="s">&quot;%(Y60)年%(M60)月%(D60)日%(H60)时&quot;</span><span class="p">,</span>     <span class="n">output</span><span class="o">=</span><span class="s">&quot;庚戌年戊寅月乙卯日丁丑时&quot;</span>  <span class="c1">//干支</span>
+<span class="n">format</span><span class="o">=</span><span class="s">&quot;%(Y8)年%(M8)月%(D8)日%(H8)时&quot;</span><span class="p">,</span>         <span class="n">output</span><span class="o">=</span><span class="s">&quot;庚戌年戊寅月乙卯日丁丑时&quot;</span>  <span class="c1">//八字</span>
+<span class="n">format</span><span class="o">=</span><span class="s">&quot;%(shengxiao)&quot;</span><span class="p">,</span>                        <span class="n">output</span><span class="o">=</span><span class="s">&quot;狗&quot;</span>                         <span class="c1">//生肖</span>
+<span class="n">format</span><span class="o">=</span><span class="s">&quot;%(holiday)&quot;</span><span class="p">,</span>                          <span class="n">output</span><span class="o">=</span><span class="s">&quot;雨水&quot;</span>                       <span class="c1">//节日(节日、纪念日、节气等)</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>
+When using %(holiday), the output is automatically truncated to 3 utf8 characters or 4 ascii characters.
+If you need all the holiday information, please use <a class="link" href="LunarDate.html#lunar-date-get-holiday" title="lunar_date_get_holiday ()"><code class="function">lunar_date_get_holiday()</code></a> to get the output.</p>
+<div class="refsect3">
+<a name="lunar-date-strftime.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>date</p></td>
+<td class="parameter_description"><p>a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>format</p></td>
+<td class="parameter_description"><p>specify the output format.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="lunar-date-strftime.returns"></a><h4>Returns</h4>
+<p> a newly-allocated output string, nul-terminated</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2.4.0.html" title="Index of new symbols in 2.4.0">2.4.0</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-free"></a><h3>lunar_date_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+lunar_date_free (<em class="parameter"><code><a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> *date</code></em>);</pre>
+<p>Frees a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> returned from <a class="link" href="LunarDate.html#lunar-date-new" title="lunar_date_new ()"><code class="function">lunar_date_new()</code></a>.</p>
+<div class="refsect3">
+<a name="lunar-date-free.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>date</p></td>
+<td class="parameter_description"><p>a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2.4.0.html" title="Index of new symbols in 2.4.0">2.4.0</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="lunar-date-get-jieri"></a><h3>lunar_date_get_jieri ()</h3>
+<pre class="programlisting"><a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+lunar_date_get_jieri (<em class="parameter"><code><a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a> *date</code></em>,
+                      <em class="parameter"><code>const <a href="../glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *delimiter</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">lunar_date_get_jieri</code> has been deprecated since version 3.0.0 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="LunarDate.html#lunar-date-get-holiday" title="lunar_date_get_holiday ()"><code class="function">lunar_date_get_holiday()</code></a> instead.</p>
+</div>
+<p>Returns the all holiday of the date, joined with the delimiter. The date must be valid.</p>
+<div class="refsect3">
+<a name="lunar-date-get-jieri.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>date</p></td>
+<td class="parameter_description"><p>a <a class="link" href="LunarDate.html" title="LunarDate"><span class="type">LunarDate</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>delimiter</p></td>
+<td class="parameter_description"><p>used to join the holidays.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="lunar-date-get-jieri.returns"></a><h4>Returns</h4>
+<p> a newly-allocated holiday string of the date or NULL.</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="LunarDate.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="LUNAR-DATE-ERROR:CAPS"></a><h3>LUNAR_DATE_ERROR</h3>
+<pre class="programlisting">#define LUNAR_DATE_ERROR         (lunar_date_error_quark ())
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="LunarDateError"></a><h3>enum LunarDateError</h3>
+<div class="refsect3">
+<a name="LunarDateError.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-DATE-ERROR-INTERNAL:CAPS"></a>LUNAR_DATE_ERROR_INTERNAL</p></td>
+<td class="enum_member_description">
+<p>internal error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-DATE-ERROR-YEAR:CAPS"></a>LUNAR_DATE_ERROR_YEAR</p></td>
+<td class="enum_member_description">
+<p>year setup error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-DATE-ERROR-MONTH:CAPS"></a>LUNAR_DATE_ERROR_MONTH</p></td>
+<td class="enum_member_description">
+<p>month setup error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-DATE-ERROR-DAY:CAPS"></a>LUNAR_DATE_ERROR_DAY</p></td>
+<td class="enum_member_description">
+<p>day setup error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-DATE-ERROR-HOUR:CAPS"></a>LUNAR_DATE_ERROR_HOUR</p></td>
+<td class="enum_member_description">
+<p>hour setup error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LUNAR-DATE-ERROR-LEAP:CAPS"></a>LUNAR_DATE_ERROR_LEAP</p></td>
+<td class="enum_member_description">
+<p>isleap setup error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.32</div>
+</body>
+</html>

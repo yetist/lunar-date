@@ -16,10 +16,10 @@
   -- Navigation
   -- (Read: https://dynalon.github.io/mdwiki/#!quickstart.md#Adding_a_navigation)
 
-[Home](pages/Home.md)
+[首页](pages/Home.md)
 [About](pages/about.md)
 [Download](pages/download.md)
-[Documentation](pages/docs.md)
+[文档](pages/docs.md)
   -->
 
 <!-- A more complex navigation example: ----------------------------------------
