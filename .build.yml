@@ -1,0 +1,71 @@
+##########################################################
+# THE FOLLOWING LINES IS USED BY docker-build
+##########################################################
+requires:
+  archlinux:
+    - gettext
+    - git
+    - glib2
+    - gobject-introspection
+    - meson
+    - vala
+
+  debian:
+    - git
+    - gobject-introspection
+    - gtk-doc-tools
+    - intltool
+    - libgirepository1.0-dev
+    - libglib2.0-dev
+    - libx11-dev
+    - meson
+    - valac
+
+  fedora:
+    - gcc
+    - git
+    - vala-devel
+    - gobject-introspection-devel
+    - meson
+    - ninja-build
+    - gettext
+    - gtk-doc
+    - redhat-rpm-config
+    - vala
+
+  ubuntu:
+    - git
+    - gobject-introspection
+    - gtk-doc-tools
+    - intltool
+    - libgirepository1.0-dev
+    - libglib2.0-dev
+    - libx11-dev
+    - meson
+    - valac
+
+variables:
+  - CFLAGS="-Wall"
+
+configures:
+  meson:
+    - --prefix /usr
+    - -Denable_gtk_doc=true
+    - -Dwith_introspection=true
+    - -Dwith_vala=true
+    - -Denable_tests=true
+
+#after_scripts:
+#  - cd ${BUILD_DIR}
+#  - LC_ALL=zh_CN.utf8 ninja dist
+
+releases:
+  draft: false
+  prerelease: false
+  checksum: false
+  file_glob: true
+  files: _build/meson-dist/lunar-date-*.tar.xz*
+  github_release:
+    tags: true
+    overwrite: true
+    base_version: 2.4.0
