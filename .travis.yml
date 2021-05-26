@@ -1,103 +1,38 @@
 # vim: set ts=2 sts=2 sw=2 expandtab :
-dist: xenial
-sudo: required
-language: bash
+dist: bionic
+language: shell
+os: linux
 services:
   - docker
+addons:
+  apt:
+    packages:
+      - python3-pip
+      - python3-setuptools
 
 before_install:
-  - sudo apt-get install -y python3-pip python3-setuptools
-  - sudo pip3 install --upgrade pip
-  - sudo pip install PyGithub
   - curl -Ls -o docker-build https://github.com/mate-desktop/mate-dev-scripts/raw/master/travis/docker-build
-  - chmod +x docker-build
+  - curl -Ls -o gen-index https://github.com/mate-desktop/mate-dev-scripts/raw/master/travis/gen-index.sh
+  - chmod +x docker-build gen-index
 
 install:
-  - ./docker-build --name ${DISTRO} --config .travis.yml --install
+  - pip3 install PyGithub
+  - ./docker-build --name ${DISTRO} --config .build.yml --install
+
 script:
-  - ./docker-build --name ${DISTRO} --verbose --config .travis.yml --build meson
+  - ./docker-build --name ${DISTRO} --verbose --config .build.yml --build scripts --build meson
+
 env:
-  - DISTRO="archlinux/base"
-    #- DISTRO="debian:sid"
-  - DISTRO="fedora:rawhide"
-    #- DISTRO="ubuntu:19.04"
+  - DISTRO="archlinux:latest"
+  - DISTRO="debian:testing"
+  - DISTRO="fedora:latest"
+  - DISTRO="ubuntu:devel"
 
 deploy:
   provider: script
-  script: ./docker-build --verbose --config .travis.yml --release github
+  edge: true
+  script: ./docker-build --verbose --config .build.yml --release github
   skip_cleanup: true
   on:
     tags: true
     condition: "${TRAVIS_TAG} =~ ^v.*$ && ${DISTRO} =~ ^fedora.*$"
-
-##########################################################
-# THE FOLLOWING LINES IS USED BY docker-build
-##########################################################
-requires:
-  archlinux:
-    - gettext
-    - git
-    - glib2
-    - gobject-introspection
-    - meson
-    - vala
-
-  debian:
-    - git
-    - gobject-introspection
-    - gtk-doc-tools
-    - intltool
-    - libgirepository1.0-dev
-    - libglib2.0-dev
-    - libx11-dev
-    - meson
-    - valac
-
-  fedora:
-    - gcc
-    - git
-    - vala-devel
-    - gobject-introspection-devel
-    - meson
-    - ninja-build
-    - gettext
-    - gtk-doc
-    - redhat-rpm-config
-    - vala
-
-  ubuntu:
-    - git
-    - gobject-introspection
-    - gtk-doc-tools
-    - intltool
-    - libgirepository1.0-dev
-    - libglib2.0-dev
-    - libx11-dev
-    - meson
-    - valac
-
-variables:
-  - CFLAGS="-Wall"
-
-configures:
-  meson:
-    - --prefix /usr
-    - -Denable_gtk_doc=true
-    - -Dwith_introspection=true
-    - -Dwith_vala=true
-    - -Denable_tests=true
-
-#after_scripts:
-#  - cd ${BUILD_DIR}
-#  - LC_ALL=zh_CN.utf8 ninja dist
-
-releases:
-  draft: false
-  prerelease: false
-  checksum: false
-  file_glob: true
-  files: _build/meson-dist/lunar-date-*.tar.xz*
-  github_release:
-    tags: true
-    overwrite: true
-    base_version: 2.4.0
