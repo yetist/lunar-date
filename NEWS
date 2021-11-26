@@ -1,3 +1,24 @@
+### lunar-date 3.0.0
+
+自 2.4.0 版本以来的改变：
+
+* api 版本升级为 3.0
+* 构建系统迁移到 meson
+* 农历日期更新到 2100 年
+* 依赖 glib-2.32+ 版本
+* 使用gresource来保存自带的节日信息。
+* 增加新的自定义节日函数:
+  + lunar_date_add_solar_holiday
+  + lunar_date_add_lunar_holiday
+  + lunar_date_add_week_holiday
+* 使用新的获取节日函数: lunar_date_get_holiday，同时 lunar_date_get_jieri 被标记为废除。
+* 删除已经过时的函数: lunar_init．
+* 修复examples中的vala示例代码.
+* 修复干支和八字中的子时的计算问题．
+* 增加 dbus service 服务及命令行工具 lunar-date。
+* 完善测试工具，使用 gtest．
+* lunar_date_strftime() 中的 %(jieri) 改变为 %(holiday)。
+
 ### lunar-date 2.9.3
 
 * gir正常工作
