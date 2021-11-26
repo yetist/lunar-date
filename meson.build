@@ -97,7 +97,7 @@ test_link_args = [
   '-Wl,-z,now',
   ]
 foreach arg: test_link_args
-  if cc.has_argument(arg)
+  if cc.has_link_argument(arg)
     global_link_args += arg
   endif
 endforeach
