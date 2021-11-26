@@ -2,7 +2,7 @@
 /*
  * lunar-date.c: This file is part of lunar-date.
  *
- * Copyright (C) 2015-2019 yetist <yetist@gmail.com>
+ * Copyright (C) 2015-2021 yetist <yetist@gmail.com>
  *
  *
  * This program is free software; you can redistribute it and/or modify

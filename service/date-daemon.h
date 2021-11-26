@@ -2,7 +2,7 @@
 /*
  * date-daemon.h: This file is part of lunar-date.
  *
- * Copyright (C) 2016-2019 yetist <yetist@gmail.com>
+ * Copyright (C) 2016-2021 yetist <yetist@gmail.com>
  *
  *
  * This program is free software; you can redistribute it and/or modify
