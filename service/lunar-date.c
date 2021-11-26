@@ -67,11 +67,12 @@ void show_year_month_cal(BusLunarDate *date, gint year, gint month)
     for (i=1; i<= days; i++) {
         bus_lunar_date_call_calendar_sync (date, year, month, i, 1, 3, &string, NULL, &error);
         if (error != NULL) {
-            g_printerr ("Unable to get calendar string: %s\n", error->message);
             g_error_free(error);
-            return;
+            error = NULL;
+            lunar[i] = g_strdup(" ");
+        } else {
+            lunar[i] = string;
         }
-        lunar[i] = string;
     }
 
     gd = g_date_new_dmy (1, month, year);
