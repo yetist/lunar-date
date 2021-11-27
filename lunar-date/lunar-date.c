@@ -268,7 +268,7 @@ void lunar_date_set_solar_date (LunarDate *date,
 
     if (year < BEGIN_YEAR || year > BEGIN_YEAR+NUM_OF_YEARS || (year == BEGIN_YEAR && month == 1))
     {
-        g_set_error(error, LUNAR_DATE_ERROR, LUNAR_DATE_ERROR_YEAR, _("Year out of range.(from 1900 to 2050)."));
+        g_set_error(error, LUNAR_DATE_ERROR, LUNAR_DATE_ERROR_YEAR, _("Year out of range.(from 1900 to 2100)."));
         return;
     }
 
