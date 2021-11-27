@@ -41,7 +41,7 @@ void show_day_hour_info(BusLunarDate *date, gint year, gint month, gint day, gin
 
 static GOptionEntry entries[] =
 {
-    { "format", 'f', 0, G_OPTION_ARG_STRING, &format, "Format for date output", "N" },
+    { "format", 'f', 0, G_OPTION_ARG_STRING, &format, N_("Format for date output"), "N" },
     { NULL }
 };
 
@@ -58,7 +58,7 @@ void show_year_month_cal(BusLunarDate *date, gint year, gint month)
     gboolean num;
 
     if (!g_date_valid_year(year)|| !g_date_valid_month(month)) {
-        g_print("Date is not valid\n");
+        g_print(_("Date is not valid\n"));
         return;
     }
 
@@ -173,7 +173,7 @@ void show_day_hour_info(BusLunarDate *date, gint year, gint month, gint day, gin
                                        NULL,
                                        &error);
     if (error != NULL) {
-        g_printerr ("Unable to get cal: %s\n", error->message);
+        g_printerr (_("Unable to get cal: %s\n"), error->message);
         g_error_free(error);
         return;
     }
@@ -187,7 +187,7 @@ void show_day_hour_info(BusLunarDate *date, gint year, gint month, gint day, gin
                                       NULL,
                                       &error);
     if (error != NULL) {
-        g_printerr ("Unable to get cal: %s\n", error->message);
+        g_printerr (_("Unable to get cal: %s\n"), error->message);
         g_error_free(error);
         return;
     }
@@ -208,6 +208,9 @@ int main (int argc, char **argv)
     GOptionContext *context;
 
     setlocale (LC_ALL, "");
+    bindtextdomain (GETTEXT_PACKAGE, LUNAR_DATE_LOCALEDIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+    textdomain(GETTEXT_PACKAGE);
 
 #if !GLIB_CHECK_VERSION(2, 36, 0)
     g_type_init();
@@ -220,18 +223,18 @@ int main (int argc, char **argv)
                                                   NULL,
                                                   &error);
     if (error != NULL) {
-        g_printerr ("Unable to contact dbus server: %s\n", error->message);
+        g_printerr (_("Unable to contact dbus server: %s\n"), error->message);
         g_error_free(error);
         return EXIT_FAILURE;
     }
 
-    context = g_option_context_new ("[year [month [day [hour]]]]");
+    context = g_option_context_new (_("[year [month [day [hour]]]]"));
     g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
-    g_option_context_set_summary (context, "Display a calendar, or some part of it.\nWithout any arguments, display the current month.");
+    g_option_context_set_summary (context, _("Display a calendar, or some part of it.\nWithout any arguments, display the current month."));
 
     if (!g_option_context_parse (context, &argc, &argv, &error))
     {
-        g_print ("option parsing failed: %s\n", error->message);
+        g_print (_("option parsing failed: %s\n"), error->message);
         exit (1);
     }
 
