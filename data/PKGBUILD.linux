@@ -1,7 +1,7 @@
 # Contributor: yetist <yetist@gmail.com>
 
 pkgname=lunar-date
-pkgver=2.9.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Chinese lunar date library."
 arch=("i686" "x86_64")
@@ -9,22 +9,31 @@ url="https://github.com/yetist/lunar-date"
 license=('GPL2')
 depends=(glib2)
 makedepends=(gcc)
-source=("http://liblunar.googlecode.com/files/$pkgname-$pkgver.tar.xz")
+source=("https://github.com/yetist/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
 md5sums=('SKIP')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+  arch-meson "${pkgname}-$pkgver" _build \
+    -Dwith_introspection=true \
+    -Dwith_vala=true \
+    -Denable_gtk_doc=true \
+    -Denable_tests=true
 
-	./configure \
-		--prefix=/usr \
-		--libexecdir=/usr/lib \
-		--enable-vala-bindings \
-		--enable-gtk-doc
-	make V=1 || return 1
+  ninja -C _build
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
-	make DESTDIR="$pkgdir/" install || return 1
+  make DESTDIR="$pkgdir/" install || return 1
 }
+
+check() {
+  meson test -C _build tests
+}
+
+package() {
+  DESTDIR="$pkgdir" meson install -C _build
+}
+
+# vim: et:sw=2:ts=8
