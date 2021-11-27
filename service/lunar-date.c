@@ -29,6 +29,7 @@
 
 #include <glib/gi18n.h>
 #include <gio/gio.h>
+#include <lunar-date/lunar-date.h>
 #include "date-dbus-generated.h"
 
 #define MOSES_DBUS_NAME "org.chinese.Lunar.Date"
@@ -149,6 +150,11 @@ void show_day_hour_info(BusLunarDate *date, gint year, gint month, gint day, gin
     GError *error = NULL;
     gchar *string, *holiday;
 
+    if (! g_date_valid_dmy (day, month, year)) {
+        g_print(_("Date is not valid\n"));
+        return;
+    }
+
     g_print("公历：%d年%d月%d日\n", year, month, day);
     if (hour < 0) {
         GDateTime *datetime;
@@ -173,7 +179,10 @@ void show_day_hour_info(BusLunarDate *date, gint year, gint month, gint day, gin
                                        NULL,
                                        &error);
     if (error != NULL) {
-        g_printerr (_("Unable to get cal: %s\n"), error->message);
+        g_print("%d\n", error->code);
+        if (error->code == LUNAR_DATE_ERROR_YEAR) {
+            g_printerr (_("Unable to get cal: %s\n"), _("Year out of range.(from 1900 to 2100)."));
+        }
         g_error_free(error);
         return;
     }
