@@ -45,7 +45,7 @@ liblunar_date = shared_library('lunar-date-3.0',
 
 liblunar_date_deps = declare_dependency(sources: source_h,
                                 include_directories: [top_srcdir, include_directories('.')],
-                                dependencies: [gio_dep, gio_unix_dep],
+                                dependencies: [gio_dep, gio_os_dep],
                                 link_with: liblunar_date)
 pkg.generate(
   name: 'lunar-date-3.0',

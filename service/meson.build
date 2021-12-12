@@ -12,7 +12,7 @@ executable(
     include_directories : [
       include_directories('..'),
       ],
-    dependencies : [gio_dep, gio_unix_dep],
+    dependencies : [gio_dep, gio_os_dep],
     install : true,
     install_dir : get_option('bindir')
     )

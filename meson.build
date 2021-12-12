@@ -35,7 +35,6 @@ add_project_arguments([
 
 # get suported warning flags
 test_args = [
-  '-fstack-protector-strong',
   '-Waggregate-return',
   '-Warray-bounds',
   '-Wcast-align',
@@ -81,6 +80,12 @@ test_args = [
   '-Wwrite-strings'
   ]
 
+if host_machine.system() == 'windows'
+  test_args += ['-fno-stack-protector']
+else
+  test_args += ['-fstack-protector-strong']
+endif
+
 cc = meson.get_compiler('c')
 
 foreach arg: test_args
@@ -96,11 +101,13 @@ test_link_args = [
   '-Wl,-z,relro',
   '-Wl,-z,now',
   ]
-foreach arg: test_link_args
-  if cc.has_link_argument(arg)
-    global_link_args += arg
+if host_machine.system() != 'windows'
+  foreach arg: test_link_args
+    if cc.has_link_argument(arg)
+      global_link_args += arg
   endif
 endforeach
+endif
 add_global_link_arguments(
   global_link_args,
   language: 'c'
@@ -108,8 +115,13 @@ add_global_link_arguments(
 
 # Dependencies
 glib_req_version = '>= 2.32.0'
-gio_dep = dependency('gio-2.0', version: glib_req_version)
-gio_unix_dep = dependency('gio-unix-2.0', version: glib_req_version)
+gio_dep = dependency('gio-2.0', method: 'pkg-config', version: glib_req_version)
+message(host_machine.system())
+if host_machine.system() == 'windows'
+  gio_os_dep = dependency('gio-windows-2.0', version: glib_req_version)
+else
+  gio_os_dep = dependency('gio-unix-2.0', version: glib_req_version)
+endif
 
 # Configure data
 conf = configuration_data()
