@@ -25,7 +25,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <argp.h>
 
 #include <glib/gi18n.h>
 #include <gio/gio.h>
