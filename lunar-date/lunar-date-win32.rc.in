@@ -17,7 +17,7 @@ VS_VERSION_INFO VERSIONINFO
 	VALUE "FileDescription", "LunarDate"
 	VALUE "FileVersion", "@LUNAR_DATE_VERSION@.0"
 	VALUE "InternalName", "liblunar-date-3.0-@LT_CURRENT_MINUS_AGE@"
-	VALUE "LegalCopyright", "Copyright © 2007-2016 Xiaotian Wu."
+	VALUE "LegalCopyright", "Copyright © 2007-2021 Xiaotian Wu."
 	VALUE "OriginalFilename", "liblunar-date-3.0-@LT_CURRENT_MINUS_AGE@.dll"
 	VALUE "ProductName", "LunarDate"
 	VALUE "ProductVersion", "@LUNAR_DATE_VERSION@"
