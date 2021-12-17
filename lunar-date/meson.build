@@ -57,7 +57,7 @@ pkg.generate(
   subdirs: 'lunar-date-3.0',
   )
 
-if get_option('with_introspection')
+if get_option('introspection')
   liblunar_date_gir = gnome.generate_gir(liblunar_date,
     sources: [source_h, source_c, source_enum.get(1)],
     nsversion : api_version,
@@ -71,7 +71,7 @@ if get_option('with_introspection')
     install_dir_typelib: typelibdir,
     extra_args: [ '--c-include=lunar-date/lunar-date.h' ],
     )
-  if get_option('with_vala')
+  if get_option('vapi')
     lunar_date_vapi = gnome.generate_vapi('lunar-date-' + api_version,
       sources: liblunar_date_gir.get(0),
       packages: 'gio-2.0',

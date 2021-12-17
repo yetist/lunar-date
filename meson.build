@@ -163,14 +163,14 @@ top_srcdir = include_directories('.')
 subdir('po')
 subdir('lunar-date')
 
-if get_option('enable_dbus_service')
+if get_option('service')
   subdir('service')
 endif
 
-if get_option('enable_gtk_doc')
+if get_option('docs')
   subdir('docs')
 endif
 
-if get_option('enable_tests')
+if get_option('tests')
   subdir('tests')
 endif

@@ -14,10 +14,10 @@ md5sums=('SKIP')
 
 build() {
   arch-meson "${pkgname}-$pkgver" _build \
-    -Dwith_introspection=true \
-    -Dwith_vala=true \
-    -Denable_gtk_doc=true \
-    -Denable_tests=true
+    -Dintrospection=true \
+    -Dvapi=true \
+    -Ddocs=true \
+    -Dtests=true
 
   ninja -C _build
 }

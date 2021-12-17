@@ -50,10 +50,10 @@ variables:
 configures:
   meson:
     - --prefix /usr
-    - -Denable_gtk_doc=true
-    - -Dwith_introspection=true
-    - -Dwith_vala=true
-    - -Denable_tests=true
+    - -Ddocs=true
+    - -Dintrospection=true
+    - -Dvapi=true
+    - -Dtests=true
 
 #after_scripts:
 #  - cd ${BUILD_DIR}
