@@ -1,7 +1,7 @@
 # Contributor: yetist <yetist@gmail.com>
 
 pkgname=lunar-date
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Chinese lunar date library."
 arch=("i686" "x86_64")

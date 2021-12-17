@@ -1,3 +1,10 @@
+### lunar-date 3.0.1
+
+* 改善命令行输入信息
+* 更新 Copyright 到 2021 年
+* 支持为 windows 交叉编译生成 dll 库文件
+* 协议变更为 LGPL-2.1
+
 ### lunar-date 3.0.0
 
 自 2.4.0 版本以来的改变：
