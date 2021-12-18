@@ -138,12 +138,6 @@ static const struct {
 	  "Horse",
 	  "马"
   },
-	{
-	  1906, 8, 14, 8, 0,
-	  "%(holiday)",
-	  "\345\233\275\345\272\206\350\212\202",
-	  "国庆节"
-  },
 };
 
 static const gint num_lunar_array = G_N_ELEMENTS (lunar_array);
@@ -158,6 +152,7 @@ static const struct {
 } holiday_array[] = {
 	{1942, 11, 26, 8, " ", "感恩节"},
 	{2016, 5, 8, 8, ";", "母亲节"},
+	{1949, 10, 1, 8, ";", "国庆节"},
 };
 static const gint num_holiday_array = G_N_ELEMENTS (holiday_array);
 
@@ -287,11 +282,11 @@ int main (int argc, char* argv[])
 	g_setenv("LC_ALL", "zh_CN.utf8", TRUE);
 	setlocale (LC_ALL, "");
 	g_test_init (&argc, &argv, NULL);
-
 	g_test_add_func ("/date/solar", test_solar_date);
 	g_test_add_func ("/date/lunar", test_lunar_date);
-	g_test_add_func ("/date/holiday", test_holiday_date);
-	g_test_add_func ("/date/holiday/custom", test_custom_holiday);
-
+	if (is_installed()) {
+		g_test_add_func ("/date/holiday", test_holiday_date);
+		g_test_add_func ("/date/holiday/custom", test_custom_holiday);
+	}
 	return g_test_run ();
 }
