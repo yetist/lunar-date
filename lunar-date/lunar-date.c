@@ -13,7 +13,7 @@
  * */
 
 #if HAVE_CONFIG_H
-    #include <config.h>
+#include <config.h>
 #endif
 #include <glib/gi18n-lib.h>
 #include <string.h>
@@ -304,7 +304,7 @@ void lunar_date_set_solar_date (LunarDate *date,
  **/
 void lunar_date_set_lunar_date (LunarDate *date,
                                 GDateYear year,
-		                        GDateMonth month,
+                                GDateMonth month,
                                 GDateDay day,
                                 guint8 hour,
                                 gboolean isleap,
@@ -434,6 +434,52 @@ void lunar_date_set_week_holiday(LunarDate *date, GDateMonth month, gint week_of
     g_hash_table_insert(date->holiday_week, g_strdup(key), g_strdup(holiday));
 }
 
+/*
+ * return 1: off day
+ * return 0: work day
+ * return -1: no change.
+ */
+static gint check_statutory_holiday (GDateYear year,
+                                     GDateMonth month,
+                                     GDateDay day)
+{
+    GDate *gdate;
+    GDateWeekday weekday;
+    guint days;
+    guint16 num;
+    gboolean found = FALSE;
+    gint ret = -1;
+    gint length;
+    gint i;
+
+    if (year < 2000) {
+        return -1;
+    }
+
+    gdate = g_date_new_dmy (day, month, year);
+    days = g_date_get_day_of_year (gdate);
+
+    num = ((year - 2000) << 9) | days;
+    length = G_N_ELEMENTS (statutory_holidays);
+    for (i = 0; i < length; i++) {
+        if (statutory_holidays[i] == num) {
+            found = TRUE;
+            break;
+        }
+    }
+
+    if (found) {
+        weekday = g_date_get_weekday (gdate);
+        if (weekday == G_DATE_SATURDAY || weekday == G_DATE_SUNDAY) {
+            ret = 0;
+        } else {
+            ret = 1;
+        }
+    }
+
+    g_date_free (gdate);
+    return ret;
+}
 
 /**
  * lunar_date_get_real_holiday:
@@ -519,6 +565,24 @@ static gchar* lunar_date_get_real_holiday (LunarDate *date, const gchar *delimit
         }
     }
 
+    // statutory_holidays
+    i = check_statutory_holiday (date->solar->year, date->solar->month, date->solar->day);
+    if (i == 1) {
+        if (jieri->len > 0) jieri = g_string_append (jieri, delimiter);
+        if (full) {
+            jieri = g_string_append (jieri, "法定节假日");
+        } else {
+            jieri = g_string_append (jieri, "休息");
+        }
+    } else if (i == 0) {
+        if (jieri->len > 0) jieri = g_string_append (jieri, delimiter);
+        if (full) {
+            jieri = g_string_append(jieri, "法定工作日");
+        } else {
+            jieri = g_string_append(jieri, "上班");
+        }
+    }
+
     //jie2qi4
     if(atoi(yc) != date->solar->year)
     {
@@ -539,6 +603,7 @@ static gchar* lunar_date_get_real_holiday (LunarDate *date, const gchar *delimit
         }
         g_strfreev(jq_day);
     }
+
     if (jieri->len > 0 ) {
         return g_string_free(jieri, FALSE);
     }else{
@@ -1131,7 +1196,7 @@ static void _cl_date_days_to_solar(LunarDate *date, GError **error)
     /* offset is now the number of days from SolarFirstDate.year.1.1 */
 
     for (i=first_solar_date.year;
-            (i<first_solar_date.year+NUM_OF_YEARS) && (offset > 0);  i++)
+        (i<first_solar_date.year+NUM_OF_YEARS) && (offset > 0);  i++)
         offset -= 365 + leap(i);
     if (offset<0)
     {
@@ -1141,9 +1206,9 @@ static void _cl_date_days_to_solar(LunarDate *date, GError **error)
     if (i==(first_solar_date.year + NUM_OF_YEARS))
     {
         g_set_error(error, LUNAR_DATE_ERROR,
-                LUNAR_DATE_ERROR_DAY,
-                _("Year out of range. \"%d\""),
-                i);
+                    LUNAR_DATE_ERROR_DAY,
+                    _("Year out of range. \"%d\""),
+                    i);
         return;
     }
     date->solar->year = i;
@@ -1208,9 +1273,7 @@ static gint _cl_date_make_lunar_month_days(LunarDate *date, gint year)
             date->lunar_month_days[i] = days_in_lunar_month[code&0x1];
             code >>= 1;
         }
-    }
-    else
-    {
+    } else {
         /*
            There is a leap month (run4 yue4) L in this year.
            mday[1] contains the number of days in the 1-st month;
