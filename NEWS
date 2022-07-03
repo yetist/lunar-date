@@ -141,7 +141,7 @@ NEWS:
     - change the python module name to "lunar".
     - fixed that if select day changed, the header doesn't change at 0.2.4.
     - po/zh_CN.po: filled in the header of po/zh_CN.po
-    - filled in "This file is part of ________." of some cource files.
+    - filled in "This file is part of ________." of some source files.
 
 =============
 liblunar-0.2.4
@@ -149,7 +149,7 @@ liblunar-0.2.4
 NEWS:
     - add python bindings for calendar.
     Compile with --disable-python to disable python bindings, default is auto detect python support.
-    Useage:
+    Usage:
     $ python
     Python 2.4.4 (#1, Feb  1 2008, 12:23:41) 
     [GCC 4.1.2 (Gentoo 4.1.2 p1.0.2)] on linux2
