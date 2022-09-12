@@ -544,7 +544,7 @@ msgid "Chùshǔ"
 msgstr "处暑"
 
 #: lunar-date/lunar-date-utils.c:78
-msgid "Báilòu"
+msgid "Báilù"
 msgstr "白露"
 
 #: lunar-date/lunar-date-utils.c:78
