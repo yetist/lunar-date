@@ -19,6 +19,9 @@ $ meson build --prefix /usr -Ddocs=true -Dintrospection=true -Dvapi=true -Dtests
 $ ninja -C build/
 $ sudo ninja -C build install
 ```
+Binary packages for the following systems are currently available.
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/lunar-date.svg)](https://repology.org/project/lunar-date/versions)
 
 ## How to report bugs
 
