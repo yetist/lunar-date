@@ -6,18 +6,18 @@ LunarDate is a chinese lunar library.
 
 The official web site is:
 
-https://github.com/yetist/lunar-date
+<https://github.com/yetist/lunar-date>
 
 You can download the latest lunar-date tarball from the github.com:
 
-https://github.com/yetist/lunar-date/releases
+<https://github.com/yetist/lunar-date/releases>
 
 ## Installation
 
-```
-$ meson build --prefix /usr -Ddocs=true -Dintrospection=true -Dvapi=true -Dtests=true
-$ ninja -C build/
-$ sudo ninja -C build install
+```sh
+meson setup _build --prefix=/usr -Ddocs=true -Dintrospection=true -Dvapi=true -Dtests=true
+meson compile -C _build/
+sudo meson install -C _build
 ```
 Binary packages for the following systems are currently available.
 
