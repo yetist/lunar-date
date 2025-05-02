@@ -114,7 +114,7 @@ add_global_link_arguments(
   )
 
 # Dependencies
-glib_req_version = '>= 2.32.0'
+glib_req_version = '>= 2.44.0'
 gio_dep = dependency('gio-2.0', method: 'pkg-config', version: glib_req_version)
 message(host_machine.system())
 if host_machine.system() == 'windows'

@@ -12,26 +12,7 @@ G_BEGIN_DECLS
 
 #define LUNAR_TYPE_DATE          (lunar_date_get_type ())
 #define LUNAR_DATE_ERROR         (lunar_date_error_quark ())
-
-#if GLIB_CHECK_VERSION(2, 44, 0)
 G_DECLARE_FINAL_TYPE (LunarDate, lunar_date, LUNAR, DATE, GObject)
-#else
-#define LUNAR_DATE(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), LUNAR_TYPE_DATE, LunarDate))
-#define LUNAR_DATE_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), LUNAR_TYPE_DATE, LunarDateClass))
-#define LUNAR_IS_DATE(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), LUNAR_TYPE_DATE))
-#define LUNAR_IS_DATE_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), LUNAR_TYPE_DATE))
-#define LUNAR_DATE_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), LUNAR_TYPE_DATE, LunarDateClass))
-
-typedef struct _LunarDate                LunarDate;
-typedef struct _LunarDateClass           LunarDateClass;
-typedef struct _LunarDatePrivate         LunarDatePrivate;
-
-struct _LunarDateClass
-{
-    GObjectClass     parent_class;
-};
-GType     lunar_date_get_type                   (void) G_GNUC_CONST;
-#endif
 
 typedef enum
 {
