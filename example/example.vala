@@ -1,7 +1,4 @@
-/*
- * compilation:
- * valac --pkg lunar-date-3.0 example.vala
- */
+#!/usr/bin/env -S vala --pkg lunar-date-3.0
 
 using Lunar;
 
