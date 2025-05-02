@@ -182,9 +182,9 @@ lunar_date_init (LunarDate *date)
 /**
  * lunar_date_new:
  *
- * Allocates a #LunarDate and initializes it. Free the return value with lunar_date_free().
+ * Allocates a `LunarDate`` and initializes it. Free the return value with [method@LunarDate.Date.free].
  *
- * Returns: a newly-allocated #LunarDate
+ * Returns: a newly-allocated `LunarDate`
  *
  * Since: 2.4.0
  **/
@@ -243,14 +243,14 @@ GQuark lunar_date_error_quark (void)
 
 /**
  * lunar_date_set_solar_date:
- * @date: a #LunarDate.
+ * @date: a `LunarDate`
  * @year: year to set.
  * @month: month to set.
  * @day: day to set.
  * @hour: hour to set.
- * @error: location to store the error occuring, or NULL to ignore errors.
+ * @error: location to store the error occuring, or %NULL to ignore errors.
  *
- * Sets the solar year, month, day and the hour for a #LunarDate.
+ * Sets the solar year, month, day and the hour for a `LunarDate`
  *
  * Since: 2.4.0
  **/
@@ -307,15 +307,15 @@ void lunar_date_set_solar_date (LunarDate *date,
 
 /**
  * lunar_date_set_lunar_date:
- * @date: a #LunarDate.
+ * @date: a `LunarDate`
  * @year: year to set.
  * @month: month to set.
  * @day: day to set.
  * @hour: hour to set.
  * @isleap: indicate whether the month is a leap month.
- * @error: location to store the error occuring, or #NULL to ignore errors.
+ * @error: location to store the error occuring, or %NULL to ignore errors.
  *
- * Sets the lunar year, month, day and the hour for a #LunarDate. If the month is a leap month, you should set the isleap to TRUE.
+ * Sets the lunar year, month, day and the hour for a `LunarDate`. If the month is a leap month, you should set the isleap to TRUE.
  *
  * Since: 2.4.0
  **/
@@ -697,12 +697,12 @@ gchar* lunar_date_get_calendar(LunarDate *date, gint max)
 
 /**
  * lunar_date_get_holiday:
- * @date: a #LunarDate
+ * @date: a `LunarDate``
  * @delimiter: used to join the holidays.
  *
  * Returns the all holiday of the date, joined with the delimiter. The date must be valid.
  *
- * Returns:  a newly-allocated holiday string of the date or NULL.
+ * Returns:  a newly-allocated holiday string of the date or %NULL.
  *
  * Since: 3.0.0
  **/
@@ -719,9 +719,9 @@ gchar* lunar_date_get_holiday (LunarDate *date, const gchar *delimiter)
  *
  * Returns the all holiday of the date, joined with the delimiter. The date must be valid.
  *
- * Returns: a newly-allocated holiday string of the date or NULL.
+ * Returns: a newly-allocated holiday string of the date or %NULL.
  *
- * Deprecated: 3.0.0: Use lunar_date_get_holiday() instead.
+ * Deprecated: 3.0.0: Use [method@LunarDate.Date.get_holiday] instead.
  **/
 gchar* lunar_date_get_jieri(LunarDate *date, const gchar *delimiter)
 {
@@ -731,13 +731,13 @@ gchar* lunar_date_get_jieri(LunarDate *date, const gchar *delimiter)
 
 /**
  * lunar_date_strftime:
- * @date: a #LunarDate
+ * @date: a `LunarDate`
  * @format: specify the output format.
  *
  * Use the given format to output a string, similar to strftime usage.
  * The available formats and outputs are as follows:
  *
- * |[<!-- language="C" -->
+ * ```
  * format="%(YEAR)年%(MONTH)月%(DAY)日%(HOUR)时", output="一九一○年二月十九日二时"   //大写公历
  * format="%(year)年%(month)月%(day)日%(hour)时", output="1910年2月19日2时"          //小写公历
  * format="%(NIAN)年%(YUE)月%(RI)日%(SHI)时",     output="庚戌年一月初十日丑时"      //大写农历(月份前带"闰"表示闰月)
@@ -746,9 +746,9 @@ gchar* lunar_date_get_jieri(LunarDate *date, const gchar *delimiter)
  * format="%(Y8)年%(M8)月%(D8)日%(H8)时",         output="庚戌年戊寅月乙卯日丁丑时"  //八字
  * format="%(shengxiao)",                        output="狗"                         //生肖
  * format="%(holiday)",                          output="雨水"                       //节日(节日、纪念日、节气等)
- * ]|
+ * ```
  * When using %(holiday), the output is automatically truncated to 3 utf8 characters or 4 ascii characters.
- * If you need all the holiday information, please use lunar_date_get_holiday () to get the output.
+ * If you need all the holiday information, please use [method@LunarDate.Date.get_holiday] to get the output.
  *
  * Returns: a newly-allocated output string, nul-terminated
  *
@@ -966,6 +966,16 @@ gchar* lunar_date_strftime (LunarDate *date, const char *format)
     return str;
 }
 
+/**
+ * lunar_date_get_constellation:
+ * @date: a `LunarDate``
+ *
+ * Returns the constellation name
+ *
+ * Returns: a newly-allocated string.
+ *
+ * Since: 3.0.0
+ **/
 gchar* lunar_date_get_constellation  (LunarDate *date)
 {
     GDate *gdate;
@@ -991,9 +1001,9 @@ gchar* lunar_date_get_constellation  (LunarDate *date)
 
 /**
  * lunar_date_free:
- * @date: a #LunarDate
+ * @date: a `LunarDate``
  *
- * Frees a #LunarDate returned from lunar_date_new().
+ * Frees a `LunarDate` returned from [ctor@LunarDate.Date.new].
  *
  * Since: 2.4.0
  **/

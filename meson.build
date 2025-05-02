@@ -115,7 +115,6 @@ add_global_link_arguments(
 # Dependencies
 glib_req_version = '>= 2.44.0'
 gio_dep = dependency('gio-2.0', method: 'pkg-config', version: glib_req_version)
-message(host_machine.system())
 if host_machine.system() == 'windows'
   gio_os_dep = dependency('gio-windows-2.0', version: glib_req_version)
 else
@@ -156,6 +155,9 @@ if package_subdir != ''
 else
   vapidir = join_paths(get_option('datadir'), 'vala', 'vapi')
 endif
+
+prefix = get_option('prefix')
+datadir = join_paths(prefix, get_option('datadir'))
 
 top_srcdir = include_directories('.')
 
