@@ -11,3 +11,7 @@ system = 'windows'
 cpu_family = 'x86_64'
 cpu = 'x86_64'
 endian = 'little'
+
+[properties]
+
+sys_root = '/mingw64'
