@@ -76,7 +76,7 @@ gboolean date_get_holiday (BusLunarDate *object,
     daemon = DATE_DAEMON (user_data);
     lunar_date_set_solar_date(daemon->date, year, month, day, (guint8) hour, &error);
     if (error != NULL ) {
-        g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), 1, "%s", error->message);
+        g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), error->code, "%s", error->message);
         return FALSE;
     }
     holiday = lunar_date_get_holiday(daemon->date, delimiter);
@@ -103,9 +103,9 @@ gboolean date_get_strftime (BusLunarDate *object,
     GError *error = NULL;
 
     daemon = DATE_DAEMON (user_data);
-    lunar_date_set_solar_date(daemon->date, year, month, day , hour, &error);
+    lunar_date_set_solar_date(daemon->date, year, month, day, (guint8) hour, &error);
     if (error != NULL ) {
-        g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), 1, "%s", error->message);
+        g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), error->code, "%s", error->message);
         return FALSE;
     }
     result = lunar_date_strftime(daemon->date, format);
@@ -128,9 +128,9 @@ gboolean date_get_calendar(BusLunarDate *object,
     GError *error = NULL;
 
     daemon = DATE_DAEMON (user_data);
-    lunar_date_set_solar_date(daemon->date, year, month, day , hour, &error);
+    lunar_date_set_solar_date(daemon->date, year, month, day , (guint8) hour, &error);
     if (error != NULL ) {
-        g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), 1, "%s", error->message);
+        g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), error->code, "%s", error->message);
         return FALSE;
     }
     result = lunar_date_get_calendar(daemon->date, max);

@@ -271,30 +271,30 @@ void lunar_date_set_solar_date (LunarDate *date,
 {
     GError *calc_error = NULL;
 
-    if (year < BEGIN_YEAR || year > BEGIN_YEAR+NUM_OF_YEARS
-        || (year == BEGIN_YEAR && month == 1))
+    if (year < BEGIN_YEAR || year > BEGIN_YEAR+NUM_OF_YEARS)
     {
         g_set_error(error, LUNAR_DATE_ERROR, LUNAR_DATE_ERROR_YEAR,
                     _("Year out of range.(from 1900 to 2100)."));
         return;
     }
 
-    if (!g_date_valid_month(month))
-    {
-        g_set_error(error,
-                    LUNAR_DATE_ERROR,
-                    LUNAR_DATE_ERROR_MONTH,
-                    _("Month out of range."));
-        return;
+    if (year == BEGIN_YEAR && month == 1 && day < 31) {
+	g_set_error(error, LUNAR_DATE_ERROR, LUNAR_DATE_ERROR_MONTH,
+		    _("Day out of range.(Lunar start from 1900-01-31)."));
+	return;
+    }
+
+    if (!g_date_valid_month(month)) {
+	g_set_error(error, LUNAR_DATE_ERROR, LUNAR_DATE_ERROR_MONTH,
+		    _("The month value is invalid."));
+	return;
     }
 
     if (hour == 24) hour = 0;
     if (hour > 23)
     {
-        g_set_error(error,
-                    LUNAR_DATE_ERROR,
-                    LUNAR_DATE_ERROR_HOUR,
-                    _("Hour out of range."));
+        g_set_error(error, LUNAR_DATE_ERROR, LUNAR_DATE_ERROR_HOUR,
+		    _("Hour out of range."));
         return;
     }
 
@@ -1061,7 +1061,7 @@ static void _cl_date_calc_lunar(LunarDate *date, GError **error)
         return;
     }
     /* A lunar day begins at 11 p.m. */
-    if (date->solar->hour == 23)
+    if (date->solar->hour >= 23)
         date->days ++;
 
     _cl_date_days_to_lunar(date, &calc_error);
