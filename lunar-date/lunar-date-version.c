@@ -32,7 +32,7 @@ const guint lunar_date_micro_version = LUNAR_DATE_MICRO_VERSION;
  *
  * Checks that the LunarDate library in use is compatible with the
  * given version. Generally you would pass in the constants
- * #LUNAR_DATE_MAJOR_VERSION, #LUNAR_DATE_MINOR_VERSION, #LUNAR_DATE_MICRO_VERSION
+ * %LUNAR_DATE_MAJOR_VERSION, %LUNAR_DATE_MINOR_VERSION, %LUNAR_DATE_MICRO_VERSION
  * as the three arguments to this function; that produces
  * a check that the library in use is compatible with
  * the version of LunarDate the application or module was compiled
