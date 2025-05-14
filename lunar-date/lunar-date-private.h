@@ -348,10 +348,10 @@ static int days_of_constellations[]  = {
     235, 266, 296, 326, 356, 366
 };
 
-static CLDate first_solar_date	= {1900, 1, 31, 0, FALSE }; /* 1900年1月31日 */
-static CLDate first_lunar_date	= {1900, 1, 1, 0, FALSE };	/* 1900年元月初一 */
-static CLDate first_gan_date	= {6, 4, 0, 0, FALSE };		/* 庚年午月甲日甲时 */
-static CLDate first_zhi_date	= {0, 2, 4, 0, FALSE};	   /* 子年寅月辰日子时 */
+static CLDate first_solar_date  = {1900, 1, 31, 0, FALSE }; /* 1900年1月31日 */
+static CLDate first_lunar_date  = {1900, 1, 1, 0, FALSE };  /* 1900年元月初一 */
+static CLDate first_gan_date    = {6, 4, 0, 0, FALSE };     /* 庚年午月甲日甲时 */
+static CLDate first_zhi_date    = {0, 2, 4, 0, FALSE};      /* 子年寅月辰日子时 */
 
 G_END_DECLS
 

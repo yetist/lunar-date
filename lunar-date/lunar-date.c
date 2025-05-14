@@ -1041,13 +1041,15 @@ static void _date_calc_days_since_lunar_year (LunarDate *date, GError **error)
                     date->lunar->month, date->lunar->year);
         return;
     }
-    for (m=1; m<date->lunar->month; m++)
+    for (m=1; m<date->lunar->month; m++) {
         date->days+= date->lunar_month_days[m];
+    }
     if (leap_month
-            && ((date->lunar->month>leap_month)
-                || (date->lunar->isleap && (date->lunar->month==leap_month))
-               ))
+        && ((date->lunar->month>leap_month)
+        || (date->lunar->isleap && (date->lunar->month==leap_month))
+    )) {
         date->days += date->lunar_month_days[m++];
+    }
     date->days += date->lunar->day - 1;
 
     if (date->lunar->day > date->lunar_month_days[m])
