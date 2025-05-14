@@ -5,7 +5,8 @@
  * Thanks to the lunar authors:
  * Fung F. Lee	 <lee@umunhum.stanford.edu>
  * Ricky Yeung	 <cryeung@hotmail.com>
- * because algorithm from lunar: http://packages.debian.org/unstable/utils/lunar
+ * because algorithm from lunar:
+ * http://packages.debian.org/unstable/utils/lunar
  *
  * Special thanks to
  * redwooods <redwooods@gmail.com>
@@ -106,12 +107,16 @@ static void lunar_date_init_holiday (LunarDate *date)
     gsize         size, len;
     gchar         *p;
 
-    date->holiday_solar = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
-    date->holiday_lunar = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
-    date->holiday_week = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
+    date->holiday_solar = g_hash_table_new_full(g_str_hash, g_str_equal,
+                                                g_free, g_free);
+    date->holiday_lunar = g_hash_table_new_full(g_str_hash, g_str_equal,
+                                                g_free, g_free);
+    date->holiday_week = g_hash_table_new_full(g_str_hash, g_str_equal,
+                                               g_free, g_free);
 
     resource = lunar_date_get_resource();
-    bytes = g_resource_lookup_data (resource, "/org/moses/lunar/holiday.dat", G_RESOURCE_LOOKUP_FLAGS_NONE, NULL);
+    bytes = g_resource_lookup_data (resource, "/org/moses/lunar/holiday.dat",
+                                    G_RESOURCE_LOOKUP_FLAGS_NONE, NULL);
     data = g_bytes_get_data (bytes, &size);
 
     keyfile = g_key_file_new();
@@ -124,15 +129,19 @@ static void lunar_date_init_holiday (LunarDate *date)
         while(j < len) {
             g_autofree gchar *value;
 
-            value = g_key_file_get_locale_string (keyfile, groups[i], keys[j], NULL, NULL);
+            value = g_key_file_get_locale_string (keyfile, groups[i], keys[j],
+                                                  NULL, NULL);
             p = strchr(keys[j], '[');
             *p = '\0';
             if (g_ascii_strcasecmp(groups[i], "SOLAR") == 0 ) {
-                g_hash_table_insert(date->holiday_solar, g_strdup(keys[j]), g_strdup(value));
+                g_hash_table_insert(date->holiday_solar, g_strdup(keys[j]),
+                                    g_strdup(value));
             }else if (g_ascii_strcasecmp(groups[i], "LUNAR") == 0 ) {
-                g_hash_table_insert(date->holiday_lunar, g_strdup(keys[j]), g_strdup(value));
+                g_hash_table_insert(date->holiday_lunar, g_strdup(keys[j]),
+                                    g_strdup(value));
             }else if (g_ascii_strcasecmp(groups[i], "WEEK") == 0 ) {
-                g_hash_table_insert(date->holiday_week, g_strdup(keys[j]), g_strdup(value));
+                g_hash_table_insert(date->holiday_week, g_strdup(keys[j]),
+                                    g_strdup(value));
             }
             j++;
         }
@@ -144,8 +153,7 @@ static void lunar_date_init_holiday (LunarDate *date)
     g_bytes_unref(bytes);
 }
 
-static void
-lunar_date_init (LunarDate *date)
+static void lunar_date_init (LunarDate *date)
 {
     lunar_date_init_i18n();
 
@@ -165,7 +173,8 @@ lunar_date_init (LunarDate *date)
 /**
  * lunar_date_new:
  *
- * Allocates a `LunarDate`` and initializes it. Free the return value with [method@LunarDate.Date.free].
+ * Allocates a `LunarDate`` and initializes it. Free the return value
+ * with [method@LunarDate.Date.free].
  *
  * Returns: a newly-allocated `LunarDate`
  *
@@ -177,11 +186,10 @@ lunar_date_new (void)
     return g_object_new (LUNAR_TYPE_DATE, NULL);
 }
 
-static void
-lunar_date_set_property (GObject *object,
-                         guint    prop_id,
-                         const GValue *value,
-                         GParamSpec   *pspec)
+static void lunar_date_set_property (GObject *object,
+                                     guint    prop_id,
+                                     const GValue *value,
+                                     GParamSpec   *pspec)
 {
     switch (prop_id)
     {
@@ -246,9 +254,11 @@ void lunar_date_set_solar_date (LunarDate *date,
 {
     GError *calc_error = NULL;
 
-    if (year < BEGIN_YEAR || year > BEGIN_YEAR+NUM_OF_YEARS || (year == BEGIN_YEAR && month == 1))
+    if (year < BEGIN_YEAR || year > BEGIN_YEAR+NUM_OF_YEARS
+        || (year == BEGIN_YEAR && month == 1))
     {
-        g_set_error(error, LUNAR_DATE_ERROR, LUNAR_DATE_ERROR_YEAR, _("Year out of range.(from 1900 to 2100)."));
+        g_set_error(error, LUNAR_DATE_ERROR, LUNAR_DATE_ERROR_YEAR,
+                    _("Year out of range.(from 1900 to 2100)."));
         return;
     }
 
@@ -285,7 +295,6 @@ void lunar_date_set_solar_date (LunarDate *date,
     }
     _cl_date_calc_ganzhi(date);
     _cl_date_calc_bazi(date);
-
 }
 
 /**
@@ -298,7 +307,8 @@ void lunar_date_set_solar_date (LunarDate *date,
  * @isleap: indicate whether the month is a leap month.
  * @error: location to store the error occuring, or %NULL to ignore errors.
  *
- * Sets the lunar year, month, day and the hour for a `LunarDate`. If the month is a leap month, you should set the isleap to TRUE.
+ * Sets the lunar year, month, day and the hour for a `LunarDate`. If the
+ * month is a leap month, you should set the isleap to TRUE.
  *
  * Since: 2.4.0
  **/
@@ -368,7 +378,8 @@ void lunar_date_set_lunar_date (LunarDate *date,
  *
  * Since: 3.0.0
  **/
-void lunar_date_set_solar_holiday(LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday)
+void lunar_date_set_solar_holiday(LunarDate *date, GDateMonth month,
+                                  GDateDay day, const gchar *holiday)
 {
     gchar key[10];
 
@@ -393,7 +404,8 @@ void lunar_date_set_solar_holiday(LunarDate *date, GDateMonth month, GDateDay da
  *
  * Since: 3.0.0
  **/
-void lunar_date_set_lunar_holiday(LunarDate *date, GDateMonth month, GDateDay day, const gchar *holiday)
+void lunar_date_set_lunar_holiday(LunarDate *date, GDateMonth month,
+                                  GDateDay day, const gchar *holiday)
 {
     gchar key[10];
     g_return_if_fail( date != NULL);
@@ -418,7 +430,9 @@ void lunar_date_set_lunar_holiday(LunarDate *date, GDateMonth month, GDateDay da
  *
  * Since: 3.0.0
  **/
-void lunar_date_set_week_holiday(LunarDate *date, GDateMonth month, gint week_of_month, gint day_of_week, const gchar *holiday)
+void lunar_date_set_week_holiday(LunarDate *date, GDateMonth month,
+                                 gint week_of_month, gint day_of_week,
+                                 const gchar *holiday)
 {
     gchar key[10];
 
@@ -427,7 +441,8 @@ void lunar_date_set_week_holiday(LunarDate *date, GDateMonth month, gint week_of
     g_return_if_fail( day_of_week >= 0 && day_of_week <= 6);
     g_return_if_fail( holiday != NULL);
 
-    g_snprintf(key, sizeof(key), "%02d%01d%01d", date->solar->month, week_of_month, day_of_week);
+    g_snprintf(key, sizeof(key), "%02d%01d%01d", date->solar->month,
+               week_of_month, day_of_week);
     if (g_hash_table_lookup(date->holiday_week, key) != NULL) {
         g_hash_table_remove(date->holiday_week, key);
     }
@@ -485,15 +500,19 @@ static gint check_statutory_holiday (GDateYear year,
  * lunar_date_get_real_holiday:
  * @date: a #LunarDate
  * @delimiter: used to join the holidays.
- * @full: Whether to display the full name of the holiday, the short name just used for calendar.
+ * @full: Whether to display the full name of the holiday, the short name
+ * just used for calendar.
  *
- * Returns the all holiday of the date, joined with the delimiter. The date must be valid.
+ * Returns the all holiday of the date, joined with the delimiter. The date
+ * must be valid.
  *
  * Returns:  a newly-allocated holiday string of the date or NULL.
  *
  * Since: 3.0.0
  **/
-static gchar* lunar_date_get_real_holiday (LunarDate *date, const gchar *delimiter, gboolean full)
+static gchar* lunar_date_get_real_holiday (LunarDate *date,
+                                           const gchar *delimiter,
+                                           gboolean full)
 {
     GString*      jieri;
     gint          i, weekday, weekth;
