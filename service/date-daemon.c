@@ -105,7 +105,7 @@ gboolean date_get_strftime (BusLunarDate *object,
     daemon = DATE_DAEMON (user_data);
     lunar_date_set_solar_date(daemon->date, year, month, day , hour, &error);
     if (error != NULL ) {
-        g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), 1, "%s", error->message);
+        g_dbus_method_invocation_return_error (invocation, g_quark_from_static_string(DATE_DBUS_NAME), error->code, "%s", error->message);
         return FALSE;
     }
     result = lunar_date_strftime(daemon->date, format);

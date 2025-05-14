@@ -162,9 +162,16 @@ void show_day_hour_info(BusLunarDate *date, gint year, gint month, gint day, gin
                                        NULL,
                                        &error);
     if (error != NULL) {
-        g_print("%d\n", error->code);
         if (error->code == LUNAR_DATE_ERROR_YEAR) {
             g_printerr (_("Unable to get cal: %s\n"), _("Year out of range.(from 1900 to 2100)."));
+        } else if (error->code == LUNAR_DATE_ERROR_MONTH) {
+            g_printerr (_("Unable to get cal: %s\n"), _("Month out of range."));
+        } else if (error->code == LUNAR_DATE_ERROR_DAY) {
+            g_printerr (_("Unable to get cal: %s\n"), _("Day out of range."));
+        } else if (error->code == LUNAR_DATE_ERROR_HOUR) {
+            g_printerr (_("Unable to get cal: %s\n"), _("Hour out of range."));
+        } else if (error->code == LUNAR_DATE_ERROR_LEAP) {
+            g_printerr (_("Unable to get cal: %s\n"), _("Leap month in year error.\n"));
         }
         g_error_free(error);
         return;
