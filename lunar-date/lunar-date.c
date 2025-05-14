@@ -86,11 +86,28 @@ static gchar* lunar_date_get_cal_holiday (LunarDate *date, gint max_len);
 
 G_DEFINE_TYPE (LunarDate, lunar_date, G_TYPE_OBJECT);
 
-static void
-lunar_date_class_init (LunarDateClass *class)
+static void lunar_date_finalize (GObject *gobject)
+{
+    LunarDate *date;
+
+    date = LUNAR_DATE (gobject);
+    if (date->holiday_solar != NULL) {
+        g_hash_table_destroy (date->holiday_solar);
+    }
+    if (date->holiday_lunar != NULL) {
+        g_hash_table_destroy (date->holiday_lunar);
+    }
+    if (date->holiday_week != NULL) {
+        g_hash_table_destroy (date->holiday_week);
+    }
+    G_OBJECT_CLASS (lunar_date_parent_class)->finalize (gobject);
+}
+
+static void lunar_date_class_init (LunarDateClass *class)
 {
     GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 
+    gobject_class->finalize = lunar_date_finalize;
     gobject_class->set_property = lunar_date_set_property;
     gobject_class->get_property = lunar_date_get_property;
 }
