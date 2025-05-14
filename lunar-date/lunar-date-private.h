@@ -327,15 +327,15 @@ static	char	*gan_list[] = {
     /*
      * 十天干: "Jiǎ" "Yǐ" "Bǐng" "Dīng" "Wù" "Jǐ" "Gēng" "Xīn" "Rén" "Guǐ"
      */
-    N_("Ji\307\216"),	N_("Y\307\220"),	 N_("B\307\220ng"), N_("D\304\253ng"), N_("W\303\271"),
-    N_("J\307\220"),	N_("G\304\223ng"), N_("X\304\253n"),  N_("R\303\251n"),  N_("Gu\307\220")
+    N_("Ji\307\216"), N_("Y\307\220"),   N_("B\307\220ng"), N_("D\304\253ng"), N_("W\303\271"),
+    N_("J\307\220"),  N_("G\304\223ng"), N_("X\304\253n"),  N_("R\303\251n"),  N_("Gu\307\220")
 };
 
 static	char	*zhi_list[] = {
     /*
      * 十二地支: "Zǐ" "Chǒu" "Yín" "Mǎo" "Chén" "Sì" "Wǔ" "Wèi" "Shēn" "Yǒu" "Xū" "Hài" */
-    N_("Z\307\220"),	N_("Ch\307\222u"),	N_("Y\303\255n"),  N_("M\307\216o"),  N_("Ch\303\251n"), N_("S\303\254"),
-    N_("W\307\224"),	N_("W\303\250i"),	 N_("Sh\304\223n"), N_("Y\307\222u"),  N_("X\305\253"),   N_("H\303\240i")
+    N_("Z\307\220"),  N_("Ch\307\222u"), N_("Y\303\255n"),  N_("M\307\216o"),  N_("Ch\303\251n"), N_("S\303\254"),
+    N_("W\307\224"),  N_("W\303\250i"),  N_("Sh\304\223n"), N_("Y\307\222u"),  N_("X\305\253"),   N_("H\303\240i")
 };
 
 static	char   *shengxiao_list[] = {
@@ -354,17 +354,18 @@ static	char   *lunar_day_list[] = {
      * "Èryī" "Èrèr" "Èrsān" "Èrsì" "Èrwǔ" "Èrliù" "Èrqī" "Èrbā" "Èrjiǔ" "Sānshí"
      */
 
-    N_("Ch\305\253y\304\253"), N_("Ch\305\253\303\250r"), N_("Ch\305\253s\304\201n"), N_("Ch\305\253s\303\254"), N_("Ch\305\253w\307\224"), 
-    N_("Ch\305\253li\303\271"), N_("Ch\305\253q\304\253"), N_("Ch\305\253b\304\201"), N_("Ch\305\253ji\307\224"), N_("Ch\305\253sh\303\255"), 
+    N_("Ch\305\253y\304\253"), N_("Ch\305\253\303\250r"), N_("Ch\305\253s\304\201n"), N_("Ch\305\253s\303\254"), N_("Ch\305\253w\307\224"),
+    N_("Ch\305\253li\303\271"), N_("Ch\305\253q\304\253"), N_("Ch\305\253b\304\201"), N_("Ch\305\253ji\307\224"), N_("Ch\305\253sh\303\255"),
     N_("Sh\303\255y\304\253"), N_("Sh\303\255\303\250r"), N_("Sh\303\255s\304\201n"), N_("Sh\303\255s\303\254"), N_("Sh\303\255w\307\224"),
-    N_("Sh\303\255li\303\271"), N_("Sh\303\255q\304\253"), N_("Sh\303\255b\304\201"), N_("Sh\303\255ji\307\224"), N_("\303\210rsh\303\255"), 
-    N_("\303\210ry\304\253"), N_("\303\210r\303\250r"), N_("\303\210rs\304\201n"), N_("\303\210rs\303\254"), N_("\303\210rw\307\224"), 
+    N_("Sh\303\255li\303\271"), N_("Sh\303\255q\304\253"), N_("Sh\303\255b\304\201"), N_("Sh\303\255ji\307\224"), N_("\303\210rsh\303\255"),
+    N_("\303\210ry\304\253"), N_("\303\210r\303\250r"), N_("\303\210rs\304\201n"), N_("\303\210rs\303\254"), N_("\303\210rw\307\224"),
     N_("\303\210rli\303\271"), N_("\303\210rq\304\253"), N_("\303\210rb\304\201"), N_("\303\210rji\307\224"), N_("S\304\201nsh\303\255")
 };
 
 static gchar *twelve_constellations[] = {
-    N_("Capricornus"), N_("Aquarius"), N_("Pisces"), N_("Aries"), N_("Taurus"), N_("Gemini"),
-    N_("Cancer"), N_("Leo"), N_("Virgo"), N_("Libra"), N_("Scorpius"), N_("Sagittarius")
+    N_("Capricornus"), N_("Aquarius"), N_("Pisces"), N_("Aries"), N_("Taurus"),
+    N_("Gemini"), N_("Cancer"), N_("Leo"), N_("Virgo"), N_("Libra"),
+    N_("Scorpius"), N_("Sagittarius")
 };
 
 static int days_of_constellations[]  = {
@@ -372,15 +373,11 @@ static int days_of_constellations[]  = {
     235, 266, 296, 326, 356, 366
 };
 
-static CLDate first_solar_date	= {1900, 1, 31, 0, FALSE }; /* 1900年1月31日 */
-static CLDate first_lunar_date	= {1900, 1, 1, 0, FALSE };	/* 1900年元月初一 */
-static CLDate first_gan_date	= {6, 4, 0, 0, FALSE };		/* 庚年午月甲日甲时 */
-static CLDate first_zhi_date	= {0, 2, 4, 0, FALSE};	   /* 子年寅月辰日子时 */
+static CLDate first_solar_date  = {1900, 1, 31, 0, FALSE }; /* 1900年1月31日 */
+static CLDate first_lunar_date  = {1900, 1, 1, 0, FALSE };  /* 1900年元月初一 */
+static CLDate first_gan_date    = {6, 4, 0, 0, FALSE };     /* 庚年午月甲日甲时 */
+static CLDate first_zhi_date    = {0, 2, 4, 0, FALSE};      /* 子年寅月辰日子时 */
 
 G_END_DECLS
 
 #endif /* __LUNAR_DATE_PRIVATE_H__ */
-
-/*
-   vi:ts=4:wrap:ai:
-   */
