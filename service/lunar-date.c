@@ -33,7 +33,7 @@ void show_year_month_cal(BusLunarDate *date, gint year, gint month)
 {
     guint i;
     guint8 days;
-    gchar *string;
+    gchar *string = NULL;
     GError *error = NULL;
     GDate *gd;
     gchar* lunar[32] = {0};
@@ -165,7 +165,7 @@ void show_day_hour_info(BusLunarDate *date, gint year, gint month, gint day, gin
         if (error->code == LUNAR_DATE_ERROR_YEAR) {
             g_printerr (_("Unable to get cal: %s\n"), _("Year out of range.(from 1900 to 2100)."));
         } else if (error->code == LUNAR_DATE_ERROR_MONTH) {
-            g_printerr (_("Unable to get cal: %s\n"), _("Month out of range."));
+            g_printerr (_("Unable to get cal: %s\n"), _("Month out of range.(Start from 1900-02)."));
         } else if (error->code == LUNAR_DATE_ERROR_DAY) {
             g_printerr (_("Unable to get cal: %s\n"), _("Day out of range."));
         } else if (error->code == LUNAR_DATE_ERROR_HOUR) {
@@ -252,9 +252,12 @@ int main (int argc, char **argv)
         show_year_cal(date, year);
     else if (i == 3)
         show_year_month_cal(date, year, month);
-    else if (i == 4)
-        show_day_hour_info(date, year, month, day, -1);
-    else
+    else {
+	if (year == 1900 && month == 1 && day < 31) {
+	    g_print(_("Error: %s\n"), _("Day out of range.(Lunar start from 1900-01-31)."));
+	    return EXIT_SUCCESS;
+	}
         show_day_hour_info(date, year, month, day, hour);
+    }
     return EXIT_SUCCESS;
 }
