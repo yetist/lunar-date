@@ -134,8 +134,10 @@ static const struct {
 	const gchar *holiday;
 } holiday_array[] = {
 	{1942, 11, 26, 8, " ", "感恩节"},
-	{2016, 5, 8, 8, ";", "母亲节"},
-	{1949, 10, 1, 8, ";", "国庆节"},
+    {2016, 5, 8, 8, ";", "母亲节"},
+    {1949, 10, 1, 8, ";", "国庆节"},
+    {2022, 9, 7, 8, ";", "白露"},
+    {2023, 11, 8, 9, ";", "记者节;立冬"},
 };
 static const gint num_holiday_array = G_N_ELEMENTS (holiday_array);
 
@@ -208,23 +210,23 @@ void test_lunar_date(void)
 
 static void test_holiday_date(void)
 {
-	gint i;
-	LunarDate *date;
-	GError *error = NULL;
-	gchar *holiday;
+    gint i;
+    LunarDate *date;
+    GError *error = NULL;
+    gchar *holiday;
 
-	date = lunar_date_new();
-	for (i = 0; i < num_holiday_array; i++)
-	{
-		lunar_date_set_solar_date(date, holiday_array[i].year, holiday_array[i].month,
-			   	holiday_array[i].day, holiday_array[i].hour, &error);
-		if (error != NULL)
-			g_error_free(error);
-		holiday = lunar_date_get_holiday(date, holiday_array[i].delimiter);
-		g_assert_cmpstr (holiday_array[i].holiday, ==, holiday);
-		g_free (holiday);
-	}
-	lunar_date_free(date);
+    date = lunar_date_new();
+    for (i = 0; i < num_holiday_array; i++)
+    {
+        lunar_date_set_solar_date(date, holiday_array[i].year, holiday_array[i].month,
+                                  holiday_array[i].day, holiday_array[i].hour, &error);
+        if (error != NULL)
+            g_error_free(error);
+        holiday = lunar_date_get_holiday(date, holiday_array[i].delimiter);
+         g_assert_cmpstr (holiday_array[i].holiday, ==, holiday);
+        g_free (holiday);
+    }
+    lunar_date_free(date);
 }
 
 static void test_custom_holiday(void)
