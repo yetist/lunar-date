@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lunar-date\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-16 12:25+0800\n"
+"POT-Creation-Date: 2025-05-16 14:31+0800\n"
 "PO-Revision-Date: 2007-09-03 19:05+0700\n"
 "Last-Translator: yetist <yetist@gmail.com>\n"
 "Language-Team: yetist@gmail.com <yetist@gmail.com>\n"
@@ -23,9 +23,9 @@ msgstr ""
 msgid "Year out of range.(from 1900 to 2100)."
 msgstr "年超出範圍（从1900到2100）。"
 
-#: lunar-date/lunar-date.c:283
+#: lunar-date/lunar-date.c:283 service/lunar-date.c:257
 #, fuzzy, c-format
-msgid "Month out of range.(Start from 1900-02)."
+msgid "Day out of range.(Lunar start from 1900-01-31)."
 msgstr "年超出範圍（从1900到2100）。"
 
 #: lunar-date/lunar-date.c:289
@@ -44,7 +44,7 @@ msgstr "時超出範圍."
 msgid "Year out of range."
 msgstr "年超出範圍."
 
-#: lunar-date/lunar-date.c:356 service/lunar-date.c:168
+#: lunar-date/lunar-date.c:356
 #, c-format
 msgid "Month out of range."
 msgstr "月超出範圍."
@@ -605,6 +605,11 @@ msgstr "无效日期\n"
 msgid "Unable to get cal: %s\n"
 msgstr "无法得到日历：%s\n"
 
+#: service/lunar-date.c:168
+#, fuzzy
+msgid "Month out of range.(Start from 1900-02)."
+msgstr "年超出範圍（从1900到2100）。"
+
 #: service/lunar-date.c:170
 #, fuzzy
 msgid "Day out of range."
@@ -636,6 +641,11 @@ msgstr ""
 #, c-format
 msgid "option parsing failed: %s\n"
 msgstr "选项解析失败：%s\n"
+
+#: service/lunar-date.c:257
+#, c-format
+msgid "Error: %s\n"
+msgstr ""
 
 #: service/lunar-date-daemon.c:24
 msgid "Enable debugging code"
