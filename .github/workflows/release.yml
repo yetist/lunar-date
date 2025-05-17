@@ -1,0 +1,43 @@
+name: Release Version
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    name: Release New Version
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: "true"
+
+      - name: Install dependency packages
+        run: sudo .github/workflows/ubuntu.sh
+
+      - name: Build the source code
+        run: .github/workflows/builds.sh
+
+      - name: Deploy Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          allow_empty_commit: true
+          publish_dir: ./_build/docs/lunar-date
+          cname: lunar-date.zhcn.cc
+          force_orphan: true
+
+      - name: Install GH CLI
+        uses: dev-hanz-ops/install-gh-cli-action@v0.2.1
+        with:
+          gh-cli-version: 2.72.0
+
+      - name: Create github release
+        run: |
+          .github/workflows/release.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
