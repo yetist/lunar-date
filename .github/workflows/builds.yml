@@ -1,0 +1,69 @@
+name: CI Build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+# cancel already running builds of the same branch or pull request
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.head_ref || github.sha }}
+  cancel-in-progress: true
+
+env:
+  CACHE_PATH: /tmp/.cache
+
+jobs:
+  build:
+    name: Build on ${{matrix.container}} (using ${{matrix.cc}})
+    runs-on: ubuntu-latest
+    container:
+      image: ${{matrix.container}}
+      volumes:
+        - /tmp/.cache
+
+    strategy:
+      fail-fast: false # don't cancel other jobs in the matrix if one fails
+      matrix:
+        container:
+          [
+            "debian:testing",
+            "fedora:rawhide",
+            "ubuntu:rolling",
+            "archlinux:latest",
+          ]
+        cc: ["gcc"]
+        cxx: ["g++"]
+        include:
+          - container: "archlinux:latest"
+            cc: "clang"
+            cxx: "clang++"
+
+    env:
+      # Speed up build with ccache
+      CC: ccache ${{ matrix.cc }}
+      CXX: ccache ${{ matrix.cxx }}
+      CONTAINER: ${{ matrix.container }}
+
+    steps:
+      - name: Setup environment variables
+        shell: bash
+        run: |
+          split=(${CONTAINER//:/ })
+          distro=${split[0]}
+          echo DISTRO=$distro >> $GITHUB_ENV
+          echo "SHORT_COMMIT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+      - name: Repository checkout
+        uses: actions/checkout@v3
+      - name: Install dependency packages
+        run: .github/workflows/${{ env.DISTRO }}.sh
+      - name: Enable ccache to speed up builds
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: ${{ env.DISTRO }}-${{ matrix.cc }}
+      - name: Build the source code
+        run: .github/workflows/builds.sh
