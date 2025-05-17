@@ -26,4 +26,9 @@ if [ -f meson.build ]; then
 	infobegin "Test"
 	ninja -C _build test
 	infoend
+
+	# If running outside docker, create dist for release.
+	if [ -z $CONTAINER ]; then
+		ninja -C _build dist
+	fi
 fi
