@@ -434,6 +434,52 @@ void lunar_date_set_week_holiday(LunarDate *date, GDateMonth month, gint week_of
     g_hash_table_insert(date->holiday_week, g_strdup(key), g_strdup(holiday));
 }
 
+/*
+ * return 1: off day
+ * return 0: work day
+ * return -1: no change.
+ */
+static gint check_statutory_holiday (GDateYear year,
+                                     GDateMonth month,
+                                     GDateDay day)
+{
+    GDate *gdate;
+    GDateWeekday weekday;
+    guint days;
+    guint16 num;
+    gboolean found = FALSE;
+    gint ret = -1;
+    gint length;
+    gint i;
+
+    if (year < 2000) {
+        return -1;
+    }
+
+    gdate = g_date_new_dmy (day, month, year);
+    days = g_date_get_day_of_year (gdate);
+
+    num = ((year - 2000) << 9) | days;
+    length = G_N_ELEMENTS (statutory_holidays);
+    for (i = 0; i < length; i++) {
+        if (statutory_holidays[i] == num) {
+            found = TRUE;
+            break;
+        }
+    }
+
+    if (found) {
+        weekday = g_date_get_weekday (gdate);
+        if (weekday == G_DATE_SATURDAY || weekday == G_DATE_SUNDAY) {
+            ret = 0;
+        } else {
+            ret = 1;
+        }
+    }
+
+    g_date_free (gdate);
+    return ret;
+}
 
 /**
  * lunar_date_get_real_holiday:
@@ -516,6 +562,24 @@ static gchar* lunar_date_get_real_holiday (LunarDate *date, const gchar *delimit
             }
         } else {
             jieri=g_string_append(jieri, value);
+        }
+    }
+
+    // statutory_holidays
+    i = check_statutory_holiday (date->solar->year, date->solar->month, date->solar->day);
+    if (i == 1) {
+        if (jieri->len > 0) jieri = g_string_append (jieri, delimiter);
+        if (full) {
+            jieri = g_string_append (jieri, "法定节假日");
+        } else {
+            jieri = g_string_append (jieri, "休息");
+        }
+    } else if (i == 0) {
+        if (jieri->len > 0) jieri = g_string_append (jieri, delimiter);
+        if (full) {
+            jieri = g_string_append(jieri, "法定工作日");
+        } else {
+            jieri = g_string_append(jieri, "上班");
         }
     }
 
