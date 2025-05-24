@@ -16,8 +16,7 @@
 static gboolean debug = FALSE;
 static gboolean replace = FALSE;
 
-static GOptionEntry entries[] =
-{
+static GOptionEntry entries[] = {
     {
         "debug", 0, G_OPTION_FLAG_NONE,
         G_OPTION_ARG_NONE, &debug,
