@@ -17,9 +17,9 @@ You can download the latest lunar-date tarball from the github.com:
 Build and install into the system:
 
 ```sh
-$ meson setup _build --prefix=/usr -Ddocs=true -Dintrospection=true -Dvapi=true -Dtests=true
-$ meson compile -C _build/
-$ sudo meson install -C _build
+meson setup _build --prefix=/usr -Ddocs=true -Dintrospection=true -Dvapi=true -Dtests=true
+meson compile -C _build/
+sudo meson install -C _build
 ```
 
 **For Windows:**
@@ -35,11 +35,12 @@ $ file _build.mingw/service/*.exe
 _build.mingw/service/lunar-date-daemon.exe: PE32+ executable for MS Windows 5.02 (console), x86-64, 19 sections
 _build.mingw/service/lunar-date.exe:        PE32+ executable for MS Windows 5.02 (console), x86-64, 19 sections
 ```
+
 ## Linux distribution support
 
 Binary packages for the following systems are currently available.
 
-[![Packaging status](https://repology.org/badge/vertical-allrepos/lunar-date.svg)](https://repology.org/project/lunar-date/versions)
+[![Packaging status](https://repology.org/badge/vertical-allrepos/lunar-date.svg?columns=3)](https://repology.org/project/lunar-date/versions)
 
 ## How to report bugs
 
