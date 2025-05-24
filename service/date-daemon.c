@@ -155,7 +155,7 @@ static void bus_acquired_handler_cb (GDBusConnection *connection,
     g_signal_connect (daemon->skeleton, "handle-calendar", G_CALLBACK (date_get_calendar), daemon);
 
     exported = g_dbus_interface_skeleton_export (G_DBUS_INTERFACE_SKELETON (daemon->skeleton),
-            connection, DATE_DBUS_PATH, &error);
+                                                 connection, DATE_DBUS_PATH, &error);
 
     if (!exported)
     {
@@ -261,12 +261,12 @@ static void date_daemon_class_init (DateDaemonClass *class)
 
     properties[PROP_LOOP] =
         g_param_spec_pointer("loop", "loop", "loop",
-                G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE |
-                G_PARAM_STATIC_STRINGS);
+                             G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE |
+                             G_PARAM_STATIC_STRINGS);
     properties[PROP_REPLACE] =
         g_param_spec_boolean ("replace", "replace", "replace", FALSE,
-                G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE |
-                G_PARAM_STATIC_STRINGS);
+                              G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE |
+                              G_PARAM_STATIC_STRINGS);
 
     g_object_class_install_properties (gobject_class, LAST_PROP, properties);
 }

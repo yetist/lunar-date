@@ -23,8 +23,7 @@ void show_year_month_cal(BusLunarDate *date, gint year, gint month);
 void show_year_cal(BusLunarDate *date, gint year);
 void show_day_hour_info(BusLunarDate *date, gint year, gint month, gint day, gint hour);
 
-static GOptionEntry entries[] =
-{
+static GOptionEntry entries[] = {
     { "format", 'f', 0, G_OPTION_ARG_STRING, &format, N_("Format for date output"), "N" },
     { NULL }
 };
@@ -253,10 +252,10 @@ int main (int argc, char **argv)
     else if (i == 3)
         show_year_month_cal(date, year, month);
     else {
-	if (year == 1900 && month == 1 && day < 31) {
-	    g_print(_("Error: %s\n"), _("Day out of range.(Lunar start from 1900-01-31)."));
-	    return EXIT_SUCCESS;
-	}
+        if (year == 1900 && month == 1 && day < 31) {
+            g_print(_("Error: %s\n"), _("Day out of range.(Lunar start from 1900-01-31)."));
+            return EXIT_SUCCESS;
+        }
         show_day_hour_info(date, year, month, day, hour);
     }
     return EXIT_SUCCESS;
