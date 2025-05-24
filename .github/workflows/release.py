@@ -84,7 +84,7 @@ def main():
     with open(".release.note.txt", "w") as f:
         f.write(body)
 
-    title = f"{repo_name} {new_version} release"
+    title = f"{repo_name} {new_version}"
 
     # release version meson dist
     cmdline = f'gh release create {new_tag} --title "{title}" -F .release.note.txt _build/meson-dist/*'
