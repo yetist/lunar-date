@@ -1,3 +1,9 @@
+### lunar-date 3.2.0
+
+* 修复bug: #21 #23
+* 增加法定节假日信息
+* 文档使用 gi-docgen
+
 ### lunar-date 3.0.2
 
 * 修复白露显示
@@ -131,7 +137,7 @@ NEWS:
     - keep Sunday as the first day of a week.
     - update Calendar to GTK+-2.12.8
     - show lunar automatic.
-    - fixed: 
+    - fixed:
         * when year less-than 1900 or greater than 2049, calendar will show error lunar.
         * when we view 1900 Jan, the calendar will crash.
 
@@ -159,7 +165,7 @@ NEWS:
     Compile with --disable-python to disable python bindings, default is auto detect python support.
     Usage:
     $ python
-    Python 2.4.4 (#1, Feb  1 2008, 12:23:41) 
+    Python 2.4.4 (#1, Feb  1 2008, 12:23:41)
     [GCC 4.1.2 (Gentoo 4.1.2 p1.0.2)] on linux2
     Type "help", "copyright", "credits" or "license" for more information.
     >>> import gclcalendar
