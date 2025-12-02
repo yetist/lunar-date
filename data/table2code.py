@@ -1,33 +1,18 @@
 #! /usr/bin/env python
 # -*- encoding:utf-8 -*-
-# FileName: table2code.py
+# SPDX-License-Identifier: GPL-2.0-or-later
 
-"This file is part of lunar-date"
-
-__author__   = "yetist"
-__copyright__= "Copyright (C) 2019-2021 yetist <yetist@yetibook>"
-__license__  = """
-This library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public License
-along with this library; if not, see <http://www.gnu.org/licenses/>.
-"""
+__author__ = "yetist"
+__copyright__ = "Copyright (c) 2025 yetist <yetist@gmail.com>"
+__license__ = "GPL-2.0-or-later"
 
 import toml
 import datetime
 
 class Table(object):
-    def __init__ (self, file):
+    def __init__(self, file):
         self.file = file
-        self.data = None
+        self.data = {}
 
     def load(self):
         fp = open(self.file)
@@ -51,7 +36,7 @@ class Table(object):
                 info |= 0
         info = info << 4
         info += year_data['leap']
-        #print(bin(info), info, hex(info))
+        # print(bin(info), info, hex(info))
         return hex(info)
 
     def get_fest(self, year):
@@ -59,7 +44,7 @@ class Table(object):
         return year_data['jie']
 
     def gen_year_info(self):
-        header="""
+        header = """
 long years_info[NUM_OF_YEARS] = {
 	/* encoding:
 	 *
@@ -90,28 +75,28 @@ long years_info[NUM_OF_YEARS] = {
 
     def get_holidays(self, year):
         """
-    法定节假日编码
-    使用一个 uint16 类型表示当年的法定假日调整情况
+        法定节假日编码
+        使用一个 uint16 类型表示当年的法定假日调整情况
 
-    bit:  FEDC BA98 7654 3210
-    fmt:  YYYY YYYD DDDD DDDD
-          .... .... .... ....
-    year: YYYY YYY0 0000 0000  year[15:9], 1 <= year <= 127, max value is  (1<<7) -1 = 127
-    days: 0000 000D DDDD DDDD  days[8:0], 1 <= days <= 366, max value is (1<<9) -1 = 511
+        bit:  FEDC BA98 7654 3210
+        fmt:  YYYY YYYD DDDD DDDD
+              .... .... .... ....
+        year: YYYY YYY0 0000 0000  year[15:9], 1 <= year <= 127, max value is  (1<<7) -1 = 127
+        days: 0000 000D DDDD DDDD  days[8:0], 1 <= days <= 366, max value is (1<<9) -1 = 511
 
-    year: 年份, 使用[15:9]表示，共7位，值加上2000表示公历年份。 (1<<7) - 1 = 127，最大可表示年份为 2127 年。
-    days: 日期[8:0], 共9位，值以二进制位来表示当年哪天的上班/休息状态需要调整(即休息变上班，上班变休息)，(1<<9) - 1 = 511位，可表示一年 365 天的状态。
+        year: 年份, 使用[15:9]表示，共7位，值加上2000表示公历年份。 (1<<7) - 1 = 127，最大可表示年份为 2127 年。
+        days: 日期[8:0], 共9位，值以二进制位来表示当年哪天的上班/休息状态需要调整(即休息变上班，上班变休息)，(1<<9) - 1 = 511位，可表示一年 365 天的状态。
 
-    """
+        """
         year_data = self.data[year]
-        if not 'statutory_holidays' in year_data.keys():
+        if 'statutory_holidays' not in year_data.keys():
             return []
 
         days = year_data.get('statutory_holidays')
         result = []
         for i in days:
             if len(i) != 4:
-                print ('{} in {} is not valid date'.format(i, year))
+                print('{} in {} is not valid date'.format(i, year))
                 return []
             else:
                 year = int(year)
@@ -129,13 +114,14 @@ long years_info[NUM_OF_YEARS] = {
                 year = int(i) - 2000
                 y = year << 9
                 for j in days:
-                    day = y|j
+                    day = y | j
                     print(" {}".format(hex(day)), end = ',')
                 print("  /* {} */".format(i), end = '\n')
         print("}", end = '\n')
 
-if __name__=="__main__":
+
+if __name__ == '__main__':
     t = Table("table.toml")
     t.load()
-    #t.gen_year_info()
+    # t.gen_year_info()
     t.gen_holidays()
